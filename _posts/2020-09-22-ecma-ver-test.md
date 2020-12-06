@@ -50,6 +50,7 @@ function detectESVersion () {
 ```
 
 附：ES简要更新记录
+
 | 版本 | 内容 |
 | --- | --- |
 | ES3 | 添加正则表达式，添加`try`/`catch` |
