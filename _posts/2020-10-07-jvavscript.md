@@ -13,6 +13,7 @@ const _ = alert, __ = prompt, $ = String.fromCharCode, $$ = this;
 ```
 
 ## JSFuck基本混淆手法
+
 | 值 | JSFuck |
 |----|----|
 | `""` | `+[]` |
