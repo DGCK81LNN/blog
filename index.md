@@ -1,5 +1,5 @@
 ---
-links: 
+soulblog-footer-links: 
   - 
     href: 'https://www.mywiki.cn/dgck81lnn'
     text: '旧博客站'
