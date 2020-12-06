@@ -115,7 +115,7 @@ bin2dec
 DGCK81LNN<br>2020年12月4日 (五) 08:03 (CST)
 
 **参考资料**
-* Brainfuck Base expansion http://mazonka.com/brainf
+* [Brainfuck Base expansion](http://mazonka.com/brainf)
 
 
 
