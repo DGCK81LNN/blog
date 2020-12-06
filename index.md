@@ -15,6 +15,7 @@ soulblog-footer-links:
   {% for post in site.posts %}
     <li>
       <a href="/blog{{ post.url }}">{{ post.title }}</a>
+      {{ post.excerpt }}
     </li>
   {% endfor %}
 </ul>
