@@ -3,18 +3,18 @@ title: "JvavScript"
 tags: "深奥编程语言 js"
 ---
 
-'''JvavScript'''是我提出的一个基于JavaScript的深奥编程语言，也是[https://esolangs.org/wiki/JSFuck JSFuck]的扩展。JvavScript代码可以作为JavaScript表达式执行，然而只能使用有限的几种字符：
+**JvavScript**是我提出的一个基于JavaScript的深奥编程语言，是JavaScript的一个子集，也是[JSFuck](https://esolangs.org/wiki/JSFuck)的一个超集。JvavScript代码符合JavaScript表达式的语法，然而只能使用有限的几种字符：
 ```
 ( ) [ ] < > + - ! , = ? : _ $
 ```
-并且需要事先声明几个常量：
+并且为了使代码稍简洁些，定义了几个常量：
 ```js
 const _ = alert, __ = prompt, $ = String.fromCharCode, $$ = this;
 ```
 
 ## JSFuck基本混淆手法
 | 值 | JSFuck |
-| --- | --- |
+|----|----|
 | `""` | `+[]` |
 | `false` | `![]` |
 | `true` | `!![]` 或 `!+[]` |
