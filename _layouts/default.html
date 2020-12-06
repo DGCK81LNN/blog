@@ -54,12 +54,14 @@
     <soul-header default-active="blog"></soul-header>
     <soul-main>
       <h1>{{ page.title | default: site.title }}</h1>
-      <p class="soul-p2">{{ page.date }}</p>
+      <p class="soul-p2">{{ page.date | date: "%Y-%m-%d" }}</p>
       <div class="soulblog-content">{{content}}</div>
-      <footer>
-        <p>上一篇：<a href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a></p>
-        <p>下一篇：<a href="/blog{{ page.next.url }}">{{ page.next.title }}</a></p>
-      </footer>
+      {% if: page.collection == "posts" %}
+        <footer>
+          <p>上一篇：<a href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a></p>
+          <p>下一篇：<a href="/blog{{ page.next.url }}">{{ page.next.title }}</a></p>
+        </footer>
+      {% endif %}
     </soul-main>
     <soul-footer {% if page.soulblog-footer-links %} :links="[
       {% for link in page.soulblog-footer-links %}
