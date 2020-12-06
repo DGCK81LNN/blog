@@ -57,8 +57,8 @@
       <p class="soul-p2">{{ page.date }}</p>
       <div class="soulblog-content">{{content}}</div>
       <footer>
-        <p>上一篇：{% if: page.previous %}<a href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（没有更多了）{% endif %}</p>
-        <p>下一篇：{% if: page.next %}<a href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
+        <p>上一篇：{% if: page.previous.url %}<a href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（没有更多了）{% endif %}</p>
+        <p>下一篇：{% if: page.next.url %}<a href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
       </footer>
     </soul-main>
     <soul-footer {% if page.soulblog-footer-links %} :links="[
