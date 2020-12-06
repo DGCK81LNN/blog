@@ -1,3 +1,3 @@
 title: LNN的博客！
 kramdown:
-  syntax_highlighter: null
+  syntax_highlighter: +nil+
