@@ -44,10 +44,11 @@
         <p class="site-footer-credits">本页面使用<a href="https://pages.github.com">GitHub Pages</a>生成。</p>
       </footer>
     </soul-main>
-    <soul-footer :links="[
-      { href: 'https://www.mywiki.cn/dgck81lnn', text: '旧博客站' },
-      { href: 'https://dgck81lnn.blog.luogu.org', text: '洛谷网博客' }
-    ]"></soul-footer>
+    <soul-footer {% if page.soulblog-footer-links %} :links="[
+      {% for link in page.soulblog-footer-links %}
+      { href: '{{ link.href | replace:"'","\\'" | escape }}', text: '{{ link.text | replace:"'","\\'" | escape }}' },
+      {% endfor %}
+    ]"{% endif %}></soul-footer>
   </div>
 </body>
 <script>
