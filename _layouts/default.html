@@ -54,7 +54,7 @@
     <soul-header default-active="blog"></soul-header>
     <soul-main>
       <h1>{{ page.title | default: site.title }}</h1>
-      <p class="soul-p2">{{ page.date | date: "%Y-%m-%d" }}</p>
+      <p class="soul-p2">{{ page.date }}</p>
       <div class="soulblog-content">{{content}}</div>
       <footer>
         <p>上一篇：{% if: page.previous %}<a href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（没有更多了）{% endif %}</p>
