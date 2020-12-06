@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<!--
+  这是【LNN的博客！】!
+  使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/element.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/css/prism.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="/js/tests.js"></script>
+  <script src="/js/vue.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+  <script src="/js/commons.js"></script>
+  {% seo %}
+</head>
+
+<body>
+  <div id="app">
+    <soul-header default-active="blog"></soul-header>
+    <soul-main>
+      <h1>{{ page.title | default: site.title }}</h1>
+      <footer>
+        <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a>由<a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>维护。</span>
+        <span class="site-footer-credits">本页面使用<a href="https://pages.github.com">GitHub Pages</a>生成。</span>
+      </footer>
+    </soul-main>
+    <soul-footer></soul-footer>
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: { }
+  });
+</script>
+
+</html>
