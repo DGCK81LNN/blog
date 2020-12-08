@@ -220,6 +220,8 @@ https://api.bilibili.com/x/v3/fav/resource/list?media_id=【ML号】&pn=【页�
 https://api.bilibili.com/x/article/view?id=【CV号】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`
         * N `id`: CV号
@@ -289,6 +291,8 @@ https://api.bilibili.com/x/article/view?id=【CV号】
 ```
 https://api.bilibili.com/x/article/list/web/articles?id=【RL号】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`
@@ -362,6 +366,8 @@ https://api.bilibili.com/x/article/list/web/articles?id=【RL号】
 https://api.vc.bilibili.com/clip/v1/video/detail?video_id=VC号
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`
         * O `user`: UP主信息
@@ -410,6 +416,9 @@ https://www.bilibili.com/audio/music-service-c/web/song/info?sid=【AU号】
 ```
 curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
 ```
+
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`
         * N `id`: AU号
@@ -466,6 +475,8 @@ curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
 https://api.bilibili.com/x/space/acc/info?mid=【UID】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * `mid`: UID
@@ -499,6 +510,8 @@ https://api.bilibili.com/x/space/acc/info?mid=【UID】
 https://api.bilibili.com/x/relation/stat?vmid=【UID】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * `data`:{
         * `mid`: UID
@@ -520,6 +533,8 @@ https://api.bilibili.com/x/relation/stat?vmid=【UID】
 https://api.bilibili.com/x/space/upstat?mid=【UID】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * O `archive`:
@@ -540,6 +555,8 @@ https://api.bilibili.com/x/space/upstat?mid=【UID】
 ```
 https://api.bilibili.com/x/space/top/arc?vmid=【UID】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
@@ -581,6 +598,8 @@ https://api.bilibili.com/x/space/top/arc?vmid=【UID】
 ```
 https://api.bilibili.com/x/space/masterpiece?vmid=【UID】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * A `data`: （代表作可以有3个）
@@ -684,6 +703,8 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/space_history?host_uid=�
 https://api.bilibili.com/x/space/arc/search?mid=【UID】&pn=【页码】&ps=【每页几个】&tid=【分区号，省略此参数则显示所有分区】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * `code`: 0,
     * `message`: "0",
@@ -727,6 +748,8 @@ https://api.bilibili.com/x/space/arc/search?mid=【UID】&pn=【页码】&ps=【
 https://api.bilibili.com/audio/music-service/web/song/upper?uid=【UID】&pn=【页码】&ps=【每页几个】&order=【排序，1(默认)发布时间，2播放量】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * `curPage`: 页码
@@ -764,6 +787,8 @@ https://api.bilibili.com/audio/music-service/web/song/upper?uid=【UID】&pn=【
 ```
 https://api.bilibili.com/x/space/article?mid=【UID】&pn=【页码】&ps=【每页几个】&sort=【排序，默认为publish_time，其他可能的值待研究……】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
@@ -816,6 +841,8 @@ https://api.bilibili.com/x/space/article?mid=【UID】&pn=【页码】&ps=【每
 https://api.bilibili.com/x/article/up/lists?mid=【UID】&sort=【排序 0发布时间 1阅读量】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * A `lists`:
@@ -847,6 +874,8 @@ https://api.bilibili.com/x/article/up/lists?mid=【UID】&sort=【排序 0发布
 https://api.vc.bilibili.com/link_draw/v1/doc/upload_count?uid=【UID】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * `all_count`: 相册投稿总数
@@ -866,6 +895,8 @@ https://api.vc.bilibili.com/link_draw/v1/doc/upload_count?uid=【UID】
 ```
 https://api.vc.bilibili.com/link_draw/v1/doc/doc_list?uid=【UID】&page_num=【页码（从0开始）】&page_size=【每页几个】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
@@ -901,6 +932,8 @@ https://api.vc.bilibili.com/link_draw/v1/doc/doc_list?uid=【UID】&page_num=【
 https://api.bilibili.com/x/space/channel/list?mid=【UID】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * `count`: 频道数量
@@ -933,6 +966,8 @@ https://api.bilibili.com/x/space/channel/list?mid=【UID】
 https://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid=【UID】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`:
         * `count`: 收藏夹数量
@@ -955,6 +990,8 @@ https://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid=【UID】
 ```
 https://api.bilibili.com/x/v3/fav/folder/collected/list?pn=【页码】&ps=【每页几个】&up_mid=【UID】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
@@ -989,6 +1026,8 @@ https://api.bilibili.com/x/v3/fav/folder/collected/list?pn=【页码】&ps=【�
 ```
 https://api.bilibili.com/x/space/bangumi/follow/list?type=【1追番 2追剧】&pn=【页码】&ps=【每页几个】&vmid=【UID】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
@@ -1057,6 +1096,8 @@ https://space.bilibili.com/ajax/tags/getSubList?mid=【UID】
 
 此API的报错格式不是通用格式
 
+<div class="soultree"></div>
+
 * O: 根对象
     * `status`: 是否查询成功
     * O `data`:
@@ -1083,6 +1124,8 @@ https://space.bilibili.com/ajax/tags/getSubList?mid=【UID】
 关注：`https://api.bilibili.com/x/relation/followings?vmid=【UID】&pn=【页码】&ps=【每页几个】&order=【排序 desc=新关注的在前 asc=新关注的在后】`
 
 粉丝：`https://api.bilibili.com/x/relation/followers?vmid=【UID】&pn=【页码】&ps=【每页几个】&order=【排序 desc=新关注的在前 asc=新关注的在后】`
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
@@ -1209,6 +1252,8 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 | [查看](https://t.bilibili.com/355295470145652823) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355295470145652823)
 |}
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `user`:
         * `uid`: UID
@@ -1248,6 +1293,8 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 | [查看](https://t.bilibili.com/351782199784737587) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=351782199784737587)
 |}
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `item`:
         * `id`: 投稿号
@@ -1281,6 +1328,8 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 | [查看](https://t.bilibili.com/371794999330051793) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=371794999330051793)
 |}
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `user`:
         * `uid`: UID
@@ -1301,6 +1350,8 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 | 355292278981797225
 | [查看](https://t.bilibili.com/355292278981797225) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355292278981797225)
 |}
+
+<div class="soultree"></div>
 
 * O: 根对象
     * `aid`: AV号
@@ -1337,6 +1388,8 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 | 354713888622461421
 | [查看](https://t.bilibili.com/354713888622461421) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=354713888622461421)
 |}
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `user`:
@@ -1397,6 +1450,8 @@ intro
 | [查看](https://t.bilibili.com/325805722180163707) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=325805722180163707)
 |}
 
+<div class="soultree"></div>
+
 * O: 根对象
     * `rid`: 动态号
     * O `user`:
@@ -1433,6 +1488,8 @@ https://api.bilibili.com/x/tag/info?tag_id=【标签ID】
 https://api.bilibili.com/x/tag/info?tag_name=【标签名】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * O `data`
         * N `tag_id`: 标签ID
@@ -1461,6 +1518,8 @@ https://api.bilibili.com/x/tag/info?tag_name=【标签名】
 https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_id=【标签ID】
 https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_name=【标签名】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`
@@ -1523,6 +1582,8 @@ https://api.vc.bilibili.com/dynamic_repost/v1/dynamic_repost/name_search?keyword
 此API用于在发表动态时输入“@”后自动联想。与[[#搜索|搜索API]]不同的是，此API只能搜索昵称，并且如果昵称完全匹配，即使是一级号、二级号也能搜到。
 
 此API的整体格式与[[#搜索|搜索API]]相同
+
+<div class="soultree"></div>
 
 * O: 根对象
     * N `code`: 错误代码，没有错误则为0
@@ -1604,6 +1665,8 @@ https://api.vc.bilibili.com/dynamic_repost/v1/dynamic_repost/name_search?keyword
 ```
 https://api.bilibili.com/x/v2/reply?type=【类型】&oid=【OID】&pn=【页码】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`:
