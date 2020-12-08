@@ -46,6 +46,41 @@
       width: 100%;
       overflow-x: auto;
     }
+
+    /**
+     * "Treeview" from https://minecraft.gamepedia.com/MediaWiki:Common.css
+     * Modified by DGCK81LNN
+     */
+    a.soultree+ul,
+    a.soultree+ul ul,
+    a.soultree+ul li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      list-style-image: none
+    }
+    a.soultree+ul li li {
+      position: relative;
+      padding-left: 13px;
+      margin-left: 7px;
+      border-left: 1px solid #636363
+    }
+    a.soultree+ul li li::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -1px;
+      width: 11px;
+      height: 11px;
+      border-bottom: 1px solid #636363
+    }
+    a.soultree+ul li li:last-child {
+      border-color: transparent
+    }
+    a.soultree+ul li li:last-child::before {
+      border-left: 1px solid #636363;
+      width: 10px
+    }
   </style>
 </head>
 
