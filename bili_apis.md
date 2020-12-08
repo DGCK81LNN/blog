@@ -1211,7 +1211,9 @@ https://space.bilibili.com/ajax/tags/getSubList?mid=【UID】
 https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=【动态号】
 ```
 
-* O
+<div class="soultree"></div>
+
+* O: 根对象
     * O `data`:
         * O `card`:
             * O `desc`:
