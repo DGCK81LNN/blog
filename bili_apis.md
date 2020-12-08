@@ -2,41 +2,6 @@
 title: "哔哩哔哩API详解"
 ---
 
-<style>
-/**
- * "Treeview" from https://minecraft.gamepedia.com/MediaWiki:Common.css
- * Modified by DGCK81LNN
- */
-ul, li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    list-style-image: none
-}
-li li {
-    position: relative;
-    padding-left: 13px;
-    margin-left: 7px;
-    border-left: 1px solid #636363
-}
-li li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -1px;
-    width: 11px;
-    height: 11px;
-    border-bottom: 1px solid #636363
-}
-li li:last-child:not(.treeview-continue) {
-    border-color: transparent
-}
-li li:last-child:not(.treeview-continue)::before {
-    border-left: 1px solid #636363;
-    width: 10px
-}
-</style>
-
 此页面正在重新排版中，部分内容尚不能正常显示
 
 API输出结果中无法理解/重复出现的信息已删去
