@@ -1,39 +1,56 @@
 ---
 title: "哔哩哔哩API详解"
 ---
+
 <style>
 /**
- * Treeview from https://minecraft.gamepedia.com/MediaWiki:Common.css
- * Modified by DGCK81LNN
+ * Treeview
+ * Copied from https://minecraft.gamepedia.com/MediaWiki:Common.css
  */
-.soulblog-content ul,
-.soulblog-content li {
+.treeview {
+    margin-top: 0.3em
+}
+.treeview .treeview-header {
+    padding-left: 3px;
+    font-weight: bold
+}
+.treeview .treeview-header:last-child {
+    border-color: #636363 !important;
+    border-left-style: dotted
+}
+.treeview .treeview-header:not(:last-child)::before {
+    content: none
+}
+.treeview .treeview-header:last-child::before {
+    border-bottom: 0
+}
+.treeview ul,.treeview li {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    list-style-image: none;
+    list-style-image: none
 }
-.soulblog-content li li {
+.treeview li li {
     position: relative;
     padding-left: 13px;
     margin-left: 7px;
-    border-left: 1px solid #636363;
+    border-left: 1px solid #636363
 }
-.soulblog-content li li::before {
+.treeview li li::before {
     content: "";
     position: absolute;
     top: 0;
     left: -1px;
     width: 11px;
     height: 11px;
-    border-bottom: 1px solid #636363;
+    border-bottom: 1px solid #636363
 }
-.soulblog-content li li:last-child {
-    border-color: transparent;
+.treeview li li:last-child:not(.treeview-continue) {
+    border-color: transparent
 }
-.soulblog-content li li:last-child::before {
+.treeview li li:last-child:not(.treeview-continue)::before {
     border-left: 1px solid #636363;
-    width: 10px;
+    width: 10px
 }
 </style>
 
@@ -47,6 +64,8 @@ title: "哔哩哔哩API详解"
 
 类型：N=数字 S=字符串 B=布尔值 A=数组 O=对象
 
+<div class="treeview">
+
 * O: 根对象
     * N `code`: 一个数字
     * A `data`: 出现数组时，只举其中一项为例
@@ -54,16 +73,22 @@ title: "哔哩哔哩API详解"
             * S `name`: 一个字符串
     * B `status`: 一个布尔值
 
+</div>
+
 如果某个节点的说明后面标有“（?）”标记，表示这段说明只是笔者的猜测，如有错误欢迎在评论区指出
 
 **通用报错格式**
 
 未特殊说明的API均使用以下格式报错：
 
+<div class="treeview">
+
 * O: 根对象
     * N `code`: 错误代码，没有错误则为0
     * S `message`: 错误信息
     * O `data`: 正文
+
+</div>
 
 有时`message`会变成`msg`
 
