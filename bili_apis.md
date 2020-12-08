@@ -1,6 +1,41 @@
 ---
 title: "哔哩哔哩API详解"
 ---
+<style>
+/**
+ * Treeview from https://minecraft.gamepedia.com/MediaWiki:Common.css
+ * Modified by DGCK81LNN
+ */
+.soulblog-content ul,
+.soulblog-content li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    list-style-image: none;
+}
+.soulblog-content li li {
+    position: relative;
+    padding-left: 13px;
+    margin-left: 7px;
+    border-left: 1px solid #636363;
+}
+.soulblog-content li li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 11px;
+    height: 11px;
+    border-bottom: 1px solid #636363;
+}
+.soulblog-content li li:last-child {
+    border-color: transparent;
+}
+.soulblog-content li li:last-child::before {
+    border-left: 1px solid #636363;
+    width: 10px;
+}
+</style>
 
 * 此页面正在重新排版中，部分内容尚不能正常显示
 
