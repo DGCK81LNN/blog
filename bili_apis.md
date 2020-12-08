@@ -4,39 +4,22 @@ title: "哔哩哔哩API详解"
 
 <style>
 /**
- * Treeview
- * Copied from https://minecraft.gamepedia.com/MediaWiki:Common.css
+ * "Treeview" from https://minecraft.gamepedia.com/MediaWiki:Common.css
+ * Modified by DGCK81LNN
  */
-.treeview {
-    margin-top: 0.3em
-}
-.treeview .treeview-header {
-    padding-left: 3px;
-    font-weight: bold
-}
-.treeview .treeview-header:last-child {
-    border-color: #636363 !important;
-    border-left-style: dotted
-}
-.treeview .treeview-header:not(:last-child)::before {
-    content: none
-}
-.treeview .treeview-header:last-child::before {
-    border-bottom: 0
-}
-.treeview ul,.treeview li {
+ul, li {
     margin: 0;
     padding: 0;
     list-style-type: none;
     list-style-image: none
 }
-.treeview li li {
+li li {
     position: relative;
     padding-left: 13px;
     margin-left: 7px;
     border-left: 1px solid #636363
 }
-.treeview li li::before {
+li li::before {
     content: "";
     position: absolute;
     top: 0;
@@ -45,26 +28,24 @@ title: "哔哩哔哩API详解"
     height: 11px;
     border-bottom: 1px solid #636363
 }
-.treeview li li:last-child:not(.treeview-continue) {
+li li:last-child:not(.treeview-continue) {
     border-color: transparent
 }
-.treeview li li:last-child:not(.treeview-continue)::before {
+li li:last-child:not(.treeview-continue)::before {
     border-left: 1px solid #636363;
     width: 10px
 }
 </style>
 
-* 此页面正在重新排版中，部分内容尚不能正常显示
+此页面正在重新排版中，部分内容尚不能正常显示
 
-* API输出结果中无法理解/重复出现的信息已删去
+API输出结果中无法理解/重复出现的信息已删去
 
-**格式示例**
+### 格式示例
 
 节点格式：<span style="border:1px solid black">类型 `键`: 说明</span>
 
 类型：N=数字 S=字符串 B=布尔值 A=数组 O=对象
-
-<div class="treeview">
 
 * O: 根对象
     * N `code`: 一个数字
@@ -73,22 +54,16 @@ title: "哔哩哔哩API详解"
             * S `name`: 一个字符串
     * B `status`: 一个布尔值
 
-</div>
-
 如果某个节点的说明后面标有“（?）”标记，表示这段说明只是笔者的猜测，如有错误欢迎在评论区指出
 
-**通用报错格式**
+### 通用报错格式
 
 未特殊说明的API均使用以下格式报错：
-
-<div class="treeview">
 
 * O: 根对象
     * N `code`: 错误代码，没有错误则为0
     * S `message`: 错误信息
     * O `data`: 正文
-
-</div>
 
 有时`message`会变成`msg`
 
@@ -96,7 +71,7 @@ title: "哔哩哔哩API详解"
 
 ### 视频信息
 
-**视频基本信息**
+#### 视频基本信息
 
 {|class="wikitable" style="float:right"
 |-
@@ -167,7 +142,7 @@ https://api.bilibili.com/x/web-interface/view?aid=【AV号】
                     * S `title`: 认证说明
                 * N `follower`: 关注数
 
-**视频标签**
+#### 视频标签
 
 {|class="wikitable" style="float:right"
 |-
@@ -397,7 +372,7 @@ https://api.bilibili.com/x/article/list/web/articles?id=【RL号】
 
 目前新投稿的小视频将进入主站，VC小视频似乎已经弃用。
 
-**小视频信息**
+#### 小视频信息
 
 {|class="wikitable" style="float:right"
 |-
@@ -443,7 +418,7 @@ https://api.vc.bilibili.com/clip/v1/video/detail?video_id=VC号
 
 ### 音频信息
 
-**音频基本信息**
+#### 音频基本信息
 
 {|class="wikitable" style="float:right"
 |-
@@ -483,7 +458,7 @@ curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
             * N `share`: 转发数
         * N `coin_num`: 硬币数（?）
 
-**音频所属合辑**
+#### 音频所属合辑
 
 ### 歌单信息
 
@@ -493,11 +468,11 @@ curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
 
 待补充……
 
-**音乐人基本信息**
+#### 音乐人基本信息
 
-**音乐人统计数据**
+#### 音乐人统计数据
 
-**音乐人热门歌曲**
+#### 音乐人热门歌曲
 
 ## 个人空间
 
@@ -802,7 +777,7 @@ https://api.bilibili.com/audio/music-service/web/song/upper?uid=【UID】&pn=【
 
 #### 专栏
 
-**文章**
+##### 文章
 
 {|class="wikitable" style="float:right"
 |-
@@ -853,7 +828,7 @@ https://api.bilibili.com/x/space/article?mid=【UID】&pn=【页码】&ps=【每
         * `ps`: 每页项数
         * `count`: 页数
 
-**文集**
+##### 文集
 
 {|class="wikitable" style="float:right"
 |-
@@ -884,7 +859,7 @@ https://api.bilibili.com/x/article/up/lists?mid=【UID】&sort=【排序 0发布
 
 #### 相簿
 
-**各分区投稿数量统计**
+##### 各分区投稿数量统计
 
 {|class="wikitable" style="float:right"
 |-
@@ -904,7 +879,7 @@ https://api.vc.bilibili.com/link_draw/v1/doc/upload_count?uid=【UID】
         * `photo_count`: 摄影区稿件数
         * `daily_count`: 日常区稿件数
 
-**全部相簿投稿**
+##### 全部相簿投稿
 
 {|class="wikitable" style="float:right"
 |-
@@ -938,7 +913,7 @@ https://api.vc.bilibili.com/link_draw/v1/doc/doc_list?uid=【UID】&page_num=【
 
 ### 频道
 
-**频道基本信息**
+#### 频道基本信息
 
 {|class="wikitable" style="float:right"
 |-
@@ -964,7 +939,7 @@ https://api.bilibili.com/x/space/channel/list?mid=【UID】
                 * `count`: 视频数量
                 * `cover`: 封面
 
-**频道内容**
+#### 频道内容
 
 待补充…………
 
