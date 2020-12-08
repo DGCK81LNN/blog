@@ -132,7 +132,7 @@ Hello <s color=15>Richard</s>!
 如果一个变量还没有创建，默认它的值是0。
 
 ```html
-<a set="crap<-20">
+<a set="crap := 20">
 <choices>
     这是一道选择题
     <choice set="crap := crap + 40">az</choice>
