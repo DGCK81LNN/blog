@@ -642,7 +642,9 @@ https://api.bilibili.com/x/space/masterpiece?vmid=【UID】
 https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/space_history?host_uid=【UID】&offset_dynamic_id=【从哪条开始，0为从最新的开始】&need_top=【是否包含置顶动态，1=输出，0=不输出】
 ```
 
-* O : 根对象
+<div class="soultree"></div>
+
+* O: 根对象
     * O `data`
         * N `has_more`: 是否还有下一页（1=有 0=没有）
         * A `cards`
