@@ -84,7 +84,7 @@ Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML �
 
 `<choices>`代表一个互动选择题，它的内容是一行文本（可省略）后加若干个`<choice>`。可以给`<choices>`指定`name`属性。
 
-`<choice>`表示一个选项，它的内容的选项的文案。可以有一个`goto`属性，指定当选项被选定后要跳转到的位置。
+`<choice>`表示一个选项，它的内容是选项的文案。可以有一个`goto`属性，指定当选项被选定后要跳转到的位置。
 
 ----
 
@@ -93,7 +93,7 @@ Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML �
 <?richard-markup v1 ?>
 Hello, world!
 <choices>
-Are you...
+    Are you...
     <choice goto="roy">Roy</choice>
     <choice goto="richard">Richard</choice>
     <choice>Neither</choice>
@@ -154,7 +154,7 @@ Hello <s color=15>Richard</s>!
 
 ```html
 <choices>
-Are you...
+    Are you...
     <choice set="_choice := 1">Roy</choice>
     <choice set="_choice := 2">Richard</choice>
     <choice set="_choice := 3">Neither</choice>
