@@ -13,6 +13,7 @@ API输出结果中无法理解/重复出现的信息已删去
 类型：N=数字 S=字符串 B=布尔值 A=数组 O=对象
 
 <div class="soultree"></div>
+
 * O: 根对象
     * N `code`: 一个数字
     * A `data`: 出现数组时，只举其中一项为例
@@ -25,6 +26,8 @@ API输出结果中无法理解/重复出现的信息已删去
 ### 通用报错格式
 
 未特殊说明的API均使用以下格式报错：
+
+<div class="soultree"></div>
 
 * O: 根对象
     * N `code`: 错误代码，没有错误则为0
@@ -55,6 +58,8 @@ API输出结果中无法理解/重复出现的信息已删去
 https://api.bilibili.com/x/web-interface/view?bvid=【BV号】
 https://api.bilibili.com/x/web-interface/view?aid=【AV号】
 ```
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`
@@ -127,6 +132,8 @@ https://api.bilibili.com/x/tag/archive/tags?bvid=【BV号】
 https://api.bilibili.com/x/tag/archive/tags?aid=【AV号】
 ```
 
+<div class="soultree"></div>
+
 * O: 根对象
     * A `data`
         * O
@@ -153,6 +160,8 @@ https://api.bilibili.com/x/v3/fav/resource/list?media_id=【ML号】&pn=【页�
 ```
 
 页码未特殊说明的均从1开始
+
+<div class="soultree"></div>
 
 * O: 根对象
     * O `data`
