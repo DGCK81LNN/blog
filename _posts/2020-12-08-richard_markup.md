@@ -15,9 +15,9 @@ soulblog-footer-links:
 
 Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML 有些相似，使用 UTF-8 或 GB-18030 编码。
 
-文件的开头是头部信息：
+文件的开头是头部信息，它写在`<?` `?>`之间：
 ```html
-<?richard-markup v1 ?>
+<?richard-markup v1?>
 ```
 其中`v1`是文件格式的版本号。
 
@@ -82,20 +82,20 @@ Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML �
 
 也可以把`goto`的值设为`_exit`来退出程序。
 
-### `<choices>`和`<choice>`元素
+### `<choices>`、`<choice>`和`<prompt>`元素
 
-`<choices>`代表一个互动选择题，它的内容是若干个`<choice>`。在`<choices>`内部，任何除了`<choice>`之外的内容都会被忽略。可以给`<choices>`指定`name`属性。
+`<choices>`代表一个互动选择题，它的内容是一个可省略的`<prompt>`和若干个`<choice>`。可以给`<choices>`指定`name`属性。
 
-`<choice>`表示一个选项，它的内容是选项的文案。可以有一个`goto`属性，指定当选项被选定后要跳转到的位置。
+`<prompt>`表示选择题的提示文本；`<choice>`表示一个选项，它的内容是选项的文案。可以有一个`goto`属性，指定当选项被选定后要跳转到的位置。
 
 ----
 
 至此，已经完全可以制作一个简单的互动了：
 ```html
-<?richard-markup v1 ?>
+<?richard-markup v1?>
 Hello, world!
-<s color=15>*(Are you...)</s>
 <choices>
+    <prompt>Are you...</prompt>
     <choice goto="roy">Roy</choice>
     <choice goto="richard">Richard</choice>
     <choice>Neither</choice>
@@ -110,36 +110,37 @@ Hello <s color=15>Richard</s>!
 
 另外，还可以用`<script>`元素来嵌入JavaScript代码。
 
-## 赋值属性和条件属性
+## `if`、`else`和`set`属性
 
-除了上文提到的属性之外，还可以给元素添加**赋值属性**和**条件属性**。每个元素最多添可以加一个赋值属性、一个条件属性。
+除了上文提到的属性之外，还可以给元素添加`if`、`else`和`set`属性。
 
-**赋值属性**用来存储和修改变量。变量名可以由英文字母、数字、下划线组成，但不能以数字开头。目前变量只能是浮点数。赋值属性像这样表示：`set="变量名 := 表达式"`（`:=`表示赋值）。
+`set`属性用来存储和修改变量。变量名可以由英文字母、数字、下划线组成，但不能以数字开头。目前变量只能是浮点数。`set`属性像这样表示：`set="变量名 = 表达式"`。
 
-赋值属性单独不会对剧情造成影响，要配合**条件属性**使用。条件属性用来控制元素是否会运行。条件属性有`if="表达式"`、`elif="表达式"`和`else`。带`elif`的元素必须紧跟在带`if`的元素后面，带`else`的元素必须跟在带`if`或`elif`的元素后面。
+`set`属性单独不会对剧情造成影响，要配合`if`和`else`属性使用。这两个属性用来控制元素是否会运行。`else`属性没有值，直接在开始标签中写`else`即可；`if`属性的值是一个表达式，像这样：`if="表达式"`。带`else`的元素必须跟在带`if`的元素后面；可以连用`else`和`if`来达到“elif”的效果。
 
-如果给定的条件成立（表达式的结果不是0），元素的内容、上面的`goto`和赋值属性会正常运行；否则整个元素会被跳过。如果是`<choice>`，则控制的是这个选项是否会显示。
+如果给定的条件成立（表达式的结果不是0），元素的内容、上面的`goto`和`set`属性会正常运行；否则整个元素会被跳过。如果是`<choice>`，则控制的是这个选项是否会显示。
 
-元素上的属性总是按“条件属性——赋值属性——`goto`”的顺序执行，无论它们出现的顺序。
+元素上的属性总是按“`else`——`if`——`set`——`goto`”的顺序执行，无论它们实际出现的顺序。
 
 表达式中可以使用**数字字面量**（如`123`）、其他变量、**运算符**和圆括号。可用的运算符有：
 
-1. 乘除运算符：乘法`*`、除法`/`、模`%`；
-2. 加减运算符：加法`+`、减法`-`；
-3. 比较运算符：相等`=`、大于`>`、小于`<`、不小于`>=`、不大于`<=`、不等`<>`，成立时得1，不成立得0；
-4. 逻辑运算符：与`and`（如果左手边是0就得0，否则得右手边），或`or`（如果左手边不是0就得左手边，否则得右手边）。（例如`1 and 2`得2，`5 or 0`得5。）
+1. 乘除运算符：乘`*`、除`/`、取模`%`；
+2. 加减运算符：加`+`、减`-`；
+3. 比较运算符：等于`==`、大于`>`、小于`<`、大于或等于`>=`、小于或等于`<=`、不等于`!=`；
+4. 逻辑运算符：与`and`、或`or`。
 
-在不加括号的情况下，运算顺序就按以上四类的顺序进行。
+在不加括号的情况下，运算顺序就按以上四类的顺序进行，且`and`比`or`先进行。
 
 如果一个变量还没有创建，默认它的值是0。
 
 ```html
-<a set="crap := 20">
+<?richard-markup v1?>
+<a set="crap = 20">
 <choices>
     这是一道选择题
-    <choice set="crap := crap + 40">az</choice>
-    <choice set="crap := crap * 4">az</choice>
-    <choice set="crap := crap - 10">az</choice>
+    <choice set="crap = crap + 40">az</choice>
+    <choice set="crap = crap * 4">az</choice>
+    <choice set="crap = crap - 10">az</choice>
 </choices>
 <s if="crap < 20">
     crap现在小于20
@@ -152,19 +153,20 @@ Hello <s color=15>Richard</s>!
 </s>
 ```
 
-建议使用一个`_choice`变量来存储刚选择的选项，代替`goto`：
+建议使用一个`_choice`变量来存储选择的选项，代替`goto`：
 
 ```html
+<?richard-markup v1?>
 <choices>
     Are you...
-    <choice set="_choice := 1">Roy</choice>
-    <choice set="_choice := 2">Richard</choice>
-    <choice set="_choice := 3">Neither</choice>
+    <choice set="_choice = 1">Roy</choice>
+    <choice set="_choice = 2">Richard</choice>
+    <choice set="_choice = 3">Neither</choice>
 </choices>
-<s if="_choice = 1">
+<s if="_choice == 1">
 Hi, <s color=12>Roy</s>!
 </s>
-<s elif="_choice = 2">
+<s elif="_choice == 2">
 Hello <s color=15>Richard</s>!
 </s>
 <s else>
