@@ -158,7 +158,7 @@ Hello <s color=15>Richard</s>!
 ```html
 <?richard-markup v1?>
 <choices>
-    Are you...
+    <prompt>Are you...</prompt>
     <choice set="_choice = 1">Roy</choice>
     <choice set="_choice = 2">Richard</choice>
     <choice set="_choice = 3">Neither</choice>
