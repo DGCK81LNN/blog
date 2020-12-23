@@ -82,15 +82,34 @@ Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML �
 
 也可以把`goto`的值设为`_exit`来退出程序。
 
+***<新增>*** 还可以给`<a>`元素设置一个`call`属性，值是另一个有内容的元素的`name`，这样来重复使用那个元素。例如：
+
+```html
+Love with <s name="richard" color="#baf">Richard</s> under epidemic
+8B班同学<a call="richard">。
+```
+
+### ***<新增>*** `<def>`元素
+
+`<def>`元素专门用来提前定义需要重复使用的子程序（函数）。可以直接在它里面写若干个有`name`属性的元素，然后在其他地方用`call`属性来调用。当程序运行到`<def>`元素时会直接跳过。
+
+```html
+<def>
+    <s name="richard" color="#baf">Richard</s>
+    <s name="sunny" color="#daf">Sunny</s>
+    <s name="separator">
+        Love with <a call="richard"> under epidemic
+        ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+    </s>
+</def>
+```
+
 ### `<choices>`、`<choice>`和`<prompt>`元素
 
 `<choices>`代表一个互动选择题，它的内容是一个可省略的`<prompt>`和若干个`<choice>`。可以给`<choices>`指定`name`属性。
 
 `<prompt>`表示选择题的提示文本；`<choice>`表示一个选项，它的内容是选项的文案。可以有一个`goto`属性，指定当选项被选定后要跳转到的位置。
 
-----
-
-至此，已经完全可以制作一个简单的互动了：
 ```html
 <?richard-markup v1?>
 Hello, world!
@@ -102,11 +121,13 @@ Hello, world!
 </choices>
 Hello... whoever you are!
 <a goto="_exit" name="roy">
-<!-- ↑ 从其他地方跳转到这里时，这里的goto不会执行 -->
+<!-- ↑ 从其他地方跳转到这里时，这里的goto不会再执行 -->
 Hi, <s color=12>Roy</s>!
 <a goto="_exit" name="richard">
 Hello <s color=15>Richard</s>!
 ```
+
+----
 
 另外，还可以用`<script>`元素来嵌入JavaScript代码。
 
