@@ -82,14 +82,14 @@ Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML �
 
 也可以把`goto`的值设为`_exit`来退出程序。
 
-***<新增>*** 还可以给`<a>`元素设置一个`call`属性，值是另一个有内容的元素的`name`，这样来重复使用那个元素。例如：
+***新增*** 还可以给 `<a>`元素设置一个`call`属性，值是另一个有内容的元素的`name`，这样来重复使用那个元素。例如：
 
 ```html
 Love with <s name="richard" color="#baf">Richard</s> under epidemic
 8B班同学<a call="richard">。
 ```
 
-### ***<新增>*** `<def>`元素
+### ***新增*** `<def>`元素
 
 `<def>`元素专门用来提前定义需要重复使用的子程序（函数）。可以直接在它里面写若干个有`name`属性的元素，然后在其他地方用`call`属性来调用。当程序运行到`<def>`元素时会直接跳过。
 
