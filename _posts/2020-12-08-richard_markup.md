@@ -72,17 +72,7 @@ Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML �
 
 `<a>`元素代表锚点（Anchor），它不能有内容。
 
-可以有一个`name`属性指定锚点的名称。另外也可以有一个`goto`属性，值是另一个元素的`name`。这样一来，程序运行到此锚点后就会跳转到指定的元素处继续运行：
-
-```html
-<a name="dead-loop">
-    禁止死循环！
-<a goto="dead-loop">
-```
-
-也可以把`goto`的值设为`_exit`来退出程序。
-
-***新增*** 还可以给 `<a>`元素设置一个`call`属性，值是另一个有内容的元素的`name`，这样来重复使用那个元素。例如：
+可以有一个`name`属性指定锚点的名称。另外也可以设置一个`call`属性，值是另一个有内容的元素的`name`，这样来重复使用那个元素。例如：
 
 ```html
 Love with <s name="richard" color="#baf">Richard</s> under epidemic
@@ -91,7 +81,7 @@ Love with <s name="richard" color="#baf">Richard</s> under epidemic
 
 ### ***新增*** `<def>`元素
 
-`<def>`元素专门用来提前定义需要重复使用的子程序（函数）。可以直接在它里面写若干个有`name`属性的元素，然后在其他地方用`call`属性来调用。当程序运行到`<def>`元素时会直接跳过。
+`<def>`元素专门用来定义需要重复使用的子程序（函数）。可以直接在它里面写若干个有`name`属性的元素，然后在其他地方用`call`属性来调用。如果程序在正常按顺序运行时，中途遇到`<def>`元素，会直接跳过。
 
 ```html
 <def>
@@ -119,12 +109,17 @@ Hello, world!
     <choice goto="richard">Richard</choice>
     <choice>Neither</choice>
 </choices>
-Hello... whoever you are!
-<a goto="_exit" name="roy">
-<!-- ↑ 从其他地方跳转到这里时，这里的goto不会再执行 -->
-Hi, <s color=12>Roy</s>!
-<a goto="_exit" name="richard">
-Hello <s color=15>Richard</s>!
+<def>
+    <s name="youare_roy">
+        Hi, <s color=12>Roy</s>!
+    </s>
+    <s name="youare_richard">
+        Hello <s color=15>Richard</s>!
+    </s>
+    <s name="youare_neither">
+        Hello... whoever you are!
+    </s>
+</def>
 ```
 
 ----
@@ -141,7 +136,7 @@ Hello <s color=15>Richard</s>!
 
 如果给定的条件成立（表达式的结果不是0），元素的内容、上面的`goto`和`set`属性会正常运行；否则整个元素会被跳过。如果是`<choice>`，则控制的是这个选项是否会显示。
 
-元素上的属性总是按“`else`——`if`——`set`——`goto`”的顺序执行，无论它们实际出现的顺序。
+元素上的属性总是按“`else`——`if`——`set`——`call`”的顺序执行，无论它们实际出现的顺序。
 
 表达式中可以使用**数字字面量**（如`123`）、其他变量、**运算符**和圆括号。可用的运算符有：
 
@@ -195,4 +190,4 @@ Hello... whoever you are!
 </s>
 ```
 
-以上就是 Richard Markup 帮助文档的全部内容了。由于解释器还没有实现，此文档以后还可能会修改。
+以上就是 Richard Markup 帮助文档的全部内容了。由于解释器还没有完全实现，此文档以后还可能会修改。
