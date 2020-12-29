@@ -13,8 +13,9 @@ token|alternative
 `{`...`}`|`所以的话`..`没问题吧`
 `...`|`打开`
 `:`|`这就是`
-`+`|`加上`
-`-`|`减去`
+`.`|`的`
+`+`|`加上`<br>`正的`
+`-`|`减去`<br>`负的`
 `*`|`乘上`
 `/`|`除以`<br>`比上`
 `%`|`模`
@@ -25,6 +26,7 @@ token|alternative
 `<`|`小于`<br>`严格小于`
 `>=`|`大于等于`
 `<=`|`小于等于`
+`?`...`:`|`的话就是`...`不然就是`
 `var`|`有一个`
 `if`|`你要明白`
 `else`|`扯远了`
@@ -37,25 +39,28 @@ token|alternative
 `return`|`这题得`
 `=>`|`然后让你求一下`
 
+some shit:
+
+(ive added spaces between tokens but they are optional)
 
 ```
-有一个width就变成了0
-  还有d就变成了code的split先看"\n"这事的map先看line让你求一下所以的话
-    你要明白先看width严格小于line的width这事
-      width就变成了line的width好吧
-    这题得都有打开line这几个的map先看这题char让你求一下
-      一个新的BefungeCell先看char这事
-    这事啊
-  没问题吧这事
-  还有height就变成了d的length行吧
-d的forEach先看这题先看line这事所以的话
-  我再强调一下先看line的width严格小于width这事
-    line的push先看一个新的BefungeCell没有什么要说的这事对吧
-没问题吧这事啊
-d的forEach先看这题先看看line还有i这事所以的话
-  我就说一件事先看有一个j就变成了0啊j严格小于width对吧j就变成了j加上1这事所以的话
-    line里面的j这一项的attachCellDown先看d里面的i加上1严格小于height？i加上1：0这一项里面的j这一项这事对吧
-    line里面的j这一项的attachCellRight先看line里面的j加上1严格小于width？j加上1：0这一项这事对吧
+有一个 width 就变成了 0
+  还有 d 就变成了 code 的 split 先看 "\n" 这事 的 map 先看 line 然后让你求一下 所以的话
+    你要明白 先看 width 严格小于 line 的 width 这事
+      width 就变成了 line 的 width 好吧
+    这题得 都有 打开 line 这几个 的 map 先看 char 然后让你求一下
+      一个新的 BefungeCell 先看 char 这事
+    这事 啊
+  没问题吧 这事
+  还有 height 就变成了 d 的 length 行吧
+d 的 forEach 先看 line 然后让你求一下 所以的话
+  我再强调一下 先看 line 的 width 严格小于 width 这事
+    line 的 push 先看 一个新的 BefungeCell 没有什么要说的 这事 对吧
+没问题吧 这事 啊
+d 的 forEach 先看 先看 line 还有 i 这事 然后让你求一下 所以的话
+  我就说一件事 先看 有一个 j 就变成了 0 啊 j 严格小于 width 对吧 j 就变成了 j 加上 1 这事 所以的话
+    line 里面的 j 这一项 的 attachCellDown 先看 d 里面的 i 加上 1 严格小于 height 的话就是 i 加上 1 不然就是 0 这一项 里面的 j 这一项 这事 对吧
+    line 里面的 j 这一项 的 attachCellRight 先看 line 里面的 j 加上 1 严格小于 width 的话就是 j 加上 1 不然就是 0 这一项 这事 对吧
   没问题吧
-没问题吧这事啊
+没问题吧 这事 啊
 ```
