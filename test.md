@@ -48,23 +48,23 @@ projects:
         id: .lab.console
         desc: 灵魂实验室：控制台
         url: https://dgck81lnn.github.io/apps/lab/console.html
-          news:
-            -
-              date: 2020-12-13
-              status: ongoing
-              phase: 2
-              progress: 50
-              content: >
-                二期工程启动，开始编写 Richard Markup 解释器。
-                由“命令行”更名为“控制台”。
-            -
-              date: 2020-11-26
-              status: done
-              progress: 100
-              content: >
-                已基本完工，不过尚未正式投入使用。
-                目前只有一个测试性程序：“Love with Richard under epidemic”。
-                目前可以在小站首页找到它的详细信息。
+        news:
+          -
+            date: 2020-12-13
+            status: ongoing
+            phase: 2
+            progress: 50
+            content: >
+              二期工程启动，开始编写 Richard Markup 解释器。
+              由“命令行”更名为“控制台”。
+          -
+            date: 2020-11-26
+            status: done
+            progress: 100
+            content: >
+              已基本完工，不过尚未正式投入使用。
+              目前只有一个测试性程序：“Love with Richard under epidemic”。
+              目前可以在小站首页找到它的详细信息。
       -
         id: .danceline
         desc: 舞线练习场（第3代）
