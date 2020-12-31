@@ -198,21 +198,41 @@ projects:
 ---
 
 {% for namespace in page.projects %}
-## `{{ namespace.id }}`
-
-{{ namespace.desc }}
+## `{{ namespace.id }}` - {{ namespace.desc }}
 
 {% if namespace.url %}
 <{{ namespace.url }} >
 {% endif %}
 
 {% for project in namespace.projs %}
-*   `{{ project.id }}`
-
-    {{ project.desc }}
+*   `{{ project.id }}` - {{ project.desc }}
 
 {% if project.url %}
     <{{ project.url }} >
+{% endif %}
+
+{% assign status = "not_started" -%}
+{%- assign phase = 1 -%}
+{%- assign progress = 0 -%}
+{%- for news in project.news reversed -%}
+    {%- if news.status -%}
+        {%- assign status = news.status -%}
+    {%- endif -%}
+    {%- if news.phase -%}
+        {%- assign phase = news.phase -%}
+    {%- endif -%}
+    {%- if news.progress -%}
+        {%- assign progress = news.progress -%}
+    {%- endif -%}
+{%- endfor %}
+
+    **当前状态：** `{{ status }}`
+
+{% if phase != 1 %}
+    第 {{ phase }} 期工程
+{%- endif %}
+{% if progress != 0 -%}
+    **进度：** {{ progress }}
 {% endif %}
 
 {% if project.news %}
