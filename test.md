@@ -169,7 +169,7 @@ projects:
     desc: 音乐
     projs:
       -
-       id: .midi.sine
+        id: .midi.sine
         desc: 黑乐谱制作（试水）：-Fm2- - Sine
         news:
           -
