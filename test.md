@@ -199,14 +199,16 @@ projects:
 
 {% for namespace in page.projects %}
 ## `{{ namespace.id }}` - {{ namespace.desc }}
-{% if namespace.url %}
+{%- if namespace.url %}
 <{{ namespace.url }} >
 {% endif %}
+
 {% for project in namespace.projs %}
 *   `{{ project.id }}` - {{ project.desc }}
-{% if project.url %}
+{%- if project.url %}
     <{{ project.url }} >
 {% endif %}
+
 {% assign status = "not_started" -%}
 {%- assign phase = 1 -%}
 {%- assign progress = 0 -%}
