@@ -104,7 +104,7 @@ projects:
               目前Insane难度正在制作中，
               Normal和Hard的节奏点也均已设计完成。
       -
-        id: .map.sine:
+        id: .map.sine
         desc: osu! 自制谱：-Fm2- - Sine
         url: https://osu.ppy.sh/s/1224989
         news:
