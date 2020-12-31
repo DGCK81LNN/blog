@@ -197,24 +197,23 @@ projects:
             status: paused
 ---
 
-{%- for namespace in page.projects -%}
-{%- if namespace.url -%}
+{% for namespace in page.projects %}
+{% if namespace.url %}
 ## [{{namespace.id}}]({{namespace.url}})
-{%- else -%}
+{% else %}
 ## {{namespace.id}}
-{%- endif -%}
+{% endif %}
 
 {{namespace.desc}}
 
-{%- for project in namespace.projs -%}
-{%- if project.url -%}
+{% for project in namespace.projs %}
+{% if project.url %}
 *   [{{project.id}}]({{project.url}})
-{%- else -%}
+{% else %}
 *   {{project.id}}
-{%- endif -%}
+{% endif %}
 
     {{project.desc}}
 
-{%- endfor -%}
-
-{%- endfor -%}
+{% endfor %}
+{% endfor %}
