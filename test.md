@@ -226,8 +226,9 @@ projects:
     第 {{ phase }} 期工程
 {%- endif %}
 {%- if progress != 0 %}
-    **进度：** {{ progress }}
+    **当前进度：** {{ progress }}
 {% endif %}
+
 {% if project.news %}
     NEWS:
 
