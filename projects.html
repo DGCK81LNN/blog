@@ -1,0 +1,173 @@
+---
+title: Project 记录表
+layout: default
+---
+
+{% for namespace in site.data.projects -%}
+<h2>
+    <code>{{ namespace.id }}</code> - {{ namespace.desc }}
+    {% if namespace.url -%}
+    <a href="{{ namespace.url | escape }}">{{ namespace.url | escape }}</a>
+    {%- endif %}
+</h2>
+
+<el-container class="project-group">
+    {% for project in namespace.projs -%}
+    <el-card
+    shadow="hover"
+    class="project"
+    >
+        <div slot="header" class="clearfix">
+            <span>
+                <code>{{ project.id }}</code>
+            </span>
+            {% if project.url -%}
+            <el-link
+            type="primary"
+            class="project-link"
+            href="{{ project.url | escape }}"
+            >进入</el-link>
+            {%- endif %}
+        </div>
+
+        <div>{{ project.desc }}</div>
+
+        {% assign status = "not_started" -%}
+        {%- assign phase = 1 -%}
+        {%- assign progress = 0 -%}
+        {%- for news in project.news reversed -%}
+            {%- if news.status -%}
+                {%- assign status = news.status -%}
+            {%- endif -%}
+            {%- if news.phase -%}
+                {%- assign phase = news.phase -%}
+            {%- endif -%}
+            {%- if news.progress -%}
+                {%- assign progress = news.progress -%}
+            {%- endif -%}
+        {%- endfor -%}
+        
+        <div>
+            <strong>当前状态：</strong><code>{{ status }}</code>
+        </div>
+        
+        {% if phase != 1 -%}
+        <div>
+            <strong>{{ phase }} 期工程</strong>
+        </div>
+        {%- endif %}
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="{{ progress }}"></meter>
+                {{ progress }}%
+            </span>
+        </div>
+
+        {% if project.news -%}
+        <section class="project-news">
+            <div class="project-news-label">
+                <i class="el-icon-news"></i>
+                <span>NEWS</span>
+            </div>
+            <ul class="project-news-list">
+                {% for news in project.news -%}
+                <li>
+                    {{ news.date | default: "（未知日期）" }}
+
+                    {% if news.status -%}
+                    <div>
+                        <strong>状态：</strong>
+                        <code>{{ news.status }}</code>
+                    </div>
+                    {%- endif -%}
+
+                    {% if news.phase -%}
+                    <div>
+                        <strong>进入 {{ news.phase }} 期工程</strong>
+                    </div>
+                    {%- endif -%}
+
+                    {% if news.progress -%}
+                    <div>
+                        <strong>进度：</strong>
+                        <meter max=100 value="{{ news.progress }}"></meter>
+                        {{ news.progress }}%
+                    </div>
+                    {%- endif -%}
+
+                    {%- if news.content -%}
+                    <div>
+                        {{ news.content | markdownify }}
+                    </div>
+                    {%- endif -%}
+                </li>
+                {%- endfor %}
+            </ul>
+        </section>
+        {%- endif %}
+    </el-card>
+    {%- endfor %}
+</el-container>
+{%- endfor %}
+
+<script>
+// 用极为笨拙的方法强行添加样式表，因为如果直接写在正文里会被 Vue.js 吞掉
+document.head.appendChild(document.createElement("style"))
+    .appendChild(document.createTextNode(`/* 动态插入样式表 */
+        .project-group {
+            flex-wrap: wrap;
+        }
+        .project {
+            width: 267px;
+            margin: 1rem 8px;
+            overflow: visible;
+        }
+        .project-link {
+            float: right;
+            padding: 3px 0;
+        }
+
+        .project-news {
+            position: relative;
+        }
+        .project-news .project-news-label {
+            color: var(--soul-color-theme);
+            font-size: 14px;
+            text-align: center;
+        }
+        .project-news .project-news-list {
+            position: absolute;
+            z-index: 2;
+
+            box-sizing: border-box;
+            width: 100%;
+            max-height: 350px;
+            overflow-y: auto;
+
+            background-color: white;
+            padding: 1rem 1rem 1rem 2.5rem;
+            font-size: 13px;
+            border: 1px solid var(--soul-color-border-2);
+            border-radius: 4px;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+
+            visibility: collapse;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .project-news:hover .project-news-list,
+        .project-news:focus-within .project-news-list {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .project-news .project-news-list li {
+            margin-bottom: 1rem;
+        }
+        .project-news .project-news-list p {
+            margin-top: 0;
+        }
+    `));
+</script>

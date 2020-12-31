@@ -20,11 +20,11 @@
         -
           date: 2020-12-12
           status: ongoing
-          progress: .nan
+          progress: "NaN"
           content: 界面小优化。
         -
           status: ongoing
-          progress: .nan
+          progress: "NaN"
           content: >
             目前本页虽然已基本完工，但我发现它的的性能还存在优化空间，
             所以打算之后尝试改进一下。
@@ -97,7 +97,7 @@
         -
           status: paused
         -
-          progress: .nan
+          progress: "NaN"
           status: ongoing
           content: >
             目前Insane难度正在制作中，
@@ -108,7 +108,7 @@
       url: https://osu.ppy.sh/s/1224989
       news:
         -
-          progress: .nan
+          progress: "NaN"
           status: paused
           content: >
             目前Insane难度已制作完毕，但我不满意（迫真）；
@@ -119,7 +119,7 @@
       url: https://osu.ppy.sh/s/1228904
       news:
         -
-          progress: .nan
+          progress: "NaN"
           status: paused
           content: >
             目前Hard难度已制作完成，但我不满意；
@@ -129,7 +129,7 @@
       desc: osu! 自制谱：歌唱祖国
       news:
         -
-          progress: .nan
+          progress: "NaN"
           status: may_cancel
           content: >
             谱面未上传。
@@ -140,7 +140,7 @@
       desc: 自制皮肤
       news:
         -
-          progress: .nan
+          progress: "NaN"
           status: paused
           content: >
             未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。
@@ -172,7 +172,7 @@
       desc: 黑乐谱制作（试水）：-Fm2- - Sine
       news:
         -
-          progress: .nan
+          progress: "NaN"
           status: paused
           content: >
             目前底谱已基本完成，等待黑化（
@@ -191,5 +191,5 @@
       desc: “转型”为小马UP主的准备工作
       news:
         -
-          progress: .nan
+          progress: "NaN"
           status: paused
