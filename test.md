@@ -1,5 +1,5 @@
 ---
-title: 测试页
+title: Project 记录表
 projects:
   # not_started - 未启动（缺省）
   # ongoing     - 进行中
@@ -198,22 +198,47 @@ projects:
 ---
 
 {% for namespace in page.projects %}
-{% if namespace.url %}
-## [{{namespace.id}}]({{namespace.url}})
-{% else %}
-## {{namespace.id}}
-{% endif %}
+## `{{ namespace.id }}`
 
-{{namespace.desc}}
+{{ namespace.desc }}
+
+{% if namespace.url %}
+<{{ namespace.url }} >
+{% endif %}
 
 {% for project in namespace.projs %}
+*   `{{ project.id }}`
+
+    {{ project.desc }}
+
 {% if project.url %}
-*   [{{project.id}}]({{project.url}})
-{% else %}
-*   {{project.id}}
+    <{{ project.url }} >
 {% endif %}
 
-    {{project.desc}}
+{% if project.news %}
+    NEWS:
+
+{% for news in project.news %}
+    -   {{ news.date | default: "（未知日期）" }}
+
+{% if news.status %}
+        **状态：** `{{ news.status }}`
+{% endif %}
+
+{% if news.phase %}
+        进入 {{ news.phase }} 期工程
+{% endif %}
+
+{% if news.progress %}
+        **进度：** {{ news.progress }}
+{% endif %}
+
+{% if news.content %}
+        {{ news.content | replace: "\n", "\n        " }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
 
 {% endfor %}
 {% endfor %}
