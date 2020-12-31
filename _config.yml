@@ -1,1 +1,5 @@
 title: LNN的博客！
+plugins:
+  - jekyll-seo-tag
+  - jekyll-default-layout
+  - jekyll-optional-front-matter
