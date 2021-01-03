@@ -13,10 +13,24 @@
   url: https://dgck81lnn.github.io/
   projs:
     -
+      id: css
+      desc: 全站设计风格升级
+      news:
+        -
+          date: 2021-01-02
+          status: ongoing
+          progress: 1
+    -
       id: apps/lab/brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
       url: https://dgck81lnn.github.io/apps/lab/brainfuck.html
       news:
+        -
+          date: 2021-01-02
+          status: paused
+          phase: 2
+          progress: 1
+          content: 咕咕咕
         -
           date: 2020-12-12
           status: ongoing
@@ -118,6 +132,13 @@
       desc: osu!自制谱：Quree - One Forgotten Night
       url: https://osu.ppy.sh/s/1228904
       news:
+        -
+          date: 2021-01-02
+          progress: 3
+          status: ongoing
+          content: >
+            抛弃已制作的 Hard 难度，
+            开始制作 Insane [Unforgettable] 难度。
         -
           progress: "NaN"
           status: paused
