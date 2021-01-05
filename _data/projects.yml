@@ -64,8 +64,7 @@
           status: ongoing
           content: >
             此项目（原ID：`./lab`）已与`./classic`合并为`./swissknife`。
-            目前在[这里][1]进行测试。
-            [1]: https://dgck81lnn.github.io/tablethack/swissknife.html swissknife 测试版（持续更新）
+            目前在[这里](https://dgck81lnn.github.io/tablethack/swissknife.html swissknife 测试版（持续更新）)进行测试。
     -
       id: apps/lab/classic
       desc: 灵魂实验室-经典
