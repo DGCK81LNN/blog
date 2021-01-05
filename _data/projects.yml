@@ -45,13 +45,35 @@
     -
       id: apps/lab/befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
+      news:
+        -
+          date: 2021-01-05
+          status: paused
+          progress: 10
+          content: >
+            实现了语法高亮算法：
+            无法到达的单元格会被视为注释，
+            并会给单元格直接画上墙壁，
+            以此来表示可能走到的路径。
+            工具主体未开始制作。
     -
-      id: apps/lab/lab
+      id: apps/lab/swissknife
       desc: 灵魂实验室：多功能实用工具
+        -
+          date: 2021-01-05
+          status: ongoing
+          content: >
+            此项目（原ID：`./lab`）已与`./classic`合并为`./swissknife`。
+            目前在[这里][1]进行测试。
+            [1]: https://dgck81lnn.github.io/tablethack/swissknife.html swissknife 测试版（持续更新）
     -
       id: apps/lab/classic
-      desc: 灵魂实验室：多功能实用工具（经典）
+      desc: 灵魂实验室-经典
       news:
+        -
+          date: 2021-01-05
+          status: canceled
+          content: 此项目已并入`./swissknife`。
         -
           date: 2020-12-13
           status: may_cancel
