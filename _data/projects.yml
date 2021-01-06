@@ -62,10 +62,12 @@
       news:
         -
           date: 2021-01-05
+          progress: 10
           status: ongoing
           content: >
             此项目（原ID：`./lab`）已与`./classic`合并为`./swissknife`。
-            目前在[这里](https://dgck81lnn.github.io/tablethack/swissknife.html swissknife 测试版（持续更新）)进行测试。
+            [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）：
+            只实现了部分基本功能，暂未制作正式的UI。
     -
       id: apps/lab/classic
       desc: 灵魂实验室-经典
