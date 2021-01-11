@@ -5,9 +5,14 @@ layout: default
 
 {% for namespace in site.data.projects -%}
 <h2>
-    <code>{{ namespace.id }}</code> - {{ namespace.desc }}
+    {% if namespace.id -%}
+    <code>{{ namespace.id }}</code>
+    {%- endif %}
+    -
     {% if namespace.url -%}
-    <a href="{{ namespace.url | escape }}">{{ namespace.url | escape }}</a>
+    <a href="{{ namespace.url | escape }}">{{ namespace.desc }}</a>
+    {%- else -%}
+    {{ namespace.desc }}
     {%- endif %}
 </h2>
 
@@ -103,14 +108,14 @@ layout: default
                     </div>
                     {%- endif -%}
                 </li>
-                {%- endfor %}
+                {% endfor %}
             </ul>
         </section>
         {%- endif %}
     </el-card>
-    {%- endfor %}
+    {% endfor %}
 </el-container>
-{%- endfor %}
+{% endfor %}
 
 <script>
 // 用极为笨拙的方法强行添加样式表，因为如果直接写在正文里会被 Vue.js 吞掉
