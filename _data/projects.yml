@@ -98,6 +98,10 @@
       desc: 舞线练习场（第3代）
       news:
         -
+          date: 2021-01-11
+          content: >
+            舞线练习场第2代已上传到[遗留区](/legacy)。
+        -
           content: 由`dlc`更名为`danceline`
     -
       id: .apps.captoin
