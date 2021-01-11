@@ -69,23 +69,9 @@
           progress: 10
           status: ongoing
           content: >
-            此项目（原ID：`lab`）已与`classic`合并为`swissknife`。
+            此项目（原ID：`soul.apps.lab.lab`）已与`soul.apps.lab.classic`合并为`soul.apps.lab.swissknife`。
             [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）：
             只实现了部分基本功能，暂未制作正式的UI。
-    -
-      id: .apps.lab.classic
-      desc: 灵魂实验室-经典
-      news:
-        -
-          date: 2021-01-05
-          status: canceled
-          content: >
-            此项目已并入`swissknife`。
-        -
-          date: 2020-12-13
-          status: may_cancel
-          content: >
-            此应用的功能可能会被`console`代替。
     -
       id: .apps.lab.console
       desc: 灵魂实验室：控制台
@@ -244,3 +230,20 @@
         -
           progress: "NaN"
           status: paused
+-
+  desc: 已结束项目
+  projs:
+    -
+      id: soul.apps.lab.classic
+      desc: 灵魂实验室-经典
+      news:
+        -
+          date: 2021-01-05
+          status: canceled
+          content: >
+            此项目已并入`soul.apps.lab.swissknife`。
+        -
+          date: 2020-12-13
+          status: may_cancel
+          content: >
+            此应用的功能可能会被`soul.apps.lab.console`代替。
