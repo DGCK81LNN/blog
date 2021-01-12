@@ -90,10 +90,12 @@
     <soul-header default-active="blog"></soul-header>
     <soul-main>
       <article>
-        <h1>{{ page.title | default: site.title }}</h1>
-        {% if page.collection == "posts" %}
-        <p class="soul-p2"><time>{{ page.date | date: "%Y-%m-%d" }}</time></p>
-        {% endif %}
+        <header>
+          <h1>{{ page.title | default: site.title }}</h1>
+          {% if page.collection == "posts" %}
+          <p class="soul-p2"><time>{{ page.date | date: "%Y-%m-%d" }}</time></p>
+          {% endif %}
+        </header>
         <div class="soulblog-content">{{content}}</div>
         {% if page.collection == "posts" %}
         <footer>
