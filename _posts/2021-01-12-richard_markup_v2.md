@@ -1,5 +1,5 @@
 ---
-title: "Richard Markup v2 帮助文档"
+title: "Richard Markup 帮助文档 v2"
 soulblog-footer-links:
   -
     href: "https://github.com/DGCK81LNN/LoveWithRichard"
