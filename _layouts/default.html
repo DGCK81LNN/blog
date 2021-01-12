@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="cmn">
 <!--
   这是灵魂小站 / 博客!
   ID: blog // soulblog
@@ -89,17 +89,19 @@
   <div id="app">
     <soul-header default-active="blog"></soul-header>
     <soul-main>
-      <h1>{{ page.title | default: site.title }}</h1>
-      {% if page.collection == "posts" %}
-        <p class="soul-p2">{{ page.date | date: "%Y-%m-%d" }}</p>
-      {% endif %}
-      <div class="soulblog-content">{{content}}</div>
-      {% if page.collection == "posts" %}
+      <article>
+        <h1>{{ page.title | default: site.title }}</h1>
+        {% if page.collection == "posts" %}
+        <p class="soul-p2"><time>{{ page.date | date: "%Y-%m-%d" }}</time></p>
+        {% endif %}
+        <div class="soulblog-content">{{content}}</div>
+        {% if page.collection == "posts" %}
         <footer>
-          <p>上一篇：{% if page.previous %}<a href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（前面没有了）{% endif %}</p>
-          <p>下一篇：{% if page.next %}<a href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
+          <p>上一篇：{% if page.previous %}<a rel=prev href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（前面没有了）{% endif %}</p>
+          <p>下一篇：{% if page.next %}<a rel=next href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
         </footer>
-      {% endif %}
+        {% endif %}
+      </article>
     </soul-main>
     <soul-footer {% if page.soulblog-footer-links %} :links="[
       {% for link in page.soulblog-footer-links %}
