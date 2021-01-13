@@ -7,38 +7,47 @@
 # may_cancel  - 可能弃坑
 # canceled    - 已弃坑
 # done        - 已完成
-- id: soul
+-
+  id: soul
   desc: 灵魂小站
   url: https://dgck81lnn.github.io/
   projs:
-    - id: .css
+    -
+      id: .css
       desc: 全站设计风格升级
       news:
-        - date: 2021-01-02
+        -
+          date: 2021-01-02
           status: ongoing
           progress: 1
-    - id: .apps.lab.brainfuck
+    -
+      id: .apps.lab.brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
       url: https://dgck81lnn.github.io/apps/lab/brainfuck.html
       news:
-        - date: 2021-01-02
+        -
+          date: 2021-01-02
           status: paused
           phase: 2
           progress: 1
           content: 咕咕咕
-        - date: 2020-12-12
+        -
+          date: 2020-12-12
           status: ongoing
           progress: "NaN"
           content: 界面小优化。
-        - status: ongoing
+        -
+          status: ongoing
           progress: "NaN"
           content: >
             目前本页虽然已基本完工，但我发现它的的性能还存在优化空间，
             所以打算之后尝试改进一下。
-    - id: .apps.lab.befunge93
+    -
+      id: .apps.lab.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
       news:
-        - date: 2021-01-05
+        -
+          date: 2021-01-05
           status: paused
           progress: 10
           content: >
@@ -47,161 +56,204 @@
             并会给单元格之间画上墙壁，
             以此来表示可能走到的路径。
             工具主体未开始制作。
-    -id: .apps.lab.swissknife
+    -
+      id: .apps.lab.swissknife
       desc: 灵魂实验室：多功能实用工具
       news:
-        - date: 2021-01-11
+        -
+          date: 2021-01-11
           content: >
             “临时测试版”转移到[沙盒区](/sandbox)。
-        - date: 2021-01-05
+        -
+          date: 2021-01-05
           progress: 10
           status: ongoing
           content: >
             此项目（原ID：`soul.apps.lab.lab`）已与`soul.apps.lab.classic`合并为`soul.apps.lab.swissknife`。
             [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）：
             只实现了部分基本功能，暂未制作正式的UI。
-    - id: .apps.lab.console
+    -
+      id: .apps.lab.console
       desc: 灵魂实验室：控制台
       url: https://dgck81lnn.github.io/apps/lab/console.html
       news:
-        - date: 2021-01-12
+        -
+          date: 2021-01-12
           progress: 20
           content: >
-            起草了 [Richard Markup v2 文档](2021/01/12/richard_markup_v2.html)，
-            v2抛弃了原本的类XML语法。
+            起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
             由于任务增加，进度条已倒退。
-        - date: 2020-12-13
+        -
+          date: 2020-12-13
           status: ongoing
           phase: 2
           progress: 50
           content: >
             二期工程启动，开始编写 Richard Markup 解释器。
             由“命令行”更名为“控制台”。
-        - date: 2020-11-26
+        -
+          date: 2020-11-26
           status: done
           progress: 100
           content: >
             已基本完工，不过尚未正式投入使用。
             目前只有一个测试性程序：“Love with Richard under epidemic”。
             目前可以在小站首页找到它的详细信息。
-    - id: .apps.danceline
+    -
+      id: .apps.danceline
       desc: 舞线练习场（第3代）
       news:
-        - date: 2021-01-11
+        -
+          date: 2021-01-11
           content: >
             舞线练习场第2代已上传到[遗留区](/legacy)。
-        - content: 由`dlc`更名为`danceline`
-    - id: .apps.captoin
+        -
+          content: 由`dlc`更名为`danceline`
+    -
+      id: .apps.captoin
       desc: 网页版歌词/字幕编辑器
       news:
-        - content: 由`capt`更名为`captoin`
-    - id: .apps.paint
+        -
+          content: 由`capt`更名为`captoin`
+    -
+      id: .apps.paint
       desc: 网页版绘图软件
       news:
-        - status: may_cancel
-    - id: .apps.query
+        -
+          status: may_cancel
+    -
+      id: .apps.query
       desc: 外链快速查询（第2代）（哔哩哔哩API快速查询）
-- id: osu
+-
+  id: osu
   desc: osu!
   projs:
-    - id: .map.running
+    -
+      id: .map.running
       desc: osu! 自制谱：大课间跑步音乐
       url: https://osu.ppy.sh/s/1182532
       news:
-        - status: paused
-        - progress: "NaN"
+        -
+          status: paused
+        -
+          progress: "NaN"
           status: ongoing
           content: >
             目前Insane难度正在制作中，
             Normal和Hard的节奏点也均已设计完成。
-    - id: .map.sine
+    -
+      id: .map.sine
       desc: osu! 自制谱：-Fm2- - Sine
       url: https://osu.ppy.sh/s/1224989
       news:
-        - progress: "NaN"
+        -
+          progress: "NaN"
           status: paused
           content: >
             目前Insane难度已制作完毕，但我不满意（迫真）；
             另外三个难度Easy、Normal、Hard的节奏点也均已设计完成。
-    - id: .map.xox
+    -
+      id: .map.xox
       desc: osu!自制谱：Quree - One Forgotten Night
       url: https://osu.ppy.sh/s/1228904
       news:
-        - date: 2021-01-02
+        -
+          date: 2021-01-02
           progress: 3
           status: ongoing
           content: >
             抛弃已制作的 Hard 难度，
             开始制作 Insane [Unforgettable] 难度。
-        - progress: "NaN"
+        -
+          progress: "NaN"
           status: paused
           content: >
             目前Hard难度已制作完成，但我不满意；
             其他难度尚未进行节奏点设计。
-    - id: .map.ode
+    -
+      id: .map.ode
       desc: osu! 自制谱：歌唱祖国
       news:
-        - progress: "NaN"
+        -
+          progress: "NaN"
           status: may_cancel
           content: >
             谱面未上传。
             目前Easy、Normal、Hard、Insane难度的节奏点均已设计完毕，
             但尚未开始制谱，只做了Timing。
-    - id: .skin
+    -
+      id: .skin
       desc: 自制皮肤
       news:
-        - progress: "NaN"
+        -
+          progress: "NaN"
           status: paused
           content: >
             未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。
-- id: dlfm
+-
+  id: dlfm
   desc: 跳舞的线饭制
   projs:
-    - id: .template
+    -
+      id: .template
       desc: LNN跳舞的线饭制模板
       news:
-        - date: 2020-12-20
+        -
+          date: 2020-12-20
           status: paused
           content: >
             由“LNN改良冰焰模板”更名为“LNN跳舞的线饭制模板”
-        - progress: 15
+        -
+          progress: 15
           status: ongoing
           content: >
             目前模板已初具雏形，但仍任重道远（雾）。
             最近打算开始（但尚未开始）制作可按节拍触发动画的Timing系统。
-- id: music
+-
+  id: music
   desc: 音乐
   projs:
-    - id: .midi.sine
+    -
+      id: .midi.sine
       desc: 黑乐谱制作（试水）：-Fm2- - Sine
       news:
-        - progress: "NaN"
+        -
+          progress: "NaN"
           status: paused
           content: >
             目前底谱已基本完成，等待黑化（
-    - id: .chip.running
+    -
+      id: .chip.running
       desc: FamiTracker 芯片音乐制作（试水）：大课间跑步音乐
       news:
-        - progress: 40
+        -
+          progress: 40
           status: paused
-- id: pone
+-
+  id: pone
   desc: B站视频投稿
   projs:
-    - id: ""
+    -
+      id: ""
       desc: “转型”小马UP主的准备工作
       news:
-        - progress: "NaN"
+        -
+          progress: "NaN"
           status: paused
-- desc: 已结束项目
+-
+  desc: 已结束项目
   projs:
-    - id: soul.apps.lab.classic
+    -
+      id: soul.apps.lab.classic
       desc: 灵魂实验室-经典
       news:
-        - date: 2021-01-05
+        -
+          date: 2021-01-05
           status: canceled
           content: >
             此项目已并入`soul.apps.lab.swissknife`。
-        - date: 2020-12-13
+        -
+          date: 2020-12-13
           status: may_cancel
           content: >
             此应用的功能可能会被`soul.apps.lab.console`代替。
