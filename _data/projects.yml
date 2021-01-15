@@ -2,11 +2,23 @@
 
 # not_started - 未启动（缺省）
 # ongoing     - 进行中
-# priority    - 优先进行
+# prioritized - 优先进行
 # paused      - 已暂停
 # may_cancel  - 可能弃坑
 # canceled    - 已弃坑
 # done        - 已完成
+-
+  desc: 综合状态
+  projs:
+    -
+      desc: 综合状态
+      news:
+        -
+          date: 2021-01-15
+          status: ""
+          progress: "N/A"
+          content: >
+            本人期末考试结束，预备寒假优先进行`soul.css`和`dlfm.template`。
 -
   id: soul
   desc: 灵魂小站
@@ -16,6 +28,9 @@
       id: .css
       desc: 全站设计风格升级
       news:
+        -
+          date: 2021-01-15
+          status: prioritized
         -
           date: 2021-01-02
           status: ongoing
@@ -60,6 +75,10 @@
       id: .apps.lab.swissknife
       desc: 灵魂实验室：多功能实用工具
       news:
+        -
+          date: 2021-01-15
+          status: paused
+          content: 暂时搁置。
         -
           date: 2021-01-11
           content: >
@@ -158,6 +177,10 @@
       url: https://osu.ppy.sh/s/1228904
       news:
         -
+          date: 2021-01-15
+          status: paused
+          content: 暂时搁置。
+        -
           date: 2021-01-02
           progress: 3
           status: ongoing
@@ -199,6 +222,9 @@
       desc: LNN跳舞的线饭制模板
       news:
         -
+          date: 2021-01-15
+          status: prioritized
+        -
           date: 2020-12-20
           status: paused
           content: >
@@ -237,6 +263,9 @@
       id: ""
       desc: “转型”小马UP主的准备工作
       news:
+        -
+          date: 2021-01-15
+          status: ongoing
         -
           progress: "NaN"
           status: paused
