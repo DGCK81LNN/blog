@@ -1,5 +1,40 @@
 ---
 title: "哔哩哔哩API详解"
+soulblog-style: |
+    /**
+     * "Treeview" from https://minecraft.gamepedia.com/MediaWiki:Common.css
+     * Modified by DGCK81LNN
+     */
+    .soultree+ul,
+    .soultree+ul ul,
+    .soultree+ul li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      list-style-image: none
+    }
+    .soultree+ul li li {
+      position: relative;
+      padding-left: 13px;
+      margin-left: 7px;
+      border-left: 1px solid #636363
+    }
+    .soultree+ul li li::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -1px;
+      width: 11px;
+      height: 11px;
+      border-bottom: 1px solid #636363
+    }
+    .soultree+ul li li:last-child {
+      border-color: transparent
+    }
+    .soultree+ul li li:last-child::before {
+      border-left: 1px solid #636363;
+      width: 10px
+    }
 ---
 
 此页面正在重新排版中，部分内容尚不能正常显示
@@ -42,18 +77,18 @@ API输出结果中无法理解/重复出现的信息已删去
 
 #### 视频基本信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
-| <del>[刻在DNA里的BV号](https://zh.moegirl.org/刻在DNA里的oo)</del> [BV17x411w7KC](https://zh.moegirl.org/Av170001#视频)
-| [查看](https://www.bilibili.com/video/BV17x411w7KC) [查询](https://api.bilibili.com/x/web-interface/view?bvid=BV17x411w7KC)
-|-
-| [av106](https://zh.moegirl.org/最终鬼畜蓝蓝路)
-| [查看](https://www.bilibili.com/video/av106) [查询](https://api.bilibili.com/x/web-interface/view?aid=106)
-|-
-|colspan=2 | * 查看 = 在哔哩哔哩查看，查询 = 调用这个API
-|}
+<table style="float:right"><tr>
+<th colspan=2>栗子</th>
+</tr><tr>
+<td><del>[刻在DNA里的BV号](https://zh.moegirl.org/刻在DNA里的oo)</del> [BV17x411w7KC](https://zh.moegirl.org/Av170001#视频)</td>
+<td>[查看](https://www.bilibili.com/video/BV17x411w7KC) [查询](https://api.bilibili.com/x/web-interface/view?bvid=BV17x411w7KC)</td>
+</tr><tr>
+<td>[av106](https://zh.moegirl.org/最终鬼畜蓝蓝路)</td>
+<td>[查看](https://www.bilibili.com/video/av106) [查询](https://api.bilibili.com/x/web-interface/view?aid=106)</td>
+</tr><tr>
+<td colspan=2>* 查看 = 在哔哩哔哩查看，查询 = 调用这个API</td>
+</table>
+
 ```
 https://api.bilibili.com/x/web-interface/view?bvid=【BV号】
 https://api.bilibili.com/x/web-interface/view?aid=【AV号】
@@ -115,18 +150,17 @@ https://api.bilibili.com/x/web-interface/view?aid=【AV号】
 
 #### 视频标签
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | <del>[刻在DNA里的BV号](https://zh.moegirl.org/刻在DNA里的oo)</del> [BV17x411w7KC](https://zh.moegirl.org/Av170001#视频)
 | [查看](https://www.bilibili.com/video/BV17x411w7KC) [查询](https://api.bilibili.com/x/tag/archive/tags?bvid=BV17x411w7KC)
-|-
+</tr><tr>
 | av107<ref>最终[鬼畜](https://zh.moegirl.org/鬼畜)[芙兰朵露](https://zh.moegirl.org/芙兰朵露·斯卡蕾特)</ref>
 | [查看](https://www.bilibili.com/video/av107) [查询](https://api.bilibili.com/x/tag/archive/tags?aid=107)
-|-
+</tr><tr>
 |colspan=2| <references />
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/tag/archive/tags?bvid=【BV号】
 https://api.bilibili.com/x/tag/archive/tags?aid=【AV号】
@@ -148,13 +182,12 @@ https://api.bilibili.com/x/tag/archive/tags?aid=【AV号】
 
 ### 收藏夹信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | ml829913747
 | [查看](https://www.bilibili.com/medialist/detail/ml829913747) [查询](https://api.bilibili.com/x/v3/fav/resource/list?media_id=829913747&pn=1&ps=20)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/v3/fav/resource/list?media_id=【ML号】&pn=【页码】&ps=【每页几个】
 ```
@@ -209,13 +242,12 @@ https://api.bilibili.com/x/v3/fav/resource/list?media_id=【ML号】&pn=【页�
 
 ### 专栏信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | cv3593887
 | [查看](https://www.bilibili.com/read/cv3593887) [查询](https://api.bilibili.com/x/article/view?id=3593887)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/article/view?id=【CV号】
 ```
@@ -281,13 +313,12 @@ https://api.bilibili.com/x/article/view?id=【CV号】
 
 ### 专栏文集信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | rl154835
 | [查看](https://www.bilibili.com/read/readlist/rl154835) [查询](https://api.bilibili.com/x/article/list/web/articles?id=154835)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/article/list/web/articles?id=【RL号】
 ```
@@ -353,15 +384,14 @@ https://api.bilibili.com/x/article/list/web/articles?id=【RL号】
 
 #### 小视频信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | vc1919810
 | [查看](https://vc.bilibili.com/video/1919810) [查询](https://api.vc.bilibili.com/clip/v1/video/detail?video_id=1919810)
-|-
+</tr><tr>
 |colspan=2| <del>这么臭的vlog还有存在的必要么<br>删了罢（无慈悲）</del>
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/clip/v1/video/detail?video_id=VC号
 ```
@@ -401,13 +431,12 @@ https://api.vc.bilibili.com/clip/v1/video/detail?video_id=VC号
 
 #### 音频基本信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | au1281641
 | [查看](https://www.bilibili.com/audio/au1281641) [查询](https://www.bilibili.com/audio/music-service-c/web/song/info?sid=1281641)
-|}
+</tr></table>
 ```
 https://www.bilibili.com/audio/music-service-c/web/song/info?sid=【AU号】
 ```
@@ -464,13 +493,12 @@ curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
 
 #### 用户基本信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747) [查询](https://api.bilibili.com/x/space/acc/info?mid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/acc/info?mid=【UID】
 ```
@@ -499,13 +527,12 @@ https://api.bilibili.com/x/space/acc/info?mid=【UID】
 
 #### 好友数
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747) [查询](https://api.bilibili.com/x/relation/stat?vmid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/relation/stat?vmid=【UID】
 ```
@@ -522,13 +549,12 @@ https://api.bilibili.com/x/relation/stat?vmid=【UID】
 
 #### UP主统计数据
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747) [查询](https://api.bilibili.com/x/space/upstat?mid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/upstat?mid=【UID】
 ```
@@ -545,13 +571,12 @@ https://api.bilibili.com/x/space/upstat?mid=【UID】
 
 #### UP主置顶视频（粉丝可见）
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747) [查询](https://api.bilibili.com/x/space/top/arc?vmid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/top/arc?vmid=【UID】
 ```
@@ -588,13 +613,12 @@ https://api.bilibili.com/x/space/top/arc?vmid=【UID】
 
 #### UP主代表作（访客可见）
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747) [查询](https://api.bilibili.com/x/space/masterpiece?vmid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/masterpiece?vmid=【UID】
 ```
@@ -631,13 +655,12 @@ https://api.bilibili.com/x/space/masterpiece?vmid=【UID】
 
 ### 动态
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/dynamic) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/space_history?host_uid=328066747&offset_dynamic_id=0&need_top=1)
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/space_history?host_uid=【UID】&offset_dynamic_id=【从哪条开始，0为从最新的开始】&need_top=【是否包含置顶动态，1=输出，0=不输出】
 ```
@@ -694,13 +717,12 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/space_history?host_uid=�
 
 #### 视频
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/video) [查询](https://api.bilibili.com/x/space/arc/search?mid=328066747&pn=1&ps=20)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/arc/search?mid=【UID】&pn=【页码】&ps=【每页几个】&tid=【分区号，省略此参数则显示所有分区】
 ```
@@ -739,13 +761,12 @@ https://api.bilibili.com/x/space/arc/search?mid=【UID】&pn=【页码】&ps=【
 
 #### 音频
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/audio) [查询](https://api.bilibili.com/audio/music-service/web/song/upper?uid=328066747&pn=1&ps=20&order=1)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/audio/music-service/web/song/upper?uid=【UID】&pn=【页码】&ps=【每页几个】&order=【排序，1(默认)发布时间，2播放量】
 ```
@@ -779,13 +800,12 @@ https://api.bilibili.com/audio/music-service/web/song/upper?uid=【UID】&pn=【
 
 ##### 文章
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/article) [查询](https://api.bilibili.com/x/space/article?mid=328066747&pn=1&ps=20&sort=publish_time)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/article?mid=【UID】&pn=【页码】&ps=【每页几个】&sort=【排序，默认为publish_time，其他可能的值待研究……】
 ```
@@ -832,13 +852,12 @@ https://api.bilibili.com/x/space/article?mid=【UID】&pn=【页码】&ps=【每
 
 ##### 文集
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/article) [查询](https://api.bilibili.com/x/article/up/lists?mid=328066747&sort=0)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/article/up/lists?mid=【UID】&sort=【排序 0发布时间 1阅读量】
 ```
@@ -865,13 +884,12 @@ https://api.bilibili.com/x/article/up/lists?mid=【UID】&sort=【排序 0发布
 
 ##### 各分区投稿数量统计
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/album) [查询](https://api.vc.bilibili.com/link_draw/v1/doc/upload_count?uid=328066747)
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/link_draw/v1/doc/upload_count?uid=【UID】
 ```
@@ -887,13 +905,12 @@ https://api.vc.bilibili.com/link_draw/v1/doc/upload_count?uid=【UID】
 
 ##### 全部相簿投稿
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/album) [查询](https://api.vc.bilibili.com/link_draw/v1/doc/doc_list?uid=328066747&page_num=0&page_size=20)
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/link_draw/v1/doc/doc_list?uid=【UID】&page_num=【页码（从0开始）】&page_size=【每页几个】
 ```
@@ -923,13 +940,12 @@ https://api.vc.bilibili.com/link_draw/v1/doc/doc_list?uid=【UID】&page_num=【
 
 #### 频道基本信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/channel/index) [查询](https://api.bilibili.com/x/space/channel/list?mid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/channel/list?mid=【UID】
 ```
@@ -957,13 +973,12 @@ https://api.bilibili.com/x/space/channel/list?mid=【UID】
 
 #### 创建的收藏夹
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/favlist) [查询](https://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid=【UID】
 ```
@@ -982,13 +997,12 @@ https://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid=【UID】
 
 #### 收藏的收藏夹
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/favlist) [查询](https://api.bilibili.com/x/v3/fav/folder/collected/list?pn=1&ps=20&up_mid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/v3/fav/folder/collected/list?pn=【页码】&ps=【每页几个】&up_mid=【UID】
 ```
@@ -1014,17 +1028,16 @@ https://api.bilibili.com/x/v3/fav/folder/collected/list?pn=【页码】&ps=【�
 
 #### 追番追剧
 
-{|class="wikitable" style="float:right"
-|-
+<table style="float:right"><tr>
 !colspan=3| 栗子
-|-
+</tr><tr>
 |rowspan=2| uid328066747
 | 追番
 | [查看](https://space.bilibili.com/328066747/bangumi) [查询](https://api.bilibili.com/x/space/bangumi/follow/list?type=1&pn=1&ps=20&vmid=328066747)
-|-
+</tr><tr>
 | 追剧
 | [查看](https://space.bilibili.com/328066747/cinema) [查询](https://api.bilibili.com/x/space/bangumi/follow/list?type=2&pn=1&ps=20&vmid=328066747)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/space/bangumi/follow/list?type=【1追番 2追剧】&pn=【页码】&ps=【每页几个】&vmid=【UID】
 ```
@@ -1085,13 +1098,12 @@ https://api.bilibili.com/x/space/bangumi/follow/list?type=【1追番 2追剧】&
 
 #### 话题
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | uid328066747
 | [查看](https://space.bilibili.com/328066747/subs) [查询](https://space.bilibili.com/ajax/tags/getSubList?mid=328066747)
-|}
+</tr></table>
 ```
 https://space.bilibili.com/ajax/tags/getSubList?mid=【UID】
 ```
@@ -1111,17 +1123,16 @@ https://space.bilibili.com/ajax/tags/getSubList?mid=【UID】
 
 ### 关注/粉丝列表
 
-{|class="wikitable" style="float:right"
-|-
+<table style="float:right"><tr>
 !colspan=3| 栗子
-|-
+</tr><tr>
 |rowspan=2| uid328066747
 | 关注
 | [查看](https://space.bilibili.com/328066747/fans/follow) [查询](https://api.bilibili.com/x/relation/followings?vmid=328066747&pn=1&ps=20&order=desc)
-|-
+</tr><tr>
 | 粉丝
 | [查看](https://space.bilibili.com/328066747/fans/fans) [查询](https://api.bilibili.com/x/relation/followers?vmid=328066747&pn=1&ps=20&order=desc)
-|}
+</tr></table>
 
 关注：`https://api.bilibili.com/x/relation/followings?vmid=【UID】&pn=【页码】&ps=【每页几个】&order=【排序 desc=新关注的在前 asc=新关注的在后】`
 
@@ -1152,61 +1163,60 @@ https://space.bilibili.com/ajax/tags/getSubList?mid=【UID】
 
 ### 动态详情
 
-{|class="wikitable" style="float:right"
-|-
+<table style="float:right"><tr>
 !colspan=4|动态类型
-|-
+</tr><tr>
 ! 类型号
 ! 说明
-!colspan=2| 栗子
-|-
+<th colspan=2>栗子
+</tr><tr>
 | 1
 | 转发动态
 | 355295470145652823
 | [查看](https://t.bilibili.com/355295470145652823) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355295470145652823)
-|-
+</tr><tr>
 | 2
 | 相册投稿
 | 351782199784737587
 | [查看](https://t.bilibili.com/351782199784737587) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=351782199784737587)
-|-
+</tr><tr>
 | 4
 | 文字动态
 | 371794999330051793
 | [查看](https://t.bilibili.com/371794999330051793) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=371794999330051793)
-|-
+</tr><tr>
 | 8
 | 视频投稿
 | 355292278981797225
 | [查看](https://t.bilibili.com/355292278981797225) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355292278981797225)
-|-
+</tr><tr>
 | 16
 | VC小视频投稿
 | 354713888622461421
 | [查看](https://t.bilibili.com/354713888622461421) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=354713888622461421)
-|-
+</tr><tr>
 | 64
 | 专栏投稿
 | 334997154054634266
 | [查看](https://t.bilibili.com/334997154054634266) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=334997154054634266)
-|-
+</tr><tr>
 | 256
 | 音频投稿
 | 352216850471547670
 | [查看](https://t.bilibili.com/352216850471547670) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=352216850471547670)
-|-
+</tr><tr>
 | 2048
 | 分享歌单
 | 325805722180163707
 | [查看](https://t.bilibili.com/325805722180163707) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=325805722180163707)
-|-
+</tr><tr>
 | 4300
 | 分享视频收藏夹
 | 355307388674695344
 | [查看](https://t.bilibili.com/355307388674695344) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355307388674695344)
-|-
+</tr><tr>
 |colspan=4| 待补充……也许吧……
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=【动态号】
 ```
@@ -1248,13 +1258,12 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 
 #### 转发动态
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 355295470145652823
 | [查看](https://t.bilibili.com/355295470145652823) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355295470145652823)
-|}
+</tr></table>
 
 <div class="soultree"></div>
 
@@ -1289,13 +1298,12 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 
 #### 相册投稿
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 351782199784737587
 | [查看](https://t.bilibili.com/351782199784737587) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=351782199784737587)
-|}
+</tr></table>
 
 <div class="soultree"></div>
 
@@ -1324,13 +1332,12 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 
 #### 文字动态
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 371794999330051793
 | [查看](https://t.bilibili.com/371794999330051793) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=371794999330051793)
-|}
+</tr></table>
 
 <div class="soultree"></div>
 
@@ -1347,13 +1354,12 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 
 #### 视频投稿
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 355292278981797225
 | [查看](https://t.bilibili.com/355292278981797225) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=355292278981797225)
-|}
+</tr></table>
 
 <div class="soultree"></div>
 
@@ -1385,13 +1391,12 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 
 #### VC小视频投稿
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 354713888622461421
 | [查看](https://t.bilibili.com/354713888622461421) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=354713888622461421)
-|}
+</tr></table>
 
 <div class="soultree"></div>
 
@@ -1416,43 +1421,36 @@ https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynami
 
 #### 音频投稿
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子</th>
+</tr><tr>
 | 352216850471547670
 | [查看](https://t.bilibili.com/352216850471547670) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=352216850471547670)
-|}
+</tr></table>
 
 
-{```
-id
-```: AU号
-**upId** : UP主UID```
-title
-```: 标题```
-upper
-```: UP主```
-cover
-```: 封面URL```
-ctime
-```: 发布时间
+{
+    `id`: AU号
+**upId** : UP主UID
+`title`: 标题
+`upper`: UP主
+`cover`: 封面URL
+`ctime`: 发布时间
 **replyCnt** : 评论数
-**playCnt** : 播放数```
+**playCnt** : 播放数`
 intro
-```: 简介
+`: 简介
 **upperAvatar** : UP主头像URL
 }
 
 #### 分享歌单
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 325805722180163707
 | [查看](https://t.bilibili.com/325805722180163707) [查询](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=325805722180163707)
-|}
+</tr></table>
 
 <div class="soultree"></div>
 
@@ -1477,16 +1475,15 @@ intro
 
 #### 话题基本信息
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 标签1
 | [查看](https://t.bilibili.com/topic/name/1) [查询](https://api.bilibili.com/x/tag/info?tag_id=1)
-|-
+</tr><tr>
 | #公告#
 | [查看](https://t.bilibili.com/topic/name/%E5%85%AC%E5%91%8A) [查询](https://api.bilibili.com/x/tag/info?tag_name=公告)
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/tag/info?tag_id=【标签ID】
 https://api.bilibili.com/x/tag/info?tag_name=【标签名】
@@ -1508,16 +1505,15 @@ https://api.bilibili.com/x/tag/info?tag_name=【标签名】
 
 #### 话题统计数据及活跃用户列表
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 标签1
 | [查看](https://t.bilibili.com/topic/name/1) [查询](https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_id=1)
-|-
+</tr><tr>
 | #公告#
 | [查看](https://t.bilibili.com/topic/name/%E5%85%AC%E5%91%8A) [查询](https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_name=公告)
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_id=【标签ID】
 https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_name=【标签名】
@@ -1552,16 +1548,15 @@ https://api.vc.bilibili.com/topic_svr/v1/topic_svr/get_active_users?tag_name=【
 
 #### 包含话题的动态
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | 标签1
 | [查看](https://t.bilibili.com/topic/name/1) [查询](https://api.vc.bilibili.com/topic_svr/v1/topic_svr/topic_new?tag_id=1)
-|-
+</tr><tr>
 | #公告#
 | [查看](https://t.bilibili.com/topic/name/%E5%85%AC%E5%91%8A) [查询](https://api.vc.bilibili.com/topic_svr/v1/topic_svr/topic_new?tag_name=公告)
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/topic_svr/v1/topic_svr/topic_new?tag_id=【标签ID】
 https://api.vc.bilibili.com/topic_svr/v1/topic_svr/topic_new?tag_name=【标签名】
@@ -1572,13 +1567,12 @@ https://api.vc.bilibili.com/topic_svr/v1/topic_svr/topic_new?tag_name=【标签�
 
 ### 搜索用户
 
-{|class="wikitable" style="float:right"
-|-
-!colspan=2| 栗子
-|-
+<table style="float:right"><tr>
+<th colspan=2>栗子
+</tr><tr>
 | DGCK81LNN
 | [查询](https://api.vc.bilibili.com/dynamic_repost/v1/dynamic_repost/name_search?keyword=DGCK81LNN)
-|}
+</tr></table>
 ```
 https://api.vc.bilibili.com/dynamic_repost/v1/dynamic_repost/name_search?keyword=【用户名】
 ```
@@ -1613,59 +1607,58 @@ https://api.vc.bilibili.com/dynamic_repost/v1/dynamic_repost/name_search?keyword
 
 ## 评论区通用
 
-{|class="wikitable" style="float:right"
-|-
+<table style="float:right"><tr>
 !colspan=5| 评论区类型
-|-
+</tr><tr>
 ! 类型号
 ! 说明
 ! OID
-!colspan=2| 栗子
-|-
+<th colspan=2>栗子
+</tr><tr>
 | 1
 | 视频投稿
 | AV号
 | 59671812
 | [查看](https://www.bilibili.com/video/av59671812) [查询](https://api.bilibili.com/x/v2/reply?type=1&oid=59671812&pn=1)
-|-
+</tr><tr>
 | 5
 | VC小视频投稿
 | VC号
 | 2879073
 | [查看](https://vc.bilibili.com/video/2879073) [查询](https://api.bilibili.com/x/v2/reply?type=5&oid=2879073&pn=1)
-|-
+</tr><tr>
 | 11
 | 相册投稿
 | 相册投稿号
 | 65916366
 | [查看](https://h.bilibili.com/65916366) [查询](https://api.bilibili.com/x/v2/reply?type=11&oid=65916366&pn=1)
-|-
+</tr><tr>
 | 12
 | 专栏投稿
 | CV号
 | 3695898
 | [查看](https://www.bilibili.com/read/cv3695898) [查询](https://api.bilibili.com/x/v2/reply?type=12&oid=3695898&pn=1)
-|-
+</tr><tr>
 | 14
 | 音频投稿
 | AU号
 | 1285217
 | [查看](https://www.bilibili.com/audio/au1285217) [查询](https://api.bilibili.com/x/v2/reply?type=14&oid=1285217&pn=1)
-|-
+</tr><tr>
 | 17
 | 其他动态
 | 动态号
 | 371794999330051793
 | [查看](https://t.bilibili.com/371794999330051793) [查询](https://api.bilibili.com/x/v2/reply?type=17&oid=371794999330051793&pn=1)
-|-
+</tr><tr>
 | 19
 | 音频歌单
 | AM号
 | 10624
 | [查看](https://www.bilibili.com/audoi/am10624) [查询](https://api.bilibili.com/x/v2/reply?type=19&oid=10624&pn=1)
-|-
+</tr><tr>
 |colspan=5| 待补充……
-|}
+</tr></table>
 ```
 https://api.bilibili.com/x/v2/reply?type=【类型】&oid=【OID】&pn=【页码】
 ```

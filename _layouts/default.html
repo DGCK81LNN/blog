@@ -9,18 +9,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
   <meta name="format-detection" content="telephone=no">
-  <link rel="stylesheet" href="/css/element.css">
+  <link rel="stylesheet" href="/lib/element.css">
   <link rel="stylesheet" href="/css/commons.css">
-  <link rel="stylesheet" href="/css/prism.css">
+  <link rel="stylesheet" href="/lib/prism.css">
   <link rel="icon" href="/site_icon.png">
   <link rel="shortcut icon" href="/site_icon.png">
   <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
   <script src="/js/tests.js"></script>
-  <script src="/js/vue.min.js"></script>
+  <script src="/lib/vue.min.js"></script>
   <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
-  <script src="/js/prism.js"></script>
+  <script src="/lib/prism.js"></script>
   <script src="/js/commons.js"></script>
   {% seo %}
   <style>
@@ -47,42 +47,15 @@
       width: 100%;
       overflow-x: auto;
     }
-
-    /**
-     * "Treeview" from https://minecraft.gamepedia.com/MediaWiki:Common.css
-     * Modified by DGCK81LNN
-     */
-    .soultree+ul,
-    .soultree+ul ul,
-    .soultree+ul li {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      list-style-image: none
-    }
-    .soultree+ul li li {
-      position: relative;
-      padding-left: 13px;
-      margin-left: 7px;
-      border-left: 1px solid #636363
-    }
-    .soultree+ul li li::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -1px;
-      width: 11px;
-      height: 11px;
-      border-bottom: 1px solid #636363
-    }
-    .soultree+ul li li:last-child {
-      border-color: transparent
-    }
-    .soultree+ul li li:last-child::before {
-      border-left: 1px solid #636363;
-      width: 10px
-    }
   </style>
+  {% if page.soulblog-style -%}
+  {{- page.soulblog-style
+    | prepend: "style>"
+    | prepend: "<"
+    | append: "</"
+    | append: "style>"
+  -}}
+  {%- endif %}
 </head>
 
 <body>
@@ -111,14 +84,21 @@
       {% endfor %}
     ]"{% endif %}></soul-footer>
   </div>
+  <script>
+    const vm = new Vue(
+      Object.assign(
+        { el: "#app" },
+        typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+      )
+    );
+  </script>
+  {% if page.soulblog-script -%}
+  {{ page.soulblog-script
+    | prepend: "script>"
+    | prepend: "<"
+    | append: "</"
+    | append: "script>"
+  }}
+  {%- endif %}
 </body>
-<script>
-  const vm = new Vue(
-    Object.assign(
-      { el: "#app" },
-      typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
-    )
-  );
-</script>
-
 </html>
