@@ -39,7 +39,7 @@ Richard Markup 存储为`.richard`扩展名的文件。
     这也是。
     这还是。
 
-一个行内 s 元素：{@s:这是行内 s 元素的内容。}
+一个行内 s 元素：{@s|这是行内 s 元素的内容。}
 ```
 
 这里的两个`s`元素分别是块状元素和行内元素。
@@ -48,7 +48,7 @@ Richard Markup 存储为`.richard`扩展名的文件。
 
 ```
 一个块状 a 元素：
-@a;
+@a
 
 一个行内 a 元素：{@a}
 ```
@@ -61,9 +61,9 @@ Richard Markup 存储为`.richard`扩展名的文件。
     这行文本属于第一个块状 s 元素。
     第二个块状 s 元素在第一个块状 s 元素里面：
     @s:
-        {@s:{@s:{@s:{@s:禁止套娃！{@a}}}}}
+        {@s|{@s|{@s|{@s|禁止套娃！{@a}}}}}
         这行文本属于第二个块状 s 元素。
-    @a;
+    @a
     这行文本还是属于第一个块状 s 元素。
 ```
 
@@ -74,7 +74,7 @@ Richard Markup 存储为`.richard`扩展名的文件。
     这个块状 s 元素有一个 name 属性，属性的值为 myElement；
     还有一个 color 属性，值为 red。
 
-{@s name=anotherElement:这个行内 s 元素有一个 name 属性。}
+{@s name=anotherElement|这个行内 s 元素有一个 name 属性。}
 ```
 
 每个属性的**名称**和**值**用等于号分隔；如果值里有空格等引起歧义的字符，要用单引号或双引号围起来。有的属性没有值，这时不用写等号。
@@ -93,7 +93,6 @@ Richard Markup 存储为`.richard`扩展名的文件。
 @a
     else if="myVariable == 2"
     call=myElement
-;
 ```
 
 以井号开头的一行是**注释**，会被 Richard Markup 解释器忽略：
@@ -114,7 +113,7 @@ Richard Markup 存储为`.richard`扩展名的文件。
 
 ```
 @s name=welcome:
-    欢迎来到{@s color=#33bfab:灵魂小站}！
+    欢迎来到{@s color=#33bfab|灵魂小站}！
 ```
 
 ### `a`元素
@@ -124,7 +123,7 @@ Richard Markup 存储为`.richard`扩展名的文件。
 可以有一个`name`属性指定锚点的名称。另外也可以设置一个`call`属性，值是另一个有内容的元素的`name`，这样来重复使用那个元素。例如：
 
 ```
-Love with {@s name=richard color=#baf:Richard} under epidemic
+Love with {@s name=richard color=#baf|Richard} under epidemic
 8B班同学{@a call=richard}。
 ```
 
@@ -136,8 +135,8 @@ Love with {@s name=richard color=#baf:Richard} under epidemic
 
 ```
 @def:
-    {@s name=richard color=#baf:Richard}
-    {@s name=sunny color=#daf:Sunny}
+    {@s name=richard color=#baf|Richard}
+    {@s name=sunny color=#daf|Sunny}
     @s name=separator:
         Love with {@a call=richard} under epidemic
         ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
@@ -152,15 +151,15 @@ Love with {@s name=richard color=#baf:Richard} under epidemic
 ```
 Hello, world!
 @choices:
-    {@prompt:Are you...}
-    {@choice call=youare_roy:Roy}
-    {@choice call=youare_richard:Richard}
-    {@choice call=youare_neither:Neither}
+    {@prompt|Are you...}
+    {@choice call=youare_roy|Roy}
+    {@choice call=youare_richard|Richard}
+    {@choice call=youare_neither|Neither}
 @def:
     @s name=youare_roy:
-        Hi, {@s color=12:Roy}!
+        Hi, {@s color=12|Roy}!
     @s name=youare_richard:
-        Hello {@s color=15:Richard}!
+        Hello {@s color=15|Richard}!
     @s name=youare_neither:
         Hello... whoever you are!
 ```
@@ -196,9 +195,9 @@ Hello, world!
 @a set="crap = 20";
 @choices:
     {@prompt:这是一道选择题}
-    {@choice set="crap = crap + 40":az}
-    {@choice set="crap = crap * 4":az}
-    {@choice set="crap = crap - 10":az}
+    {@choice set="crap = crap + 40"|az}
+    {@choice set="crap = crap * 4"|az}
+    {@choice set="crap = crap - 10"|az}
 @s if="crap < 20":
     crap现在小于20
 @s else if="crap < 60":
@@ -212,13 +211,13 @@ Hello, world!
 ```
 @choices:
     {@prompt:Are you...}
-    {@choice set="_choice = 1":Roy}
-    {@choice set="_choice = 2":Richard}
-    {@choice set="_choice = 3":Neither}
+    {@choice set="_choice = 1"|Roy}
+    {@choice set="_choice = 2"|Richard}
+    {@choice set="_choice = 3"|Neither}
 @s if="_choice == 1":
-    Hi, {@s color=12:Roy}!
-@s else if="_choice == 2">:
-    Hello {@s color=15:Richard}!
+    Hi, {@s color=12|Roy}!
+@s else if="_choice == 2":
+    Hello {@s color=15|Richard}!
 @s else:
     Hello... whoever you are!
 ```
