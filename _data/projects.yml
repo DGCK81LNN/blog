@@ -8,18 +8,6 @@
 # canceled    - 已弃坑
 # done        - 已完成
 -
-  desc: 综合状态
-  projs:
-    -
-      desc: 综合状态
-      news:
-        -
-          date: 2021-01-15
-          status: ""
-          progress: "N/A"
-          content: >
-            本人期末考试结束，预备寒假优先进行`soul.css`和`dlfm.template`。
--
   id: soul
   desc: 灵魂小站
   url: https://dgck81lnn.github.io/
@@ -28,9 +16,6 @@
       id: .css
       desc: 全站设计风格升级
       news:
-        -
-          date: 2021-01-15
-          status: prioritized
         -
           date: 2021-01-02
           status: ongoing
@@ -96,6 +81,15 @@
       desc: 灵魂实验室：控制台
       url: https://dgck81lnn.github.io/apps/lab/console.html
       news:
+        -
+          date: 2021-01-16
+          progress: 40
+          status: prioritized
+          content: >
+            计划变更，v2语法将在3期工程实现。
+            v1解释器的`call`、`set`、`if`、`else`属性待实现。
+            为了在方便存储和读取存档的前提下实现`call`，
+            需要手动实现一个“调用堆栈”。
         -
           date: 2021-01-12
           progress: 20
