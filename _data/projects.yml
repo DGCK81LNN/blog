@@ -82,6 +82,9 @@
       url: https://dgck81lnn.github.io/apps/lab/console.html
       news:
         -
+          date: 2021-01-21
+          status: ongoing
+        -
           date: 2021-01-16
           progress: 40
           status: prioritized
@@ -215,9 +218,6 @@
       id: .template
       desc: LNN跳舞的线饭制模板
       news:
-        -
-          date: 2021-01-15
-          status: prioritized
         -
           date: 2020-12-20
           status: paused
