@@ -17,6 +17,11 @@
       desc: 全站设计风格升级
       news:
         -
+          date: 2021-01-23
+          status: ongoing
+          content: >
+            计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。
+        -
           date: 2021-01-02
           status: ongoing
           progress: 1
