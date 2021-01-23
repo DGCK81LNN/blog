@@ -142,14 +142,14 @@ def num10t2(decimal):
 def nts(encoded):
     """解码“encode()”生成的密文。
     """
-    buffer = "" # 存储一个二进制数，遇到'2'就拿走使用并清空
+    binaryBuffer = "" # 存储一个二进制数，遇到'2'就拿走使用并清空
     binaryList = []
     for bit in str(encoded):
         if bit == '2':
-            binaryList.append(int(buffer)) # HACK: 为什么要转成int？？？
-            buffer = ""
+            binaryList.append(int(binaryBuffer)) # HACK: 为什么要转成int？？？
+            binaryBuffer = ""
         else:
-            buffer += bit
+            binaryBuffer += bit
     decoded = ""
     for binary in binaryList:
         decoded += chr(num2t10(binary)) # 对代码点的二进制调用了num2t10()
