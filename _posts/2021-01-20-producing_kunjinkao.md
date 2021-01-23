@@ -12,8 +12,7 @@ str.encode!('gbk', encodeOpt)
 str.force_encoding('utf-8')
 str.encode!('utf-8', encodeOpt)
 str.force_encoding('gbk')
-str.encode!('utf-8', encodeOpt)
-puts str
+puts str.encode('utf-8', encodeOpt)
 ```
 
 ```
@@ -23,13 +22,11 @@ puts str
 ## 实 验 室 制 取 烫 烫 烫
 
 ```ruby
-encodeOpt = { :invalid => :replace, :undef => :replace }
 str = String.new(encoding: 'ascii-8bit')
 str << 0xcc
 str *= 20
 str.force_encoding('gbk')
-str.encode!('utf-8', encodeOpt)
-puts str
+puts str.encode('utf-8')
 ```
 
 ```
