@@ -1,12 +1,13 @@
 # PROJECTS
 
-# not_started - 未启动（缺省）
-# ongoing     - 进行中
-# prioritized - 优先进行
-# paused      - 已暂停
-# may_cancel  - 可能弃坑
-# canceled    - 已弃坑
-# done        - 已完成
+# not_started   - 未启动（缺省）
+# ongoing       - 进行中
+# prioritized   - 优先进行
+# almost_paused - 近乎暂停（偶尔才会有进展）
+# paused        - 已暂停
+# may_cancel    - 可能弃坑
+# canceled      - 已弃坑
+# done          - 已完成
 -
   id: soul
   desc: 灵魂小站
@@ -18,13 +19,23 @@
       news:
         -
           date: 2021-01-23
-          status: ongoing
+          status: almost_paused
           content: >
             计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。
         -
           date: 2021-01-02
           status: ongoing
           progress: 1
+    - 
+      id: .blog
+      desc: 博客区
+      url: https://dgck81lnn.github.io/blog/
+      news:
+        -
+          phase: 2
+          content: >
+            将来可能抛弃Markdown，自己实现一个更便于添加HTML标签的文本标记语言<small>（Richard Markup for Hyper Text）</small>来存储博客文章，
+            并在客户端转换成HTML（而不是GitHub Pages的服务端）。
     -
       id: .apps.lab.brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
@@ -59,7 +70,7 @@
             实现了语法高亮算法：
             无法到达的单元格会被视为注释，
             并会给单元格之间画上墙壁，
-            以此来表示可能走到的路径。
+            以此来表示IP可能走的路径。
             工具主体未开始制作。
     -
       id: .apps.lab.swissknife
@@ -88,14 +99,11 @@
       news:
         -
           date: 2021-01-21
-          status: ongoing
+          status: almost_paused
         -
           date: 2021-01-16
-          progress: 40
           status: prioritized
           content: >
-            计划变更，v2语法将在3期工程实现。
-            v1解释器的`call`、`set`、`if`、`else`属性待实现。
             为了在方便存储和读取存档的前提下实现`call`，
             需要手动实现一个“调用堆栈”。
         -
@@ -155,6 +163,7 @@
       url: https://osu.ppy.sh/s/1182532
       news:
         -
+          date: 2021-01-23
           status: paused
         -
           progress: "NaN"
@@ -181,7 +190,8 @@
         -
           date: 2021-01-15
           status: paused
-          content: 暂时搁置。
+          content: >
+            暂时搁置。
         -
           date: 2021-01-02
           progress: 3
@@ -264,7 +274,7 @@
       news:
         -
           date: 2021-01-15
-          status: ongoing
+          status: almost_paused
         -
           progress: "NaN"
           status: paused
