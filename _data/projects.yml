@@ -18,14 +18,14 @@
       desc: 全站设计风格升级
       news:
         -
+          date: 2021-01-02
+          status: ongoing
+          progress: 1
+        -
           date: 2021-01-23
           status: almost_paused
           content: >
             计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。
-        -
-          date: 2021-01-02
-          status: ongoing
-          progress: 1
     - 
       id: .blog
       desc: 博客区
@@ -42,22 +42,22 @@
       url: https://dgck81lnn.github.io/apps/lab/brainfuck.html
       news:
         -
-          date: 2021-01-02
-          status: paused
-          phase: 2
-          progress: 1
-          content: 咕咕咕
+          status: ongoing
+          progress: "NaN"
+          content: >
+            目前本页虽然已基本完工，但我发现它的的性能还存在优化空间，
+            所以打算之后尝试改进一下。
         -
           date: 2020-12-12
           status: ongoing
           progress: "NaN"
           content: 界面小优化。
         -
-          status: ongoing
-          progress: "NaN"
-          content: >
-            目前本页虽然已基本完工，但我发现它的的性能还存在优化空间，
-            所以打算之后尝试改进一下。
+          date: 2021-01-02
+          status: paused
+          phase: 2
+          progress: 1
+          content: 咕咕咕
     -
       id: .apps.lab.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
@@ -77,14 +77,6 @@
       desc: 灵魂实验室：多功能实用工具
       news:
         -
-          date: 2021-01-15
-          status: paused
-          content: 暂时搁置。
-        -
-          date: 2021-01-11
-          content: >
-            “临时测试版”转移到[沙盒区](/sandbox)。
-        -
           date: 2021-01-05
           progress: 10
           status: ongoing
@@ -92,26 +84,27 @@
             此项目（原ID：`soul.apps.lab.lab`）已与`soul.apps.lab.classic`合并为`soul.apps.lab.swissknife`。
             [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）：
             只实现了部分基本功能，暂未制作正式的UI。
+        -
+          date: 2021-01-11
+          content: >
+            “临时测试版”转移到[沙盒区](/sandbox)。
+        -
+          date: 2021-01-15
+          status: paused
+          content: 暂时搁置。
     -
       id: .apps.lab.console
       desc: 灵魂实验室：控制台
       url: https://dgck81lnn.github.io/apps/lab/console.html
       news:
         -
-          date: 2021-01-21
-          status: almost_paused
-        -
-          date: 2021-01-16
-          status: prioritized
+          date: 2020-11-26
+          status: done
+          progress: 100
           content: >
-            为了在方便存储和读取存档的前提下实现`call`，
-            需要手动实现一个“调用堆栈”。
-        -
-          date: 2021-01-12
-          progress: 20
-          content: >
-            起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
-            由于任务增加，进度条已倒退。
+            已基本完工，不过尚未正式投入使用。
+            目前只有一个测试性程序：“Love with Richard under epidemic”。
+            目前可以在小站首页找到它的详细信息。
         -
           date: 2020-12-13
           status: ongoing
@@ -121,23 +114,30 @@
             二期工程启动，开始编写 Richard Markup 解释器。
             由“命令行”更名为“控制台”。
         -
-          date: 2020-11-26
-          status: done
-          progress: 100
+          date: 2021-01-12
+          progress: 20
           content: >
-            已基本完工，不过尚未正式投入使用。
-            目前只有一个测试性程序：“Love with Richard under epidemic”。
-            目前可以在小站首页找到它的详细信息。
+            起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
+            由于任务增加，进度条已倒退。
+        -
+          date: 2021-01-16
+          status: prioritized
+          content: >
+            为了在方便存储和读取存档的前提下实现`call`，
+            需要手动实现一个“调用堆栈”。
+        -
+          date: 2021-01-21
+          status: almost_paused
     -
       id: .apps.danceline
       desc: 舞线练习场（第3代）
       news:
         -
+          content: 由`dlc`更名为`danceline`
+        -
           date: 2021-01-11
           content: >
             舞线练习场第2代已上传到[遗留区](/legacy)。
-        -
-          content: 由`dlc`更名为`danceline`
     -
       id: .apps.captoin
       desc: 网页版歌词/字幕编辑器
@@ -163,14 +163,14 @@
       url: https://osu.ppy.sh/s/1182532
       news:
         -
-          date: 2021-01-23
-          status: paused
-        -
           progress: "NaN"
           status: ongoing
           content: >
             目前Insane难度正在制作中，
             Normal和Hard的节奏点也均已设计完成。
+        -
+          date: 2021-01-23
+          status: paused
     -
       id: .map.sine
       desc: osu! 自制谱：-Fm2- - Sine
@@ -188,10 +188,11 @@
       url: https://osu.ppy.sh/s/1228904
       news:
         -
-          date: 2021-01-15
+          progress: "NaN"
           status: paused
           content: >
-            暂时搁置。
+            目前Hard难度已制作完成，但我不满意；
+            其他难度尚未进行节奏点设计。
         -
           date: 2021-01-02
           progress: 3
@@ -200,11 +201,10 @@
             抛弃已制作的 Hard 难度，
             开始制作 Insane [Unforgettable] 难度。
         -
-          progress: "NaN"
+          date: 2021-01-15
           status: paused
           content: >
-            目前Hard难度已制作完成，但我不满意；
-            其他难度尚未进行节奏点设计。
+            暂时搁置。
     -
       id: .map.ode
       desc: osu! 自制谱：歌唱祖国
@@ -234,16 +234,16 @@
       desc: LNN跳舞的线饭制模板
       news:
         -
-          date: 2020-12-20
-          status: paused
-          content: >
-            由“LNN改良冰焰模板”更名为“LNN跳舞的线饭制模板”
-        -
           progress: 15
           status: ongoing
           content: >
             目前模板已初具雏形，但仍任重道远（雾）。
             最近打算开始（但尚未开始）制作可按节拍触发动画的Timing系统。
+        -
+          date: 2020-12-20
+          status: paused
+          content: >
+            由“LNN改良冰焰模板”更名为“LNN跳舞的线饭制模板”
 -
   id: music
   desc: 音乐
@@ -273,11 +273,11 @@
       desc: “转型”小马UP主的准备工作
       news:
         -
-          date: 2021-01-15
-          status: almost_paused
-        -
           progress: "NaN"
           status: paused
+        -
+          date: 2021-01-15
+          status: almost_paused
 -
   desc: 已结束项目
   projs:
@@ -286,12 +286,12 @@
       desc: 灵魂实验室-经典
       news:
         -
-          date: 2021-01-05
-          status: canceled
-          content: >
-            此项目已并入`soul.apps.lab.swissknife`。
-        -
           date: 2020-12-13
           status: may_cancel
           content: >
             此应用的功能可能会被`soul.apps.lab.console`代替。
+        -
+          date: 2021-01-05
+          status: canceled
+          content: >
+            此项目已并入`soul.apps.lab.swissknife`。

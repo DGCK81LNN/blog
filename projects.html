@@ -139,7 +139,7 @@ soulblog-style: |
         {% assign status = "not_started" -%}
         {%- assign phase = 1 -%}
         {%- assign progress = 0 -%}
-        {%- for news in project.news reversed -%}
+        {%- for news in project.news -%}
             {%- if news.status -%}
                 {%- assign status = news.status -%}
             {%- endif -%}
@@ -176,7 +176,7 @@ soulblog-style: |
                 <span>NEWS</span>
             </div>
             <ul class="project-news-list">
-                {% for news in project.news -%}
+                {% for news in project.news reversed -%}
                 <li>
                     {{ news.date | default: "（未知日期）" }}
 
