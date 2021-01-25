@@ -25,7 +25,12 @@
           date: 2021-01-23
           status: almost_paused
           content: >
-            计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。
+            计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。[临时测试页](/sandbox/bvtest.html)（将来会移除）
+        -
+          date: 2021-01-25
+          progress: 65
+          content: >
+            在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。
     - 
       id: .blog
       desc: 博客区
