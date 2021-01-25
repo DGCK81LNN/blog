@@ -1,6 +1,6 @@
 ---
 title: 实 验 室 制 取 锟 斤 拷
-tags: Ruby
+tags: ruby
 ---
 
 Ruby

@@ -47,6 +47,9 @@
       width: 100%;
       overflow-x: auto;
     }
+    .soulblog-content img {
+      max-width: 100%;
+    }
   </style>
   {% if page.soulblog-style -%}
   {{- page.soulblog-style
@@ -63,15 +66,13 @@
     <soul-header default-active="blog"></soul-header>
     <soul-main>
       <article>
-        <header>
-          <h1>{{ page.title | default: site.title }}</h1>
-          {% if page.collection == "posts" %}
-          <p class="soul-p2"><time>{{ page.date | date: "%Y-%m-%d" }}</time></p>
-          {% endif %}
-        </header>
         <div class="soulblog-content">{{content}}</div>
         {% if page.collection == "posts" %}
-        <footer>
+        <footer class="soul-p2">
+          <address>
+            DGCK81LNN &middot;
+            <time>{{ page.date | date: "%Y-%m-%d" }}</time>
+          </address>
           <p>上一篇：{% if page.previous %}<a rel=prev href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（前面没有了）{% endif %}</p>
           <p>下一篇：{% if page.next %}<a rel=next href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
         </footer>

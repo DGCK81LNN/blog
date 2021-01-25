@@ -2,4 +2,8 @@ title: LNN的博客！
 plugins:
   - jekyll-seo-tag
   - jekyll-default-layout
+  - jekyll-titles-from-headings
   - jekyll-optional-front-matter
+titles_from_headings:
+  enabled: true
+  collections: true
