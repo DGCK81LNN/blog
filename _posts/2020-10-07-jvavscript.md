@@ -1,7 +1,8 @@
 ---
-title: "JvavScript"
-tags: "深奥编程语言 js"
+tags: esolang js
 ---
+
+# JvavScript
 
 **JvavScript**是我提出的一个基于JavaScript的深奥编程语言，是JavaScript的一个子集，也是[JSFuck](https://esolangs.org/wiki/JSFuck)的一个超集。JvavScript代码符合JavaScript表达式的语法，然而只能使用有限的几种字符：
 ```

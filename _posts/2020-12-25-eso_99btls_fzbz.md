@@ -1,7 +1,8 @@
 ---
-title: "brainf和Befunge 99Bottles 和 FizzBuzz"
-tags: "深奥编程语言"
+tags: esolang
 ---
+
+# brainf和Befunge 99Bottles 和 FizzBuzz
 
 ## 99bottles.b
 

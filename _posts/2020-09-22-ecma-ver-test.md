@@ -1,7 +1,8 @@
 ---
-title: "鉴别浏览器ECMAScript版本"
-tags: "js"
+tags: js
 ---
+
+# 鉴别浏览器ECMAScript版本
 
 所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。
 

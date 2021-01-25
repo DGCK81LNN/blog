@@ -1,7 +1,8 @@
 ---
-title: "OHHHH，brainfuck自产生程序！"
-tags: "深奥编程语言"
+tags: esolang
 ---
+
+# OHHHH，brainfuck自产生程序！
 
 ```brainfuck
 brainf 自产生程序 quine: 输出自身源代码

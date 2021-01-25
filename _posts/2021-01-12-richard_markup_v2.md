@@ -1,5 +1,4 @@
 ---
-title: "Richard Markup 帮助文档 v2"
 soulblog-footer-links:
   -
     href: "https://github.com/DGCK81LNN/LoveWithRichard"
@@ -8,6 +7,8 @@ soulblog-footer-links:
     href: "https://dgck81lnn.github.io/apps/lab/console.html?path=/res/down/SoulLC/LoveWithRichard.soullc.mjs"
     text: "LoveWithRichard V3 网页版"
 ---
+
+# Richard Markup 帮助文档 v2
 
 **Richard Markup** 是我专为 Richard （[@天府灵山行者](https://space.bilibili.com/300711293)）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。
 
