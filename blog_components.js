@@ -52,7 +52,10 @@ Vue.component('soul-blog-footer', {
         </section>
         <section class="soul-footer-col">
             <h5>©2020 DGCK81LNN.</h5>
-            <p><a href="https://github.com/DGCK81LNN/blog">本站源代码（GitHub）</a></p>
+            <p>
+                <a href="https://github.com/DGCK81LNN/blog"><img src="https://img.shields.io/badge/-在GitHub上查看-222222?logo=github" alt="在GitHub上查看源代码"></a>
+                <img src="https://img.shields.io/badge/许可证-CC_BY--SA_4.0-orange" alt="许可证：CC BY-SA 4.0">
+            </p>
             <p>
                 本站（LNN的博客！）内容除另有声明外，<br>均采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank">CC BY-SA 4.0 国际许可协议</a>进行许可。<br>
                 <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="/cc_by-sa_4.0_88x31.png"/></a>
