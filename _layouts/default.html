@@ -65,6 +65,14 @@
       {% endfor %}
     ]"{% endif %}></soul-footer>
   </div>
+  {% if page.soulblog-script-before -%}
+  {{ page.soulblog-script-before
+    | prepend: "script>"
+    | prepend: "<"
+    | append: "</"
+    | append: "script>"
+  }}
+  {%- endif %}
   <script>
     const vm = new Vue(
       Object.assign(
@@ -73,8 +81,8 @@
       )
     );
   </script>
-  {% if page.soulblog-script -%}
-  {{ page.soulblog-script
+  {% if page.soulblog-script-after -%}
+  {{ page.soulblog-script-after
     | prepend: "script>"
     | prepend: "<"
     | append: "</"

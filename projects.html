@@ -2,11 +2,10 @@
 title: Project 记录表
 layout: default
 soulblog-style: |
-    .project-group {
-        flex-wrap: wrap;
+    .project-namespace {
+        margin: 2em 0 1em;
     }
     .project {
-        width: 267px;
         margin: 1rem 8px;
         overflow: visible;
     }
@@ -14,47 +13,30 @@ soulblog-style: |
         float: right;
         padding: 3px 0;
     }
-
-    .project-news {
-        position: relative;
-    }
-    .project-news .project-news-label {
-        color: var(--soul-color-theme);
-        font-size: 14px;
+    .project-news-label {
         text-align: center;
     }
-    .project-news .project-news-list {
-        position: absolute;
-        z-index: 2;
-
-        box-sizing: border-box;
-        width: 100%;
+    .project-news-list {
         max-height: 350px;
         overflow-y: auto;
-
-        background-color: white;
-        padding: 1rem 1rem 1rem 2.5rem;
-        font-size: 13px;
-        border: 1px solid var(--soul-color-border-2);
-        border-radius: 4px;
-        box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-
-        visibility: collapse;
-        opacity: 0;
-        transition: opacity 0.3s, visibility 0.3s;
     }
-    .project-news:hover .project-news-list,
-    .project-news:focus-within .project-news-list {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .project-news .project-news-list li {
-        margin-bottom: 1rem;
-    }
-    .project-news .project-news-list p {
-        margin-top: 0;
-    }
+soulblog-script-before: |
+    Vue.component('project-popover', {
+        props: ["id"],
+        template: `
+            <div class="project-news-label">
+                <b-link :id="id + '__button'">
+                    <b-icon icon="app-indicator" aria-hidden="true"></b-icon>
+                    NEWS
+                </b-link>
+                <b-popover
+                :target="id + '__button'"
+                :triggers="['hover', 'focus']"
+                class="project-news-popover"
+                ><slot/></b-popover>
+            </div>
+        `
+    });
 ---
 
 <h1>Project 记录表</h1>
@@ -105,7 +87,7 @@ soulblog-style: |
 </table>
 
 {% for namespace in site.data.projects -%}
-<h2>
+<h2 class="project-namespace">
     {% if namespace.id -%}
     <code>{{ namespace.id }}</code> -
     {%- endif %}
@@ -170,11 +152,7 @@ soulblog-style: |
         {% if project.news -%}
         
         <template #footer>
-            <div class="project-news">
-                <div class="project-news-label">
-                    <b-icon icon="app-indicator" aria-hidden="true"></b-icon>
-                    NEWS
-                </div>
+            <project-popover id="project-news_{{ namespace.id | append: '.' | default: '' }}{{ project.id }}">
                 <ul class="project-news-list">
                     {% for news in project.news reversed -%}
                     <li>
@@ -209,7 +187,7 @@ soulblog-style: |
                     </li>
                     {% endfor %}
                 </ul>
-            </div>
+            </project-popover>
         </template>
         {%- endif %}
     </b-card>
