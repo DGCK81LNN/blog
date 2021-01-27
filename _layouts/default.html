@@ -9,17 +9,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="format-detection" content="telephone=no">
-  <link rel="stylesheet" href="/lib/element.css">
   <link rel="stylesheet" href="/css/commons.css">
   <link rel="stylesheet" href="/lib/prism.css">
   <link rel="icon" href="/site_icon.png">
   <link rel="shortcut icon" href="/site_icon.png">
   <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
-  <script src="/js/tests.js"></script>
-  <!--<script src="/lib/vue.min.js"></script>-->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
   <script src="/lib/prism.js"></script>
   <script src="/js/commons.js"></script>
   {% seo %}
@@ -27,25 +26,6 @@
     .soulblog-content {
       line-height: 1.5;
       color: var(--soul-color-text-normal);
-    }
-    .soulblog-content p {
-      font-size: inherit;
-    }
-    .soulblog-content table {
-      overflow-x: auto;
-    }
-    .soulblog-content td,
-    .soulblog-content th {
-      border-radius: 4px;
-      background: #ebeef5;
-    }
-    .soulblog-content th {
-      text-align: center;
-    }
-    .soulblog-content table {
-      display: block;
-      width: 100%;
-      overflow-x: auto;
     }
     .soulblog-content img {
       max-width: 100%;
@@ -63,7 +43,7 @@
 
 <body>
   <div id="app">
-    <soul-header default-active="blog"></soul-header>
+    <soul-header></soul-header>
     <soul-main>
       <article>
         <div class="soulblog-content">{{content}}</div>

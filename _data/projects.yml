@@ -31,6 +31,11 @@
           progress: 65
           content: >
             在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。
+        -
+          date: 2021-01-27
+          progress: 100
+          content: >
+            已全面应用BootstrapVue。如无故障，一段时间后此项目将变为`done`状态。
     - 
       id: .blog
       desc: 博客区

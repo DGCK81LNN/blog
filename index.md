@@ -8,9 +8,9 @@ soulblog-footer-links:
     text: '洛谷网博客'
 ---
 
-欢迎来到<strong style="color:#3ba">DGCK81LNN的博客！</strong>！
+欢迎来到<strong>DGCK81LNN的博客！</strong>！
 
-***（新增）*** [我的 Project 记录表](projects.html)
+<p><b-button href="projects.html" variant=primary>我的 Project 记录表</b-button></p>
 
 ### 所有文章
 

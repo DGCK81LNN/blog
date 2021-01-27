@@ -57,51 +57,52 @@ soulblog-style: |
     }
 ---
 
-<figure>
-    <table>
-        <thead>
-            <tr>
-                <th>状态
-                <th>含义
-                <th>解释
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>not_started</code>
-                <td>未启动
-                <td>项目处于规划阶段，尚未开始实施
-            <tr>
-                <td><code>ongoing</code>
-                <td>进行中
-                <td>项目会不定期地有进展
-            <tr>
-                <td><code>prioritized</code>
-                <td>优先进行
-                <td>项目会优先进行
-            <tr>
-                <td><code>almost_paused</code>
-                <td>近乎暂停
-                <td>各种原因导致项目偶尔才会有进展
-            <tr>
-                <td><code>paused</code>
-                <td>已暂停
-                <td>各种原因导致项目暂时不会有进展
-            <tr>
-                <td><code>may_cancel</code>
-                <td>可能弃坑
-                <td>由于近期失去兴趣，项目可能会弃坑
-            <tr>
-                <td><code>canceled</code>
-                <td>已弃坑
-                <td>项目已弃坑
-            <tr>
-                <td><code>done</code>
-                <td>已完成
-                <td>项目已完工
-        </tbody>
-    </table>
-    <figcaption>项目状态含义表</figcaption>
-</figure>
+<h1>Project 记录表</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan=3>项目状态含义表
+        <tr>
+            <th>状态
+            <th>含义
+            <th>解释
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>not_started</code>
+            <td>未启动
+            <td>项目处于规划阶段，尚未开始实施
+        <tr>
+            <td><code>ongoing</code>
+            <td>进行中
+            <td>项目会不定期地有进展
+        <tr>
+            <td><code>prioritized</code>
+            <td>优先进行
+            <td>项目会优先进行
+        <tr>
+            <td><code>almost_paused</code>
+            <td>近乎暂停
+            <td>各种原因导致项目偶尔才会有进展
+        <tr>
+            <td><code>paused</code>
+            <td>已暂停
+            <td>各种原因导致项目暂时不会有进展
+        <tr>
+            <td><code>may_cancel</code>
+            <td>可能弃坑
+            <td>由于近期失去兴趣，项目可能会弃坑
+        <tr>
+            <td><code>canceled</code>
+            <td>已弃坑
+            <td>项目已弃坑
+        <tr>
+            <td><code>done</code>
+            <td>已完成
+            <td>项目已完工
+    </tbody>
+</table>
 
 {% for namespace in site.data.projects -%}
 <h2>
@@ -115,22 +116,19 @@ soulblog-style: |
     {%- endif %}
 </h2>
 
-<el-container class="project-group">
+<b-card-group deck class="project-group">
     {% for project in namespace.projs -%}
-    <el-card
-    shadow="hover"
-    class="project"
-    >
+    <b-card class="project">
         <div slot="header" class="clearfix">
             <span>
                 <code>{{ project.id }}</code>
             </span>
             {% if project.url -%}
-            <el-link
-            type="primary"
+            <b-link
             class="project-link"
+            target=_blank
             href="{{ project.url | escape }}"
-            >进入</el-link>
+            >进入</b-link>
             {%- endif %}
         </div>
 
@@ -170,48 +168,51 @@ soulblog-style: |
         </div>
 
         {% if project.news -%}
-        <section class="project-news">
-            <div class="project-news-label">
-                <i class="el-icon-news"></i>
-                <span>NEWS</span>
+        
+        <template #footer>
+            <div class="project-news">
+                <div class="project-news-label">
+                    <b-icon icon="app-`indicator" aria-hidden="true"></b-icon>
+                    NEWS
+                </div>
+                <ul class="project-news-list">
+                    {% for news in project.news reversed -%}
+                    <li>
+                        {{ news.date | default: "（未知日期）" }}
+
+                        {% if news.phase -%}
+                        <div>
+                            <strong>进入 {{ news.phase }} 期工程</strong>
+                        </div>
+                        {%- endif -%}
+
+                        {% if news.status -%}
+                        <div>
+                            <strong>状态：</strong>
+                            <code>{{ news.status }}</code>
+                        </div>
+                        {%- endif -%}
+
+                        {% if news.progress -%}
+                        <div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="{{ news.progress }}"></meter>
+                            {{ news.progress }}%
+                        </div>
+                        {%- endif -%}
+
+                        {%- if news.content -%}
+                        <div>
+                            {{ news.content | markdownify }}
+                        </div>
+                        {%- endif -%}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
-            <ul class="project-news-list">
-                {% for news in project.news reversed -%}
-                <li>
-                    {{ news.date | default: "（未知日期）" }}
-
-                    {% if news.phase -%}
-                    <div>
-                        <strong>进入 {{ news.phase }} 期工程</strong>
-                    </div>
-                    {%- endif -%}
-
-                    {% if news.status -%}
-                    <div>
-                        <strong>状态：</strong>
-                        <code>{{ news.status }}</code>
-                    </div>
-                    {%- endif -%}
-
-                    {% if news.progress -%}
-                    <div>
-                        <strong>进度：</strong>
-                        <meter max=100 value="{{ news.progress }}"></meter>
-                        {{ news.progress }}%
-                    </div>
-                    {%- endif -%}
-
-                    {%- if news.content -%}
-                    <div>
-                        {{ news.content | markdownify }}
-                    </div>
-                    {%- endif -%}
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
+        </template>
         {%- endif %}
-    </el-card>
+    </b-card>
     {% endfor %}
-</el-container>
+</b-card-group>
 {% endfor %}
