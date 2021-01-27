@@ -5,5 +5,5 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
 titles_from_headings:
-  enabled: true
   collections: true
+excerpt_separator: "\n\n\n"

@@ -8,7 +8,10 @@ tags: esolang js
 ```
 ( ) [ ] < > + - ! , = ? : _ $
 ```
+
+
 并且为了使代码稍简洁些，定义了几个常量：
+
 ```js
 const _ = alert, __ = prompt, $ = String.fromCharCode, $$ = this;
 ```

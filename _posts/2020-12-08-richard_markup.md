@@ -12,6 +12,7 @@ soulblog-footer-links:
 
 **Richard Markup** 是我专为 Richard （[@天府灵山行者](https://space.bilibili.com/300711293)）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。
 
+
 ## 文件结构
 
 Richard Markup 存储为`.richard`扩展名的文件，格式与 HTML 和 XML 有些相似，使用 UTF-8 或 GB-18030 编码。

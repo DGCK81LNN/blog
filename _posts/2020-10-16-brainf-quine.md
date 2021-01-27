@@ -4,6 +4,7 @@ tags: esolang
 
 # OHHHH，brainfuck自产生程序！
 
+
 ```brainfuck
 brainf 自产生程序 quine: 输出自身源代码
 by DGCK81LNN

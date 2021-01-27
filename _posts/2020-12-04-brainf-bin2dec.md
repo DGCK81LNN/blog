@@ -5,6 +5,8 @@ tags: esolang
 # brainfuck二进制转十进制
 
 *欸――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，欸……我写了个程序，二进制转十进制：*
+
+
 ```cpp
 #include<iostream>
 #include<cmath>
@@ -22,7 +24,9 @@ int main() {
     return 0;
 }
 ```
+
 *但是超过(2^20-1)了就不好用，L老师你能不能教教我更好的方法，帮助治疗一下我的程序。他一说我啪地就站起来了，很快啊！我说你这个没用，我这个有用：*
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -39,6 +43,7 @@ int main() {
     return 0;
 }
 ```
+
 *当时就流眼泪了，他说L老师对不――对不起，我是……他说他是乱写的，他可不是乱写的啊！取模、乘方、整除，训练有素。后来他说他学过三四个星期算法，啊看来是――有备而来。我劝！这位同学――耗子尾汁，好好反思，以后――不要再犯――这样的聪明*（指把二进制当作十进制读入）*，小聪明啊！*
 
 <!--硬核彩条屏--><div style="height:30rem;width:100%;max-width:50rem"><div style="height:70%"><div style="width:14.2857%;height:100%;display:inline-block;background:#ccc"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#cc1"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1cc"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1c1"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#c1c"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#c11"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#11c"> </div></div><div style="height:10%"><div style="width:14.2857%;height:100%;display:inline-block;background:#11c"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#111"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#c1c"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#111"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1cc"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#111"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1c1"> </div></div><div style="height:20%"><div style="width:17.8571%;height:100%;display:inline-block;background:#118"> </div><div style="width:17.8571%;height:100%;display:inline-block;background:#eee"> </div><div style="width:17.8571%;height:100%;display:inline-block;background:#51c"> </div><div style="width:46.4285%;height:100%;display:inline-block;background:linear-gradient(to right,#111,#ccc)"> </div></div></div>

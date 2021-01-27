@@ -16,6 +16,7 @@ str.force_encoding('gbk')
 puts str.encode('utf-8', encodeOpt)
 ```
 
+
 ```
 锟斤拷茫锟斤拷锟斤拷纾�
 ```

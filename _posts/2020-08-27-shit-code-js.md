@@ -8,8 +8,8 @@ tags: js
 console.log((![]+[])[+[]]+(![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]); // "fail"
 ```
 
+<p style="font-size:3em">这就nm离谱</p>
 
-<big style="font-size:3em">这就nm离谱</big>
 
 ### 讲解
 

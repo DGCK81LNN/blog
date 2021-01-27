@@ -4,6 +4,7 @@ tags: shitpost
 
 # A S C I I 简 谱
 
+
 ```
 XX          XX                        XX
 ==          ==                        ==

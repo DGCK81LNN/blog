@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "jekyll b -d E:\\LNN\\Coding\\3luo\\3luo.jedoo.com\\blog & @echo \u0007",
+            "command": "jekyll b --watch -d E:\\LNN\\Coding\\3luo\\3luo.jedoo.com\\blog",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

@@ -14,6 +14,7 @@ soulblog-footer-links:
 
 Richard Markup **v2** 抛弃了形似 HTML 的“标签”语法，混合使用缩进和大括号来表示文档结构。
 
+
 ## 文件结构
 
 Richard Markup 存储为`.richard`扩展名的文件。

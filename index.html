@@ -1,0 +1,35 @@
+---
+layout: default
+soulblog-footer-links: 
+  - 
+    href: 'https://www.mywiki.cn/dgck81lnn'
+    text: '旧博客站'
+  -
+    href: 'https://dgck81lnn.blog.luogu.org'
+    text: '洛谷网博客'
+soulblog-style: |
+  .read-all { display: block; text-align: center; }
+---
+
+<p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
+
+<p><b-button href="projects.html" variant=primary>我的 Project 记录表</b-button></p>
+
+<h2>所有文章</h2>
+
+<b-card-group deck>
+{% for post in site.posts %}
+  <b-card class="mt-1 mb-5">
+    <template #header><time>{{ post.date | date: "%Y-%m-%d" }}</time></template>
+    <article>
+      {{ post.excerpt | markdownify }}
+    </article>
+    <template #footer>
+      <b-link href="/blog{{ post.url }}" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+{% endfor %}
+</b-card-group>
