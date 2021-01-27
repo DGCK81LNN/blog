@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="cmn">
+<html lang=cmn>
 <!--
   这是灵魂小站 / 博客!
   ID: blog // soulblog
@@ -21,6 +21,7 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
   <script src="/lib/prism.js"></script>
   <script src="/js/commons.js"></script>
+  <script src="/blog/blog_components.js"></script>
   {% seo %}
   <style>
     .soulblog-content {
@@ -87,11 +88,11 @@
         {% endif %}
       </article>
     </soul-main>
-    <soul-footer {% if page.soulblog-footer-links %} :links="[
+    <soul-blog-footer {% if page.soulblog-footer-links %} :links="[
       {% for link in page.soulblog-footer-links %}
       { href: '{{ link.href | replace:"'","\\'" | escape }}', text: '{{ link.text | replace:"'","\\'" | escape }}' },
       {% endfor %}
-    ]"{% endif %}></soul-footer>
+    ]"{% endif %}></soul-blog-footer>
   </div>
   {% if page.soulblog-script-before -%}
   {{ page.soulblog-script-before
