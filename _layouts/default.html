@@ -24,26 +24,42 @@
   <script src="/blog/blog_components.js"></script>
   {% seo %}
   <style>
-    .soulblog-content img {
+    .soulblog-content>img {
       max-width: 100%;
     }
 
-    .soulblog-content table {
+    .soulblog-content>table {
       margin-bottom: 1rem;
       color: #212529
     }
-    .soulblog-content table th,
-    .soulblog-content table td {
+    .soulblog-content>table th,
+    .soulblog-content>table td {
       padding: .75rem;
       vertical-align: top;
       border-top: 1px solid #dee2e6
     }
-    .soulblog-content table thead th {
+    .soulblog-content>table thead th {
       vertical-align: bottom;
       border-bottom: 2px solid #dee2e6
     }
-    .soulblog-content table tbody+tbody {
+    .soulblog-content>table tbody+tbody {
       border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content>blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
     }
   </style>
   {% if page.soulblog-style -%}
