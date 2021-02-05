@@ -13,29 +13,6 @@
   desc: 灵魂小站
   url: https://dgck81lnn.github.io/
   projs:
-    -
-      id: .css
-      desc: 全站设计风格升级
-      news:
-        -
-          date: 2021-01-02
-          status: ongoing
-          progress: 1
-        -
-          date: 2021-01-23
-          status: almost_paused
-          content: >
-            计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。[临时测试页](/sandbox/bvtest.html)（将来会移除）
-        -
-          date: 2021-01-25
-          progress: 65
-          content: >
-            在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。
-        -
-          date: 2021-01-27
-          progress: 100
-          content: >
-            已全面应用BootstrapVue。如无故障，一段时间后此项目将变为`done`状态。
     - 
       id: .blog
       desc: 博客区
@@ -216,17 +193,6 @@
           content: >
             暂时搁置。
     -
-      id: .map.ode
-      desc: osu! 自制谱：歌唱祖国
-      news:
-        -
-          progress: "NaN"
-          status: may_cancel
-          content: >
-            谱面未上传。
-            目前Easy、Normal、Hard、Insane难度的节奏点均已设计完毕，
-            但尚未开始制谱，只做了Timing。
-    -
       id: .skin
       desc: 自制皮肤
       news:
@@ -239,6 +205,18 @@
   id: dlfm
   desc: 跳舞的线饭制
   projs:
+    -
+      id: .level.samsara
+      desc: 饭制关卡“新轮回”
+      news:
+        -
+          date: 2021-02-02
+          progress: 60
+          status: paused
+          content: >
+            更新到60%（[视频](https://www.bilibili.com/video/BV16r4y1K7P5)），
+            但目前不会再继续更新。
+            待`dlfm.template`进行到一定程度后会用它来重制此饭制关卡。
     -
       id: .template
       desc: LNN跳舞的线饭制模板
@@ -254,6 +232,20 @@
           status: paused
           content: >
             由“LNN改良冰焰模板”更名为“LNN跳舞的线饭制模板”
+        -
+          date: 2021-02-02
+          status: almost_paused
+          content: |
+            由于不再定位为“改良冰焰模板”，移除了工程中属于冰焰模板的代码。
+            又因为有了一些新的构思，也移除了之前编写的场景动画脚本。
+            目前只有线头逻辑、皮肤逻辑已经编写完成，
+            必须先把游戏的基本内容（摄像机、钻石、皇冠、复活、金字塔逻辑）制作完成，
+            然后才能开始重新开发动画系统。
+            
+            目前关于动画系统的构思是要有一个全关卡各个物体的时间轴，
+            在那里统一设计场景中各种基于音乐时间的动画（而不是逐个设置物体的脚本参数）。
+            动画的触发时机一般不是基于秒数计算，而是基于音乐的节拍；
+            必要时，也可以使用触发器来触发动画。
 -
   id: music
   desc: 音乐
@@ -267,6 +259,14 @@
           status: paused
           content: >
             目前底谱已基本完成，等待黑化（
+        -
+          date: 2021-01-31
+          status: almost_paused
+          progress: 50
+          content: >
+            借助[musicpy](https://github.com/Rainbow-Dreamer/musicpy)
+            （见[这篇博客](https://dgck81lnn.github.io/blog/2021/01/25/note_art_with_musicpy.html)）
+            成功量产了一些音符画。
     -
       id: .chip.running
       desc: FamiTracker 芯片音乐制作（试水）：大课间跑步音乐
@@ -291,6 +291,46 @@
 -
   desc: 已结束项目
   projs:
+    -
+      id: osu.map.ode
+      desc: osu! 自制谱：歌唱祖国
+      news:
+        -
+          progress: "NaN"
+          status: may_cancel
+          content: >
+            谱面未上传。
+            目前Easy、Normal、Hard、Insane难度的节奏点均已设计完毕，
+            但尚未开始制谱，只做了Timing。
+        -
+          date: 2021-02-04
+          status: canceled
+    -
+      id: soul.css
+      desc: 全站设计风格升级
+      news:
+        -
+          date: 2021-01-02
+          status: ongoing
+          progress: 1
+        -
+          date: 2021-01-23
+          status: almost_paused
+          content: >
+            计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。[临时测试页](/sandbox/bvtest.html)（将来会移除）
+        -
+          date: 2021-01-25
+          progress: 65
+          content: >
+            在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。
+        -
+          date: 2021-01-27
+          progress: 100
+          content: >
+            已全面应用BootstrapVue。如无故障，一段时间后此项目将变为`done`状态。
+        -
+          date: 2021-02-04
+          status: done
     -
       id: soul.apps.lab.classic
       desc: 灵魂实验室-经典
