@@ -69,7 +69,7 @@
           status: ongoing
           content: >
             此项目（原ID：`soul.apps.lab.lab`）已与`soul.apps.lab.classic`合并为`soul.apps.lab.swissknife`。
-            [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）：
+            [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）
             只实现了部分基本功能，暂未制作正式的UI。
         -
           date: 2021-01-11
@@ -267,6 +267,11 @@
             借助[musicpy](https://github.com/Rainbow-Dreamer/musicpy)
             （见[这篇博客](https://dgck81lnn.github.io/blog/2021/01/25/note_art_with_musicpy.html)）
             成功量产了一些音符画。
+        -
+          date: 2021-02-19
+          progress: 80
+          content: |
+            近期通过musicpy生成了更多音符画，谱已接近完善。
     -
       id: .chip.running
       desc: FamiTracker 芯片音乐制作（试水）：大课间跑步音乐
@@ -274,6 +279,10 @@
         -
           progress: 40
           status: paused
+        -
+          date: 2021-02-19
+          progress: 70
+          status: almost_paused
 -
   id: pone
   desc: B站视频投稿
