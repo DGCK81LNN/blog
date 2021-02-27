@@ -181,7 +181,7 @@ JS：
 function sts(string) {
     var out = "";
     [...string].forEach(char => {
-        let codePoint = str.codePointAt(char),
+        let codePoint = char.codePointAt(0),
             shifter = -1,
             temp = codePoint;
         while (temp & -2) {
