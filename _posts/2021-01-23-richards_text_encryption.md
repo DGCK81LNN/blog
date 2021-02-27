@@ -125,7 +125,7 @@ def stn(string):
     for char in string:
         encoded += str(num10t2(ord(char))); # 对char的代码点调用了num10t2()
         encoded += '2'
-    return int(encoded) # HACK: 为什么要转成int？？？
+    return int(encoded) # ???: 为什么要转成int？？？
 
 def num10t2(decimal):
     """把正整数用二进制表示。
@@ -138,7 +138,7 @@ def num10t2(decimal):
         decimal = int(decimal / 2) # OPTIMIZE: decimal >>= 1 它不香吗？
     for i in range(len(reversedBinary)):
         binary += reversedBinary[len(reversedBinary) - i - 1]
-    return int(binary) # HACK: 为什么要转成int？？？
+    return int(binary) # ???: 为什么要转成int？？？
 
 def nts(encoded):
     """解码“encode()”生成的密文。
@@ -185,7 +185,7 @@ function sts(string) {
             shifter = -1,
             temp = codePoint;
         while (temp & -2) {
-            temp >>>= 1;
+            temp >>= 1;
             shifter <<= 1;
         }
         out += String.fromCodePoint(codePoint ^ ~shifter);
@@ -233,7 +233,7 @@ end
 顺便用按位运算重新实现了`num10t2()`和`num2t10()`：
 
 ```python
-def toBin(bin):
+def fromBin(bin):
     assert isinstance(bin, str) # 永远不要把二进制数转换成int！！
     dec = 0
     for i in bin:
@@ -242,7 +242,7 @@ def toBin(bin):
             dec |= 1
     return dec
 
-def fromBin(dec):
+def toBin(dec):
     assert isinstance(dec, int)
     assert dec > 0
     bin = ""
