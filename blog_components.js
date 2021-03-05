@@ -9,7 +9,7 @@ Vue.component('soul-blog-header', {
     <b-navbar
     variant=light
     class="shadow soul-header">
-        <b-navbar-brand href="/">
+        <b-navbar-brand href="/blog">
             <img
             src="https://dgck81lnn.github.io/site_icon.png"
             class="align-middle"
