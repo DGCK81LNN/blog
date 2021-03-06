@@ -195,121 +195,57 @@ export default async function video<T extends "aid" | "bvid">(type: T, id: T ext
 </html>
 ```
 
-## Wiki Markup
+## ruby
 
-以下代码来自<https://www.mywiki.cn/dgck81lnn/index.php?title=%E5%86%B0%E4%B8%8E%E7%81%AB%E4%B9%8B%E8%88%9E%E8%87%AA%E5%88%B6%E5%85%B3%E5%8D%A1%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90&oldid=59751>
+```ruby
+subj, act, expl = [gets, gets, gets].map { |s| s.strip }
+puts <<END
+#{subj}#{act}是怎么回事呢？#{subj}相信大家都很熟悉，但是#{subj}#{act}是怎么回事呢，下面就让小编带大家一起了解吧。
+#{subj}#{act}，其实就是#{expl}，大家可能会很惊讶#{subj}怎么会#{act}呢？但事实就是这样，小编也感到非常惊讶。
+这就是关于#{subj}#{act}的事情了，大家有什么想法呢，欢迎在评论区告诉小编一起讨论哦！
+END
+```
 
-```wiki
-{| class="wikitable" style="float:right"
-|-
-|<html><img src="http://i.17173cdn.com/0561y4/YWxqaGBf/gamebase/screenshot/DEDPfgbnbFmcAlF.jpg" style="width:300px"></html>
-截图来自网络
-|}
+```ruby
+s0 = 0.0002908882045634
+c0 = (1 - s0 ** 2) ** 0.5
+s, c, n = s0, c0, 1
+while n <= 5400
+    puts format "sin %2d° %2d' = %.9f", n / 60, n % 60, s
+    n += 1
+    s = s * c0 + c * s0
+    c = (1 - s ** 2) ** 0.5
+end
+```
 
-前段时间在Steam上买了'''冰与火之舞'''。这是一款节奏类游戏，它的玩法比较独特，把音符的时值映射成了路径的夹角。（具体玩法不在此赘述。）此游戏具有内置关卡编辑器，并且可以通过Steam创意工厂分享自制关卡。
+## C++
 
-编辑器会将关卡保存为<code>.adofai</code>文件，音频和图像、视频等放在同一目录下。用文本编辑器打开<code>.adofai</code>文件，发现是JSON格式。这样就好办了，我会用树形图来表示这些数据的结构。
-__NOTOC__
-==格式示例==
+以下代码来自<https://www.luogu.com.cn/record/40823805>
 
-节点格式：<span style="border:1px solid black">类型 '''键''': 说明</span>
+```cpp
+#include <iostream>
+using namespace std;
 
-类型：N=数字 S=字符串 A=数组 O=对象
+const int dim = 16384;
+int a[dim], b[dim], g[dim], k[dim];
+int n;
+int x, y;
 
-<div class="treeview">
-*O: 根对象
-**N '''code''': 一个数字
-**A '''settings''': 数组可能代表列表或矢量；出现列表时，只举其中一项为例
-***O: 列表里的一个对象
-****S '''name''': 一个字符串
-</div>
-
-注意：<code>.adofai</code>文件目前'''不使用布尔值'''，而是用字符串<code>Enabled</code>或<code>Disabled</code>代替。
-
-==主体格式==
-<div class="treeview">
-*O: 根对象
-**S '''pathData''': 路径信息（后文会详细讲解）
-**O '''settings''': 关卡设置
-***N '''version''': 格式版本号。目前的版本号是2
-**: 关卡设置：
-***S '''artist''': 音乐作者
-***S '''song''': 标题
-***S '''author''': 关卡作者
-***S '''separateCountdownTime''': ？疑似未使用（<code>Enabled</code>或<code>Disabled</code>）
-***S '''previewImage''': 关卡传送门图片
-***S '''previewIcon''': 关卡图标
-***S '''previewIconColor''': 关卡图标颜色（HEX色号不含井号）
-***S '''previewSongStart''': 音乐预览开始时间（秒）
-***S '''previewSongDuration''': 音乐预览持续时间（秒）
-***S '''seizureWarning''': 癫痫警告（<code>Enabled</code>或<code>Disabled</code>）
-***S '''levelDesc''': 关卡描述
-***S '''levelTags''': 关卡标签（半角逗号分隔）
-***S '''artistPermission''': 艺术家授权证明图片（相对路径）
-***S '''artistLinks''': 艺术家链接
-***N '''difficulty''': 难度星级（1到10的整数）
-**: 歌曲设置：
-***S '''songFilename''': 音乐文件（相对路径）
-***N '''bpm''': 初始BPM（每旋转180°算作一拍）
-***N '''volume''': 音量%
-***N '''offset''': 音乐偏移量（第一次点击时音乐已播放的毫秒数）
-***N '''pitch''': 音乐播放速率/音高%
-***S '''hitsound''': 打拍声（可能的值：<code>Hat</code>，<code>Kick</code>，<code>Shaker</code>，<code>Sizzle</code>，<code>Chuck</code>，<code>ShakerLoud</code>，<code>None</code>）
-***N '''hitsoundVolume''': 打拍声音量%
-***N '''countdownTicks''': 倒数拍数
-**: 初始轨道设置：
-***N '''trackColorType''': 轨道颜色模式（可能的值：<code>Single</code>，<code>Stripes</code>，<code>Glow</code>，<code>Blink</code>，<code>Switch</code>，<code>Rainbow</code>）
-***S '''trackColor''': 轨道色调（HEX色号不含井号；<code>Rainbow</code>模式忽略此项）
-***S '''secondaryTrackColor''': 轨道副色调（HEX色号不含井号；<code>Single</code>、<code>Rainbow</code>模式忽略此项）
-***: （<code>Single</code>、<code>Stripes</code>模式忽略以下三项）
-***N '''trackColorAnimDuration''': 色彩动画持续时间（秒）
-***S '''trackColorPulse''': 颜色脉冲类型（可能的值：<code>None</code>、<code>Forward</code>、<code>Backward</code>）
-***N '''trackPulseLength''': 颜色脉冲持续时间（秒）
-***S '''trackStyle''': 轨道风格（可能的值：<code>Standard</code>，<code>Neon</code>，<code>NeonLight</code>，<code>Basic</code>，<code>Gems</code>）
-***S '''trackAnimation''': 轨道出现动画（可能的值：<code>None</code>，<code>Assemble</code>，<code>Assemble_Far</code>，<code>Extend</code>，<code>Grow</code>，<code>Grow_Spin</code>，<code>Fade</code>，<code>Drop</code>，<code>Rise</code>）
-***N '''beatsAhead''': 方块提前几拍出现（至少为1）
-***S '''trackDisappearAnimation''': 轨道消失动画（可能的值：<code>None</code>，<code>Scatter</code>，<code>Scatter_Far</code>，<code>Retract</code>，<code>Shrink</code>，<code>Shrink_Spin</code>，<code>Fade</code>）
-***N '''beatsBehind''': 星球离开方块几拍后方块开始消失
-**: 背景设置：
-***S '''backgroundColor''': 背景颜色（HEX色号不含井号）
-***S '''bgImage''': 背景图片（相对路径）
-***S '''bgImageColor''': 图片上色（HEX色号不含井号）
-***A '''parallax''': 背景图片随前景移动的比率%（二维矢量；例如设为[100,100]即背景和前景同步运动，[0,0]即前景移动，背景不动）
-<!--"bgDisplayMode": "FitToScreen", 
-"lockRot": "Disabled", 
-"loopBG": "Disabled", 
-"unscaledSize": 100,
-"relativeTo": "Player", 
-"position": [0, 0], 
-"rotation": 0, 
-"zoom": 100,
-"bgVideo": "", 
-"loopVideo": "Disabled", 
-"vidOffset": 0, 
-"floorIconOutlines": "Disabled", 
-"stickToFloors": "Disabled", 
-"planetEase": "Linear", 
-"planetEaseParts": 1
--->待补完……2020年8月22日 (六) 10:48 (CST)
-</div>
-
-==路径信息==
-这是一个字符串，每个字符代表一块轨道的方向。下图是字符和实际方向的对照表，例如一个字母<code>R</code>即代表向当前方块的右侧搭一个方块。
-
-[[文件:Adofai-path-info-legend.bmp]]
-
-360°轨道块直接用反方向的字母表示；字母后加叹号可以使这个轨道块成为中旋方块。
-
-此外还有一些特殊方向：
-* 5: 向左转72°
-* 6: 向右转72°
-* 7: 向左转(360/7)°
-* 8: 向右转(360/7)°
-注意轨道块之间的夹角必须是15°的整数倍、108°或(900/7)°，否则会有奇怪的显示bug……
-
-==关卡事件==
-待补完……2020年8月22日 (六) 10:48 (CST)
-
-[[分类:待填坑]]
-
+int main() {
+	cin >> n;
+	
+	int i;
+	for (i = 1; i <= n; ++i)
+		cin >> a[i] >> b[i] >> g[i] >> k[i];
+	
+	cin >> x >> y;
+	for (i = n; i > 0; --i)
+		if (x >= a[i] && x <= a[i] + g[i] &&
+			y >= b[i] && y <= b[i] + k[i]) {
+			cout << i << endl;
+			return 0;
+		}
+	cout << -1 << endl;
+	return 0;
+}
 ```
