@@ -89,16 +89,19 @@
 }
 /* Name Builtin Pseudo */
 .highlight .bp {
-  color: #33bfab;
-  font-weight: bold;
+  color: #1ca0ff;
 }
 /* Base Style */
 .highlight .g {
   color: #555555;
 }
-/*  */
+/* Generic Deleted */
 .highlight .gd {
-  color: #555555;
+  color: #be261e;
+}
+/* Generic Inserted */
+.hihlight .gi {
+  color: #8cb326;
 }
 /* Base Style */
 .highlight .o {
@@ -137,7 +140,7 @@
 }
 /* Keyword Constant */
 .highlight .kc {
-  color: #33bfab;
+  color: #1ca0ff;
   font-weight: bold;
 }
 /* Keyword Declaration */
@@ -153,7 +156,6 @@
 /* Keyword Pseudo */
 .highlight .kp {
   color: #33bfab;
-  font-weight: bold;
 }
 /* Keyword Reserved */
 .highlight .kr {
@@ -304,5 +306,4 @@
 }
 /* Text Whitespace */
 .highlight .w {
-  color: #555555;
 }
