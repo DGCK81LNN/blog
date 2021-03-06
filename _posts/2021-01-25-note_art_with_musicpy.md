@@ -19,8 +19,10 @@ alt="一张屏幕截图，显示钢琴瀑布中有一串紫色音符排列成一
 
 为了让音符顺滑，我改了`musicpy.py`源代码，在`write()`的定义里把输出MIDI的分辨率设为了1920：
 
-<pre class="soul-manual-prism"><code>MyMIDI = MIDIFile(track_number, deinterleave=deinterleave<ins class="token inserted">, ticks_per_quarternote=1920</ins>)
-</code></pre>
+```diff
+- MyMIDI = MIDIFile(track_number, deinterleave=deinterleave)
++ MyMIDI = MIDIFile(track_number, deinterleave=deinterleave, ticks_per_quarternote=1920)
+```
 
 我使用的代码：
 
