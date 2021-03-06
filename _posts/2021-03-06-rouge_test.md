@@ -209,10 +209,9 @@ END
 ```ruby
 s0 = 0.0002908882045634
 c0 = (1 - s0 ** 2) ** 0.5
-s, c, n = s0, c0, 1
-while n <= 5400
+s, c = s0, c0
+1.upto(5400) do |n|
     puts format "sin %2d° %2d' = %.9f", n / 60, n % 60, s
-    n += 1
     s = s * c0 + c * s0
     c = (1 - s ** 2) ** 0.5
 end
