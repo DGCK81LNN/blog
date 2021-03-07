@@ -198,7 +198,7 @@ export default async function video<T extends "aid" | "bvid">(type: T, id: T ext
 ## ruby
 
 ```ruby
-subj, act, expl = [gets, gets, gets].map { |s| s.strip }
+subj, act, expl = [gets, gets, gets].map(&:strip)
 puts <<END
 #{subj}#{act}是怎么回事呢？#{subj}相信大家都很熟悉，但是#{subj}#{act}是怎么回事呢，下面就让小编带大家一起了解吧。
 #{subj}#{act}，其实就是#{expl}，大家可能会很惊讶#{subj}怎么会#{act}呢？但事实就是这样，小编也感到非常惊讶。
@@ -207,14 +207,51 @@ END
 ```
 
 ```ruby
-s0 = 0.0002908882045634
-c0 = (1 - s0 ** 2) ** 0.5
+s0 = 0.0002908882045634 # sin 1'
+c0 = (1 - s0**2)**0.5
 s, c = s0, c0
 1.upto(5400) do |n|
-    puts format "sin %2d° %2d' = %.9f", n / 60, n % 60, s
+    puts format("sin %2d° %2d' = %.9f", n / 60, n % 60, s)
     s = s * c0 + c * s0
-    c = (1 - s ** 2) ** 0.5
+    c = (1 - s**2)**0.5
 end
+```
+
+以下代码来自<https://www.luogu.com.cn/record/47491997>
+
+```ruby
+module DigitDisplay
+  @@d = [[], [], [], [], []]
+  module_function
+  def add_digit(digit)
+    (0..4).each do |line|
+      @@d[line].append(digit[line])
+    end
+  end
+  def to_s
+    @@d.map { |l| l.join(".") }.join("\n")
+  end
+end
+
+gets # skip first line of input (number of digits)
+gets.chomp.each_char do |char|
+    DigitDisplay.add_digit(
+        case char
+        when "0" then ["XXX", "X.X", "X.X", "X.X", "XXX"]
+        when "1" then ["..X", "..X", "..X", "..X", "..X"]
+        when "2" then ["XXX", "..X", "XXX", "X..", "XXX"]
+        when "3" then ["XXX", "..X", "XXX", "..X", "XXX"]
+        when "4" then ["X.X", "X.X", "XXX", "..X", "..X"]
+        when "5" then ["XXX", "X..", "XXX", "..X", "XXX"]
+        when "6" then ["XXX", "X..", "XXX", "X.X", "XXX"]
+        when "7" then ["XXX", "..X", "..X", "..X", "..X"]
+        when "8" then ["XXX", "X.X", "XXX", "X.X", "XXX"]
+        when "9" then ["XXX", "X.X", "XXX", "..X", "XXX"]
+        end
+    )
+end
+
+puts DigitDisplay
 ```
 
 ## C++
