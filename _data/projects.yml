@@ -14,7 +14,7 @@
   url: https://dgck81lnn.github.io/
   projs:
     - 
-      id: .blog
+      id: soul.blog
       desc: 博客区
       url: https://dgck81lnn.github.io/blog/
       news:
@@ -24,7 +24,7 @@
             将来可能抛弃Markdown，自己实现一个更便于添加HTML标签的文本标记语言<small>（Richard Markup for Hyper Text）</small>来存储博客文章，
             并在客户端转换成HTML（而不是GitHub Pages的服务端）。
     -
-      id: .apps.lab.brainfuck
+      id: soul.apps.lab.brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
       url: https://dgck81lnn.github.io/apps/lab/brainfuck.html
       news:
@@ -46,7 +46,7 @@
           progress: 1
           content: 咕咕咕
     -
-      id: .apps.lab.befunge93
+      id: soul.apps.lab.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
       news:
         -
@@ -60,7 +60,7 @@
             以此来表示IP可能走的路径。
             工具主体未开始制作。
     -
-      id: .apps.lab.swissknife
+      id: soul.apps.lab.swissknife
       desc: 灵魂实验室：多功能实用工具
       news:
         -
@@ -80,7 +80,7 @@
           status: paused
           content: 暂时搁置。
     -
-      id: .apps.lab.console
+      id: soul.apps.lab.console
       desc: 灵魂实验室：控制台
       url: https://dgck81lnn.github.io/apps/lab/console.html
       news:
@@ -116,7 +116,7 @@
           date: 2021-01-21
           status: almost_paused
     -
-      id: .apps.danceline
+      id: soul.apps.danceline
       desc: 舞线练习场（第3代）
       news:
         -
@@ -126,26 +126,26 @@
           content: >
             舞线练习场第2代已上传到[遗留区](/legacy)。
     -
-      id: .apps.captoin
+      id: soul.apps.captoin
       desc: 网页版歌词/字幕编辑器
       news:
         -
           content: 由`capt`更名为`captoin`
     -
-      id: .apps.paint
+      id: soul.apps.paint
       desc: 网页版绘图软件
       news:
         -
           status: may_cancel
     -
-      id: .apps.query
+      id: soul.apps.query
       desc: 外链快速查询（第2代）（哔哩哔哩API快速查询）
 -
   id: osu
   desc: osu!
   projs:
     -
-      id: .map.running
+      id: osu.map.running
       desc: osu! 自制谱：大课间跑步音乐
       url: https://osu.ppy.sh/s/1182532
       news:
@@ -159,7 +159,7 @@
           date: 2021-01-23
           status: paused
     -
-      id: .map.sine
+      id: osu.map.sine
       desc: osu! 自制谱：-Fm2- - Sine
       url: https://osu.ppy.sh/s/1224989
       news:
@@ -170,7 +170,7 @@
             目前Insane难度已制作完毕，但我不满意（迫真）；
             另外三个难度Easy、Normal、Hard的节奏点也均已设计完成。
     -
-      id: .map.xox
+      id: osu.map.xox
       desc: osu!自制谱：Quree - One Forgotten Night
       url: https://osu.ppy.sh/s/1228904
       news:
@@ -193,7 +193,7 @@
           content: >
             暂时搁置。
     -
-      id: .skin
+      id: osu.skin
       desc: 自制皮肤
       news:
         -
@@ -206,7 +206,7 @@
   desc: 跳舞的线饭制
   projs:
     -
-      id: .level.samsara
+      id: dlfm.level.samsara
       desc: 饭制关卡“新轮回”
       news:
         -
@@ -218,7 +218,7 @@
             但目前不会再继续更新。
             待`dlfm.template`进行到一定程度后会用它来重制此饭制关卡。
     -
-      id: .template
+      id: dlfm.template
       desc: LNN跳舞的线饭制模板
       news:
         -
@@ -251,7 +251,7 @@
   desc: 音乐
   projs:
     -
-      id: .midi.sine
+      id: music.midi.sine
       desc: 黑乐谱制作（试水）：-Fm2- - Sine
       news:
         -
@@ -273,7 +273,7 @@
           content: |
             近期通过musicpy生成了更多音符画，谱已接近完善。
     -
-      id: .chip.running
+      id: music.chip.running
       desc: FamiTracker 芯片音乐制作（试水）：大课间跑步音乐
       news:
         -
@@ -288,9 +288,17 @@
   desc: B站视频投稿
   projs:
     -
-      id: ""
+      id: pone
       desc: “转型”小马UP主的准备工作
       news:
+        -
+          date: 2021-02-02
+          progress: 100
+          status: done
+          content: |
+            算是完成了，<span lang=en>more or less</span>。
+            
+            截至目前暂时没有制作新视频的计划，如果有新计划，我会在`pone`下添加Project。
         -
           progress: "NaN"
           status: paused
