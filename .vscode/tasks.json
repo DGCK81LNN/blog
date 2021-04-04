@@ -6,12 +6,17 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "jekyll b --watch -d E:\\LNN\\Coding\\3luo\\3luo.jedoo.com\\blog",
-            "problemMatcher": [],
+            "command": "jekyll b --watch -d E:\\LNN\\Coding\\3luo\\dgck81lnn.github.io\\blog",
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build components",
+            "type": "shell",
+            "command": "node js\\#components\\build.js",
+            "group": "build"
         }
     ]
 }

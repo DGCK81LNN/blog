@@ -45,6 +45,9 @@
           phase: 2
           progress: 1
           content: 咕咕咕
+        -
+          date: 2021-04-04
+          status: ongoing
     -
       id: soul.apps.lab.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
@@ -59,6 +62,11 @@
             并会给单元格之间画上墙壁，
             以此来表示IP可能走的路径。
             工具主体未开始制作。
+        -
+          date: 2021-03-31
+          content: |
+            将先前编写的语法高亮程序上传到了 codepen.io：
+            <https://codepen.io/dgck81lnn/pen/XWpjoRG>
     -
       id: soul.apps.lab.swissknife
       desc: 灵魂实验室：多功能实用工具
@@ -79,6 +87,9 @@
           date: 2021-01-15
           status: paused
           content: 暂时搁置。
+        -
+          date: 2021-04-04
+          status: ongoing
     -
       id: soul.apps.lab.console
       desc: 灵魂实验室：控制台
@@ -131,12 +142,6 @@
       news:
         -
           content: 由`capt`更名为`captoin`
-    -
-      id: soul.apps.paint
-      desc: 网页版绘图软件
-      news:
-        -
-          status: may_cancel
     -
       id: soul.apps.query
       desc: 外链快速查询（第2代）（哔哩哔哩API快速查询）
@@ -192,6 +197,10 @@
           status: paused
           content: >
             暂时搁置。
+        -
+          date: 2021-03-19
+          status: almost_paused
+          progress: 10
     -
       id: osu.skin
       desc: 自制皮肤
@@ -201,6 +210,8 @@
           status: paused
           content: >
             未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。
+        -
+          status: may_cancel
 -
   id: dlfm
   desc: 跳舞的线饭制
@@ -246,6 +257,8 @@
             在那里统一设计场景中各种基于音乐时间的动画（而不是逐个设置物体的脚本参数）。
             动画的触发时机一般不是基于秒数计算，而是基于音乐的节拍；
             必要时，也可以使用触发器来触发动画。
+        -
+          status: paused
 -
   id: music
   desc: 音乐
@@ -308,6 +321,14 @@
 -
   desc: 已结束项目
   projs:
+    -
+      id: soul.apps.paint
+      desc: 网页版绘图软件
+      news:
+        -
+          status: may_cancel
+        -
+          status: canceled
     -
       id: osu.map.ode
       desc: osu! 自制谱：歌唱祖国
