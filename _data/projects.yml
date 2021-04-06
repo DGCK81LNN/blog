@@ -305,6 +305,12 @@
       desc: “转型”小马UP主的准备工作
       news:
         -
+          progress: "NaN"
+          status: paused
+        -
+          date: 2021-01-15
+          status: almost_paused
+        -
           date: 2021-02-02
           progress: 100
           status: done
@@ -312,12 +318,6 @@
             算是完成了，<span lang=en>more or less</span>。
             
             截至目前暂时没有制作新视频的计划，如果有新计划，我会在`pone`下添加Project。
-        -
-          progress: "NaN"
-          status: paused
-        -
-          date: 2021-01-15
-          status: almost_paused
 -
   desc: 已结束项目
   projs:
