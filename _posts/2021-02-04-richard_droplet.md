@@ -919,7 +919,7 @@ _给相互陪伴了三年的同学们。_
 
 学校门口的马路边，一大一小两个身影，正是一起走向未来的梅古里与伊楠斯。
 
-<b-card class="mt-5">
+<b-card class="my-3">
     <template slot=header>LNN的话</template>
     <b-card-body>
         <p>在这部作品中，“伊楠斯”的早期经历代表了Richard本人（只是极度夸大了，Richard和他曾喜欢的Sunny仅是越走越远，“没有机会了”），而“梅古里”则代表一个假想的、想要治愈他的伤痛的女生。</p>
