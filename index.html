@@ -20,7 +20,10 @@ soulblog-style: |
 <b-card-group deck>
 {% for post in site.posts %}
   <b-card class="mt-1 mb-5">
-    <template #header><time>{{ post.date | date: "%Y-%m-%d" }}</time></template>
+    <template #header>
+      <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+      {% for tag is post.tags %}<b-tag no-remove>{{ tag }}</b-tag>{% endfor %}
+    </template>
     <article>
       {{ post.excerpt | markdownify }}
     </article>
