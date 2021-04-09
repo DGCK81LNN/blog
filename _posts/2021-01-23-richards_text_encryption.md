@@ -1,5 +1,5 @@
 ---
-tags: python js ruby
+tags: 编程 日常写代码
 ---
 
 # Richard写的文本加密算法

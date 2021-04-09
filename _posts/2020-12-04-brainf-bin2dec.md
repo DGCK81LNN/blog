@@ -1,5 +1,5 @@
 ---
-tags: esolang
+tags: 编程 esolang
 ---
 
 # brainfuck二进制转十进制

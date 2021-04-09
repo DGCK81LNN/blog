@@ -1,5 +1,5 @@
 ---
-tags: esolang js
+tags: 编程 esolang
 ---
 
 # JvavScript

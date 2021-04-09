@@ -15,10 +15,10 @@ soulblog-style: |
 
 <p><b-button href="projects.html" variant=primary>我的 Project 记录表</b-button></p>
 
-<h2>所有文章</h2>
+<h2>文章目录</h2>
 
 <b-card-group deck>
-{% for post in site.posts %}
+{%- for post in site.posts %}
   <b-card class="mt-1 mb-5">
     <template #header>
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
@@ -34,5 +34,5 @@ soulblog-style: |
       </b-link>
     </template>
   </b-card>
-{% endfor %}
+{%- endfor %}
 </b-card-group>

@@ -6,6 +6,7 @@ soulblog-footer-links:
   -
     href: "https://dgck81lnn.github.io/apps/lab/console.html?path=/res/down/SoulLC/LoveWithRichard.soullc.mjs"
     text: "LoveWithRichard V3 网页版"
+tags: 编程 日常写代码 天府灵山行者
 ---
 
 # Richard Markup 帮助文档 v2

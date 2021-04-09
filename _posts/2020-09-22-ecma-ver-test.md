@@ -1,5 +1,5 @@
 ---
-tags: js
+tags: 编程 前端
 ---
 
 # 鉴别浏览器ECMAScript版本

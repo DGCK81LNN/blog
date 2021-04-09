@@ -1,5 +1,5 @@
 ---
-tags: esolang
+tags: 编程 esolang
 ---
 
 # brainf和Befunge 99Bottles 和 FizzBuzz

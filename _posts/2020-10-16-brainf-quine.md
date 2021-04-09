@@ -1,5 +1,5 @@
 ---
-tags: esolang
+tags: 编程 esolang
 ---
 
 # OHHHH，brainfuck自产生程序！

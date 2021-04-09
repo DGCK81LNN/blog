@@ -1,9 +1,18 @@
 ---
-tags: shitpost
+tags: shit
+excerpt: |
+    # A S C I I 简 谱
+
+    ```
+    XX          XX
+    ==          ==
+     \           \            |
+      X  X  0     X  X  0     |
+      ----        ----        |
+    ```
 ---
 
 # A S C I I 简 谱
-
 
 ```
 XX          XX                        XX

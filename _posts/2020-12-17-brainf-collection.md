@@ -1,5 +1,5 @@
 ---
-tags: esolang
+tags: 编程 esolang
 ---
 
 # 12月17日brainfuck程序集锦
