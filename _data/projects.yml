@@ -13,16 +13,6 @@
   desc: 灵魂小站
   url: https://dgck81lnn.github.io/
   projs:
-    - 
-      id: soul.blog
-      desc: 博客区
-      url: https://dgck81lnn.github.io/blog/
-      news:
-        -
-          phase: 2
-          content: >
-            将来可能抛弃Markdown，自己实现一个更便于添加HTML标签的文本标记语言<small>（Richard Markup for Hyper Text）</small>来存储博客文章，
-            并在客户端转换成HTML（而不是GitHub Pages的服务端）。
     -
       id: soul.apps.lab.brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
@@ -47,7 +37,7 @@
           content: 咕咕咕
         -
           date: 2021-04-04
-          status: ongoing
+          status: almost_paused
     -
       id: soul.apps.lab.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
@@ -65,7 +55,7 @@
         -
           date: 2021-03-31
           content: |
-            将先前编写的语法高亮程序上传到了 codepen.io：
+            将先前编写的语法高亮程序上传到了CodePen：
             <https://codepen.io/dgck81lnn/pen/XWpjoRG>
     -
       id: soul.apps.lab.swissknife
@@ -90,6 +80,10 @@
         -
           date: 2021-04-04
           status: ongoing
+        -
+          date: 2021-04-09
+          content: |
+            近期开始制作正式UI，目前会在CodePen上进行测试。<https://codepen.io/dgck81lnn>
     -
       id: soul.apps.lab.console
       desc: 灵魂实验室：控制台
