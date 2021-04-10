@@ -77,7 +77,7 @@ soulblog-style: |
 soulblog-no-attribution: true
 ---
 
-<img src="/blog/assets/droplet_banner.png" class="w-100" role="heading" alt="神奇的水滴石">
+<h1><img src="/blog/assets/droplet_banner.png" class="w-100" alt="神奇的水滴石"></h1>
 
 <address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
 
