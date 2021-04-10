@@ -18,13 +18,13 @@ soulblog-style: |
 <h2>文章目录</h2>
 
 <b-card-group deck>
-{%- for post in site.data.posts %}
+{%- for post in site.posts %}
   <b-card class="mt-1 mb-5">
     <template #header>
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
       {% for tag in post.tags %}
       <b-tag no-remove
-      {%- if site.main_tags contains tag %}
+      {%- if site.data.main_tags contains tag %}
       variant=primary
       {%- endif %}
       >{{ tag }}</b-tag>{% endfor %}
