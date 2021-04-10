@@ -18,7 +18,7 @@ soulblog-style: |
 <h2>文章目录</h2>
 
 <b-card-group deck>
-{%- for post in site.posts %}
+{%- for post in site.data.posts %}
   <b-card class="mt-1 mb-5">
     <template #header>
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
