@@ -22,12 +22,9 @@ soulblog-style: |
   <b-card class="mt-1 mb-5">
     <template #header>
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-      {% for tag in post.tags %}
-      <b-tag no-remove
-      {%- if site.data.main_tags contains tag %}
-      variant=primary
-      {%- endif %}
-      >{{ tag }}</b-tag>{% endfor %}
+      {%- for tag in post.tags %}
+      <b-badge {%- if site.data.main_tags contains tag %}variant=primary{%- endif %}>{{ tag }}</b-tag>
+      {%- endfor %}
     </template>
     <article>
       {{ post.excerpt | markdownify }}
