@@ -23,7 +23,7 @@ soulblog-style: |
     <template #header>
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
       {%- for tag in post.tags %}
-      <b-badge {%- if site.data.main_tags contains tag %}variant=primary{%- endif %}>{{ tag }}</b-tag>
+      <b-badge {%- if site.data.main_tags contains tag %}variant=primary{%- endif %}>{{ tag }}</b-badge>
       {%- endfor %}
     </template>
     <article>
