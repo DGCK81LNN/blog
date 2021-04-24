@@ -1,7 +1,8 @@
 ---
 title: 神奇的水滴石
 tags: 天府灵山行者
-permalink: /richard_shenqide_shuidi_shi.html
+redirect_from:
+    - /richard_shenqide_shuidi_shi.html
 excerpt: |
     # 神奇的水滴石
 
@@ -60,7 +61,7 @@ soulblog-style: |
         padding: 4rem 2rem 2rem;
         color: black;
     }
-    #book-page h1 {
+    #book-page h3 {
         font-size: 1.5em;
         font-weight: bold;
         margin: 1em 0;
@@ -80,11 +81,6 @@ soulblog-no-attribution: true
 <h1><img src="/blog/assets/droplet_banner.png" class="w-100" alt="神奇的水滴石"></h1>
 
 <address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
-
-<figure class="float-md-right ml-4 mb-2">
-<img src="/blog/assets/droplet_cover.png" style="max-height:256px" alt="一张像素画，画中有一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外" title="封面">
-<figcaption>封面作者：DGCK81LNN</figcaption>
-</figure>
 
 _给相互陪伴了三年的同学们。_
 
@@ -293,7 +289,7 @@ _给相互陪伴了三年的同学们。_
 这一页好可怜呀！它没有同伴、亲人，也不知道是谁把它丢弃在了这里。
 
 <figure aria-label="书页"><article id="book-page">
-<h1>卷四十</h1>
+<h3>卷四十</h3>
 <p>它是愿望之神托梓卡的眼泪，从天界落到地上，化作蓝宝石。它深蓝、晶莹、无瑕，呈完美的水滴形。传说，第一个在它上面滴上五滴眼泪的人必定能实现他的一个愿望。</p>
 <p>…………</p>
 <footer>志怪异之物&emsp;|&emsp;55</footer>
@@ -918,6 +914,11 @@ _给相互陪伴了三年的同学们。_
 我们准备回家了。
 
 学校门口的马路边，一大一小两个身影，正是一起走向未来的梅古里与伊楠斯。
+
+<figure>
+    <img src="/blog/assets/droplet_cover.png" alt="一张像素画，画中有一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外" title="封面">
+    <figcaption>封面作者：DGCK81LNN</figcaption>
+</figure>
 
 <b-card class="my-3">
     <template slot=header>LNN的话</template>
