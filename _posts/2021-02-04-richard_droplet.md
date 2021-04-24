@@ -1,7 +1,8 @@
 ---
 title: 神奇的水滴石
 tags: 天府灵山行者
-permalink: /richard_shenqide_shuidi_shi.html
+redirect-from:
+    - /richard_shenqide_shuidi_shi.html
 excerpt: |
     # 神奇的水滴石
 
