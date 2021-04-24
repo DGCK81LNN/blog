@@ -10,7 +10,7 @@ musicpy是国人写的一个不错的库，操作音符挺方便的，运算符�
 
 
 <figure>
-<img src="/blog/assets/note_art_with_musicpy.png" alt="一张屏幕截图，显示钢琴瀑布中有一串紫色音符排列成一段正弦波，还有其他不同颜色的音符">
+<img src="../assets/note_art_with_musicpy.png" alt="一张屏幕截图，显示钢琴瀑布中有一串紫色音符排列成一段正弦波，还有其他不同颜色的音符">
 <figcaption>用一段musicpy代码生成的正弦波（紫色音符）。<br>钢琴瀑布软件：PianoFromAbove</figcaption>
 </figure>
 
