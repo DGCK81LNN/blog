@@ -10,5 +10,3 @@ plugins:
 titles_from_headings:
   collections: true
 excerpt_separator: "\n\n\n"
-relative_links:
-  enabled:     true
