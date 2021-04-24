@@ -78,16 +78,9 @@ soulblog-style: |
 soulblog-no-attribution: true
 ---
 
-<h1><img src="/blog/assets/droplet_banner.png" class="w-100" alt="神奇的水滴石"></h1>
+# ![神奇的水滴石](../assets/droplet_banner.png)
 
 <address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
-
-<figure class="float-md-right ml-4 mb-2">
-<img src="/blog/assets/droplet_cover.png" style="max-height:256px" alt="一张像素画，画中有一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外" title="封面">
-<figcaption>封面作者：DGCK81LNN</figcaption>
-</figure>
-
-_给相互陪伴了三年的同学们。_
 
 ## 引子
 
@@ -919,6 +912,12 @@ _给相互陪伴了三年的同学们。_
 我们准备回家了。
 
 学校门口的马路边，一大一小两个身影，正是一起走向未来的梅古里与伊楠斯。
+
+----
+
+![本文的封面：一张像素画，画中有一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外](../assets/droplet_cover.png)
+
+封面作者：DGCK81LNN
 
 <b-card class="my-3">
     <template slot=header>LNN的话</template>
