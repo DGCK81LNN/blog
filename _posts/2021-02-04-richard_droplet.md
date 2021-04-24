@@ -61,7 +61,7 @@ soulblog-style: |
         padding: 4rem 2rem 2rem;
         color: black;
     }
-    #book-page h1 {
+    #book-page h3 {
         font-size: 1.5em;
         font-weight: bold;
         margin: 1em 0;
@@ -287,7 +287,7 @@ soulblog-no-attribution: true
 这一页好可怜呀！它没有同伴、亲人，也不知道是谁把它丢弃在了这里。
 
 <figure aria-label="书页"><article id="book-page">
-<h1>卷四十</h1>
+<h3>卷四十</h3>
 <p>它是愿望之神托梓卡的眼泪，从天界落到地上，化作蓝宝石。它深蓝、晶莹、无瑕，呈完美的水滴形。传说，第一个在它上面滴上五滴眼泪的人必定能实现他的一个愿望。</p>
 <p>…………</p>
 <footer>志怪异之物&emsp;|&emsp;55</footer>
