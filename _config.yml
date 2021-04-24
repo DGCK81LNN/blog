@@ -4,6 +4,7 @@ plugins:
   - jekyll-default-layout
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
+  - jekyll-relative-links
 titles_from_headings:
   collections: true
 excerpt_separator: "\n\n\n"
