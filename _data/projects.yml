@@ -38,6 +38,9 @@
         -
           date: 2021-04-04
           status: almost_paused
+        -
+          date: 2021-04-28
+          status: paused
     -
       id: soul.apps.lab.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
@@ -84,6 +87,9 @@
           date: 2021-04-09
           content: |
             近期开始制作正式UI，目前会在CodePen上进行测试。<https://codepen.io/dgck81lnn>
+        -
+          date: 2021-04-28
+          status: paused
     -
       id: soul.apps.lab.console
       desc: 灵魂实验室：控制台
@@ -120,6 +126,9 @@
         -
           date: 2021-01-21
           status: almost_paused
+        -
+          date: 2021-04-28
+          status: paused
     -
       id: soul.apps.danceline
       desc: 舞线练习场（第3代）
@@ -195,6 +204,9 @@
           date: 2021-03-19
           status: almost_paused
           progress: 10
+        -
+          date: 2021-04-28
+          status: paused
     -
       id: osu.skin
       desc: 自制皮肤
@@ -253,6 +265,15 @@
             必要时，也可以使用触发器来触发动画。
         -
           status: paused
+        -
+          date: 2021-04-28
+          status: ongoing
+          content: |
+            继续饭制模板的制作。由于之前的代码和工程太过凌乱，今天开始大规模整改代码风格和项目目录结构。
+            
+            * 目前使用VS Code编写代码，性能似乎比VS稍好一些。
+            
+            * 改用`PropertyDrawer`（之前是`CustomEditor`）来自定义行为元件的编辑器，比原来方便多了。
 -
   id: music
   desc: 音乐
