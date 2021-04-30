@@ -8,8 +8,9 @@
       />
       LNN的博客！
     </b-navbar-brand>
-    <b-navbar-nav align="right">
-      <b-nav-item href="/">主站</b-nav-item>
+    <b-navbar-nav>
+      <b-nav-item href="/blog/diary">LNN's Diary</b-nav-item>
+      <b-nav-item href="/">返回主站</b-nav-item>
     </b-navbar-nav>
   </b-navbar>
 </template>

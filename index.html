@@ -19,6 +19,7 @@ soulblog-style: |
 
 <b-card-group deck>
 {%- for post in site.posts %}
+{%- if post.categories.size == 0 %}
   <b-card class="mt-1 mb-5">
     <template #header>
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
@@ -36,5 +37,6 @@ soulblog-style: |
       </b-link>
     </template>
   </b-card>
+{%- endif %}
 {%- endfor %}
 </b-card-group>

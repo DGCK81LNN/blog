@@ -10,3 +10,19 @@ plugins:
 titles_from_headings:
   collections: true
 excerpt_separator: "\n\n\n"
+defaults:
+  -
+    scope: { type: "posts" }
+    values:
+      layout: default
+  -
+    scope: { path: "diary" }
+    values:
+      soulblog-isdiary: true
+  -
+    scope: { path: "diary", type: "posts" }
+    values:
+      excerpt: ""
+      soulblog-isdiary: true
+      soulblog-breadcrumb:
+        - { href: "/blog/diary", text: "LNN's Diary" }

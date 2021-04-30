@@ -90,6 +90,23 @@
     | append: "style>"
   -}}
   {%- endif %}
+  {% if page.soulblog-isdiary -%}
+  <style>
+    @font-face {
+      font-family: LNNCrypt;
+      src: url(/blog/assets/LNNCrypt.woff);
+    }
+
+    [lang|=lnncrypt] {
+      font-family: LNNCrypt, var(--soul-font-family-sans-serif);
+    }
+
+    em:lang(lnncrypt) {
+      font-style: normal;
+      text-decoration: underline;
+    }
+  </style>
+  {% endif -%}
 </head>
 
 <body>
@@ -100,11 +117,15 @@
       {%- if page.path != "index.html" %}
       <b-breadcrumb>
         <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        {%- for item in page.soulblog-breadcrumb %}
+        <b-breadcrumb-item href="{{ item.href | escape }}">{{ item.text }}</b-breadcrumb-item>
+        {%- endfor %}
         <b-breadcrumb-item active>{{ page.title }}</b-breadcrumb-item>
       </b-breadcrumb>
       {%- endif %}
       <article>
         <div class="soulblog-content">{{ content }}</div>
+        {%- comment %}
         {%- if page.collection == "posts" %}
         <footer class="soul-p2">
           <address>
@@ -115,6 +136,7 @@
           <p>下一篇：{% if page.next %}<a rel=next href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
         </footer>
         {%- endif %}
+        {%- endcomment %}
       </article>
     </soul-main>
     <soul-blog-footer {% if page.soulblog-footer-links %} :links="[
