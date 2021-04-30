@@ -125,18 +125,18 @@
       {%- endif %}
       <article>
         <div class="soulblog-content">{{ content }}</div>
-        {%- comment %}
         {%- if page.collection == "posts" %}
         <footer class="soul-p2">
           <address>
             {%- unless page.soulblog-no-attribution %}DGCK81LNN &middot;{% endunless %}
             <time>{{ page.date | date: "%Y-%m-%d" }}</time>发布
           </address>
+          {%- comment %}
           <p>上一篇：{% if page.previous %}<a rel=prev href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（前面没有了）{% endif %}</p>
           <p>下一篇：{% if page.next %}<a rel=next href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
+          {%- endcomment %}
         </footer>
         {%- endif %}
-        {%- endcomment %}
       </article>
     </soul-main>
     <soul-blog-footer {% if page.soulblog-footer-links %} :links="[
