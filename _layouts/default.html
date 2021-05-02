@@ -129,7 +129,7 @@
         <footer class="soul-p2">
           <address>
             {%- unless page.soulblog-no-attribution %}DGCK81LNN &middot;{% endunless %}
-            <time>{{ page.date | date: "%Y-%m-%d" }}</time>发布
+            <time>{{ page.date | date: "%Y-%m-%d" }}</time>
           </address>
           {%- comment %}
           <p>上一篇：{% if page.previous %}<a rel=prev href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（前面没有了）{% endif %}</p>
