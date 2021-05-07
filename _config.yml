@@ -1,4 +1,4 @@
-url: /blog
+baseurl: /blog
 title: LNN的博客！
 plugins:
   - jekyll-seo-tag
