@@ -20,14 +20,14 @@
       news:
         -
           status: ongoing
-          progress: "NaN"
-          content: >
+          progress: '?'
+          content: |
             目前本页虽然已基本完工，但我发现它的的性能还存在优化空间，
             所以打算之后尝试改进一下。
         -
           date: 2020-12-12
           status: ongoing
-          progress: "NaN"
+          progress: '?'
           content: 界面小优化。
         -
           date: 2021-01-02
@@ -49,7 +49,7 @@
           date: 2021-01-05
           status: paused
           progress: 10
-          content: >
+          content: |
             实现了语法高亮算法：
             无法到达的单元格会被视为注释，
             并会给单元格之间画上墙壁，
@@ -63,19 +63,22 @@
     -
       id: soul.apps.lab.swissknife
       desc: 灵魂实验室：多功能实用工具
+      url: /sandbox/swissknife.html
       news:
         -
           date: 2021-01-05
           progress: 10
           status: ongoing
-          content: >
+          content: |
             此项目（原ID：`soul.apps.lab.lab`）已与`soul.apps.lab.classic`合并为`soul.apps.lab.swissknife`。
             [临时测试版](/tablethack/swissknife.html)（以后会移除）
+            [源代码](https://github.com/DGCK81LNN/tablethack/blob/297f4e53d7b96fb57fdcff996572e970c4e4e731/swissknife.html)
             只实现了部分基本功能，暂未制作正式的UI。
         -
           date: 2021-01-11
-          content: >
+          content: |
             “临时测试版”转移到[沙盒区](/sandbox)。
+            [源代码](https://github.com/DGCK81LNN/sandbox/blob/ee1fafd902bcebbd94e8856391da8d0bc34a80d5/swissknife.html)
         -
           date: 2021-01-15
           status: paused
@@ -99,7 +102,7 @@
           date: 2020-11-26
           status: done
           progress: 100
-          content: >
+          content: |
             已基本完工，不过尚未正式投入使用。
             目前只有一个测试性程序：“Love with Richard under epidemic”。
             目前可以在小站首页找到它的详细信息。
@@ -108,19 +111,19 @@
           status: ongoing
           phase: 2
           progress: 50
-          content: >
+          content: |
             二期工程启动，开始编写 Richard Markup 解释器。
             由“命令行”更名为“控制台”。
         -
           date: 2021-01-12
           progress: 20
-          content: >
+          content: |
             起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
             由于任务增加，进度条已倒退。
         -
           date: 2021-01-16
           status: prioritized
-          content: >
+          content: |
             为了在方便存储和读取存档的前提下实现`call`，
             需要手动实现一个“调用堆栈”。
         -
@@ -129,6 +132,14 @@
         -
           date: 2021-04-28
           status: paused
+        -
+          date: 2021-05-24
+          status: canceled
+          progress: '?'
+          content: |
+            由于用 XML 代替 Richard Markup，此项目已取消。
+            [XML版测试](/sandbox/xml-richard/)
+            [源代码](https://github.com/DGCK81LNN/sandbox/tree/e3212ee3096eaabe0f6e930fc92db8b0bb823fe9/xml-richard)
     -
       id: soul.apps.danceline
       desc: 舞线练习场（第3代）
@@ -137,7 +148,7 @@
           content: 由`dlc`更名为`danceline`
         -
           date: 2021-01-11
-          content: >
+          content: |
             舞线练习场第2代已上传到[遗留区](/legacy)。
     -
       id: soul.apps.captoin
@@ -146,6 +157,12 @@
       news:
         -
           content: 由`capt`更名为`captoin`
+        -
+          date: 2021-04-11
+          content: |
+            BCC哔哩哔哩外挂字幕编辑器测试：
+            [测试页](/sandbox/bcc.html)
+            [源代码](https://github.com/DGCK81LNN/sandbox/tree/dd0e16a277995358c1572c1868e6027bdceb29c9/)
     -
       id: soul.apps.query
       desc: 外链快速查询（第2代）（哔哩哔哩API快速查询）
@@ -159,9 +176,9 @@
       url: https://osu.ppy.sh/s/1182532
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: ongoing
-          content: >
+          content: |
             目前Insane难度正在制作中，
             Normal和Hard的节奏点也均已设计完成。
         -
@@ -173,9 +190,9 @@
       url: https://osu.ppy.sh/s/1224989
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: paused
-          content: >
+          content: |
             目前Insane难度已制作完毕，但我不满意（迫真）；
             另外三个难度Easy、Normal、Hard的节奏点也均已设计完成。
     -
@@ -184,22 +201,22 @@
       url: https://osu.ppy.sh/s/1228904
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: paused
-          content: >
+          content: |
             目前Hard难度已制作完成，但我不满意；
             其他难度尚未进行节奏点设计。
         -
           date: 2021-01-02
           progress: 3
           status: ongoing
-          content: >
+          content: |
             抛弃已制作的 Hard 难度，
             开始制作 Insane [Unforgettable] 难度。
         -
           date: 2021-01-15
           status: paused
-          content: >
+          content: |
             暂时搁置。
         -
           date: 2021-03-19
@@ -213,9 +230,9 @@
       desc: 自制皮肤
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: paused
-          content: >
+          content: |
             未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。
         -
           status: may_cancel
@@ -231,7 +248,7 @@
           date: 2021-02-02
           progress: 60
           status: paused
-          content: >
+          content: |
             更新到60%（[视频](https://www.bilibili.com/video/BV16r4y1K7P5)），
             但目前不会再继续更新。
             待`dlfm.template`进行到一定程度后会用它来重制此饭制关卡。
@@ -242,13 +259,13 @@
         -
           progress: 15
           status: ongoing
-          content: >
+          content: |
             目前模板已初具雏形，但仍任重道远（雾）。
             最近打算开始（但尚未开始）制作可按节拍触发动画的Timing系统。
         -
           date: 2020-12-20
           status: paused
-          content: >
+          content: |
             由“LNN改良冰焰模板”更名为“LNN跳舞的线饭制模板”
         -
           date: 2021-02-02
@@ -284,15 +301,15 @@
       desc: 黑乐谱制作（试水）：-Fm2- - Sine
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: paused
-          content: >
+          content: |
             目前底谱已基本完成，等待黑化（
         -
           date: 2021-01-31
           status: almost_paused
           progress: 50
-          content: >
+          content: |
             借助[musicpy](https://github.com/Rainbow-Dreamer/musicpy)
             （见[这篇博客](/blog/2021/01/25/note_art_with_musicpy.html)）
             成功量产了一些音符画。
@@ -321,7 +338,7 @@
       desc: “转型”小马UP主的准备工作
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: paused
         -
           date: 2021-01-15
@@ -350,9 +367,9 @@
       desc: osu! 自制谱：歌唱祖国
       news:
         -
-          progress: "NaN"
+          progress: '?'
           status: may_cancel
-          content: >
+          content: |
             谱面未上传。
             目前Easy、Normal、Hard、Insane难度的节奏点均已设计完毕，
             但尚未开始制谱，只做了Timing。
@@ -370,17 +387,17 @@
         -
           date: 2021-01-23
           status: almost_paused
-          content: >
+          content: |
             计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。[临时测试页](/sandbox/bvtest.html)（将来会移除）
         -
           date: 2021-01-25
           progress: 65
-          content: >
+          content: |
             在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。
         -
           date: 2021-01-27
           progress: 100
-          content: >
+          content: |
             已全面应用BootstrapVue。如无故障，一段时间后此项目将变为`done`状态。
         -
           date: 2021-02-04
@@ -392,10 +409,10 @@
         -
           date: 2020-12-13
           status: may_cancel
-          content: >
+          content: |
             此应用的功能可能会被`soul.apps.lab.console`代替。
         -
           date: 2021-01-05
           status: canceled
-          content: >
+          content: |
             此项目已并入`soul.apps.lab.swissknife`。
