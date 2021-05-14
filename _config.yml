@@ -7,8 +7,10 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-gist
-titles_from_headings:
-  collections: true
+exclude:
+  - LICENSE
+  - README.md
+  - package-lock.json
 excerpt_separator: "\n\n\n"
 defaults:
   -

@@ -4,7 +4,7 @@ tags: 编程 esolang
 
 # 12月17日brainfuck程序集锦
 
-这是12月17日写的几个brainf程序，只加了少量注释。参考[上篇关于brainf的博客](/blog/2020/12/04/brainf-bin2dec.html)。
+这是12月17日写的几个brainf程序，只加了少量注释。参考[上篇关于brainf的博客]({% link _posts/2020-12-04-brainf-bin2dec.md %})。
 
 
 ## dec2hex.b

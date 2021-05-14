@@ -11,12 +11,12 @@
 -
   id: soul
   desc: 灵魂小站
-  url: https://dgck81lnn.github.io/
+  url: /
   projs:
     -
       id: soul.apps.lab.brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
-      url: https://dgck81lnn.github.io/apps/lab/brainfuck.html
+      url: /apps/lab/brainfuck.html
       news:
         -
           status: ongoing
@@ -70,7 +70,7 @@
           status: ongoing
           content: >
             此项目（原ID：`soul.apps.lab.lab`）已与`soul.apps.lab.classic`合并为`soul.apps.lab.swissknife`。
-            [临时测试版](https://dgck81lnn.github.io/tablethack/swissknife.html)（以后会移除）
+            [临时测试版](/tablethack/swissknife.html)（以后会移除）
             只实现了部分基本功能，暂未制作正式的UI。
         -
           date: 2021-01-11
@@ -93,7 +93,7 @@
     -
       id: soul.apps.lab.console
       desc: 灵魂实验室：控制台
-      url: https://dgck81lnn.github.io/apps/lab/console.html
+      url: /apps/lab/console.html
       news:
         -
           date: 2020-11-26
@@ -142,6 +142,7 @@
     -
       id: soul.apps.captoin
       desc: 网页版歌词/字幕编辑器
+      url: /sandbox/bcc.html
       news:
         -
           content: 由`capt`更名为`captoin`
@@ -293,7 +294,7 @@
           progress: 50
           content: >
             借助[musicpy](https://github.com/Rainbow-Dreamer/musicpy)
-            （见[这篇博客](https://dgck81lnn.github.io/blog/2021/01/25/note_art_with_musicpy.html)）
+            （见[这篇博客](/blog/2021/01/25/note_art_with_musicpy.html)）
             成功量产了一些音符画。
         -
           date: 2021-02-19
