@@ -28,6 +28,3 @@ defaults:
       soulblog-isdiary: true
       soulblog-breadcrumb:
         - { href: "/blog/diary", text: "LNN's Diary" }
- titles_from_headings:
-   collections: true
- 
