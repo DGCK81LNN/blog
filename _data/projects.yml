@@ -165,6 +165,16 @@
     -
       id: soul.apps.query
       desc: 外链快速查询（第2代）（哔哩哔哩API快速查询）
+    -
+      id: soul.blog
+      desc: LNN的博客！
+      news:
+        -
+          date: 2021-06-16
+          phase: 2
+          content: |
+            计划改用Github Actions来部署（目前是主分支直接部署到GitHub Pages），
+            以便启用Jekyll的Textile功能。
 -
   id: osu
   desc: osu!
@@ -224,17 +234,10 @@
         -
           date: 2021-04-28
           status: paused
-    -
-      id: osu.skin
-      desc: 自制皮肤
-      news:
         -
-          progress: '?'
-          status: paused
-          content: |
-            未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。
-        -
-          status: may_cancel
+          date: 2021-05-22
+          progress: 3
+          content: 未上传的修改意外丢失
 -
   id: dlfm
   desc: 跳舞的线饭制
@@ -291,6 +294,10 @@
             * 目前使用VS Code编写代码，性能似乎比VS稍好一些。
             
             * 改用`PropertyDrawer`（之前是`CustomEditor`）来自定义行为元件的编辑器，比原来方便多了。
+        -
+          date: 2021-05-22
+          status: paused
+          content: 由于电脑硬盘损坏，项目暂停，假期再继续。
 -
   id: music
   desc: 音乐
@@ -353,6 +360,17 @@
 -
   desc: 已结束项目
   projs:
+    -
+      id: osu.skin
+      desc: 自制皮肤
+      news:
+        -
+          progress: '?'
+          status: paused
+          content: |
+            未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。
+        -
+          status: canceled
     -
       id: soul.apps.paint
       desc: 网页版绘图软件
