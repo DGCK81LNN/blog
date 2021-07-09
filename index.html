@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="LNN的博客！" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="LNN的博客！" />
+<script type="application/ld+json">
+{"url":"/blog/","@type":"WebSite","headline":"LNN的博客！","name":"LNN的博客！","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  <style>.read-all { display: block; text-align: center; }
+</style>
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <article>
+        <div class="soulblog-content"><p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
+
+<p><b-button href="projects.html" variant=primary>我的 Project 记录表</b-button></p>
+
+<h2>文章目录</h2>
+
+<b-card-group deck>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-04-24</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="重写的brainf-fizzbuzz">重写的brainf FizzBuzz</h1>
+
+<p>前两天想起之前写的brainfuck FizzBuzz还有很大优化空间，就改进了一下。</p>
+
+<p>比起<a href="/blog/2020/12/25/eso_99btls_fzbz.html#99bottlesb">之前的版本</a>，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。</p>
+
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/04/24/new_brainf_fizzbuzz.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-04-10</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+    </template>
+    <article>
+      <h1 id="blockly-games-池塘模式我的解法"><a href="https://blockly.games">Blockly Games</a> “<a href="https://blockly.games/pond-duck">池塘</a>”模式我的解法</h1>
+
+<blockquote>
+  <p><img src="https://blockly.games/index/pond-duck.png" alt="“池塘”模式图标" /></p>
+
+  <p><a href="https://blockly.games/pond-duck">池塘</a>是一个开放式竞赛，目标是编写出最聪明的鸭子。</p>
+</blockquote>
+
+<p>我的这个解法基本可以完胜内建的三个敌人。它们的策略分别是：</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/04/10/blockly_games_pond.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-04-09</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+    </template>
+    <article>
+      <h1 id="再谈自产生程序">再谈自产生程序</h1>
+
+<p><a href="/blog/2021/01/15/quines.html">之前那篇</a>关于自产生程序的博客表述不清，现决定重新讲解一下。</p>
+
+<p>这里的“自产生程序”是指输出自身源代码的程序。自产生程序有几种不同的思路，而我使用的这种思路可以类比为……“噬菌体”。</p>
+
+<p>我们知道，噬菌体是一种简单的病毒，它专门感染细菌，在结构上由蛋白质外壳和遗传物质（一般是DNA）组成。这些遗传物质记录了整个蛋白质外壳的内容，而在蛋白质外壳的帮助下，噬菌体才能去感染细菌，并生产出新的DNA和蛋白质外壳，从而繁殖出新的噬菌体。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/04/09/phage_quine.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-03-06</time>
+    </template>
+    <article>
+      <h1 id="rouge代码高亮测试">Rouge代码高亮测试</h1>
+
+<p>本站之前使用<a href="https://prismjs.com">prism.js</a>进行语法高亮，近期改为直接给GitHub Pages使用的<a href="https://jekyllrb.com">Jekyll</a>使用的<a href="https://kramdown.gettalong.org/">Kramdown</a>使用的<a href="http://rouge.jneen.net/">Rouge</a>提供样式表。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/03/06/rouge_test.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-02-04</time>
+      <b-badge>天府灵山行者</b-badge>
+    </template>
+    <article>
+      <h1 id="神奇的水滴石">神奇的水滴石</h1>
+
+<address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
+
+<p>我叫梅古里，一个普通的七年级学生，学习成绩优秀，毎次考试成绩都在班中的前五左右，却从来没有得过第一和第二。</p>
+
+<p>我身材瘦小，肤色比其他人都深，接近于古铜色，被他们喊作“非洲人”。班上大多数同学都看不见我的存在，而知音更是一个也没有。</p>
+
+<p>平常，他们三五成群，有说有笑，而我只能在自己的座位上等待着一个能真正走进我的内心世界的人，等待着他的到来。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/02/04/richard_droplet.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-01-25</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+      <b-badge variant=primary>音乐</b-badge>
+    </template>
+    <article>
+      <h1 id="用musicpy制作音符画">用<a href="https://github.com/Rainbow-Dreamer/musicpy">musicpy</a>制作音符画</h1>
+
+<p>musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（</p>
+
+<p>今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/01/25/note_art_with_musicpy.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-01-23</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+    </template>
+    <article>
+      <h1 id="richard写的文本加密算法">Richard写的文本加密算法</h1>
+
+<p>Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌<em>“最高的一个有效位”</em>‌（即最高的一个1）以下的每一位都反转，如：</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/01/23/richards_text_encryption.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-01-20</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+    </template>
+    <article>
+      <h1 id="实-验-室-制-取-锟-斤-拷">实 验 室 制 取 锟 斤 拷</h1>
+
+<p>Ruby</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">encodeOpt</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:invalid</span> <span class="o">=&gt;</span> <span class="ss">:replace</span><span class="p">,</span> <span class="ss">:undef</span> <span class="o">=&gt;</span> <span class="ss">:replace</span> <span class="p">}</span>
+<span class="n">str</span> <span class="o">=</span> <span class="s2">"你好，世界！"</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">encode!</span><span class="p">(</span><span class="s1">'gbk'</span><span class="p">,</span> <span class="n">encodeOpt</span><span class="p">)</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">force_encoding</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">encode!</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">encodeOpt</span><span class="p">)</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">force_encoding</span><span class="p">(</span><span class="s1">'gbk'</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">encodeOpt</span><span class="p">)</span>
+</code></pre></div></div>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/01/20/producing_kunjinkao.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-01-15</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+    </template>
+    <article>
+      <h1 id="很久以前写的诸个quine">很久以前写的诸个quine</h1>
+
+<p>原文写于2020年3月22日；C++实现写于28日</p>
+
+<hr />
+
+<h1 id="纯真灵魂的自产生程序">纯真灵魂的自产生程序</h1>
+
+<p>用不同语言写自产生程序，作为个人练习。<del>太烧脑了</del></p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/01/15/quines.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2021-01-12</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+      <b-badge>天府灵山行者</b-badge>
+    </template>
+    <article>
+      <h1 id="richard-markup-帮助文档-v2">Richard Markup 帮助文档 v2</h1>
+
+<p><strong>Richard Markup</strong> 是我专为 Richard （<a href="https://space.bilibili.com/300711293">@天府灵山行者</a>）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。</p>
+
+<p>Richard Markup <strong>v2</strong> 抛弃了形似 HTML 的“标签”语法，混合使用缩进和大括号来表示文档结构。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2021/01/12/richard_markup_v2.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-12-25</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="brainf和befunge-99bottles-和-fizzbuzz">brainf和Befunge 99Bottles 和 FizzBuzz</h1>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/12/25/eso_99btls_fzbz.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-12-17</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="12月17日brainfuck程序集锦">12月17日brainfuck程序集锦</h1>
+
+<p>这是12月17日写的几个brainf程序，只加了少量注释。参考<a href="/blog/2020/12/04/brainf-bin2dec.html">上篇关于brainf的博客</a>。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/12/17/brainf-collection.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-12-09</time>
+      <b-badge>shit</b-badge>
+    </template>
+    <article>
+      <h1 id="a-s-c-i-i-简-谱">A S C I I 简 谱</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>XX          XX
+==          ==
+ \           \            |
+  X  X  0     X  X  0     |
+  ----        ----        |
+</code></pre></div></div>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/12/09/ascii_jianpu.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-12-08</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>日常写代码</b-badge>
+      <b-badge>天府灵山行者</b-badge>
+    </template>
+    <article>
+      <h1 id="richard-markup-帮助文档">Richard Markup 帮助文档</h1>
+
+<p><strong>Richard Markup</strong> 是我专为 Richard （<a href="https://space.bilibili.com/300711293">@天府灵山行者</a>）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/12/08/richard_markup.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-12-04</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="brainfuck二进制转十进制">brainfuck二进制转十进制</h1>
+
+<p><em>诶――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，诶……我写了个程序，二进制转十进制：</em></p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/12/04/brainf-bin2dec.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-10-16</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="ohhhhbrainfuck自产生程序">OHHHH，brainfuck自产生程序！</h1>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/10/16/brainf-quine.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-10-07</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="jvavscript">JvavScript</h1>
+
+<p><strong>JvavScript</strong>是我提出的一个基于JavaScript的深奥编程语言，是JavaScript的一个子集，也是<a href="https://esolangs.org/wiki/JSFuck">JSFuck</a>的一个超集。JvavScript代码符合JavaScript表达式的语法，然而只能使用有限的几种字符：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>( ) [ ] &lt; &gt; + - ! , = ? : _ $
+</code></pre></div></div>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/10/07/jvavscript.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-09-22</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>前端</b-badge>
+    </template>
+    <article>
+      <h1 id="鉴别浏览器ecmascript版本">鉴别浏览器ECMAScript版本</h1>
+
+<p>所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。</p>
+
+<p>今天写了个粗略鉴别ES版本的代码。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/09/22/ecma-ver-test.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-09-01</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="禁止套深奥编程语言用befunge程序生成brainfuck代码">禁止套深奥编程语言！用Befunge程序生成brainfuck代码</h1>
+
+<p>关于Befunge和brainfuck是什么我就不说了，<a href="https://esolangs.org">Esolangs</a>上有详细说明</p>
+
+<p>今天随便写了这个Befunge程序，它可以生成一段会输出指定文字的brainfuck代码。</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/09/01/bfbf.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-08-27</time>
+      <b-badge variant=primary>编程</b-badge>
+    </template>
+    <article>
+      <h1 id="可以运行的乱码javascript">可以运行的乱码JavaScript？）</h1>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="o">!</span><span class="p">[]</span><span class="o">+</span><span class="p">[])[</span><span class="o">+</span><span class="p">[]]</span><span class="o">+</span><span class="p">(</span><span class="o">!</span><span class="p">[]</span><span class="o">+</span><span class="p">[])[</span><span class="o">+!+</span><span class="p">[]]</span><span class="o">+</span><span class="p">([</span><span class="o">!</span><span class="p">[]]</span><span class="o">+</span><span class="p">[][[]])[</span><span class="o">+!+</span><span class="p">[]</span><span class="o">+</span><span class="p">[</span><span class="o">+</span><span class="p">[]]]</span><span class="o">+</span><span class="p">(</span><span class="o">!</span><span class="p">[]</span><span class="o">+</span><span class="p">[])[</span><span class="o">!+</span><span class="p">[]</span><span class="o">+!+</span><span class="p">[]]);</span> <span class="c1">// "fail"</span>
+</code></pre></div></div>
+
+<p style="font-size:3em">这就nm离谱</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/08/27/shit-code-js.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+  <b-card class="mt-1 mb-5">
+    <template #header>
+      <time>2020-08-27</time>
+      <b-badge variant=primary>编程</b-badge>
+      <b-badge>esolang</b-badge>
+    </template>
+    <article>
+      <h1 id="奇怪的av号-bv号转换程序增加了">奇怪的AV号-BV号转换程序增加了！</h1>
+
+<p>众所周知，哔哩哔哩已经把旧版视频番号AV号隐藏，只显示新版番号BV号，而这两种番号可以通过一个算法相互转换。最常用的番号转换器非 https://bv2av.com 莫属。</p>
+
+<p>我用两种<strong>深奥编程语言</strong>，即<strong>娱乐性大于实用性</strong>的编程语言实现了番号转换，话不多说，直接上源码</p>
+
+    </article>
+    <template #footer>
+      <b-link href="/blog/2020/08/27/eso-av2bv.html" class="read-all">
+        阅读全文
+        <b-icon icon="arrow-right"></b-icon>
+      </b-link>
+    </template>
+  </b-card>
+</b-card-group>
+</div>
+      </article>
+    </soul-main>
+    <soul-blog-footer  :links="[
+      { href: 'https://www.mywiki.cn/dgck81lnn', text: '旧博客站' },
+      { href: 'https://dgck81lnn.blog.luogu.org', text: '洛谷网博客' },
+    ]"></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

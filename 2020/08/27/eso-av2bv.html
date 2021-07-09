@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>奇怪的AV号-BV号转换程序增加了！ | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="奇怪的AV号-BV号转换程序增加了！" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="奇怪的AV号-BV号转换程序增加了！ 众所周知，哔哩哔哩已经把旧版视频番号AV号隐藏，只显示新版番号BV号，而这两种番号可以通过一个算法相互转换。最常用的番号转换器非 https://bv2av.com 莫属。 我用两种深奥编程语言，即娱乐性大于实用性的编程语言实现了番号转换，话不多说，直接上源码" />
+<meta property="og:description" content="奇怪的AV号-BV号转换程序增加了！ 众所周知，哔哩哔哩已经把旧版视频番号AV号隐藏，只显示新版番号BV号，而这两种番号可以通过一个算法相互转换。最常用的番号转换器非 https://bv2av.com 莫属。 我用两种深奥编程语言，即娱乐性大于实用性的编程语言实现了番号转换，话不多说，直接上源码" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="奇怪的AV号-BV号转换程序增加了！" />
+<script type="application/ld+json">
+{"description":"奇怪的AV号-BV号转换程序增加了！ 众所周知，哔哩哔哩已经把旧版视频番号AV号隐藏，只显示新版番号BV号，而这两种番号可以通过一个算法相互转换。最常用的番号转换器非 https://bv2av.com 莫属。 我用两种深奥编程语言，即娱乐性大于实用性的编程语言实现了番号转换，话不多说，直接上源码","url":"/blog/2020/08/27/eso-av2bv.html","@type":"BlogPosting","headline":"奇怪的AV号-BV号转换程序增加了！","dateModified":"2020-08-27T00:00:00+00:00","datePublished":"2020-08-27T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2020/08/27/eso-av2bv.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>奇怪的AV号-BV号转换程序增加了！</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1 id="奇怪的av号-bv号转换程序增加了">奇怪的AV号-BV号转换程序增加了！</h1>
+
+<p>众所周知，哔哩哔哩已经把旧版视频番号AV号隐藏，只显示新版番号BV号，而这两种番号可以通过一个算法相互转换。最常用的番号转换器非 https://bv2av.com 莫属。</p>
+
+<p>我用两种<strong>深奥编程语言</strong>，即<strong>娱乐性大于实用性</strong>的编程语言实现了番号转换，话不多说，直接上源码</p>
+
+<h2 id="文言-wenyan-lang"><a href="https://github.com/wenyan-lang/wenyan">文言 wenyan-lang</a></h2>
+<p>以下代码写于2020年3月</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>吾嘗觀「位經」之書。方悟「異或」之義。
+吾嘗觀「列經」之書。方悟「索一」之義。
+吾嘗觀「算經」之書。方悟「取底」之義。
+
+吾有一列。名之曰「字母表」。
+充「字母表」以「「f」」。以「「Z」」。以「「o」」。以「「d」」。
+以「「R」」。以「「9」」。以「「X」」。以「「Q」」。以「「D」」。以「「S」」。
+以「「U」」。以「「m」」。以「「2」」。以「「1」」。以「「y」」。以「「C」」。
+以「「k」」。以「「r」」。以「「6」」。以「「z」」。以「「B」」。以「「q」」。
+以「「i」」。以「「v」」。以「「e」」。以「「Y」」。以「「a」」。以「「h」」。
+以「「8」」。以「「b」」。以「「t」」。以「「4」」。以「「x」」。以「「s」」。
+以「「W」」。以「「p」」。以「「H」」。以「「n」」。以「「J」」。以「「E」」。
+以「「7」」。以「「j」」。以「「L」」。以「「5」」。以「「V」」。以「「G」」。
+以「「3」」。以「「g」」。以「「u」」。以「「M」」。以「「T」」。以「「K」」。
+以「「N」」。以「「P」」。以「「A」」。以「「w」」。以「「c」」。以「「F」」。
+
+吾有一列。名之曰「亂序表」。
+充「亂序表」以七。以三。以五。以九。以六。以一十。以四。以八。以二。以一。
+
+吾有一數。曰一億七千七百四十五萬一千八百一十二。名之曰「異或數」。
+
+吾有一列。名之曰「加數」。
+充「加數」以六。以五十五。以三。以一十七。以一十七。
+以一十三。以一十三。以四十。以三十一。以一十三。
+
+今有一術。名之曰「甲號轉乙號」。欲行是術。必先得一數。曰「甲號」。乃行是術曰。
+ 施「異或」於「甲號」於「異或數」。名之曰「子」。
+ 吾有一列。名之曰「丑」。
+ 吾有一言。名之曰「乙號」。
+ 吾有一數。曰一。名之曰「戌」。
+ 恆為是。若「戌」大於十者乃止也。
+  夫「加數」之「戌」。加其於「子」。昔之「子」者。今其是矣。
+  夫「子」。除其以五十八。所餘幾何。充「丑」以其。
+  夫「子」。除其以五十八。取一以施「取底」。昔之「子」者。今其是矣。
+ 加一於「戌」。昔之「戌」者。今其是矣。云云。
+ 凡「亂序表」中之「戌」者。
+  夫「丑」之「戌」。加其以一。夫「字母表」之其。加其於「乙號」。昔之「乙號」者。今其是矣。
+ 云云。
+ 乃得「乙號」。
+是謂「甲號轉乙號」之術也。
+
+今有一術。名之曰「乙號轉甲號」。欲行是術。必先得一言。曰「乙號」。乃行是術曰。
+ 吾有一列。名之曰「丑」。
+ 吾有二數。曰零。曰一。名之曰「子」。曰「戌」。
+ 恆為是。若「戌」大於十者乃止也。
+  夫「字母表」。夫「乙號」之「戌」。取二以施「索一」。減其以一。名之曰「甲」。
+  夫「亂序表」之「戌」。名之曰「乙」。
+  昔之「丑」之「乙」者。今「甲」是矣。
+ 加一於「戌」。昔之「戌」者。今其是矣。云云。
+ 昔之「戌」者。今十是矣。恆為是。若「戌」小於一者乃止也。
+  夫「丑」之「戌」。名之曰「丙」。
+  夫「加數」之「戌」。名之曰「丁」。
+  乘「子」以五十八。加其以「丙」。減其以「丁」。昔之「子」者。今其是矣。
+ 減一於「戌」。昔之「戌」者。今其是矣。云云。
+ 施「異或」於「子」。於「異或數」。乃得矣。
+是謂「乙號轉甲號」之術也。
+
+施「甲號轉乙號」於一十七萬零一。書之。
+施「乙號轉甲號」於「「17x411w7KC」」。書之。
+</code></pre></div></div>
+
+<h2 id="dongbei---东北方言编程语言"><a href="https://github.com/zhanyong-wan/dongbei">dongbei - 东北方言编程语言</a></h2>
+<p>以下代码写于2020年8月</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>异或（老张，老王）咋整：
+    滚犊子吧整eval（老张、“^”、老王）。
+整完了。
+
+老几（张家庄，老张）咋整：
+    几从一到（张家庄有几个坑）磨叽：
+        寻思：老张跟张家庄的老几一样一样的？
+        要行咧就滚犊子吧几。
+    磨叽完了。
+    滚犊子吧零。
+整完了。
+
+字母表装「“f”，“Z”，“o”，“d”，“R”，“9”，“X”，“Q”，
+“D”，“S”，“U”，“m”，“2”，“1”，“y”，“C”，“k”，“r”，
+“6”，“z”，“B”，“q”，“i”，“v”，“e”，“Y”，“a”，“h”，
+“8”，“b”，“t”，“4”，“x”，“s”，“W”，“p”，“H”，“n”，
+“J”，“E”，“7”，“j”，“L”，“5”，“V”，“G”，“3”，“g”，
+“u”，“M”，“T”，“K”，“N”，“P”，“A”，“w”，“c”，“F”」。
+乱序表装「7，3，5，9，6，10，4，8，2，1」。
+异或数装177451812。
+【加数】装「6，55，3，17，17，13，13，40，31，13」。
+
+AV转BV（AV号）咋整：
+    老王装整异或（AV号，异或数）。
+    张家庄都是活雷锋。
+    BV号装“”。
+    几从一到十磨叽：
+        老王装（老王加【加数】的老几）。
+        张家庄来了个（老王刨掉一堆堆58）。
+        老王装（老王齐整整地除以58）。
+    磨叽完了。
+    几在乱序表磨叽：
+        BV号装BV号、字母表的老（张家庄的老几加一）。
+    磨叽完了。
+    滚犊子吧BV号！
+整完了。
+
+BV转AV（BV号）咋整：
+    张家庄都是活雷锋。
+    老王装零。
+    几从一到十磨叽：
+        张家庄来了个零。
+    磨叽完了。
+    几从一到十磨叽：
+        张家庄的老（乱序表的老几）装整老几（字母表，BV号的老几）减一。
+    磨叽完了。
+    几从一到十磨叽：
+        老王装老王乘58加（张家庄的老（11减几））减（【加数】的老（11减几））。
+    磨叽完了。
+    滚犊子吧整异或（老王，异或数）！
+整完了。
+
+唠唠：整AV转BV（170001）。
+唠唠：整BV转AV（“17x411w7KC”）。
+</code></pre></div></div>
+
+<h2 id="附赠完美php版本">（附赠完美PHP版本）</h2>
+<p>以下代码写于2020年7月</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="cd">/**
+ * AV号、BV号转换
+ * 
+ * @author DGCK81LNN
+ */</span>
+
+<span class="nv">$avbv_alphabet</span> <span class="o">=</span> <span class="s1">'fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF'</span><span class="p">;</span>
+<span class="nv">$avbv_table</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$avbv_alphabet</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$avbv_table</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$avbv_alphabet</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$avbv_bvreg</span> <span class="o">=</span> <span class="s2">"/^[</span><span class="nv">$avbv_alphabet</span><span class="s2">]</span><span class="si">{</span><span class="nv">10</span><span class="si">}</span><span class="se">\$</span><span class="s2">/u"</span><span class="p">;</span>
+<span class="nv">$avbv_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="nv">$avbv_xor</span> <span class="o">=</span> <span class="mi">177451812</span><span class="p">;</span>
+<span class="nv">$avbv_add</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">13</span><span class="p">];</span>
+
+<span class="cd">/**
+ * AV号转BV号
+ * 
+ * @param int|string $av
+ * @return string 带“BV”前缀的BV号
+ * 
+ * @throws InvalidArgumentException 传入的参数不是整数或字符串
+ * @throws DomainException 传入的整数不是正整数
+ * @throws UnexpectedValueException 传入的字符串不是"AV"后接一个十进制正整数的形式
+ */</span>
+<span class="k">function</span> <span class="n">av2bv</span><span class="p">(</span><span class="nv">$av</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$avbv_table</span><span class="p">,</span> <span class="nv">$avbv_s</span><span class="p">,</span> <span class="nv">$avbv_xor</span><span class="p">,</span> <span class="nv">$avbv_add</span><span class="p">;</span>
+    <span class="nv">$dump</span> <span class="o">=</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$av</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nv">$num</span> <span class="o">=</span> <span class="no">NAN</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">is_integer</span><span class="p">(</span><span class="nv">$av</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$num</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">DomainException</span><span class="p">(</span><span class="s2">"av2bv(</span><span class="nv">$dump</span><span class="s2">): AV号必须大于0"</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="nv">$num</span> <span class="o">=</span> <span class="nv">$av</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$av</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/^AV[1-9][0-9]*$/i"</span><span class="p">,</span> <span class="nv">$av</span><span class="p">))</span>
+            <span class="nv">$num</span> <span class="o">=</span> <span class="p">(</span><span class="n">int</span><span class="p">)</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$av</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">UnexpectedValueException</span><span class="p">(</span><span class="s2">"av2bv(</span><span class="nv">$dump</span><span class="s2">): AV号格式有误"</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">InvalidArgumentException</span><span class="p">(</span><span class="s2">"av2bv(</span><span class="nv">$dump</span><span class="s2">): 参数必须是整数或字符串"</span><span class="p">);</span>
+
+    <span class="nv">$num</span> <span class="o">^=</span> <span class="nv">$avbv_xor</span><span class="p">;</span>
+    <span class="nv">$num58</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'BV'</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$num</span> <span class="o">+=</span> <span class="nv">$avbv_add</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+        <span class="nv">$num58</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$num</span> <span class="o">%</span> <span class="mi">58</span><span class="p">;</span>
+        <span class="nv">$num</span> <span class="o">=</span> <span class="nb">floor</span><span class="p">(</span><span class="nv">$num</span> <span class="o">/</span> <span class="mi">58</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$avbv_s</span> <span class="k">as</span> <span class="nv">$digitIndex</span><span class="p">)</span>
+        <span class="nv">$result</span> <span class="mf">.</span><span class="o">=</span> <span class="nv">$avbv_table</span><span class="p">[</span><span class="nv">$num58</span><span class="p">[</span><span class="nv">$digitIndex</span><span class="p">]];</span>
+    <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cd">/**
+ * BV号转AV号
+ * （“BV”后的“1”不能省略）
+ * 
+ * @param string $bv
+ * @param bool $returnNumber 是否要返回一个整数。默认返回带“AV”前缀的字符串。
+ * @return int|string 带“AV”前缀的AV号，或整数形式的AV号
+ * 
+ * @throws InvalidArgumentException 第一个参数不是字符串
+ * @throws UnexpectedValueException 传入的BV号不符合10位base58或“BV”后接10位base58的格式
+ * @throws RangeException 进行按位异或运算后得到负数
+ */</span>
+<span class="k">function</span> <span class="n">bv2av</span><span class="p">(</span><span class="nv">$bv</span><span class="p">,</span> <span class="nv">$returnNumber</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$avbv_table</span><span class="p">,</span> <span class="nv">$avbv_bvreg</span><span class="p">,</span> <span class="nv">$avbv_s</span><span class="p">,</span> <span class="nv">$avbv_xor</span><span class="p">,</span> <span class="nv">$avbv_add</span><span class="p">;</span>
+    <span class="nv">$dump</span> <span class="o">=</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$bv</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nv">$str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nv">$err</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$bv</span><span class="p">))</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">InvalidArgumentException</span><span class="p">(</span><span class="s2">"bv2av(</span><span class="nv">$dump</span><span class="s2">): 第一个参数必须是字符串"</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$bv</span><span class="p">)</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="nv">$str</span> <span class="o">=</span> <span class="nv">$bv</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$bv</span><span class="p">)</span> <span class="o">===</span> <span class="mi">12</span> <span class="o">&amp;&amp;</span> <span class="nb">stripos</span><span class="p">(</span><span class="nv">$bv</span><span class="p">,</span> <span class="s1">'BV'</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nv">$str</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$bv</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="nv">$err</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$err</span> <span class="o">||</span> <span class="o">!</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$avbv_bvreg</span><span class="p">,</span> <span class="nv">$str</span><span class="p">))</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">UnexpectedValueException</span><span class="p">(</span><span class="s2">"bv2av(</span><span class="nv">$dump</span><span class="s2">): BV号格式有误"</span><span class="p">);</span>
+
+    <span class="nv">$num58</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="nv">$num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$char</span> <span class="o">=</span> <span class="nv">$str</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+        <span class="nv">$num58</span><span class="p">[</span><span class="nv">$avbv_s</span><span class="p">[</span><span class="nv">$i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">array_search</span><span class="p">(</span><span class="nv">$char</span><span class="p">,</span> <span class="nv">$avbv_table</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$num</span> <span class="o">*=</span> <span class="mi">58</span><span class="p">;</span>
+        <span class="nv">$num</span> <span class="o">+=</span> <span class="nv">$num58</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">-</span> <span class="nv">$avbv_add</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="nv">$num</span> <span class="o">^=</span> <span class="nv">$avbv_xor</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$num</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">RangeException</span><span class="p">(</span><span class="s2">"bv2av(</span><span class="nv">$dump</span><span class="s2">): AV号溢出 (</span><span class="nv">$num</span><span class="s2">)"</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$returnNumber</span> <span class="o">?</span> <span class="nv">$num</span> <span class="o">:</span> <span class="s2">"AV</span><span class="nv">$num</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cd">/**
+ * 将任意格式的视频番号转换为AV号数字
+ * （“BV”后的“1”不能省略）
+ * 
+ * @param int|string $input
+ * @return int 整数形式的AV号
+ * 
+ * @throws InvalidArgumentException 传入的参数不是整数或字符串
+ * @throws DomainException 传入的整数不是正整数
+ * @throws UnexpectedValueException 无法识别传入的字符串番号
+ * @throws RangeException 进行按位异或运算后得到负数
+ */</span>
+<span class="k">function</span> <span class="n">getAID</span><span class="p">(</span><span class="nv">$input</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$avbv_bvreg</span><span class="p">;</span>
+    <span class="nv">$dump</span> <span class="o">=</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">is_integer</span><span class="p">(</span><span class="nv">$input</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$input</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">DomainException</span><span class="p">(</span><span class="s2">"getAID(</span><span class="nv">$dump</span><span class="s2">): AV号必须大于0"</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="nv">$input</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$input</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/^AV[1-9][0-9]*$/i"</span><span class="p">,</span> <span class="nv">$input</span><span class="p">))</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">int</span><span class="p">)</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$avbv_bvreg</span><span class="p">,</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="nf">bv2av</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">stripos</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="s1">'BV'</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$avbv_bvreg</span><span class="p">,</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="nf">bv2av</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">UnexpectedValueException</span><span class="p">(</span><span class="s2">"getAID(</span><span class="nv">$dump</span><span class="s2">): 字符串参数格式有误"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">InvalidArgumentException</span><span class="p">(</span><span class="s2">"getAID(</span><span class="nv">$dump</span><span class="s2">): 参数必须是整数或字符串"</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="cd">/**
+ * 将任意格式的视频番号转换为BV号字符串
+ * （“BV”后的“1”不能省略）
+ * 
+ * @param int|string $input
+ * @return string
+ * 
+ * @throws InvalidArgumentException 传入的参数不是整数或字符串
+ * @throws DomainException 传入的整数不是正整数
+ * @throws UnexpectedValueException 无法识别传入的字符串番号
+ */</span>
+<span class="k">function</span> <span class="n">getBVID</span><span class="p">(</span><span class="nv">$input</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$avbv_bvreg</span><span class="p">;</span>
+    <span class="nv">$dump</span> <span class="o">=</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">is_integer</span><span class="p">(</span><span class="nv">$input</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$input</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">DomainException</span><span class="p">(</span><span class="s2">"getBVID(</span><span class="nv">$dump</span><span class="s2">): AV号必须大于0"</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="nf">av2bv</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$input</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/^AV[1-9][0-9]*$/i"</span><span class="p">,</span> <span class="nv">$input</span><span class="p">))</span>
+            <span class="k">return</span> <span class="nf">av2bv</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$avbv_bvreg</span><span class="p">,</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="s2">"BV</span><span class="nv">$input</span><span class="s2">"</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">stripos</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="s1">'BV'</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$avbv_bvreg</span><span class="p">,</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="nv">$input</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">UnexpectedValueException</span><span class="p">(</span><span class="s2">"getBVID(</span><span class="nv">$dump</span><span class="s2">): 字符串参数格式有误"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">InvalidArgumentException</span><span class="p">(</span><span class="s2">"getBVID(</span><span class="nv">$dump</span><span class="s2">): 参数必须是整数或字符串"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="附赠略简陋js版本">（附赠略简陋JS版本）</h2>
+<p>以下代码写于2020年3月</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="p">[...</span><span class="dl">'</span><span class="s1">fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF</span><span class="dl">'</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">xor</span> <span class="o">=</span> <span class="mi">177451812</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">13</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">av2bv</span> <span class="o">=</span> <span class="p">(</span><span class="nx">av</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="kc">NaN</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">av</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">num</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">av</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">av</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">av</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">AV</span><span class="dl">"</span><span class="p">))</span>
+            <span class="nx">num</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">av</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">();</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">TypeError</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span>  <span class="dl">'</span><span class="s1">传入的AV号必须是字符串或数字</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">num</span><span class="p">)){</span>
+        <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">();</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SyntaxError</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span>  <span class="dl">'</span><span class="s1">AV号必须是数字</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">();</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">RangeError</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span>  <span class="dl">'</span><span class="s1">AV号必须大于0</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="nx">num</span> <span class="o">^=</span> <span class="nx">xor</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">num58</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">BV</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">num</span> <span class="o">+=</span> <span class="nx">add</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="nx">num58</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">num</span><span class="o">%</span><span class="mi">58</span><span class="p">);</span>
+        <span class="nx">num</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">num</span><span class="o">/</span><span class="mi">58</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">digitIndex</span> <span class="o">=&gt;</span> <span class="nx">result</span> <span class="o">+=</span> <span class="nx">table</span><span class="p">[</span><span class="nx">num58</span><span class="p">[</span><span class="nx">digitIndex</span><span class="p">]]);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">bv2av</span> <span class="o">=</span> <span class="nx">bv</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">bv</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">();</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">TypeError</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span>  <span class="dl">'</span><span class="s1">传入的BV号必须是字符串</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">bv</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">str</span> <span class="o">=</span> <span class="nx">bv</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">bv</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">12</span> <span class="o">&amp;&amp;</span> <span class="nx">bv</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">BV</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">str</span> <span class="o">=</span> <span class="nx">bv</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">();</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SyntaxError</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span>  <span class="dl">'</span><span class="s1">BV号必须是10位字母数字编码</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">str</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF</span><span class="se">]{10}</span><span class="sr">/gu</span><span class="p">))</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">();</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SyntaxError</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span>  <span class="dl">'</span><span class="s1">BV号含有非法字符</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="kd">let</span> <span class="nx">num58</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">num</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="p">[...</span><span class="nx">str</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">char</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">num58</span><span class="p">[</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">table</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">char</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span> <span class="nx">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">){</span>
+        <span class="nx">num</span> <span class="o">*=</span> <span class="mi">58</span><span class="p">;</span>
+        <span class="nx">num</span> <span class="o">+=</span> <span class="nx">num58</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">-</span> <span class="nx">add</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="nx">num</span> <span class="o">^=</span> <span class="nx">xor</span><span class="p">;</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">AV</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">num</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+</div>
+        <footer class="soul-p2">
+          <address>DGCK81LNN &middot;
+            <time>2020-08-27</time>
+          </address>
+        </footer>
+      </article>
+    </soul-main>
+    <soul-blog-footer ></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

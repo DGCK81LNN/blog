@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>brainf和Befunge 99Bottles 和 FizzBuzz | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="brainf和Befunge 99Bottles 和 FizzBuzz" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="brainf和Befunge 99Bottles 和 FizzBuzz" />
+<meta property="og:description" content="brainf和Befunge 99Bottles 和 FizzBuzz" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="brainf和Befunge 99Bottles 和 FizzBuzz" />
+<script type="application/ld+json">
+{"description":"brainf和Befunge 99Bottles 和 FizzBuzz","url":"/blog/2020/12/25/eso_99btls_fzbz.html","@type":"BlogPosting","headline":"brainf和Befunge 99Bottles 和 FizzBuzz","dateModified":"2020-12-25T00:00:00+00:00","datePublished":"2020-12-25T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2020/12/25/eso_99btls_fzbz.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>brainf和Befunge 99Bottles 和 FizzBuzz</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1 id="brainf和befunge-99bottles-和-fizzbuzz">brainf和Befunge 99Bottles 和 FizzBuzz</h1>
+
+<h2 id="99bottlesb">99bottles.b</h2>
+
+<p>12月22日</p>
+
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">99 bottles of beer
+ 
+获得初始瓶数99
+</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1">
+主循环
+</span><span class="p">[</span><span class="c1">
+ 
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="c1">输出当前瓶数（参考 https://esolangs</span><span class="nf">.</span><span class="c1">org/wiki/Brainfuck_algorithms ）</span><span class="p">]</span><span class="c1">
+  </span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;&lt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]]</span><span class="c1">
+ 
+  输出“ bottle”
+  </span><span class="nb">&gt;&gt;</span><span class="nf">++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出空格并清理
+  </span><span class="nb">&lt;</span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 获得100、110、120
+  </span><span class="nb">&gt;</span><span class="nf">--.</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="nb">&gt;</span><span class="nf">----..</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="c1"> 上下微调输出“bottle”
+  </span><span class="nb">&gt;&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 清理
+ 
+  如果瓶数不是1则输出“s”
+  </span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1"> 减1
+  </span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="p">]</span><span class="c1"> 复制两份
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 其中一份挪回去
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> if块
+    </span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+++++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">--.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出“s”并清理
+  </span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="c1"> 还原
+ 
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="c1">输出“ of beer on the wall</span><span class="nf">,</span><span class="c1">\n”</span><span class="p">]</span><span class="c1">
+  </span><span class="nf">++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 获得空格
+  </span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 获得100、110、120
+  </span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;</span><span class="nf">++.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">----.+++..</span><span class="nb">&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">---.-.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">----.</span><span class="nb">&lt;&lt;</span><span class="nf">+++.---.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">----.</span><span class="nb">&gt;</span><span class="nf">--..</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 清理
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">-.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出逗号并清理
+  </span><span class="nf">++++++++++.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">输出换行符并清理
+ 
+  输出当前瓶数
+  </span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;&lt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]]</span><span class="c1">
+ 
+  输出“ bottle”
+  </span><span class="nb">&gt;&gt;</span><span class="nf">++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&lt;</span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">--.</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="nb">&gt;</span><span class="nf">----..</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="c1">
+  </span><span class="nb">&gt;&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+ 
+  如果瓶数不是1则输出“s”
+  </span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1">
+  </span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+++++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">--.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="c1">
+ 
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="c1">输出“ of beer</span><span class="nf">.</span><span class="c1">\nTake one down</span><span class="nf">,</span><span class="c1"> pass it around</span><span class="nf">,</span><span class="c1">\n”</span><span class="p">]</span><span class="c1">
+  </span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 获得30、50、100、110、120
+  </span><span class="nb">&gt;</span><span class="nf">++.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;</span><span class="nf">++.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">----.+++..</span><span class="nb">&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">----.</span><span class="nb">&lt;&lt;</span><span class="nf">++++++++++.</span><span class="c1">
+  </span><span class="nb">&gt;&gt;&gt;</span><span class="nf">-----------------.+++++++++++++.</span><span class="nb">&gt;</span><span class="nf">-------.</span><span class="nb">&lt;</span><span class="nf">++++.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++.-.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">-.</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="nb">&gt;</span><span class="nf">-.</span><span class="nb">&lt;</span><span class="nf">-.</span><span class="nb">&lt;&lt;</span><span class="nf">--.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="c1">
+  </span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++.</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&gt;</span><span class="nf">+++..</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">++++++++.</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">--------.</span><span class="nb">&gt;</span><span class="nf">--.---.</span><span class="nb">&gt;</span><span class="nf">--.</span><span class="nb">&lt;</span><span class="nf">-.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="c1">
+  </span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 清理
+ 
+  瓶数减1
+  </span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="nf">-</span><span class="c1">
+ 
+  如果瓶数为0输出“No ”，否则输出瓶数
+  </span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> if块
+    </span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 瓶数搬过来，防止输出数字干扰 if else 使用的临时单元格
+ </span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;&lt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]]</span><span class="c1">
+    </span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;&gt;</span><span class="p">]</span><span class="c1"> 瓶数搬回去
+  </span><span class="nb">&lt;&lt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="p">]]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> else块
+    </span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;&gt;</span><span class="nf">+++++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 获得80和110
+    </span><span class="nb">&lt;</span><span class="nf">--.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出“N”并清理
+    </span><span class="nb">&gt;&gt;</span><span class="nf">+.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出“o”并清理
+  </span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 还原
+ 
+  输出“ bottle”
+  </span><span class="nb">&gt;</span><span class="nf">++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">--.</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="nb">&gt;</span><span class="nf">----..</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="c1">
+  </span><span class="nb">&gt;&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+ 
+  如果瓶数不是1则输出“s”
+  </span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1">
+  </span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+++++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&lt;</span><span class="nf">--.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="c1">
+ 
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="c1">输出“ of beer on the wall</span><span class="nf">.</span><span class="c1">\n\n”</span><span class="p">]</span><span class="c1">
+  </span><span class="nf">++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 获得空格
+  </span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 获得100、110、120
+  </span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;</span><span class="nf">++.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">----.+++..</span><span class="nb">&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">---.-.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">----.</span><span class="nb">&lt;&lt;</span><span class="nf">+++.---.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">----.</span><span class="nb">&gt;</span><span class="nf">--..</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 清理
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出句点并清理
+  </span><span class="nf">++++++++++..</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出空格并清理
+ 
+</span><span class="nb">&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 继续主循环
+ 
+强行手动输出最后一段
+</span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="nf">++++++++++++</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="c1"> 获得10、30、50、80、90、100、110、120
+</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">--.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">++.</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">--.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">----..</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="nb">&gt;&gt;</span><span class="nf">-.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">----.+++..</span><span class="nb">&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="c1">
+</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">---.-.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;</span><span class="nf">+++.---.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">----.</span><span class="nb">&gt;</span><span class="nf">--..</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">------.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="c1">
+</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">+.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">---..</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="nb">&gt;&gt;</span><span class="nf">-.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">----.+++..</span><span class="nb">&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">++.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="c1">
+</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">-------.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">---.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">+++.---.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">-.+.</span><span class="nb">&lt;</span><span class="nf">.+++.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">--.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="c1">
+</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">---.</span><span class="nb">&gt;&gt;</span><span class="nf">+.++++.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">------.</span><span class="nb">&lt;</span><span class="nf">---.--.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">.++.+++.</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="c1">
+</span><span class="nb">&gt;&gt;</span><span class="nf">+++++++++++++..</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">---.</span><span class="nb">&gt;</span><span class="nf">---.</span><span class="nb">&gt;</span><span class="nf">+..</span><span class="nb">&lt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="nb">&gt;&gt;</span><span class="nf">-.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">----.+++..</span><span class="nb">&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="c1">
+</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">---.-.</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+.</span><span class="nb">&lt;&lt;</span><span class="nf">+++.---.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">----.</span><span class="nb">&gt;</span><span class="nf">--..</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">-----------.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="c1">
+</span></code></pre></div></div>
+
+<p>多次用到了这个代码片段：</p>
+
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">输出当前格的值。中途使用右手边的9个单元格。
+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="nb">&lt;&lt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]]</span><span class="nb">&lt;</span><span class="c1">
+</span></code></pre></div></div>
+
+<h2 id="99bottlesb93">99bottles.b93</h2>
+
+<p>12月17日</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>v&gt; &gt;:#v_#v #"" oN"# ,,# &lt;   &gt;"s",&gt;052*",llaw eht no reeb fo "&gt;:#,_$v
+9     &gt;:.&gt;"elttob",,,,,,:1-#^_   ^ v   _v#!-1:,,,,,,"bottle"&lt;.:&lt;
+5* v\*25\0:$_ #!,#:&lt;" of beer."*250&lt;,"s"&lt;  &gt; #,, #"No ""#   ^#_^#!:&lt;
+6+v_",erom emos yub ,erots eht ot oG"&gt;:#,_$956+*.88*20pv  Befunge-93
+ v&gt;",dnuora ti ssap ,nwod eno ekaT"&gt;:#,_$1-:!#v_:.v    &lt;&gt;:#,_$25*:,,
+ #   "on the wall."0&lt;   _v#!-1:,,,,,,"bottle"&lt; &lt;  &lt;     ^" of beer "
+&gt;^99 bottles of beer^,"s"&lt;      &gt; #,, #"No ""#&lt;^ dgck81lnn.github.io
+</code></pre></div></div>
+
+<p>输出瓶数模块：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{in}&gt;:v_#v #"" oN"# ,,# &lt;   &gt;"s",&gt;{out}
+      &gt;:.&gt;"elttob",,,,,,:1-#^_   ^
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">栈顶</th>
+      <th>输出</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right"><code class="language-plaintext highlighter-rouge">99</code></td>
+      <td><code class="language-plaintext highlighter-rouge">99 bottles</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right"><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2 bottles</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right"><code class="language-plaintext highlighter-rouge">1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1 bottle</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right"><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">No bottles</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="fizzbuzzb">fizzbuzz.b</h2>
+
+<p>12月25日</p>
+
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">初始化计数器
+</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+( N=100 'n=0 )
+</span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="c1">
+  </span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="p">]</span><span class="c1">
+  ( N '0 n n 0 0 n 0 n )
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="c1">
+  ( N n 0 n '1 0 n 0 n )
+  n模3
+  </span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="p">[</span><span class="c1">
+    </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+      </span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="p">]]</span><span class="c1">
+  </span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  ( N n 0 n 1 0 n '0 0 {n%3} )
+  如果余数为0就输出Fizz
+  </span><span class="nb">&gt;</span><span class="nf">+</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  ( N n 0 n 1 0 n 0 {n%3==0?1:0} '0 )
+  </span><span class="nb">&lt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">+++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="c1"> F
+    </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="c1"> i
+    </span><span class="nb">&gt;</span><span class="nf">++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">+..</span><span class="c1"> zz
+    </span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="p">]</span><span class="c1">
+  ( N n 0 {n%3==0?0:n} 1 0 n 0 '0 )
+  n模5
+  </span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="c1">
+    </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+      </span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="p">]]]]</span><span class="c1">
+  </span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  ( N n 0 {n%3==0?0:n} 1 '0 0 {n%5} )
+  如果余数为0就输出Buzz
+  </span><span class="nb">&gt;</span><span class="nf">+</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  ( N n 0 {n%3==0?0:n} 1 0 {n%5==0} '0 )
+  </span><span class="nb">&lt;</span><span class="p">[[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+++++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="c1"> B
+    </span><span class="nb">&gt;</span><span class="nf">+++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">++.</span><span class="c1"> u
+    </span><span class="nf">+++++..</span><span class="c1"> zz
+    </span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="p">]</span><span class="c1">
+  ( N n 0 {n%3==0||n%5==0?0:n} 1 0 '0 )
+  </span><span class="nb">&lt;&lt;</span><span class="nf">-</span><span class="c1">
+  如果模3和模5都不为0就输出数字十进制
+  ( N n 0 {n%3==0||n%5==0?0:n} '0 )
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+     </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+     </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+       </span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="c1">
+     </span><span class="p">]]]]]]]]]</span><span class="c1">
+  </span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  ( N n '0 0 {n%3==0||n%5==0?0:n%10} {n%3==0||n%5==0?0:n/10} )
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+    </span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="c1"> 0~9
+    </span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+  ( N n 0 '0 )
+  换行
+  </span><span class="nf">++++++++++.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;&lt;&lt;</span><span class="p">]</span><span class="c1">
+</span></code></pre></div></div>
+
+<h2 id="fizzbuzzb93">fizzbuzz.b93</h2>
+
+<p>12月24日</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>v&gt;:3%:v ,,:,,&lt;
+1:v\  _1"ziF"^
+&gt;^&gt;5%:v ,,:,,&lt;
+&gt;|v\  _1"zuB"^
+^@&gt;*!#v_:v&gt;*`!
++55:+1&lt; .&lt;^:,:
+</code></pre></div></div>
+
+<hr />
+
+<p style="color:white">其实我最近有些个人的负面情绪需要宣泄，但我明白每个人都有自己的烦恼，是吧？我不会在网络上发出来影响大家的心情，即使是在这个几乎不会有人看到的网站上。朋友，如果你读到这里，我要感谢你的无形的陪伴。谢谢。</p>
+</div>
+        <footer class="soul-p2">
+          <address>DGCK81LNN &middot;
+            <time>2020-12-25</time>
+          </address>
+        </footer>
+      </article>
+    </soul-main>
+    <soul-blog-footer ></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

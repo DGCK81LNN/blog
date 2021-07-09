@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Richard写的文本加密算法 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Richard写的文本加密算法" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Richard写的文本加密算法 Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌“最高的一个有效位”‌（即最高的一个1）以下的每一位都反转，如：" />
+<meta property="og:description" content="Richard写的文本加密算法 Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌“最高的一个有效位”‌（即最高的一个1）以下的每一位都反转，如：" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Richard写的文本加密算法" />
+<script type="application/ld+json">
+{"description":"Richard写的文本加密算法 Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌“最高的一个有效位”‌（即最高的一个1）以下的每一位都反转，如：","url":"/blog/2021/01/23/richards_text_encryption.html","@type":"BlogPosting","headline":"Richard写的文本加密算法","dateModified":"2021-01-23T00:00:00+00:00","datePublished":"2021-01-23T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2021/01/23/richards_text_encryption.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>Richard写的文本加密算法</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1 id="richard写的文本加密算法">Richard写的文本加密算法</h1>
+
+<p>Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌<em>“最高的一个有效位”</em>‌（即最高的一个1）以下的每一位都反转，如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     $554A 啊
+ ↓最高有效位
+01010101 01001010
+↓↓|||||| ||||||||
+01101010 10110101
+     $6AB5 檵
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     $0052 R
+          ↓最高有效位
+00000000 01010010
+↓↓↓↓↓↓↓↓ ↓↓||||||
+00000000 01101101
+     $006D m
+</code></pre></div></div>
+
+<h2 id="原实现">原实现</h2>
+
+<p>虽然算法很简单，但由于历史原因，该算法的实现十分阴间。这是Python源代码（我调整了函数的顺序）：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">str1</span><span class="p">):</span>
+    <span class="n">b</span><span class="o">=</span><span class="s">""</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">stn</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="n">i</span>
+            <span class="n">x</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="s">"0"</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="s">"1"</span>
+        <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="s">"1"</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="s">"0"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="s">"2"</span>
+            <span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">str2</span><span class="o">=</span><span class="n">nts</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">str2</span>
+
+<span class="k">def</span> <span class="nf">nts</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">str1</span><span class="o">=</span><span class="s">""</span>
+    <span class="n">ls</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="s">"2"</span><span class="p">:</span>
+            <span class="n">ls</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">str1</span><span class="p">))</span>
+            <span class="n">str1</span><span class="o">=</span><span class="s">""</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">str1</span><span class="o">+=</span><span class="n">k</span>
+    <span class="n">b</span><span class="o">=</span><span class="s">""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">+=</span><span class="nb">chr</span><span class="p">(</span><span class="n">num2t10</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">num2t10</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">num</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">num1</span><span class="o">=</span><span class="s">""</span>
+    <span class="n">num2</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+        <span class="n">num1</span><span class="o">+=</span><span class="n">num</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num1</span><span class="p">)):</span>
+        <span class="n">num2</span><span class="o">+=</span><span class="nb">int</span><span class="p">(</span><span class="n">num1</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">j</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num2</span>
+
+<span class="k">def</span> <span class="nf">stn</span><span class="p">(</span><span class="n">str1</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="s">""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">str1</span><span class="p">:</span>
+        <span class="n">a</span><span class="o">+=</span><span class="nb">str</span><span class="p">((</span><span class="n">num10t2</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">))))</span>
+        <span class="n">a</span><span class="o">+=</span><span class="s">"2"</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">num10t2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">str1</span><span class="o">=</span><span class="s">""</span>
+    <span class="n">str2</span><span class="o">=</span><span class="s">""</span>
+    <span class="k">while</span> <span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">num</span><span class="o">%</span><span class="mi">2</span>
+        <span class="n">str1</span><span class="o">+=</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">num</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">str1</span><span class="p">)):</span>
+        <span class="n">str2</span><span class="o">+=</span><span class="n">str1</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">str2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>为了方便理解，这是我修改了变量名的版本：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">origin</span><span class="p">):</span> <span class="c1"># OPTIMIZE
+</span>    <span class="s">"""加密/解密主函数。
+    
+    由于实质上是异或加密，所以加密和解密是同一个算法。
+    """</span>
+    <span class="n">resultEncoded</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">originEncoded</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">stn</span><span class="p">(</span><span class="n">origin</span><span class="p">))</span> <span class="c1"># 第一步是调用stn()，先看stn()的定义
+</span>    <span class="n">isHighestBit</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">originEncoded</span><span class="p">:</span> <span class="c1"># 这个循环用来进行迫真按位运算
+</span>        <span class="k">if</span> <span class="n">isHighestBit</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="n">bit</span>
+            <span class="n">isHighestBit</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">elif</span> <span class="n">bit</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="s">'1'</span>
+        <span class="k">elif</span> <span class="n">bit</span> <span class="o">==</span> <span class="s">'1'</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="s">'0'</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="s">'2'</span>
+            <span class="n">isHighestBit</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">nts</span><span class="p">(</span><span class="n">resultEncoded</span><span class="p">)</span> <span class="c1"># 最后调用nts()，看nts()的定义
+</span>
+<span class="k">def</span> <span class="nf">stn</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="s">"""把每个字符的字符编码转换成二进制数，然后每个数后用'2'连接。
+    
+    如："ABC" → "100000121000010210000112"
+    """</span>
+    <span class="c1"># 实际上，一开始采用的加密算法是这个函数；
+</span>    <span class="c1"># 由于密文的体积太大，才有了现在的版本。
+</span>    <span class="n">encoded</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">encoded</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num10t2</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)));</span> <span class="c1"># 对char的代码点调用了num10t2()
+</span>        <span class="n">encoded</span> <span class="o">+=</span> <span class="s">'2'</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span> <span class="c1"># ???: 为什么要转成int？？？
+</span>
+<span class="k">def</span> <span class="nf">num10t2</span><span class="p">(</span><span class="n">decimal</span><span class="p">):</span>
+    <span class="s">"""把正整数用二进制表示。
+    """</span>
+    <span class="n">reversedBinary</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">while</span> <span class="n">decimal</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">reversedBinary</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">decimal</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># OPTIMIZE: 建议改成：decimal &amp; 1
+</span>        <span class="c1"># OPTIMIZE: 为什么要事后手动倒转字符串，而不是直接把这里新增的字符拼接在字符串的开头？
+</span>        <span class="n">decimal</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">decimal</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># OPTIMIZE: decimal &gt;&gt;= 1 它不香吗？
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">)):</span>
+        <span class="n">binary</span> <span class="o">+=</span> <span class="n">reversedBinary</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span> <span class="c1"># ???: 为什么要转成int？？？
+</span>
+<span class="k">def</span> <span class="nf">nts</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+    <span class="s">"""解码“encode()”生成的密文。
+    """</span>
+    <span class="n">binaryBuffer</span> <span class="o">=</span> <span class="s">""</span> <span class="c1"># 存储一个二进制数，遇到'2'就拿走使用并清空
+</span>    <span class="n">binaryList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="s">'2'</span><span class="p">:</span>
+            <span class="n">binaryList</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">binaryBuffer</span><span class="p">))</span> <span class="c1"># HACK: 为什么要转成int？？？
+</span>            <span class="n">binaryBuffer</span> <span class="o">=</span> <span class="s">""</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">binaryBuffer</span> <span class="o">+=</span> <span class="n">bit</span>
+    <span class="n">decoded</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">binary</span> <span class="ow">in</span> <span class="n">binaryList</span><span class="p">:</span>
+        <span class="n">decoded</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">num2t10</span><span class="p">(</span><span class="n">binary</span><span class="p">))</span> <span class="c1"># 对代码点的二进制调用了num2t10()
+</span>    <span class="k">return</span> <span class="n">decoded</span>
+
+<span class="k">def</span> <span class="nf">num2t10</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+    <span class="s">"""解析二进制数。
+    """</span>
+    <span class="c1"># OPTIMIZE
+</span>    <span class="c1"># 这算法看得我人都傻了
+</span>    <span class="n">binary</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+    <span class="n">reversedBinary</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">decimal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">binary</span><span class="p">)):</span>
+        <span class="n">reversedBinary</span> <span class="o">+=</span> <span class="n">binary</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">)):</span>
+        <span class="n">decimal</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="c1"># 1 &lt;&lt; i 它不香吗？
+</span>        <span class="c1"># 就算要乘方，** 运算符不知道？？
+</span>    <span class="k">return</span> <span class="n">decimal</span>
+</code></pre></div></div>
+
+<p>我必须吐槽<code class="language-plaintext highlighter-rouge">num10t2</code>和<code class="language-plaintext highlighter-rouge">num2t10</code>这两个函数名，人家整数本来就是按二进制存储的，显示成十进制只是为了给人看的；况且好好的按位运算，非要用字符串来实现，白拼接那么多次字符串。于是我重写了一下这个算法。</p>
+
+<h2 id="我重写的算法">我重写的算法</h2>
+
+<p>JS：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sts</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+    <span class="p">[...</span><span class="nx">string</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">char</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">codePoint</span> <span class="o">=</span> <span class="nx">char</span><span class="p">.</span><span class="nx">codePointAt</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+            <span class="nx">shifter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nx">temp</span> <span class="o">=</span> <span class="nx">codePoint</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nx">temp</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">shifter</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">out</span> <span class="o">+=</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCodePoint</span><span class="p">(</span><span class="nx">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="nx">shifter</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">out</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Richard只会Python，所以又给他写了个Python版：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">codePoint</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">shifter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">codePoint</span>
+        <span class="k">while</span> <span class="n">temp</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+            <span class="n">shifter</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="n">shifter</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div></div>
+
+<p>又写了个Ruby版练手：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="n">string</span><span class="p">.</span><span class="nf">each_codepoint</span> <span class="k">do</span> <span class="o">|</span><span class="n">codePoint</span><span class="o">|</span>
+        <span class="n">shifter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">codePoint</span>
+        <span class="k">until</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span><span class="p">).</span><span class="nf">zero?</span>
+            <span class="n">temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+            <span class="n">shifter</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="k">end</span>
+        <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="n">shifter</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">out</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>顺便用按位运算重新实现了<code class="language-plaintext highlighter-rouge">num10t2()</code>和<code class="language-plaintext highlighter-rouge">num2t10()</code>：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fromBin</span><span class="p">(</span><span class="nb">bin</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">bin</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="c1"># 永远不要把二进制数转换成int！！
+</span>    <span class="n">dec</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">bin</span><span class="p">:</span>
+        <span class="n">dec</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s">"1"</span><span class="p">:</span>
+            <span class="n">dec</span> <span class="o">|=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dec</span>
+
+<span class="k">def</span> <span class="nf">toBin</span><span class="p">(</span><span class="n">dec</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dec</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dec</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="nb">bin</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">while</span> <span class="n">dec</span><span class="p">:</span>
+        <span class="nb">bin</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dec</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">bin</span> <span class="c1"># 把新的数位追加到bin的开头
+</span>        <span class="n">dec</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">bin</span>
+</code></pre></div></div>
+</div>
+        <footer class="soul-p2">
+          <address>DGCK81LNN &middot;
+            <time>2021-01-23</time>
+          </address>
+        </footer>
+      </article>
+    </soul-main>
+    <soul-blog-footer ></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

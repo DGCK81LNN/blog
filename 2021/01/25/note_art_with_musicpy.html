@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>用musicpy制作音符画 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="用musicpy制作音符画" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="用musicpy制作音符画 musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（ 今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。" />
+<meta property="og:description" content="用musicpy制作音符画 musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（ 今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="用musicpy制作音符画" />
+<script type="application/ld+json">
+{"description":"用musicpy制作音符画 musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（ 今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。","url":"/blog/2021/01/25/note_art_with_musicpy.html","@type":"BlogPosting","headline":"用musicpy制作音符画","dateModified":"2021-01-25T00:00:00+00:00","datePublished":"2021-01-25T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2021/01/25/note_art_with_musicpy.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>用musicpy制作音符画</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1 id="用musicpy制作音符画">用<a href="https://github.com/Rainbow-Dreamer/musicpy">musicpy</a>制作音符画</h1>
+
+<p>musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（</p>
+
+<p>今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。</p>
+
+<figure>
+<img src="/blog/assets/note_art_with_musicpy.png" alt="一张屏幕截图，显示钢琴瀑布中有一串紫色音符排列成一段正弦波，还有其他不同颜色的音符" />
+<figcaption>用一段musicpy代码生成的正弦波（紫色音符）。<br />钢琴瀑布软件：PianoFromAbove</figcaption>
+</figure>
+
+<p>为了让音符顺滑，我改了<code class="language-plaintext highlighter-rouge">musicpy.py</code>源代码，在<code class="language-plaintext highlighter-rouge">write()</code>的定义里把输出MIDI的分辨率设为了1920：</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- MyMIDI = MIDIFile(track_number, deinterleave=deinterleave)
+</span><span class="gi">+ MyMIDI = MIDIFile(track_number, deinterleave=deinterleave, ticks_per_quarternote=1920)
+</span></code></pre></div></div>
+
+<p>我使用的代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">musicpy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">achord</span><span class="p">(</span><span class="o">*</span><span class="n">notes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">musicpy</span><span class="p">.</span><span class="n">chord</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+
+<span class="n">mychord</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">108</span><span class="p">:</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="n">asin</span><span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="mi">44</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">math</span><span class="p">.</span><span class="n">asin</span><span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="mi">21</span><span class="p">)</span> <span class="o">/</span> <span class="mi">44</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+    <span class="n">nc</span> <span class="o">=</span> <span class="n">achord</span><span class="p">(</span><span class="n">musicpy</span><span class="p">.</span><span class="n">degree_to_note</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mychord</span><span class="p">:</span>
+        <span class="n">mychord</span> <span class="o">+=</span> <span class="n">nc</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mychord</span> <span class="o">=</span> <span class="n">nc</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">musicpy</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"up.mid"</span><span class="p">,</span> <span class="n">mychord</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>以上代码会输出每个音符的音高和时长，并写入上行的半个周期到up.mid。偷了点懒，我把<code class="language-plaintext highlighter-rouge">musicpy.degree_to_note(i)</code>中的<code class="language-plaintext highlighter-rouge">i</code>改成<code class="language-plaintext highlighter-rouge">129 - i</code>，<code class="language-plaintext highlighter-rouge">"up.mid"</code>改成<code class="language-plaintext highlighter-rouge">"down.mid"</code>，得到了下行的半个周期。</p>
+
+<p>用类似的思路可以得到其他图形。注意用<code class="language-plaintext highlighter-rouge">&amp;</code>运算符可以让两个<code class="language-plaintext highlighter-rouge">musicpy.chord</code>同时播放。</p>
+</div>
+        <footer class="soul-p2">
+          <address>DGCK81LNN &middot;
+            <time>2021-01-25</time>
+          </address>
+        </footer>
+      </article>
+    </soul-main>
+    <soul-blog-footer ></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

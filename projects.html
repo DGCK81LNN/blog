@@ -1,0 +1,1620 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Project 记录表 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Project 记录表" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Project 记录表" />
+<script type="application/ld+json">
+{"url":"/blog/projects.html","@type":"WebPage","headline":"Project 记录表","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  <style>.project-namespace {
+    margin: 2em 0 1em;
+}
+.project {
+    margin: 1rem 8px;
+    overflow: visible;
+}
+.project-link {
+    float: right;
+    padding: 3px 0;
+}
+.project-news-label {
+    text-align: center;
+}
+.project-news-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+</style>
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>Project 记录表</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1>Project 记录表</h1>
+
+<figure>
+    <figcaption>项目状态含义表</figcaption>
+    <table>
+        <thead>
+            <tr><th>状态                       <th>含义    <th>解释
+        <tbody>
+            <tr><td><code>not_started</code>   <td>未启动   <td>项目处于规划阶段，尚未开始实施
+            <tr><td><code>ongoing</code>       <td>进行中   <td>项目会不定期地有进展
+            <tr><td><code>prioritized</code>   <td>优先进行 <td>项目会优先进行
+            <tr><td><code>almost_paused</code> <td>近乎暂停 <td>各种原因导致项目偶尔才会有进展
+            <tr><td><code>paused</code>        <td>已暂停   <td>各种原因导致项目暂时不会有进展
+            <tr><td><code>may_cancel</code>    <td>可能弃坑 <td>由于近期失去兴趣，项目可能会弃坑
+            <tr><td><code>canceled</code>      <td>已弃坑   <td>项目已弃坑
+            <tr><td><code>done</code>          <td>已完成   <td>项目已完工
+    </table>
+</figure>
+
+<h2 class="project-namespace">
+    <code>soul</code> -
+    <a href="https://dgck81lnn.github.io/">灵魂小站</a>
+</h2>
+
+<b-card-group deck class="project-group">
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.lab.brainfuck</code>
+            </span>
+            <b-link
+            class="project-link"
+            target=_blank
+            href="https://dgck81lnn.github.io/apps/lab/brainfuck.html"
+            >进入</b-link>
+        </div>
+
+        <div>灵魂实验室：brainfuck 在线工具</div>
+
+        <div>
+            <strong>2 期工程</strong>
+        </div>
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="1"></meter>
+                1%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.apps.lab.brainfuck">
+                <ul class="project-news-list">
+                    <li>
+                        2021-04-28
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div></li>
+                    <li>
+                        2021-04-04
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div></li>
+                    <li>
+                        2021-01-02
+
+                        <div>
+                            <strong>进入 2 期工程</strong>
+                        </div><div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="1"></meter>
+                            1%
+                        </div><div>
+                            <p>咕咕咕</p>
+
+                        </div></li>
+                    <li>
+                        2020-12-12
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>界面小优化。</p>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>目前本页虽然已基本完工，但我发现它的的性能还存在优化空间，
+所以打算之后尝试改进一下。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.lab.befunge93</code>
+            </span>
+            
+        </div>
+
+        <div>灵魂实验室：Befunge-93 在线工具</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="10"></meter>
+                10%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.apps.lab.befunge93">
+                <ul class="project-news-list">
+                    <li>
+                        2021-03-31
+
+                        <div>
+                            <p>将先前编写的语法高亮程序上传到了CodePen：
+<a href="https://codepen.io/dgck81lnn/pen/XWpjoRG">https://codepen.io/dgck81lnn/pen/XWpjoRG</a></p>
+
+                        </div></li>
+                    <li>
+                        2021-01-05
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="10"></meter>
+                            10%
+                        </div><div>
+                            <p>实现了语法高亮算法：
+无法到达的单元格会被视为注释，
+并会给单元格之间画上墙壁，
+以此来表示IP可能走的路径。
+工具主体未开始制作。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.lab.swissknife</code>
+            </span>
+            <b-link
+            class="project-link"
+            target=_blank
+            href="/sandbox/swissknife.html"
+            >进入</b-link>
+        </div>
+
+        <div>灵魂实验室：多功能实用工具</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="10"></meter>
+                10%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.apps.lab.swissknife">
+                <ul class="project-news-list">
+                    <li>
+                        2021-04-28
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div></li>
+                    <li>
+                        2021-04-09
+
+                        <div>
+                            <p>近期开始制作正式UI，目前会在CodePen上进行测试。<a href="https://codepen.io/dgck81lnn">https://codepen.io/dgck81lnn</a></p>
+
+                        </div></li>
+                    <li>
+                        2021-04-04
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div></li>
+                    <li>
+                        2021-01-15
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <p>暂时搁置。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-11
+
+                        <div>
+                            <p>“临时测试版”转移到<a href="/sandbox">沙盒区</a>。
+<a href="https://github.com/DGCK81LNN/sandbox/blob/ee1fafd902bcebbd94e8856391da8d0bc34a80d5/swissknife.html">源代码</a></p>
+
+                        </div></li>
+                    <li>
+                        2021-01-05
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="10"></meter>
+                            10%
+                        </div><div>
+                            <p>此项目（原ID：<code class="language-plaintext highlighter-rouge">soul.apps.lab.lab</code>）已与<code class="language-plaintext highlighter-rouge">soul.apps.lab.classic</code>合并为<code class="language-plaintext highlighter-rouge">soul.apps.lab.swissknife</code>。
+<a href="https://dgck81lnn.github.io/tablethack/swissknife.html">临时测试版</a>（以后会移除）
+<a href="https://github.com/DGCK81LNN/tablethack/blob/297f4e53d7b96fb57fdcff996572e970c4e4e731/swissknife.html">源代码</a>
+只实现了部分基本功能，暂未制作正式的UI。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.lab.console</code>
+            </span>
+            <b-link
+            class="project-link"
+            target=_blank
+            href="https://dgck81lnn.github.io/apps/lab/console.html"
+            >进入</b-link>
+        </div>
+
+        <div>灵魂实验室：控制台</div>
+
+        <div>
+            <strong>2 期工程</strong>
+        </div>
+
+        <div>
+            <strong>当前状态：</strong><code>canceled</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="?"></meter>
+                ?%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.apps.lab.console">
+                <ul class="project-news-list">
+                    <li>
+                        2021-05-24
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>canceled</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>由于用 XML 代替 Richard Markup，此项目已取消。
+<a href="/sandbox/xml-richard/">XML版测试</a>
+<a href="https://github.com/DGCK81LNN/sandbox/tree/e3212ee3096eaabe0f6e930fc92db8b0bb823fe9/xml-richard">源代码</a></p>
+
+                        </div></li>
+                    <li>
+                        2021-04-28
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div></li>
+                    <li>
+                        2021-01-21
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div></li>
+                    <li>
+                        2021-01-16
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>prioritized</code>
+                        </div><div>
+                            <p>为了在方便存储和读取存档的前提下实现<code class="language-plaintext highlighter-rouge">call</code>，
+需要手动实现一个“调用堆栈”。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-12
+
+                        <div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="20"></meter>
+                            20%
+                        </div><div>
+                            <p>起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
+由于任务增加，进度条已倒退。</p>
+
+                        </div></li>
+                    <li>
+                        2020-12-13
+
+                        <div>
+                            <strong>进入 2 期工程</strong>
+                        </div><div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="50"></meter>
+                            50%
+                        </div><div>
+                            <p>二期工程启动，开始编写 Richard Markup 解释器。
+由“命令行”更名为“控制台”。</p>
+
+                        </div></li>
+                    <li>
+                        2020-11-26
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>done</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="100"></meter>
+                            100%
+                        </div><div>
+                            <p>已基本完工，不过尚未正式投入使用。
+目前只有一个测试性程序：“Love with Richard under epidemic”。
+目前可以在小站首页找到它的详细信息。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.danceline</code>
+            </span>
+            
+        </div>
+
+        <div>舞线练习场（第3代）</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>not_started</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="0"></meter>
+                0%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.apps.danceline">
+                <ul class="project-news-list">
+                    <li>
+                        2021-01-11
+
+                        <div>
+                            <p>舞线练习场第2代已上传到<a href="/legacy">遗留区</a>。</p>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <p>由<code class="language-plaintext highlighter-rouge">dlc</code>更名为<code class="language-plaintext highlighter-rouge">danceline</code></p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.captoin</code>
+            </span>
+            
+        </div>
+
+        <div>网页版歌词/字幕编辑器</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>not_started</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="0"></meter>
+                0%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.apps.captoin">
+                <ul class="project-news-list">
+                    <li>
+                        2021-04-11
+
+                        <div>
+                            <p>BCC哔哩哔哩外挂字幕编辑器测试：
+<a href="/sandbox/bcc.html">测试页</a>
+<a href="https://github.com/DGCK81LNN/sandbox/tree/dd0e16a277995358c1572c1868e6027bdceb29c9/">源代码</a></p>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <p>由<code class="language-plaintext highlighter-rouge">capt</code>更名为<code class="language-plaintext highlighter-rouge">captoin</code></p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.query</code>
+            </span>
+            
+        </div>
+
+        <div>外链快速查询（第2代）（哔哩哔哩API快速查询）</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>not_started</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="0"></meter>
+                0%
+            </span>
+        </div>
+
+        
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.blog</code>
+            </span>
+            
+        </div>
+
+        <div>LNN的博客！</div>
+
+        <div>
+            <strong>2 期工程</strong>
+        </div>
+
+        <div>
+            <strong>当前状态：</strong><code>not_started</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="0"></meter>
+                0%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_soul.soul.blog">
+                <ul class="project-news-list">
+                    <li>
+                        2021-06-16
+
+                        <div>
+                            <strong>进入 2 期工程</strong>
+                        </div><div>
+                            <p>计划改用Github Actions来部署（目前是主分支直接部署到GitHub Pages），
+以便启用Jekyll的Textile功能。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    
+</b-card-group>
+<h2 class="project-namespace">
+    <code>osu</code> -
+    osu!
+</h2>
+
+<b-card-group deck class="project-group">
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>osu.map.running</code>
+            </span>
+            <b-link
+            class="project-link"
+            target=_blank
+            href="https://osu.ppy.sh/s/1182532"
+            >进入</b-link>
+        </div>
+
+        <div>osu! 自制谱：大课间跑步音乐</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="?"></meter>
+                ?%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_osu.osu.map.running">
+                <ul class="project-news-list">
+                    <li>
+                        2021-01-23
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>目前Insane难度正在制作中，
+Normal和Hard的节奏点也均已设计完成。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>osu.map.sine</code>
+            </span>
+            <b-link
+            class="project-link"
+            target=_blank
+            href="https://osu.ppy.sh/s/1224989"
+            >进入</b-link>
+        </div>
+
+        <div>osu! 自制谱：-Fm2- - Sine</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="?"></meter>
+                ?%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_osu.osu.map.sine">
+                <ul class="project-news-list">
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>目前Insane难度已制作完毕，但我不满意（迫真）；
+另外三个难度Easy、Normal、Hard的节奏点也均已设计完成。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>osu.map.xox</code>
+            </span>
+            <b-link
+            class="project-link"
+            target=_blank
+            href="https://osu.ppy.sh/s/1228904"
+            >进入</b-link>
+        </div>
+
+        <div>osu!自制谱：Quree - One Forgotten Night</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="3"></meter>
+                3%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_osu.osu.map.xox">
+                <ul class="project-news-list">
+                    <li>
+                        2021-05-22
+
+                        <div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="3"></meter>
+                            3%
+                        </div><div>
+                            <p>未上传的修改意外丢失</p>
+
+                        </div></li>
+                    <li>
+                        2021-04-28
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div></li>
+                    <li>
+                        2021-03-19
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="10"></meter>
+                            10%
+                        </div></li>
+                    <li>
+                        2021-01-15
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <p>暂时搁置。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-02
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="3"></meter>
+                            3%
+                        </div><div>
+                            <p>抛弃已制作的 Hard 难度，
+开始制作 Insane [Unforgettable] 难度。</p>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>目前Hard难度已制作完成，但我不满意；
+其他难度尚未进行节奏点设计。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    
+</b-card-group>
+<h2 class="project-namespace">
+    <code>dlfm</code> -
+    跳舞的线饭制
+</h2>
+
+<b-card-group deck class="project-group">
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>dlfm.level.samsara</code>
+            </span>
+            
+        </div>
+
+        <div>饭制关卡“新轮回”</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="60"></meter>
+                60%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_dlfm.dlfm.level.samsara">
+                <ul class="project-news-list">
+                    <li>
+                        2021-02-02
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="60"></meter>
+                            60%
+                        </div><div>
+                            <p>更新到60%（<a href="https://www.bilibili.com/video/BV16r4y1K7P5">视频</a>），
+但目前不会再继续更新。
+待<code class="language-plaintext highlighter-rouge">dlfm.template</code>进行到一定程度后会用它来重制此饭制关卡。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>dlfm.template</code>
+            </span>
+            
+        </div>
+
+        <div>LNN跳舞的线饭制模板</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="15"></meter>
+                15%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_dlfm.dlfm.template">
+                <ul class="project-news-list">
+                    <li>
+                        2021-05-22
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <p>由于电脑硬盘损坏，项目暂停，假期再继续。</p>
+
+                        </div></li>
+                    <li>
+                        2021-04-28
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <p>继续饭制模板的制作。由于之前的代码和工程太过凌乱，今天开始大规模整改代码风格和项目目录结构。</p>
+
+<ul>
+  <li>
+    <p>目前使用VS Code编写代码，性能似乎比VS稍好一些。</p>
+  </li>
+  <li>
+    <p>改用<code class="language-plaintext highlighter-rouge">PropertyDrawer</code>（之前是<code class="language-plaintext highlighter-rouge">CustomEditor</code>）来自定义行为元件的编辑器，比原来方便多了。</p>
+  </li>
+</ul>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div></li>
+                    <li>
+                        2021-02-02
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div><div>
+                            <p>由于不再定位为“改良冰焰模板”，移除了工程中属于冰焰模板的代码。
+又因为有了一些新的构思，也移除了之前编写的场景动画脚本。
+目前只有线头逻辑、皮肤逻辑已经编写完成，
+必须先把游戏的基本内容（摄像机、钻石、皇冠、复活、金字塔逻辑）制作完成，
+然后才能开始重新开发动画系统。</p>
+
+<p>目前关于动画系统的构思是要有一个全关卡各个物体的时间轴，
+在那里统一设计场景中各种基于音乐时间的动画（而不是逐个设置物体的脚本参数）。
+动画的触发时机一般不是基于秒数计算，而是基于音乐的节拍；
+必要时，也可以使用触发器来触发动画。</p>
+
+                        </div></li>
+                    <li>
+                        2020-12-20
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <p>由“LNN改良冰焰模板”更名为“LNN跳舞的线饭制模板”</p>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="15"></meter>
+                            15%
+                        </div><div>
+                            <p>目前模板已初具雏形，但仍任重道远（雾）。
+最近打算开始（但尚未开始）制作可按节拍触发动画的Timing系统。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    
+</b-card-group>
+<h2 class="project-namespace">
+    <code>music</code> -
+    音乐
+</h2>
+
+<b-card-group deck class="project-group">
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>music.midi.sine</code>
+            </span>
+            
+        </div>
+
+        <div>黑乐谱制作（试水）：-Fm2- - Sine</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>almost_paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="80"></meter>
+                80%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_music.music.midi.sine">
+                <ul class="project-news-list">
+                    <li>
+                        2021-02-19
+
+                        <div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="80"></meter>
+                            80%
+                        </div><div>
+                            <p>近期通过musicpy生成了更多音符画，谱已接近完善。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-31
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="50"></meter>
+                            50%
+                        </div><div>
+                            <p>借助<a href="https://github.com/Rainbow-Dreamer/musicpy">musicpy</a>
+（见<a href="https://dgck81lnn.github.io/blog/2021/01/25/note_art_with_musicpy.html">这篇博客</a>）
+成功量产了一些音符画。</p>
+
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>目前底谱已基本完成，等待黑化（</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>music.chip.running</code>
+            </span>
+            
+        </div>
+
+        <div>FamiTracker 芯片音乐制作（试水）：大课间跑步音乐</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>almost_paused</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="70"></meter>
+                70%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_music.music.chip.running">
+                <ul class="project-news-list">
+                    <li>
+                        2021-02-19
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="70"></meter>
+                            70%
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="40"></meter>
+                            40%
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    
+</b-card-group>
+<h2 class="project-namespace">
+    <code>pone</code> -
+    B站视频投稿
+</h2>
+
+<b-card-group deck class="project-group">
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>pone</code>
+            </span>
+            
+        </div>
+
+        <div>“转型”小马UP主的准备工作</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>done</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="100"></meter>
+                100%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_pone.pone">
+                <ul class="project-news-list">
+                    <li>
+                        2021-02-02
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>done</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="100"></meter>
+                            100%
+                        </div><div>
+                            <p>算是完成了，<span lang="en">more or less</span>。</p>
+
+<p>截至目前暂时没有制作新视频的计划，如果有新计划，我会在<code class="language-plaintext highlighter-rouge">pone</code>下添加Project。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-15
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    
+</b-card-group>
+<h2 class="project-namespace">
+    
+    已结束项目
+</h2>
+
+<b-card-group deck class="project-group">
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>osu.skin</code>
+            </span>
+            
+        </div>
+
+        <div>自制皮肤</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>canceled</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="?"></meter>
+                ?%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_.osu.skin">
+                <ul class="project-news-list">
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>canceled</code>
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>paused</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>未完成。目前std贴图已经基本制作完毕，近期尚不打算开始制作其他模式。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.paint</code>
+            </span>
+            
+        </div>
+
+        <div>网页版绘图软件</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>canceled</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="0"></meter>
+                0%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_.soul.apps.paint">
+                <ul class="project-news-list">
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>canceled</code>
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>may_cancel</code>
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>osu.map.ode</code>
+            </span>
+            
+        </div>
+
+        <div>osu! 自制谱：歌唱祖国</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>canceled</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="?"></meter>
+                ?%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_.osu.map.ode">
+                <ul class="project-news-list">
+                    <li>
+                        2021-02-04
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>canceled</code>
+                        </div></li>
+                    <li>
+                        （未知日期）
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>may_cancel</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="?"></meter>
+                            ?%
+                        </div><div>
+                            <p>谱面未上传。
+目前Easy、Normal、Hard、Insane难度的节奏点均已设计完毕，
+但尚未开始制谱，只做了Timing。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.css</code>
+            </span>
+            
+        </div>
+
+        <div>全站设计风格升级</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>done</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="100"></meter>
+                100%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_.soul.css">
+                <ul class="project-news-list">
+                    <li>
+                        2021-02-04
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>done</code>
+                        </div></li>
+                    <li>
+                        2021-01-27
+
+                        <div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="100"></meter>
+                            100%
+                        </div><div>
+                            <p>已全面应用BootstrapVue。如无故障，一段时间后此项目将变为<code class="language-plaintext highlighter-rouge">done</code>状态。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-25
+
+                        <div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="65"></meter>
+                            65%
+                        </div><div>
+                            <p>在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-23
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>almost_paused</code>
+                        </div><div>
+                            <p>计划抛弃<a href="https://element.eleme.cn">Element</a>组件库，改用<a href="https://bootstrap-vue.org">BootstrapVue</a>。<a href="/sandbox/bvtest.html">临时测试页</a>（将来会移除）</p>
+
+                        </div></li>
+                    <li>
+                        2021-01-02
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>ongoing</code>
+                        </div><div>
+                            <strong>进度：</strong>
+                            <meter max=100 value="1"></meter>
+                            1%
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    <b-card class="project">
+        <div slot="header" class="clearfix">
+            <span>
+                <code>soul.apps.lab.classic</code>
+            </span>
+            
+        </div>
+
+        <div>灵魂实验室-经典</div>
+
+        
+
+        <div>
+            <strong>当前状态：</strong><code>canceled</code>
+        </div>
+
+        <div>
+            <span>
+                <strong>当前进度：</strong>
+                <meter max=100 value="0"></meter>
+                0%
+            </span>
+        </div>
+
+        <template #footer>
+            <project-popover id="project-news_.soul.apps.lab.classic">
+                <ul class="project-news-list">
+                    <li>
+                        2021-01-05
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>canceled</code>
+                        </div><div>
+                            <p>此项目已并入<code class="language-plaintext highlighter-rouge">soul.apps.lab.swissknife</code>。</p>
+
+                        </div></li>
+                    <li>
+                        2020-12-13
+
+                        <div>
+                            <strong>状态：</strong>
+                            <code>may_cancel</code>
+                        </div><div>
+                            <p>此应用的功能可能会被<code class="language-plaintext highlighter-rouge">soul.apps.lab.console</code>代替。</p>
+
+                        </div></li>
+                    
+                </ul>
+            </project-popover>
+        </template>
+    </b-card>
+    
+</b-card-group>
+
+</div>
+      </article>
+    </soul-main>
+    <soul-blog-footer ></soul-blog-footer>
+  </div>
+  <script>Vue.component('project-popover', {
+    props: ["id"],
+    template: `
+        <div class="project-news-label">
+            <b-link :id="id + '__button'">
+                <b-icon icon="app-indicator" aria-hidden="true"></b-icon>
+                NEWS
+            </b-link>
+            <b-popover
+            :target="id + '__button'"
+            :triggers="['hover', 'focus']"
+            class="project-news-popover"
+            ><slot/></b-popover>
+        </div>
+    `
+});
+</script>
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

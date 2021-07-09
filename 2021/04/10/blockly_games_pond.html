@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Blockly Games “池塘”模式我的解法 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Blockly Games “池塘”模式我的解法" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Blockly Games “池塘”模式我的解法 池塘是一个开放式竞赛，目标是编写出最聪明的鸭子。 我的这个解法基本可以完胜内建的三个敌人。它们的策略分别是：" />
+<meta property="og:description" content="Blockly Games “池塘”模式我的解法 池塘是一个开放式竞赛，目标是编写出最聪明的鸭子。 我的这个解法基本可以完胜内建的三个敌人。它们的策略分别是：" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Blockly Games “池塘”模式我的解法" />
+<script type="application/ld+json">
+{"description":"Blockly Games “池塘”模式我的解法 池塘是一个开放式竞赛，目标是编写出最聪明的鸭子。 我的这个解法基本可以完胜内建的三个敌人。它们的策略分别是：","url":"/blog/2021/04/10/blockly_games_pond.html","@type":"BlogPosting","headline":"Blockly Games “池塘”模式我的解法","dateModified":"2021-04-10T00:00:00+00:00","datePublished":"2021-04-10T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2021/04/10/blockly_games_pond.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>Blockly Games “池塘”模式我的解法</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1 id="blockly-games-池塘模式我的解法"><a href="https://blockly.games">Blockly Games</a> “<a href="https://blockly.games/pond-duck">池塘</a>”模式我的解法</h1>
+
+<blockquote>
+  <p><img src="https://blockly.games/index/pond-duck.png" alt="“池塘”模式图标" /></p>
+
+  <p><a href="https://blockly.games/pond-duck">池塘</a>是一个开放式竞赛，目标是编写出最聪明的鸭子。</p>
+</blockquote>
+
+<p>我的这个解法基本可以完胜内建的三个敌人。它们的策略分别是：</p>
+
+<ul>
+  <li>“车（ju）”（Rook）――蹲在中间水平线上扫描上下左右的敌人，找到就停下来攻击</li>
+  <li>“逆时针”（Counter）――总是逆时针扫描前方一定角度内的敌人</li>
+  <li>“狙击手”（Sniper）――蹲在角落扫描敌人，找到了就攻击，没有就换一个角落，但是如果在跑位过程中被敌人挡住就完蛋了</li>
+</ul>
+
+<p>它们都缺乏一个必须的策略：<em>走位</em>。在敌人都在瞄准你，而且几乎没有办法预判你的移动的情况下，停在原地就是“找死”。</p>
+
+<p>我的策略是让鸭子按圆弧行进，靠近边界就反弹，同时旋转着扫描敌人，找到了就发射炮弹；如果攻击后又找不到了，可能是转过头了，到达一定阀值后会调转扫描方向。</p>
+
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/7144544e59b62647.gif" alt="程序运行录像（GIF）" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 生成 -m 到 m 的随机数</span>
+<span class="kd">function</span> <span class="nx">rand1</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">m</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">sa</span> <span class="o">=</span> <span class="mi">215</span><span class="p">;</span> <span class="c1">// 移动方向</span>
+<span class="kd">var</span> <span class="nx">sad</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 移动方向 delta</span>
+<span class="kd">var</span> <span class="nx">ca</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   <span class="c1">// 扫描方向</span>
+<span class="kd">var</span> <span class="nx">cad</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// 扫描方向 delta</span>
+<span class="kd">var</span> <span class="nx">cd</span> <span class="o">=</span> <span class="kc">Infinity</span><span class="p">;</span> <span class="c1">// 上次扫描结果</span>
+<span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 扫描到敌人清零，扫描不到递增</span>
+<span class="kd">var</span> <span class="nx">magic</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 调转扫描方向阀值</span>
+<span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//// “碰撞检测”</span>
+  <span class="c1">// 扫描前方敌人</span>
+  <span class="kd">var</span> <span class="nx">fa</span> <span class="o">=</span> <span class="nx">sa</span> <span class="o">+</span> <span class="nx">rand1</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span> <span class="c1">// 扫描角度</span>
+  <span class="kd">var</span> <span class="nx">fd</span> <span class="o">=</span> <span class="nx">scan</span><span class="p">(</span><span class="nx">fa</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">fd</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nx">sa</span> <span class="o">-=</span> <span class="mi">90</span><span class="p">;</span> <span class="c1">// 前方有敌人就躲开</span>
+  <span class="c1">// 检测是否靠近边界</span>
+  <span class="kd">var</span> <span class="nx">sr</span> <span class="o">=</span> <span class="nx">sa</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>   <span class="c1">// 移动方向弧度</span>
+  <span class="c1">// 前方10单位长度处的坐标</span>
+  <span class="kd">var</span> <span class="nx">fx</span> <span class="o">=</span> <span class="nx">loc_x</span><span class="p">()</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">sr</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="nx">fy</span> <span class="o">=</span> <span class="nx">loc_y</span><span class="p">()</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">sr</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="c1">// 靠近边界就反弹</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">fx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">fx</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="nx">sa</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">-</span> <span class="nx">sa</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">fy</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">fy</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="nx">sa</span> <span class="o">=</span> <span class="o">-</span><span class="nx">sa</span><span class="p">;</span>
+  <span class="nx">swim</span><span class="p">(</span><span class="nx">sa</span> <span class="o">+=</span> <span class="nx">sad</span><span class="p">);</span>
+  <span class="c1">//// 扫描敌人</span>
+  <span class="kd">var</span> <span class="nx">_cd</span> <span class="o">=</span> <span class="nx">scan</span><span class="p">(</span><span class="nx">ca</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">_cd</span> <span class="o">&lt;</span> <span class="nx">cd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">cannon</span><span class="p">(</span><span class="nx">ca</span><span class="p">,</span> <span class="nx">_cd</span><span class="p">);</span>
+    <span class="c1">// 距离太近就躲开</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">_cd</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="nx">sa</span> <span class="o">+=</span> <span class="mi">180</span><span class="p">;</span>
+    <span class="c1">// 距离太远就靠近</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">_cd</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">)</span>
+      <span class="nx">sa</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span> <span class="c1">// 没有扫描到敌人</span>
+    <span class="o">++</span><span class="nx">counter</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">===</span> <span class="nx">magic</span><span class="p">)</span> <span class="c1">// 触发阀值</span>
+      <span class="nx">cad</span> <span class="o">=</span> <span class="o">-</span><span class="nx">cad</span><span class="p">;</span> <span class="c1">// 调转扫描方向</span>
+  <span class="p">}</span>
+  <span class="nx">cd</span> <span class="o">=</span> <span class="nx">_cd</span><span class="p">;</span>
+  <span class="nx">ca</span> <span class="o">+=</span> <span class="nx">cad</span><span class="p">;</span> <span class="c1">// 旋转移动方向</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+        <footer class="soul-p2">
+          <address>DGCK81LNN &middot;
+            <time>2021-04-10</time>
+          </address>
+        </footer>
+      </article>
+    </soul-main>
+    <soul-blog-footer ></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>

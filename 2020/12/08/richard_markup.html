@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Richard Markup 帮助文档 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Richard Markup 帮助文档" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Richard Markup 帮助文档 Richard Markup 是我专为 Richard （@天府灵山行者）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。" />
+<meta property="og:description" content="Richard Markup 帮助文档 Richard Markup 是我专为 Richard （@天府灵山行者）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Richard Markup 帮助文档" />
+<script type="application/ld+json">
+{"description":"Richard Markup 帮助文档 Richard Markup 是我专为 Richard （@天府灵山行者）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。","url":"/blog/2020/12/08/richard_markup.html","@type":"BlogPosting","headline":"Richard Markup 帮助文档","dateModified":"2020-12-08T00:00:00+00:00","datePublished":"2020-12-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2020/12/08/richard_markup.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+  </style>
+  
+  </head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        <b-breadcrumb-item active>Richard Markup 帮助文档</b-breadcrumb-item>
+      </b-breadcrumb>
+      <article>
+        <div class="soulblog-content"><h1 id="richard-markup-帮助文档">Richard Markup 帮助文档</h1>
+
+<p><strong>Richard Markup</strong> 是我专为 Richard （<a href="https://space.bilibili.com/300711293">@天府灵山行者</a>）的互动式小说设计的一种文本标记语言，它注重剧情逻辑，而数据存储、用户界面由解释器完成。</p>
+
+<h2 id="文件结构">文件结构</h2>
+
+<p>Richard Markup 存储为<code class="language-plaintext highlighter-rouge">.richard</code>扩展名的文件，格式与 HTML 和 XML 有些相似，使用 UTF-8 或 GB-18030 编码。</p>
+
+<p>文件的开头是头部信息，它写在<code class="language-plaintext highlighter-rouge">&lt;?</code> <code class="language-plaintext highlighter-rouge">?&gt;</code>之间：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?richard-markup v1?&gt;</span>
+</code></pre></div></div>
+<p>其中<code class="language-plaintext highlighter-rouge">v1</code>是文件格式的版本号。</p>
+
+<p>随后的内容是正文，由<strong>文本</strong>、<strong>元素</strong>、<strong>注释</strong>组成。</p>
+
+<p><strong>文本</strong>是除元素、注释外的文字内容，它会逐字显示在控制台上，一般每显示完一行后用户可以按任意键继续，并可以在逐字显示的过程中按任意键跳过。</p>
+
+<p><strong>元素</strong>会改变文本的行为。在 Richard Markup 中，元素有<strong>类型</strong>、<strong>属性</strong>、<strong>内容</strong>，其中只有类型是必须的。</p>
+
+<p><strong>类型</strong>可以包含英文字母、横杠<code class="language-plaintext highlighter-rouge">-</code>、下划线<code class="language-plaintext highlighter-rouge">_</code>、冒号<code class="language-plaintext highlighter-rouge">:</code>，但只能以英文字母开头；<strong>内容</strong>可以是纯文本，也可以包含其他元素。</p>
+
+<p>每个<strong>属性</strong>有<strong>属性键</strong>和<strong>属性值</strong>，属性键是必须的。如果没有值，直接写属性键即可；如果有值，用<code class="language-plaintext highlighter-rouge">属性键="属性值"</code>表示，如果属性值中没有换行、空格、大于号<code class="language-plaintext highlighter-rouge">&gt;</code>、斜杠<code class="language-plaintext highlighter-rouge">/</code>，可以省略引号。</p>
+
+<p>当元素没有内容时，用<strong>自闭合标签</strong><code class="language-plaintext highlighter-rouge">&lt;类型/&gt;</code>表示，如果有属性，它们依次跟在类型之后，用空格隔开：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;类型</span> <span class="na">属性=</span><span class="s">值</span> <span class="na">属性...</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+<p>如果元素有内容，就把内容写在<strong>开始标签</strong><code class="language-plaintext highlighter-rouge">&lt;类型&gt;</code>和<strong>结束标签</strong><code class="language-plaintext highlighter-rouge">&lt;/类型&gt;</code>之间，如果有属性，就写在开始标签的类型之后，用空格隔开：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;类型</span> <span class="na">属性=</span><span class="s">值</span> <span class="na">属性...</span><span class="nt">&gt;</span>内容<span class="nt">&lt;/类型&gt;</span>
+</code></pre></div></div>
+<p>当然，也可以让开始标签和结束标签单独占一行：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;类型</span> <span class="na">属性=</span><span class="s">值</span> <span class="na">属性...</span><span class="nt">&gt;</span>
+    内容
+<span class="nt">&lt;/类型&gt;</span>
+</code></pre></div></div>
+<p>解释器会在运行前先去掉多余的换行和空格：行首的空格会被忽略，并且如果一个自闭合标签、开始标签或结束标签或注释独占一行，那么紧挨在它们后面的换行会被忽略。</p>
+
+<p>在 Richard Markup 中，每种元素要么必须有内容，要么不能有内容。所以对于不能有内容的元素类型， Richard Markup 规定它们的自闭合标签中的斜杠可以省略：<code class="language-plaintext highlighter-rouge">&lt;类型&gt;</code>。</p>
+
+<p><strong>注释</strong>会被 Richard Markup 解释器直接忽略。与 HTML 和 XML 一样，它这样表示：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 注释内容 --&gt;</span>
+</code></pre></div></div>
+
+<h2 id="richard-markup-中的元素">Richard Markup 中的元素</h2>
+
+<h3 id="s元素"><code class="language-plaintext highlighter-rouge">&lt;s&gt;</code>元素</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;s&gt;</code>元素代表文本片段，它必须有内容。</p>
+
+<p>可以有一个<code class="language-plaintext highlighter-rouge">name</code>属性，指定片段的名称。也可以指定<code class="language-plaintext highlighter-rouge">color</code>属性来改变片段中文字的颜色：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"welcome"</span><span class="nt">&gt;</span>
+    欢迎来到<span class="nt">&lt;s</span> <span class="na">color=</span><span class="s">"#33bfab"</span><span class="nt">&gt;</span>灵魂小站<span class="nt">&lt;/s&gt;</span>！
+<span class="nt">&lt;/s&gt;</span>
+</code></pre></div></div>
+
+<h3 id="a元素"><code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>元素</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>元素代表锚点（Anchor），它不能有内容。</p>
+
+<p>可以有一个<code class="language-plaintext highlighter-rouge">name</code>属性指定锚点的名称。另外也可以设置一个<code class="language-plaintext highlighter-rouge">call</code>属性，值是另一个有内容的元素的<code class="language-plaintext highlighter-rouge">name</code>，这样来重复使用那个元素。例如：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Love with <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"richard"</span> <span class="na">color=</span><span class="s">"#baf"</span><span class="nt">&gt;</span>Richard<span class="nt">&lt;/s&gt;</span> under epidemic
+8B班同学<span class="nt">&lt;a</span> <span class="na">call=</span><span class="s">"richard"</span><span class="nt">&gt;</span>。
+</code></pre></div></div>
+
+<h3 id="新增-def元素"><strong><em>新增</em></strong> <code class="language-plaintext highlighter-rouge">&lt;def&gt;</code>元素</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;def&gt;</code>元素专门用来定义需要重复使用的子程序（函数）。可以直接在它里面写若干个有<code class="language-plaintext highlighter-rouge">name</code>属性的元素，然后在其他地方用<code class="language-plaintext highlighter-rouge">call</code>属性来调用。如果程序在正常按顺序运行时，中途遇到<code class="language-plaintext highlighter-rouge">&lt;def&gt;</code>元素，会直接跳过。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;def&gt;</span>
+    <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"richard"</span> <span class="na">color=</span><span class="s">"#baf"</span><span class="nt">&gt;</span>Richard<span class="nt">&lt;/s&gt;</span>
+    <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"sunny"</span> <span class="na">color=</span><span class="s">"#daf"</span><span class="nt">&gt;</span>Sunny<span class="nt">&lt;/s&gt;</span>
+    <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"separator"</span><span class="nt">&gt;</span>
+        Love with <span class="nt">&lt;a</span> <span class="na">call=</span><span class="s">"richard"</span><span class="nt">&gt;</span> under epidemic
+        ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡
+    <span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;/def&gt;</span>
+</code></pre></div></div>
+
+<h3 id="choiceschoice和prompt元素"><code class="language-plaintext highlighter-rouge">&lt;choices&gt;</code>、<code class="language-plaintext highlighter-rouge">&lt;choice&gt;</code>和<code class="language-plaintext highlighter-rouge">&lt;prompt&gt;</code>元素</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;choices&gt;</code>代表一个互动选择题，它的内容是一个可省略的<code class="language-plaintext highlighter-rouge">&lt;prompt&gt;</code>和若干个<code class="language-plaintext highlighter-rouge">&lt;choice&gt;</code>。可以给<code class="language-plaintext highlighter-rouge">&lt;choices&gt;</code>指定<code class="language-plaintext highlighter-rouge">name</code>属性。</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;prompt&gt;</code>表示选择题的提示文本；<code class="language-plaintext highlighter-rouge">&lt;choice&gt;</code>表示一个选项，它的内容是选项的文案。可以有一个<code class="language-plaintext highlighter-rouge">goto</code>属性，指定当选项被选定后要跳转到的位置。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?richard-markup v1?&gt;</span>
+Hello, world!
+<span class="nt">&lt;choices&gt;</span>
+    <span class="nt">&lt;prompt&gt;</span>Are you...<span class="nt">&lt;/prompt&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">goto=</span><span class="s">"roy"</span><span class="nt">&gt;</span>Roy<span class="nt">&lt;/choice&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">goto=</span><span class="s">"richard"</span><span class="nt">&gt;</span>Richard<span class="nt">&lt;/choice&gt;</span>
+    <span class="nt">&lt;choice&gt;</span>Neither<span class="nt">&lt;/choice&gt;</span>
+<span class="nt">&lt;/choices&gt;</span>
+<span class="nt">&lt;def&gt;</span>
+    <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"youare_roy"</span><span class="nt">&gt;</span>
+        Hi, <span class="nt">&lt;s</span> <span class="na">color=</span><span class="s">12</span><span class="nt">&gt;</span>Roy<span class="nt">&lt;/s&gt;</span>!
+    <span class="nt">&lt;/s&gt;</span>
+    <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"youare_richard"</span><span class="nt">&gt;</span>
+        Hello <span class="nt">&lt;s</span> <span class="na">color=</span><span class="s">15</span><span class="nt">&gt;</span>Richard<span class="nt">&lt;/s&gt;</span>!
+    <span class="nt">&lt;/s&gt;</span>
+    <span class="nt">&lt;s</span> <span class="na">name=</span><span class="s">"youare_neither"</span><span class="nt">&gt;</span>
+        Hello... whoever you are!
+    <span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;/def&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>另外，还可以用<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>元素来嵌入JavaScript代码。</p>
+
+<h2 id="ifelse和set属性"><code class="language-plaintext highlighter-rouge">if</code>、<code class="language-plaintext highlighter-rouge">else</code>和<code class="language-plaintext highlighter-rouge">set</code>属性</h2>
+
+<p>除了上文提到的属性之外，还可以给元素添加<code class="language-plaintext highlighter-rouge">if</code>、<code class="language-plaintext highlighter-rouge">else</code>和<code class="language-plaintext highlighter-rouge">set</code>属性。</p>
+
+<p><code class="language-plaintext highlighter-rouge">set</code>属性用来存储和修改变量。变量名可以由英文字母、数字、下划线组成，但不能以数字开头。目前变量只能是浮点数。<code class="language-plaintext highlighter-rouge">set</code>属性像这样表示：<code class="language-plaintext highlighter-rouge">set="变量名 = 表达式"</code>。</p>
+
+<p><code class="language-plaintext highlighter-rouge">set</code>属性单独不会对剧情造成影响，要配合<code class="language-plaintext highlighter-rouge">if</code>和<code class="language-plaintext highlighter-rouge">else</code>属性使用。这两个属性用来控制元素是否会运行。<code class="language-plaintext highlighter-rouge">else</code>属性没有值，直接在开始标签中写<code class="language-plaintext highlighter-rouge">else</code>即可；<code class="language-plaintext highlighter-rouge">if</code>属性的值是一个表达式，像这样：<code class="language-plaintext highlighter-rouge">if="表达式"</code>。带<code class="language-plaintext highlighter-rouge">else</code>的元素必须跟在带<code class="language-plaintext highlighter-rouge">if</code>的元素后面；可以连用<code class="language-plaintext highlighter-rouge">else</code>和<code class="language-plaintext highlighter-rouge">if</code>来达到“elif”的效果。</p>
+
+<p>如果给定的条件成立（表达式的结果不是0），元素的内容、上面的<code class="language-plaintext highlighter-rouge">goto</code>和<code class="language-plaintext highlighter-rouge">set</code>属性会正常运行；否则整个元素会被跳过。如果是<code class="language-plaintext highlighter-rouge">&lt;choice&gt;</code>，则控制的是这个选项是否会显示。</p>
+
+<p>元素上的属性总是按“<code class="language-plaintext highlighter-rouge">else</code>——<code class="language-plaintext highlighter-rouge">if</code>——<code class="language-plaintext highlighter-rouge">set</code>——<code class="language-plaintext highlighter-rouge">call</code>”的顺序执行，无论它们实际出现的顺序。</p>
+
+<p>表达式中可以使用<strong>数字字面量</strong>（如<code class="language-plaintext highlighter-rouge">123</code>）、其他变量、<strong>运算符</strong>和圆括号。可用的运算符有：</p>
+
+<ol>
+  <li>乘除运算符：乘<code class="language-plaintext highlighter-rouge">*</code>、除<code class="language-plaintext highlighter-rouge">/</code>、取模<code class="language-plaintext highlighter-rouge">%</code>；</li>
+  <li>加减运算符：加<code class="language-plaintext highlighter-rouge">+</code>、减<code class="language-plaintext highlighter-rouge">-</code>；</li>
+  <li>比较运算符：等于<code class="language-plaintext highlighter-rouge">==</code>、大于<code class="language-plaintext highlighter-rouge">&gt;</code>、小于<code class="language-plaintext highlighter-rouge">&lt;</code>、大于或等于<code class="language-plaintext highlighter-rouge">&gt;=</code>、小于或等于<code class="language-plaintext highlighter-rouge">&lt;=</code>、不等于<code class="language-plaintext highlighter-rouge">!=</code>；</li>
+  <li>逻辑运算符：与<code class="language-plaintext highlighter-rouge">and</code>、或<code class="language-plaintext highlighter-rouge">or</code>。</li>
+</ol>
+
+<p>在不加括号的情况下，运算顺序就按以上四类的顺序进行，且<code class="language-plaintext highlighter-rouge">and</code>比<code class="language-plaintext highlighter-rouge">or</code>先进行。</p>
+
+<p>如果一个变量还没有创建，默认它的值是0。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?richard-markup v1?&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">set=</span><span class="s">"crap = 20"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;choices&gt;</span>
+    这是一道选择题
+    <span class="nt">&lt;choice</span> <span class="na">set=</span><span class="s">"crap = crap + 40"</span><span class="nt">&gt;</span>az<span class="nt">&lt;/choice&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">set=</span><span class="s">"crap = crap * 4"</span><span class="nt">&gt;</span>az<span class="nt">&lt;/choice&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">set=</span><span class="s">"crap = crap - 10"</span><span class="nt">&gt;</span>az<span class="nt">&lt;/choice&gt;</span>
+<span class="nt">&lt;/choices&gt;</span>
+<span class="nt">&lt;s</span> <span class="na">if=</span><span class="s">"crap &lt; 20"</span><span class="nt">&gt;</span>
+    crap现在小于20
+<span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;s</span> <span class="na">elif=</span><span class="s">"crap &lt; 60"</span><span class="nt">&gt;</span>
+    crap现在大于或等于20，小于60
+<span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;s</span> <span class="na">else</span><span class="nt">&gt;</span>
+    crap现在大于或等于60
+<span class="nt">&lt;/s&gt;</span>
+</code></pre></div></div>
+
+<p>建议使用一个<code class="language-plaintext highlighter-rouge">_choice</code>变量来存储选择的选项，代替<code class="language-plaintext highlighter-rouge">goto</code>：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?richard-markup v1?&gt;</span>
+<span class="nt">&lt;choices&gt;</span>
+    <span class="nt">&lt;prompt&gt;</span>Are you...<span class="nt">&lt;/prompt&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">set=</span><span class="s">"_choice = 1"</span><span class="nt">&gt;</span>Roy<span class="nt">&lt;/choice&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">set=</span><span class="s">"_choice = 2"</span><span class="nt">&gt;</span>Richard<span class="nt">&lt;/choice&gt;</span>
+    <span class="nt">&lt;choice</span> <span class="na">set=</span><span class="s">"_choice = 3"</span><span class="nt">&gt;</span>Neither<span class="nt">&lt;/choice&gt;</span>
+<span class="nt">&lt;/choices&gt;</span>
+<span class="nt">&lt;s</span> <span class="na">if=</span><span class="s">"_choice == 1"</span><span class="nt">&gt;</span>
+Hi, <span class="nt">&lt;s</span> <span class="na">color=</span><span class="s">12</span><span class="nt">&gt;</span>Roy<span class="nt">&lt;/s&gt;</span>!
+<span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;s</span> <span class="na">elif=</span><span class="s">"_choice == 2"</span><span class="nt">&gt;</span>
+Hello <span class="nt">&lt;s</span> <span class="na">color=</span><span class="s">15</span><span class="nt">&gt;</span>Richard<span class="nt">&lt;/s&gt;</span>!
+<span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;s</span> <span class="na">else</span><span class="nt">&gt;</span>
+Hello... whoever you are!
+<span class="nt">&lt;/s&gt;</span>
+</code></pre></div></div>
+
+<p>以上就是 Richard Markup 帮助文档的全部内容了。由于解释器还没有完全实现，此文档以后还可能会修改。</p>
+</div>
+        <footer class="soul-p2">
+          <address>DGCK81LNN &middot;
+            <time>2020-12-08</time>
+          </address>
+        </footer>
+      </article>
+    </soul-main>
+    <soul-blog-footer  :links="[
+      { href: 'https://github.com/DGCK81LNN/LoveWithRichard', text: 'LoveWithRichard 旧版本' },
+      { href: 'https://dgck81lnn.github.io/apps/lab/console.html?path=/res/down/SoulLC/LoveWithRichard.soullc.mjs', text: 'LoveWithRichard V3 网页版' },
+    ]"></soul-blog-footer>
+  </div>
+  
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  
+</body>
+</html>
