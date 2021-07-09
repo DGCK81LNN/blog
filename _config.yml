@@ -6,6 +6,7 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
   - jekyll-redirect-from
+  - jekyll-textile-converter
 titles_from_headings:
   collections: true
 exclude:
