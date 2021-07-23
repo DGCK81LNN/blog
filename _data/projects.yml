@@ -14,7 +14,7 @@
   url: https://dgck81lnn.github.io/
   projs:
     -
-      id: soul.apps.lab.brainfuck
+      id: soul.app.brainfuck
       desc: 灵魂实验室：brainfuck 在线工具
       url: https://dgck81lnn.github.io/apps/lab/brainfuck.html
       news:
@@ -41,8 +41,11 @@
         -
           date: 2021-04-28
           status: paused
+        -
+          date: 2021-07-22
+          content: ID由`soul.apps.lab.brainfuck`改为`soul.app.brainfuck`
     -
-      id: soul.apps.lab.befunge93
+      id: soul.app.befunge93
       desc: 灵魂实验室：Befunge-93 在线工具
       news:
         -
@@ -60,8 +63,11 @@
           content: |
             将先前编写的语法高亮程序上传到了CodePen：
             <https://codepen.io/dgck81lnn/pen/XWpjoRG>
+        -
+          date: 2021-07-22
+          content: ID由`soul.apps.lab.befunge93`改为`soul.app.befunge93`
     -
-      id: soul.apps.lab.swissknife
+      id: soul.app.swissknife
       desc: 灵魂实验室：多功能实用工具
       url: /sandbox/swissknife.html
       news:
@@ -93,55 +99,11 @@
         -
           date: 2021-04-28
           status: paused
+        -
+          date: 2021-07-22
+          content: ID由`soul.apps.lab.swissknife`改为`soul.app.swissknife`
     -
-      id: soul.apps.lab.console
-      desc: 灵魂实验室：控制台
-      url: https://dgck81lnn.github.io/apps/lab/console.html
-      news:
-        -
-          date: 2020-11-26
-          status: done
-          progress: 100
-          content: |
-            已基本完工，不过尚未正式投入使用。
-            目前只有一个测试性程序：“Love with Richard under epidemic”。
-            目前可以在小站首页找到它的详细信息。
-        -
-          date: 2020-12-13
-          status: ongoing
-          phase: 2
-          progress: 50
-          content: |
-            二期工程启动，开始编写 Richard Markup 解释器。
-            由“命令行”更名为“控制台”。
-        -
-          date: 2021-01-12
-          progress: 20
-          content: |
-            起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
-            由于任务增加，进度条已倒退。
-        -
-          date: 2021-01-16
-          status: prioritized
-          content: |
-            为了在方便存储和读取存档的前提下实现`call`，
-            需要手动实现一个“调用堆栈”。
-        -
-          date: 2021-01-21
-          status: almost_paused
-        -
-          date: 2021-04-28
-          status: paused
-        -
-          date: 2021-05-24
-          status: canceled
-          progress: '?'
-          content: |
-            由于用 XML 代替 Richard Markup，此项目已取消。
-            [XML版测试](/sandbox/xml-richard/)
-            [源代码](https://github.com/DGCK81LNN/sandbox/tree/e3212ee3096eaabe0f6e930fc92db8b0bb823fe9/xml-richard)
-    -
-      id: soul.apps.danceline
+      id: soul.app.danceline
       desc: 舞线练习场（第3代）
       news:
         -
@@ -150,8 +112,11 @@
           date: 2021-01-11
           content: |
             舞线练习场第2代已上传到[遗留区](/legacy)。
+        -
+          date: 2021-07-22
+          content: ID由`soul.apps.danceline`改为`soul.app.danceline`
     -
-      id: soul.apps.captoin
+      id: soul.app.captoin
       desc: 网页版歌词/字幕编辑器
       news:
         -
@@ -162,9 +127,17 @@
             BCC哔哩哔哩外挂字幕编辑器测试：
             [测试页](/sandbox/bcc.html)
             [源代码](https://github.com/DGCK81LNN/sandbox/tree/dd0e16a277995358c1572c1868e6027bdceb29c9/)
+        -
+          date: 2021-07-22
+          content: ID由`soul.apps.captoin`改为`soul.app.captoin`
     -
-      id: soul.apps.query
-      desc: 外链快速查询（第2代）（哔哩哔哩API快速查询）
+      id: soul.app.wytk
+      desc: 改良无影坦克编解码工具
+      news:
+        -
+          status: almost_paused
+          progress: 15
+          content: [测试版本链接](/sandbox/wytk_optimize/)
     -
       id: soul.blog
       desc: LNN的博客！
@@ -357,9 +330,79 @@
             算是完成了，<span lang=en>more or less</span>。
             
             截至目前暂时没有制作新视频的计划，如果有新计划，我会在`pone`下添加Project。
+        -
+          date: 2021-07-22
+          phase: 2
+          progress: 0
+          status: not_started
+          content: 计划使用JavaScript + SVG制作动态形象（？）
+-
+  desc: 杂项
+  projs:
+    -
+      id: love-with-richard
+      news:
+        -
+          date: 2021-05-24
+          progress: 60
+          status: ongoing
+          content: |
+            [XML版测试](/sandbox/xml-richard/)
+            [源代码](https://github.com/DGCK81LNN/sandbox/tree/09c665b18de1dbf1593d18518d67e35b3073560d/xml-richard)
+    -
+      id: lnnbot
+      desc: 自制QQ机器人
+      news:
+        -
+          status: paused
 -
   desc: 已结束项目
   projs:
+    -
+      id: soul.apps.lab.console
+      desc: 灵魂实验室：控制台
+      url: https://dgck81lnn.github.io/apps/lab/console.html
+      news:
+        -
+          date: 2020-11-26
+          status: done
+          progress: 100
+          content: |
+            已基本完工，不过尚未正式投入使用。
+            目前只有一个测试性程序：“Love with Richard under epidemic”。
+            目前可以在小站首页找到它的详细信息。
+        -
+          date: 2020-12-13
+          status: ongoing
+          phase: 2
+          progress: 50
+          content: |
+            二期工程启动，开始编写 Richard Markup 解释器。
+            由“命令行”更名为“控制台”。
+        -
+          date: 2021-01-12
+          progress: 20
+          content: |
+            起草了 Richard Markup v2 文档，v2抛弃了原本的类XML语法。
+            由于任务增加，进度条已倒退。
+        -
+          date: 2021-01-16
+          status: prioritized
+          content: |
+            为了在方便存储和读取存档的前提下实现`call`，
+            需要手动实现一个“调用堆栈”。
+        -
+          date: 2021-01-21
+          status: almost_paused
+        -
+          date: 2021-04-28
+          status: paused
+        -
+          date: 2021-05-24
+          status: canceled
+          progress: '?'
+          content: |
+            由于用 XML 代替 Richard Markup，此项目已取消。见项目`love-with-richard`。
     -
       id: osu.skin
       desc: 自制皮肤
@@ -393,32 +436,6 @@
         -
           date: 2021-02-04
           status: canceled
-    -
-      id: soul.css
-      desc: 全站设计风格升级
-      news:
-        -
-          date: 2021-01-02
-          status: ongoing
-          progress: 1
-        -
-          date: 2021-01-23
-          status: almost_paused
-          content: |
-            计划抛弃[Element](https://element.eleme.cn)组件库，改用[BootstrapVue](https://bootstrap-vue.org)。[临时测试页](/sandbox/bvtest.html)（将来会移除）
-        -
-          date: 2021-01-25
-          progress: 65
-          content: |
-            在本地测试中成功把主站除brainfuck在线工具外的所有页面适配了BootstrapVue。由于brainfuck在线工具的Markup量较大，之后再继续处理。
-        -
-          date: 2021-01-27
-          progress: 100
-          content: |
-            已全面应用BootstrapVue。如无故障，一段时间后此项目将变为`done`状态。
-        -
-          date: 2021-02-04
-          status: done
     -
       id: soul.apps.lab.classic
       desc: 灵魂实验室-经典
