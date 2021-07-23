@@ -137,7 +137,8 @@
         -
           status: almost_paused
           progress: 15
-          content: [测试版本链接](/sandbox/wytk_optimize/)
+          content: |
+            [测试版本链接](/sandbox/wytk_optimize/)
     -
       id: soul.blog
       desc: LNN的博客！
