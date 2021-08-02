@@ -920,7 +920,7 @@ _给相互陪伴了三年的同学们。_
     <figcaption>封面作者：DGCK81LNN</figcaption>
 </figure>
 
-<b-card class="my-3">
+<aside><b-card class="my-3">
     <template slot=header>LNN的话</template>
     <b-card-body>
         <p>在这部作品中，“伊楠斯”的早期经历代表了Richard本人（只是极度夸大了，Richard和他曾喜欢的Sunny仅是越走越远，“没有机会了”），而“梅古里”则代表一个假想的、想要治愈他的伤痛的女生。</p>
@@ -929,4 +929,4 @@ _给相互陪伴了三年的同学们。_
         <p>在此作品之后，Richard通过信息技术课上学习的Python，制作了“<i>Love with Richard</i>三部曲”的第一部――“互动式小说”<a href="https://github.com/DGCK81LNN/LoveWithRichard"><i>Love with Richard under Epidemic</i></a>。它不能算是严格意义上的“互动式小说”，因为读者交互的方式是在几个选项中选择，而不是输入自然语言的指令。这部作品更为直接地写了Richard和一个假想女生的故事。目前Richard还在创作“三部曲”的其余部分。</p>
     </b-card-body>
     <template slot=footer>DGCK81LNN &middot; 2021-04-10</template>
-</b-card>
+</b-card></aside>
