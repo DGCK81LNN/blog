@@ -14,8 +14,8 @@ excerpt: |
 
     平常，他们三五成群，有说有笑，而我只能在自己的座位上等待着一个能真正走进我的内心世界的人，等待着他的到来。
 soulblog-style: |
-    .soulblog-content>p:before {
-        content: "\2003\2003";
+    .soulblog-content p:before {
+        content: "\3000\3000";
     }
     #chat-screen {
         width: 400px;
