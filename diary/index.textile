@@ -1,6 +1,6 @@
 ---
 title: LNN's Diary
-layout: default
+layout: diary
 ---
 
 p[lnncrypt].               ．<!--
