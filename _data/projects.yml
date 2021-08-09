@@ -139,16 +139,6 @@
           progress: 15
           content: |
             [测试版本链接](/sandbox/wytk_optimize/)
-    -
-      id: soul.blog
-      desc: LNN的博客！
-      news:
-        -
-          date: 2021-06-16
-          phase: 2
-          content: |
-            计划改用Github Actions来部署（目前是主分支直接部署到GitHub Pages），
-            以便启用Jekyll的Textile功能。
 -
   id: osu
   desc: osu!
@@ -359,6 +349,21 @@
 -
   desc: 已结束项目
   projs:
+    -
+      id: soul.blog
+      desc: LNN的博客！
+      news:
+        -
+          date: 2021-06-16
+          phase: 2
+          content: |
+            计划改用Github Actions来部署（目前是主分支直接部署到GitHub Pages），
+            以便启用Jekyll的Textile功能。
+        - date: 2021-07-09
+          status: done
+          progress: 100
+          content: |
+            <p lang=en><a href="https://github.com/DGCK81LNN/blog/commit/c2461f754524307269f0fa932c81cb8b2c609bc4">Done</a></p>
     -
       id: soul.apps.lab.console
       desc: 灵魂实验室：控制台
