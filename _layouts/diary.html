@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang=cmn>
+<!--
+  这是灵魂小站 / 博客 / LNN's Diary!
+  ID: blog // soulblog
+  页面内容使用Jekyll生成。
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/css/soul_bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.css">
+  <link rel="stylesheet" href="/css/commons.css">
+  <link rel="stylesheet" href="/blog/css/rouge-syntax.css">
+  <link rel="icon" href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel="apple-touch-icon" href="/site_icon.png" sizes="160x160">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"></script>
+  <script src="/js/components.min.js"></script>
+  <script src="/blog/js/blog_components.min.js"></script>
+  {% seo %}
+  <style>
+    .soulblog-content {
+      overflow-wrap: break-word; 
+    }
+
+    .soulblog-content img {
+      max-width: 100%;
+    }
+
+    .soulblog-content pre {
+      padding: 1rem;
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #fcfcfc;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .soulblog-content *:not(pre)>code {
+      font-size: inherit;
+      border-radius: 0.25rem;
+      background-color: #f4f4f4;
+      padding: 2px;
+    }
+
+    .soulblog-content table {
+      margin-bottom: 1rem;
+      color: #212529
+    }
+    .soulblog-content table th,
+    .soulblog-content table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6
+    }
+    .soulblog-content table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6
+    }
+    .soulblog-content table tbody+tbody {
+      border-top: 2px solid #dee2e6
+    }
+
+    .soulblog-content blockquote {
+      border-left: 0.25em solid silver;
+      padding-left: 1.75em;
+    }
+
+    .soulblog-content>hr {
+      height: 0.25em;
+      border: none;
+      background-color: silver;
+    }
+
+    .soulblog-content>h1,
+    .soulblog-content>h2 {
+      border-bottom: 1px solid silver;
+    }
+    
+    @font-face {
+      font-family: LNNCrypt;
+      src: url(/blog/assets/LNNCrypt.woff);
+    }
+
+    [lang|=lnncrypt] {
+      font-family: LNNCrypt, var(--soul-font-family-sans-serif);
+    }
+
+    em:lang(lnncrypt) {
+      font-style: normal;
+      text-decoration: underline;
+    }
+  </style>
+  {% if page.soulblog-style -%}
+  {{- page.soulblog-style
+    | prepend: "style>"
+    | prepend: "<"
+    | append: "</"
+    | append: "style>"
+  -}}
+  {%- endif %}
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="false">如果这条消息一直显示，说明脚本加载失败或运行出错，可能是因为您的浏览器不支持ECMAScript 2015。</p>
+    <soul-blog-header></soul-blog-header>
+    <soul-main>
+      {%- if page.path != "index.html" %}
+      <b-breadcrumb>
+        <b-breadcrumb-item href="/blog">LNN的博客！</b-breadcrumb-item>
+        {%- for item in page.soulblog-breadcrumb %}
+        <b-breadcrumb-item href="{{ item.href | escape }}">{{ item.text }}</b-breadcrumb-item>
+        {%- endfor %}
+        <b-breadcrumb-item active>{{ page.title }}</b-breadcrumb-item>
+      </b-breadcrumb>
+      {%- endif %}
+      <article>
+        <div class="soulblog-content">{{ content }}</div>
+        {%- if page.collection == "posts" %}
+        <footer class="soul-p2">
+          <address>
+            {%- unless page.soulblog-no-attribution %}DGCK81LNN &middot;{% endunless %}
+            <time>{{ page.date | date: "%Y-%m-%d" }}</time>
+          </address>
+          {%- comment %}
+          <p>上一篇：{% if page.previous %}<a rel=prev href="/blog{{ page.previous.url }}">{{ page.previous.title }}</a>{% else %}（前面没有了）{% endif %}</p>
+          <p>下一篇：{% if page.next %}<a rel=next href="/blog{{ page.next.url }}">{{ page.next.title }}</a>{% else %}（没有更多了）{% endif %}</p>
+          {%- endcomment %}
+        </footer>
+        {%- endif %}
+      </article>
+    </soul-main>
+    <soul-blog-footer {% if page.soulblog-footer-links %} :links="[
+      {%- for link in page.soulblog-footer-links %}
+      { href: '{{ link.href | replace:"'","\\'" | escape }}', text: '{{ link.text | replace:"'","\\'" | escape }}' },
+      {%- endfor %}
+    ]"{% endif %}></soul-blog-footer>
+  </div>
+  {% if page.soulblog-script-before -%}
+  {{ page.soulblog-script-before
+    | prepend: "script>"
+    | prepend: "<"
+    | append: "</"
+    | append: "script>"
+  }}
+  {%- endif %}
+  <script>
+      const vm = new Vue(
+        Object.assign(
+          {
+            el: "#app",
+            components: window.SoulVueComponents
+          },
+          typeof soulBlogVueInit === "object" ? soulBlogVueInit : null
+        )
+      );
+  </script>
+  {% if page.soulblog-script-after -%}
+  {{ page.soulblog-script-after
+    | prepend: "script>"
+    | prepend: "<"
+    | append: "</"
+    | append: "script>"
+  }}
+  {%- endif %}
+</body>
+</html>
