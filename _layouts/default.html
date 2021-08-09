@@ -90,23 +90,6 @@
     | append: "style>"
   -}}
   {%- endif %}
-  {% if page.soulblog-isdiary -%}
-  <style>
-    @font-face {
-      font-family: LNNCrypt;
-      src: url(/blog/assets/LNNCrypt.woff);
-    }
-
-    [lang|=lnncrypt] {
-      font-family: LNNCrypt, var(--soul-font-family-sans-serif);
-    }
-
-    em:lang(lnncrypt) {
-      font-style: normal;
-      text-decoration: underline;
-    }
-  </style>
-  {% endif -%}
 </head>
 
 <body>
