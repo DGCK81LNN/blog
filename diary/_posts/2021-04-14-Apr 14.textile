@@ -1,0 +1,21 @@
+---
+title: <span lang=en>Apr 14 @school<br>Apr 22 @school</span>
+---
+
+h1[en]. Apr 14 @school
+
+p[en]. no tablethack today &emsp; left tablet at home intentionally
+&emsp; getting rid of one of the distractions
+
+----
+
+![en]/assets/2021-04-14.svg(I've never handed in physics homework once!! (and Geography))!
+
+p[en]. and probably still won't until I can finish maths
+homework early enough
+
+h1[en]. Apr 22 @school
+
+finished maths homework @ 11 PM last night
+
+very much earlier than usual, but it's not enough
