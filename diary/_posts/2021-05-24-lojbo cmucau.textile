@@ -1,0 +1,9 @@
+---
+title: <span lang=jbo>#lojbo cmucau# de'i li revo pi'e mu pi'e renorepa</span>
+---
+
+p[jbo]. #lojbo cmucau# %{float:right}de'i li revo pi'e mu pi'e renorepa%
+
+p[jbo]. .i ma krinu le nu da gasnu lenu le blacykabri .uu cu janli mi seri'a le nu aspo by kei mu'i le si'o da cikygau mi
+
+<b-card><p>大意：为什么要用那可怜的玻璃杯砸在我身上，把被子砸碎了，以此来叫醒我？</p></b-card>
