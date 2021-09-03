@@ -1,0 +1,15 @@
+---
+title: Jun 3<br>Jun 8
+---
+
+h1. Jun 3
+
+!(bg-light)/blog/assets/2021-06-03.gif(SALLY IS CUTE)!
+
+h1. Jun 8
+
+!(bg-light)/blog/assets/2021-06-08-1.gif(ROY FOLLOW SALLY)!
+
+!(bg-light)/blog/assets/2021-06-08-2.gif(SALLY FEAR ROY)!
+
+!(bg-light)/blog/assets/2021-06-08-3.gif(ROY IS SAD)!
