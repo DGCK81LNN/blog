@@ -48,6 +48,5 @@ h2{opacity: 0.5}. （目录）
 <li><a href="/blog{{ post.url }}">{{ post.title }}</a></li>
 {%- endif %}
 {%- endfor %}
-<p style="opacity:0.5">...施工还在进行中...</p>
 </ul>
 </notextile>
