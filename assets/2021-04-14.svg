@@ -1,0 +1,63 @@
+<?xml version="1.0" standalone="no" ?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="480" height="144">
+<style>
+.main {
+font-size: 16px;
+}
+.and-geography {
+font-size: 10px;
+}
+</style>
+<text class="main" x="12" y="43">I</text>
+<text class="main" x="25" y="40">'</text>
+<text class="main" x="33" y="38">V</text>
+<text class="main" x="48" y="35">E</text>
+<text class="main" x="77" y="38">N</text>
+<text class="main" x="92" y="49">E</text>
+<text class="main" x="87" y="69">V</text>
+<text class="main" x="74" y="83">E</text>
+<text class="main" x="57" y="95">R</text>
+<text class="main" x="62" y="128">H</text>
+<text class="main" x="79" y="131">A</text>
+<text class="main" x="95" y="127">N</text>
+<text class="main" x="114" y="119">D</text>
+<text class="main" x="130" y="109">E</text>
+<text class="main" x="142" y="97">D</text>
+<text class="main" x="163" y="68">I</text>
+<text class="main" x="172" y="52">N</text>
+<text class="main" x="203" y="31">P</text>
+<text class="main" x="216" y="22">H</text>
+<text class="main" x="234" y="20">Y</text>
+<text class="main" x="247" y="24">S</text>
+<text class="main" x="257" y="41">I</text>
+<text class="main" x="241" y="57">C</text>
+<text class="main" x="235" y="76">S</text>
+<text class="main" x="232" y="106">H</text>
+<text class="main" x="241" y="120">O</text>
+<text class="main" x="256" y="127">M</text>
+<text class="main" x="276" y="122">E</text>
+<text class="main" x="287" y="109">W</text>
+<text class="main" x="297" y="91">O</text>
+<text class="main" x="303" y="74">R</text>
+<text class="main" x="311" y="57">K</text>
+<text class="main" x="333" y="30">O</text>
+<text class="main" x="352" y="33">N</text>
+<text class="main" x="367" y="41">C</text>
+<text class="main" x="385" y="48">E</text>
+<text class="main" x="403" y="62">!</text>
+<text class="main" x="413" y="69">!</text>
+<text class="main" x="436" y="71">!</text>
+<text class="main" x="453" y="76">!</text>
+<text class="main" x="392" y="77">!</text>
+<text class="main" x="371" y="75">!</text>
+<text class="main" x="385" y="92">!</text>
+<text class="main" x="402" y="94">!</text>
+<text class="main" x="419" y="92">!</text>
+<text class="main" x="436" y="100">!</text>
+<text class="main" x="419" y="113">!</text>
+<text class="main" x="403" y="118">!</text>
+<text class="main" x="367" y="104">!</text>
+<text class="main" x="381" y="114">!</text>
+<text class="and-geography" x="327" y="95">and</text>
+<text class="and-geography" x="315" y="108">Geography</text>
+</svg>
