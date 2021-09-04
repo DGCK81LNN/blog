@@ -108,6 +108,11 @@
           progress: 15
           content: |
             [测试版本链接](/sandbox/wytk_optimize/)
+        - date: 2021-08-28
+          status: paused
+          progress: 30
+          content: |
+            发布全新解码器，支持批量现形。由于新旧代码不兼容，暂时移除了编码器
 - id: osu
   desc: osu!
   projs:
@@ -222,6 +227,7 @@
           progress: 80
           content: |
             近期通过musicpy生成了更多音符画，谱已接近完善。
+        - status: paused
     - id: music.chip.running
       desc: FamiTracker 芯片音乐制作（试水）：大课间跑步音乐
       news:
@@ -230,6 +236,7 @@
         - date: 2021-02-19
           progress: 70
           status: almost_paused
+        - status: paused
 - id: pone
   desc: B站视频投稿
   projs:
@@ -262,6 +269,8 @@
           content: |
             [XML版测试](/sandbox/xml-richard/)
             [源代码](https://github.com/DGCK81LNN/sandbox/tree/09c665b18de1dbf1593d18518d67e35b3073560d/xml-richard)
+        - date: 2021-07-20
+          status: paused
     - id: lnnbot
       desc: 自制QQ机器人
       news:
