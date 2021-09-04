@@ -16,6 +16,6 @@ homework early enough
 
 h1[en]. Apr 22 @school
 
-finished maths homework @ 11 PM last night
+p[en]. finished maths homework @ 11 PM last night
 
-very much earlier than usual, but it's not enough
+p[en]. very much earlier than usual, but it's not enough
