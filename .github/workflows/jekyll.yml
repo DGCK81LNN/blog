@@ -2,9 +2,10 @@ name: Build
 on:
   push:
     branches: [ main ]
+  workflow_dispatch: { }
 jobs:
   jekyll:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/cache@v2
