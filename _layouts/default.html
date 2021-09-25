@@ -106,7 +106,7 @@
         <b-breadcrumb-item active>{{ page.title }}</b-breadcrumb-item>
       </b-breadcrumb>
       {%- endif %}
-      <article>
+      <article v-once>
         <div class="soulblog-content">{{ content }}</div>
         {%- if page.collection == "posts" %}
         <footer class="soul-p2">
