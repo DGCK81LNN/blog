@@ -1,5 +1,6 @@
 .vscode/
 .jekyll-cache/
+_site/
 node_modules/
 Gemfile.lock
 ^*
