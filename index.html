@@ -16,7 +16,7 @@ soulblog-style: |
     <header class="card-header">
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
       {%- for tag in post.tags %}
-      <span class="badge {%- if site.data.main_tags contains tag %}bg-primary{% else %}bg-secondary{% endif %}">{{ tag }}</span>
+      <span class="badge {% if site.data.main_tags contains tag %}bg-primary{% else %}bg-secondary{% endif %}">{{ tag }}</span>
       {%- endfor %}
     </header>
     <div>
