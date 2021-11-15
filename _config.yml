@@ -22,7 +22,6 @@ defaults:
   -
     scope: { path: "diary", type: "posts" }
     values:
-      layout: diary
       excerpt: ""
       soulblog-breadcrumb:
         - { href: "/blog/diary", text: "LNN's Diary" }
