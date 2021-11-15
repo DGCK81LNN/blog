@@ -19,13 +19,13 @@ soulblog-style: |
       <span class="badge {% if site.data.main_tags contains tag %}bg-primary{% else %}bg-secondary{% endif %}">{{ tag }}</span>
       {%- endfor %}
     </header>
-    <div>
+    <div class="card-body">
       {{ post.excerpt | markdownify }}
     </div>
     <div class="card-footer">
       <a href="/blog{{ post.url }}" class="text-decoration-none read-all">
         阅读全文
-        <b-icon icon="arrow-right"></b-icon>
+        <i class=bi-arrow-right aria-hidden></i>
       </a>
     </div>
   </article>
