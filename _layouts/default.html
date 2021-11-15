@@ -37,6 +37,15 @@
       background-color: silver;
     }
     .soulblog-content>h1, .soulblog-content>h2 { border-bottom: 1px solid silver; }
+
+    @font-face { font-family: LNNCrypt; src: url(/blog/assets/LNNCrypt.woff); }
+    /*
+     * TODO: change language tags "lnncrypt" to "zh-cmn-x-Lnncrypt" / "en-x-Lnncrypt" / "und-x-Lnncrypt" etc
+     * and use a css class to add font
+     */
+    [lang|=lnncrypt] { font-family: LNNCrypt, var(--soul-font-family-sans-serif) !important; }
+    em:lang(lnncrypt) { font-style: normal; text-decoration: underline; }
+
   </style>
   {% if page.soulblog-style -%}
   {{- page.soulblog-style
