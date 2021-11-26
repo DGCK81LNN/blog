@@ -13,6 +13,7 @@ excerpt: |
     我身材瘦小，肤色比其他人都深，接近于古铜色，被他们喊作“非洲人”。班上大多数同学都看不见我的存在，而知音更是一个也没有。
 
     平常，他们三五成群，有说有笑，而我只能在自己的座位上等待着一个能真正走进我的内心世界的人，等待着他的到来。
+lnnblog-excerpt-lang: md
 soulblog-style: |
     .soulblog-content p:not(aside p):before {
         content: "\3000\3000";
@@ -34,6 +35,7 @@ soulblog-style: |
     #chat-screen .received {
         text-align: left;
         padding: 0.25rem;
+        position: relative;
     }
     #chat-screen .received span {
         background: #FFF;
@@ -42,9 +44,19 @@ soulblog-style: |
         display: inline-block;
         text-align: left;
     }
+    #chat-screen .received:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0.9rem;
+        left: -0.4rem;
+        border: 0.4rem solid transparent;
+        border-right-color: white;
+    }
     #chat-screen .sent {
         text-align: right;
         padding: 0.25rem;
+        position: relative;
     }
     #chat-screen .sent span {
         background: #8E4;
@@ -52,6 +64,15 @@ soulblog-style: |
         border-radius: 4px;
         display: inline-block;
         text-align: left;
+    }
+    #chat-screen .sent:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0.9rem;
+        right: -0.4rem;
+        border: 0.4rem solid transparent;
+        border-left-color: #8E4;
     }
     #book-page {
         background: #FED;
@@ -548,7 +569,7 @@ _给相互陪伴了三年的同学们。_
 
 她现在就像主人手上的小猫，享受着伊楠斯的深情一面。
 
-&nbsp;
+<p><br></p>
 
 意外发生了。
 
@@ -695,7 +716,6 @@ _给相互陪伴了三年的同学们。_
 > 我恍然大悟：原来伊楠斯始终就没有讨厌过我；只是因为经历过撕心裂肺的绝望，他才会与我保持距离，对我冷淡。我也曾与他共感，那种喜欢到了精神世界的最深处，却永远不会有未来时的无助期待、自我欺骗和假装忘记。
 
 ## 第七章&emsp;没有他的未来不是我想要的未来
-
 
 整个周末，我都异常亢奋，只是因为伊楠斯的一沓日记。我很快写完了作业。周日晚上，我在家边的一片街区漫步，我走得比平常快。许久，我身上的衣服被汗浸湿了。我看向远处的灯光绚丽、人来人往、繁华都市。我边走边想，要是他和我一起走过这街道，那该有多浪漫幸福啊！
 
@@ -915,18 +935,19 @@ _给相互陪伴了三年的同学们。_
 
 学校门口的马路边，一大一小两个身影，正是一起走向未来的梅古里与伊楠斯。
 
-<figure>
-    <img src="/blog/assets/droplet_cover.png" alt="一张像素画，画中有一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外" title="封面">
+<figure class="figure">
+    <img class="figure-img" src="/blog/assets/droplet_cover.png" title="封面"
+         alt="本文的封面是一张像素画，画中一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外。">
     <figcaption>封面作者：DGCK81LNN</figcaption>
 </figure>
 
-<aside><b-card class="my-3">
-    <template slot=header>LNN的话</template>
-    <b-card-body>
-        <p>在这部作品中，“伊楠斯”的早期经历代表了Richard本人（只是极度夸大了，Richard和他曾喜欢的Sunny仅是越走越远，“没有机会了”），而“梅古里”则代表一个假想的、想要治愈他的伤痛的女生。</p>
-        <p>据我所知，Richard使用iPhone自带的备忘录进行创作。当今智能手机的便捷大大降低了写作的门槛，更多人可以通过文字表达自己的内心所想。都说“字如其人”，其实同样“文如其人”：Richard是个性格比较古怪的男生，他笔下的人物总是体现出他与众不同的“脑回路”。</p>
-        <p>我认为，这篇小说与其说是Richard的创作，不如说是他的“日记”，它只有对作者本人（以及，如果有，十分关心他的人――他的“梅古里”）才有意义。这篇小说和目前只发布了第一部的所谓“<i>Love with Richard</i>三部曲”，又都像是Richard留给可能存在的他的“梅古里”的“攻略”，处处体现了Richard一直期待着一个像Sunny那样的女生能够“治愈他心底的旧伤”。</p>
-        <p>在此作品之后，Richard通过信息技术课上学习的Python，制作了“<i>Love with Richard</i>三部曲”的第一部――“互动式小说”<a href="https://github.com/DGCK81LNN/LoveWithRichard"><i>Love with Richard under Epidemic</i></a>。它不能算是严格意义上的“互动式小说”，因为读者交互的方式是在几个选项中选择，而不是输入自然语言的指令。这部作品更为直接地写了Richard和一个假想女生的故事。目前Richard还在创作“三部曲”的其余部分。</p>
-    </b-card-body>
-    <template slot=footer>DGCK81LNN &middot; 2021-04-10</template>
-</b-card></aside>
+<aside><div class="card my-3">
+    <div class="card-header">LNN的话</div>
+    <div class="card-body">
+        <p class="card-text">在这部作品中，“伊楠斯”的早期经历代表了Richard本人（只是极度夸大了，Richard和他曾喜欢的Sunny仅是越走越远，“没有机会了”），而“梅古里”则代表一个假想的、想要治愈他的伤痛的女生。</p>
+        <p class="card-text">据我所知，Richard使用iPhone自带的备忘录进行创作。当今智能手机的便捷大大降低了写作的门槛，更多人可以通过文字表达自己的内心所想。都说“字如其人”，其实同样“文如其人”：Richard是个性格比较古怪的男生，他笔下的人物总是体现出他与众不同的“脑回路”。</p>
+        <p class="card-text">我认为，这篇小说与其说是Richard的创作，不如说是他的“日记”，它只有对作者本人（以及，如果有，十分关心他的人――他的“梅古里”）才有意义。这篇小说和目前只发布了第一部的所谓“<i>Love with Richard</i>三部曲”，又都像是Richard留给可能存在的他的“梅古里”的“攻略”，处处体现了Richard一直期待着一个像Sunny那样的女生能够“治愈他心底的旧伤”。</p>
+        <p class="card-text">在此作品之后，Richard通过信息技术课上学习的Python，制作了“<i>Love with Richard</i>三部曲”的第一部――“互动式小说”<a href="https://github.com/DGCK81LNN/LoveWithRichard"><i>Love with Richard under Epidemic</i></a>。它不能算是严格意义上的“互动式小说”，因为读者交互的方式是在几个选项中选择，而不是输入自然语言的指令。这部作品更为直接地写了Richard和一个假想女生的故事。目前Richard还在创作“三部曲”的其余部分。</p>
+    </div>
+    <div class="card-footer">DGCK81LNN &middot; 2021-04-10</div>
+</div></aside>
