@@ -1,0 +1,38 @@
+#main {
+  padding: 0.5rem;
+  margin: 0 auto;
+  max-width: 768px;
+}
+.soulblog-content { overflow-wrap: break-word; }
+.soulblog-content img { max-width: 100%; }
+.soulblog-content pre {
+  padding: 1rem;
+  font-size: inherit;
+  border-radius: 0.25rem;
+  background-color: #fcfcfc;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+  white-space: pre;
+  overflow-x: auto;
+}
+.soulblog-content code:not(pre>code) {
+  font-size: inherit;
+  border-radius: 0.25rem;
+  background-color: #f4f4f4;
+  padding: 2px;
+}
+.soulblog-content blockquote { border-left: 0.25em solid silver; padding-left: 1.75em; }
+.soulblog-content>hr {
+  height: 0.25em;
+  border: none;
+  background-color: silver;
+}
+.soulblog-content>h1, .soulblog-content>h2 { border-bottom: 1px solid silver; }
+
+@font-face { font-family: LNNCrypt; src: url(/blog/assets/LNNCrypt.woff); }
+/*
+ * TODO: change language tags "lnncrypt" to "zh-cmn-x-Lnncrypt" / "en-x-Lnncrypt" / "und-x-Lnncrypt" etc
+ * and use a css class to add font
+ */
+[lang|=lnncrypt] { font-family: LNNCrypt, var(--soul-font-family-sans-serif) !important; }
+em:lang(lnncrypt) { font-style: normal; text-decoration: underline; }
+

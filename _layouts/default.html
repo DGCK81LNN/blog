@@ -6,51 +6,12 @@
   <meta name=format-detection content="telephone=no">
   <link rel=stylesheet href="https://dgck81lnn.github.io/bootstrap-lnn/dist/bootstrap-lnn.min.css">
   <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+  <link rel=stylesheet href="/blog/css/common.css">
   <link rel=stylesheet href="/blog/css/rouge-syntax.css">
   <link rel=icon href="/site_icon.png">
   <link rel="shortcut icon" href="/site_icon.png">
   <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
   {% seo %}
-  <style>
-    #main {
-      padding: 0.5rem;
-      margin: 0 auto;
-      max-width: 768px;
-    }
-    .soulblog-content { overflow-wrap: break-word; }
-    .soulblog-content img { max-width: 100%; }
-    .soulblog-content pre {
-      padding: 1rem;
-      font-size: inherit;
-      border-radius: 0.25rem;
-      background-color: #fcfcfc;
-      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
-      white-space: pre;
-      overflow-x: auto;
-    }
-    .soulblog-content code:not(pre>code) {
-      font-size: inherit;
-      border-radius: 0.25rem;
-      background-color: #f4f4f4;
-      padding: 2px;
-    }
-    .soulblog-content blockquote { border-left: 0.25em solid silver; padding-left: 1.75em; }
-    .soulblog-content>hr {
-      height: 0.25em;
-      border: none;
-      background-color: silver;
-    }
-    .soulblog-content>h1, .soulblog-content>h2 { border-bottom: 1px solid silver; }
-
-    @font-face { font-family: LNNCrypt; src: url(/blog/assets/LNNCrypt.woff); }
-    /*
-     * TODO: change language tags "lnncrypt" to "zh-cmn-x-Lnncrypt" / "en-x-Lnncrypt" / "und-x-Lnncrypt" etc
-     * and use a css class to add font
-     */
-    [lang|=lnncrypt] { font-family: LNNCrypt, var(--soul-font-family-sans-serif) !important; }
-    em:lang(lnncrypt) { font-style: normal; text-decoration: underline; }
-
-  </style>
   {% if page.soulblog-style -%}
   {{- page.soulblog-style
     | prepend: "style>"
@@ -67,7 +28,7 @@
   </div>
 
   <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
-    <span>LNNの博客（</span>
+    <span>LNNの博客！</span>
   </header>
 
   {%- if page.path != "index.html" %}
