@@ -938,7 +938,7 @@ _给相互陪伴了三年的同学们。_
 <figure class="figure">
     <img class="figure-img" src="/blog/assets/droplet_cover.png" title="封面"
          alt="本文的封面是一张像素画，画中一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外。">
-    <figcaption>封面作者：DGCK81LNN</figcaption>
+    <figcaption class="figure-caption">封面作者：DGCK81LNN</figcaption>
 </figure>
 
 <aside><div class="card my-3">
