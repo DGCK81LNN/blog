@@ -82,7 +82,7 @@
     本博客正在施工中，内容可能会无法正常显示！
   </div>
 
-  <main id=main itemscope itemtype="http://schema.org/Blog">
+  <main id=main {%- if page.collection == "posts" %} itemscope itemtype="http://schema.org/Blog" {%- endif %}>
     <div class="soulblog-content">{{ content }}</div>
     {%- if page.collection == "posts" %}
     <footer class="soul-p2">
