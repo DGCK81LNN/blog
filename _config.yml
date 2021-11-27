@@ -1,6 +1,3 @@
-baseurl: /blog
-title: LNN的博客！
-locale: zh-CN
 plugins:
   - jekyll-seo-tag
   - jekyll-default-layout
@@ -8,6 +5,8 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-textile-converter
+  - jekyll-last-modified-at
+  - jekyll-feed
 titles_from_headings:
   collections: true
 exclude:
@@ -15,6 +14,11 @@ exclude:
   - README.md
   - package-lock.json
 excerpt_separator: "\n\n\n"
+
+baseurl: /blog
+title: LNN的博客！
+locale: zh-CN
+
 defaults:
 - scope: { type: "posts" }
   values:

@@ -8,5 +8,7 @@ group :jekyll_plugins do
   gem 'jekyll-optional-front-matter'
   gem 'jekyll-redirect-from'
   gem 'jekyll-textile-converter'
+  gem 'jekyll-last-modified-at'
+  gem 'jekyll-feed'
 end
 gem 'RedCloth'
