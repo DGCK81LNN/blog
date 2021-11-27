@@ -52,8 +52,8 @@
     {%- if page.collection == "posts" %}
     <footer class="soul-p2">
       <p>
-        {%- unless page.soulblog-no-attribution %}<span itemprop=author>DGCK81LNN</span> &middot;{% endunless %}
-        <time itemprop=datePublished>{{ page.date | date: "%Y-%m-%d" }}</time>
+        {%- unless page.soulblog-no-attribution %}<span>DGCK81LNN</span> &middot;{% endunless %}
+        <time>{{ page.date | date: "%Y-%m-%d" }}</time>
       </p>
     </footer>
     {%- endif %}

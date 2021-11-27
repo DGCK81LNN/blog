@@ -1,6 +1,5 @@
 ---
 title: 神奇的水滴石
-soulblog-itemtype: ShortStory
 tags: 天府灵山行者
 author:
   name: 天府灵山行者
