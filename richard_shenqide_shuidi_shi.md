@@ -7,6 +7,7 @@ author:
 seo:
   type: ShortStory
   links: [ "https://www.bilibili.com/read/cv5787492" ]
+image: "/assets/droplet_cover.png"
 redirect_from:
     - /2021/02/04/richard_droplet.html
 excerpt: |

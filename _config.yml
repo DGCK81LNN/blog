@@ -1,5 +1,6 @@
 baseurl: /blog
 title: LNN的博客！
+locale: zh-CN
 plugins:
   - jekyll-seo-tag
   - jekyll-default-layout
