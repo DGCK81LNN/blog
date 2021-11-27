@@ -22,7 +22,7 @@ soulblog-style: |
       {%- endfor %}
     </header>
     <div class="card-body">
-      {%- assign lang = post.lnnblog-excerpt-lang %}
+      {%- assign lang = post.soulblog-excerpt-lang %}
       {%- if lang == "textile" %}
       {{ post.excerpt | textilize }}
       {%- elsif lang == "md" %}

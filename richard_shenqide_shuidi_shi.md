@@ -21,7 +21,7 @@ excerpt: |
     我身材瘦小，肤色比其他人都深，接近于古铜色，被他们喊作“非洲人”。班上大多数同学都看不见我的存在，而知音更是一个也没有。
 
     平常，他们三五成群，有说有笑，而我只能在自己的座位上等待着一个能真正走进我的内心世界的人，等待着他的到来。
-lnnblog-excerpt-lang: md
+soulblog-excerpt-lang: md
 soulblog-style: |
     .soulblog-content p:not(aside p):before {
         content: "\3000\3000";

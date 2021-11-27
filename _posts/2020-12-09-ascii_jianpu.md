@@ -10,7 +10,7 @@ excerpt: |
       X  X  0     X  X  0     |
       ----        ----        |
     ```
-lnnblog-excerpt-lang: md
+soulblog-excerpt-lang: md
 ---
 
 # A S C I I 简 谱
