@@ -1,5 +1,6 @@
 ---
 title: LNN's Diary
+published: false
 layout: default
 ---
 

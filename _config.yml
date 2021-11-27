@@ -15,13 +15,12 @@ exclude:
   - package-lock.json
 excerpt_separator: "\n\n\n"
 defaults:
-  -
-    scope: { type: "posts" }
-    values:
-      layout: default
-  -
-    scope: { path: "diary", type: "posts" }
-    values:
-      excerpt: ""
-      soulblog-breadcrumb:
-        - { href: "/blog/diary", text: "LNN's Diary" }
+- scope: { type: "posts" }
+  values:
+    layout: default
+- scope: { path: "diary", type: "posts" }
+  values:
+    published: false
+    excerpt: ""
+    soulblog-breadcrumb:
+    - { href: "/blog/diary", text: "LNN's Diary" }

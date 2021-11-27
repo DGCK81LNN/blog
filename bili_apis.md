@@ -1,5 +1,6 @@
 ---
 title: "哔哩哔哩API详解"
+published: false
 soulblog-style: |
     /**
      * "Treeview" from https://minecraft.gamepedia.com/MediaWiki:Common.css
