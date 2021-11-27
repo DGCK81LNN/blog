@@ -28,42 +28,57 @@
   </div>
 
   <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
-    <span>LNNの博客！</span>
+    <span>LNN的博客！</span>
   </header>
 
-  {%- if page.path != "index.html" %}
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
-      {%- for item in page.soulblog-breadcrumb %}
-      <li class="breadcrumb-item"><a href="{{ item.href | escape }}">{{ item.text }}</a></li>
-      {%- endfor %}
-      <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
-    </ol>
-  </nav>
-  {%- endif %}
+  <div id="mainwrap">
+    {%- if page.path != "index.html" %}
+    <nav id=nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        {%- for item in page.soulblog-breadcrumb %}
+        <li class="breadcrumb-item"><a href="{{ item.href | escape }}">{{ item.text }}</a></li>
+        {%- endfor %}
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+      </ol>
+    </nav>
+    {%- endif %}
 
-  <div class="alert alert-warning">
-    本博客正在施工中，内容可能会无法正常显示！
+    <div class="alert alert-warning">
+      本博客正在施工中，内容可能会无法正常显示！
+    </div>
+
+    <main id=main>
+      <div class="soulblog-content">{{ content }}</div>
+      {%- if page.date %}
+      <footer class="text-muted">
+        <p>
+          <a href="{{ page.author.url | default: site.author.url | escape }}"
+            >{{ page.author.name | default: site.author.name }}</a> &middot;
+          <time>{{ page.date | date: "%Y-%m-%d" }}</time>
+        </p>
+        <p>本页最后修改于 {{ page.last_modified_at | date: "%Y-%m-%d %H:%M (%Z)" }}。</p>
+      </footer>
+      {%- endif %}
+    </main>
   </div>
 
-  <main id=main>
-    <div class="soulblog-content">{{ content }}</div>
-    {%- if page.collection == "posts" %}
-    <footer class="soul-p2">
-      <p>
-        {%- unless page.soulblog-no-attribution %}<span>DGCK81LNN</span> &middot;{% endunless %}
-        <time>{{ page.date | date: "%Y-%m-%d" }}</time>
-      </p>
-    </footer>
-    {%- endif %}
-  </main>
-
   <footer class="mt-4 px-2 py-4 bg-light border-top">
-    <div class="mx-auto" style="max-width: 768px">
-      <a href="/">灵魂小站首页</a> |
-      <a rel=nofollow href="https://github.com/DGCK81LNN/">GitHub</a> |
-      <span>QQ: 3470524928</span>
+    <div id=footer class="mx-auto">
+      <div class="mb-2">
+        <a href="https://github.com/DGCK81LNN/blog/blob/main/{{ page.path | escape }}?plain=1"
+          ><img src="https://img.shields.io/badge/-在GitHub上查看-222222?logo=github"
+            alt="在GitHub上查看源代码"
+          /></a
+        >
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
     </div>
   </footer>
 

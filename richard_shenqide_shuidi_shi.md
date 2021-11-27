@@ -942,11 +942,14 @@ _给相互陪伴了三年的同学们。_
 
 学校门口的马路边，一大一小两个身影，正是一起走向未来的梅古里与伊楠斯。
 
-<figure class="figure">
-    <img class="figure-img" src="/blog/assets/droplet_cover.png" title="封面"
-         alt="本文的封面是一张像素画，画中一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外。">
-    <figcaption class="figure-caption">封面作者：DGCK81LNN</figcaption>
-</figure>
+<div class="d-flex justify-content-center">
+    <figure class="figure">
+        <img class="figure-img img-fluid rounded" style="max-height: 576px"
+            src="/blog/assets/droplet_cover.png" title="封面"
+            alt="本文的封面是一张像素画，画中一个女学生手拿一块水滴形状的透明石头，从教室门往里看，教室里有一个男生正掀开窗帘望向窗外。">
+        <figcaption class="figure-caption">封面作者：DGCK81LNN</figcaption>
+    </figure>
+</div>
 
 <aside itemscope itemtype="http://schema.org/Review"><div class="card my-3">
     <meta itemprop=itemReviewed content="{{ site.baseurl }}{{ page.url }}">

@@ -1,8 +1,7 @@
-#main {
-  padding: 0.5rem;
-  margin: 0 auto;
-  max-width: 768px;
-}
+#mainwrap { margin: 0 auto; max-width: 992px; }
+#footer { max-width: 992px; }
+
+#main { padding: 0.5rem; }
 .soulblog-content { overflow-wrap: break-word; }
 .soulblog-content img { max-width: 100%; }
 .soulblog-content pre {
@@ -35,4 +34,3 @@
  */
 [lang|=lnncrypt] { font-family: LNNCrypt, var(--soul-font-family-sans-serif) !important; }
 em:lang(lnncrypt) { font-style: normal; text-decoration: underline; }
-

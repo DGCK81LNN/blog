@@ -18,6 +18,9 @@ excerpt_separator: "\n\n\n"
 baseurl: /blog
 title: LNN的博客！
 locale: zh-CN
+author:
+  name: DGCK81LNN
+  url: "https://github.com/DGCK81LNN"
 
 defaults:
 - scope: { type: "posts" }
