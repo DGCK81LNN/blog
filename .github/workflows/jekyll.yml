@@ -17,6 +17,5 @@ jobs:
     - uses: helaili/jekyll-action@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Ok
-      run: |
-        echo View deployment info at: https://github.com/DGCK81LNN/blog/deployments/activity_log?environment=github-pages
+      env:
+        TZ: 'Asia/Shanghai'
