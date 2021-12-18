@@ -12,13 +12,9 @@ author:
   name: DGCK81LNN
   url: "https://github.com/DGCK81LNN"
 
+collections:
+- diary_entries
 defaults:
 - scope: { type: "posts" }
   values:
     layout: default
-- scope: { path: "diary", type: "posts" }
-  values:
-    published: false
-    excerpt: ""
-    soulblog-breadcrumb:
-    - { href: "/blog/diary", text: "LNN's Diary" }
