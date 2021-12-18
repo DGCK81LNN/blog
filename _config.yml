@@ -3,7 +3,6 @@ titles_from_headings:
 exclude:
   - LICENSE
   - README.md
-  - package-lock.json
 excerpt_separator: "\n\n\n"
 
 baseurl: /blog
