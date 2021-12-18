@@ -1,12 +1,3 @@
-plugins:
-  - jekyll-seo-tag
-  - jekyll-default-layout
-  - jekyll-titles-from-headings
-  - jekyll-optional-front-matter
-  - jekyll-redirect-from
-  - jekyll-textile-converter
-  - jekyll-last-modified-at
-  - jekyll-feed
 titles_from_headings:
   collections: true
 exclude:
