@@ -1,0 +1,132 @@
+---
+layout: default
+title: LNN's Diary
+oulblog-head: |
+    <script defer crossorigin=anonymous
+      src="https://cdn.jsdelivr.net/npm/style-scoped@0.2.2/scoped.min.js"
+    ></script>
+---
+
+<p>              ．<!--
+-->    ．   ，       <!--
+-->，“”！！（</p>
+
+<hr>
+
+<h1><span>＇ </span><span style="font-size:0.7em">(?)</span><br />
+<span lang="en" style="opacity: 0.5;"><span class="caps">LNN</span>&#8217;s Diary</span></h1>
+
+<h2 style="opacity: 0.5;">（凡例）</h2>
+
+<p>        ，＇     ：</p>
+
+<table>
+		<tr>
+			<td>     </td>
+			<td>     </td>
+		</tr>
+		<tr>
+			<td>      </td>
+			<td>      </td>
+		</tr>
+		<tr>
+			<td>     </td>
+			<td>      </td>
+		</tr>
+</table>
+
+<p> ：</p>
+
+<table>
+		<tr>
+			<th></th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+			<th> </th>
+		</tr>
+		<tr>
+			<td>  </td>
+			<td>   </td>
+			<td>     </td>
+			<td>   </td>
+			<td>     </td>
+			<td>     </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+		</tr>
+		<tr>
+			<td>  </td>
+			<td>   </td>
+			<td>   </td>
+			<td>     </td>
+			<td>   </td>
+			<td>   </td>
+			<td>     </td>
+			<td>     </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td>      </td>
+		</tr>
+		<tr>
+			<td>  </td>
+			<td>     </td>
+			<td>     </td>
+			<td>   </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>     </td>
+			<td>   </td>
+			<td>   </td>
+			<td>      </td>
+			<td>      </td>
+			<td>      </td>
+		</tr>
+</table>
+
+<p>   ＇ <em></em> ，<em> </em>   ：</p>
+
+<p style="text-align:center;"><strong></strong><br />
+<span style="font-size:0.7em;">（ ）</span></p>
+
+<p style="text-align:center;"><strong></strong><br />
+<span style="font-size:0.7em;">（ ）</span></p>
+
+<p> “ㄝ”，“”“”．</p>
+
+<h2 style="opacity: 0.5;">（正文）</h2>
+
+{% for entry in site.diary_entries -%}
+<article class="mb-5">
+  {% if entry.soulblog-style -%}
+  {{ entry.soulblog-style
+  | prepend: "style scoped>"
+  | prepend: "<"
+  | append: "</"
+  | append: "style>"
+  }}
+  {% endif -%}
+
+  <div class="text-muted text-end">{{ entry.date | date: "%Y-%m-%d" }}</div>
+
+  {{ entry.content }}
+</article>
+{% endfor -%}
+
+<>

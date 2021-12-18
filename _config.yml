@@ -18,3 +18,7 @@ defaults:
 - scope: { type: "posts" }
   values:
     layout: default
+- scope: { path: "diary" }
+  values:
+    soulblog-breadcrumb:
+    - { text: '我的日记存档', href: '/blog/diary/' }
