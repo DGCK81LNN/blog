@@ -1,6 +1,0 @@
----
-title: RedCloth multibyte characters test
----
-
-Hello, world! 这是一些测试文本。
-
