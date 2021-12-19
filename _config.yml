@@ -22,3 +22,12 @@ defaults:
   values:
     soulblog-breadcrumb:
     - { text: '我的日记存档', href: '/blog/diary/' }
+- scope: { path: "_diary_entries/lnnsdiary" }
+  values:
+    category: lnnsdiary
+- scope: { path: "_diary_entries/loose" }
+  values:
+    category: loose
+- scope: { path: "_diary_entries/diarytxt" }
+  values:
+    category: diarytxt

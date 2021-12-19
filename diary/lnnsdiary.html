@@ -112,7 +112,8 @@ oulblog-head: |
 
 <h2 style="opacity: 0.5;">（正文）</h2>
 
-{% for entry in site.diary_entries -%}
+{% assign entries = site.diary_entries | where: "category", "lnnsdiary" -%}
+{% for entry in site.entries -%}
 <article class="mb-5">
   {% if entry.soulblog-style -%}
   {{ entry.soulblog-style
