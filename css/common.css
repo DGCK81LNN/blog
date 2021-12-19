@@ -29,4 +29,4 @@
 
 @font-face { font-family: LNNCrypt; src: url(/blog/assets/LNNCrypt.woff); }
 
-[lang*="-Qaac"] { font-family: LNNCrypt, var(--soul-font-family-sans-serif) !important; }
+[lang*="-Qaac"] { font-family: LNNCrypt, var(--bs-font-sans-serif) !important; }
