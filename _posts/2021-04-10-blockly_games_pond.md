@@ -1,5 +1,6 @@
 ---
 tags: 编程 日常写代码
+redirect_from: [ "/2021/04/10/blockly_games_pond.html" ]
 ---
 
 # [Blockly Games](https://blockly.games) “[池塘](https://blockly.games/pond-duck)”模式我的解法

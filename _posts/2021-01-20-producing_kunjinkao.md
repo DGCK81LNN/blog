@@ -1,5 +1,6 @@
 ---
 tags: 编程 日常写代码
+redirect_from: [ "/2021/01/20/producing_kunjinkao.html" ]
 ---
 
 # 实 验 室 制 取 锟 斤 拷

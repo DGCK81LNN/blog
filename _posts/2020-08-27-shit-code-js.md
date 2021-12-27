@@ -1,5 +1,6 @@
 ---
 tags: 编程
+redirect_from: [ "/2020/08/27/shit-code-js.html" ]
 ---
 
 # 可以运行的乱码JavaScript？）

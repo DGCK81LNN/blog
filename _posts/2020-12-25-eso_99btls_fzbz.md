@@ -1,5 +1,6 @@
 ---
 tags: 编程 esolang
+redirect_from: [ "/2020/12/25/eso_99btls_fzbz.html" ]
 ---
 
 # brainf和Befunge 99Bottles 和 FizzBuzz

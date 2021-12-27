@@ -1,5 +1,6 @@
 ---
 tags: 编程 日常写代码
+redirect_from: [ "/2021/08/18/rearranging_derpibooru_gallery.html" ]
 ---
 
 # 用自动脚本整理 [Derpibooru](https://derpibooru.org) 图集

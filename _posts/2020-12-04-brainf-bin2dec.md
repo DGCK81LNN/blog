@@ -1,5 +1,6 @@
 ---
 tags: 编程 esolang
+redirect_from: [ "/2020/12/04/brainf-bin2dec.html" ]
 ---
 
 # brainfuck二进制转十进制

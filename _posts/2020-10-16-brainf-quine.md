@@ -1,5 +1,6 @@
 ---
 tags: 编程 esolang
+redirect_from: [ "/2020/10/16/brainf-quine.html" ]
 ---
 
 # OHHHH，brainfuck自产生程序！

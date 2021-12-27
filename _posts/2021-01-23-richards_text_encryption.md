@@ -1,5 +1,6 @@
 ---
 tags: 编程 日常写代码
+redirect_from: [ "/2021/01/23/richards_text_encryption.html" ]
 ---
 
 # Richard写的文本加密算法

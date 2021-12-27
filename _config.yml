@@ -1,19 +1,20 @@
 titles_from_headings:
   collections: true
+excerpt_separator: "\n\n\n"
 exclude:
   - LICENSE
   - README.md
-excerpt_separator: "\n\n\n"
-
 baseurl: /blog
+
 title: LNN的博客！
+permalink: ":categories/posts/:short_year:month:day_:title"
 locale: zh-CN
 author:
   name: DGCK81LNN
   url: "https://github.com/DGCK81LNN"
 
 collections:
-- diary_entries
+  diary_entries: { }
 defaults:
 - scope: { type: "posts" }
   values:

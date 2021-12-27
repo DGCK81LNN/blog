@@ -1,5 +1,6 @@
 ---
 tags: 编程 esolang
+redirect_from: [ "/2020/10/07/jvavscript.html" ]
 ---
 
 # JvavScript

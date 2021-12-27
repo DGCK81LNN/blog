@@ -11,6 +11,7 @@ excerpt: |
       ----        ----        |
     ```
 soulblog-excerpt-lang: md
+redirect_from: [ "/2020/12/09/ascii_jianpu.html" ]
 ---
 
 # A S C I I 简 谱

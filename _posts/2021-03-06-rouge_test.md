@@ -1,3 +1,7 @@
+---
+redirect_from: [ "/2021/03/06/rouge_test.html" ]
+---
+
 # Rouge代码高亮测试
 
 本站之前使用[prism.js](https://prismjs.com)进行语法高亮，近期改为直接给GitHub Pages使用的[Jekyll](https://jekyllrb.com)使用的[Kramdown](https://kramdown.gettalong.org/)使用的[Rouge](http://rouge.jneen.net/)提供样式表。
