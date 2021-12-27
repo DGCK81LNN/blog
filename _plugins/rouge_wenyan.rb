@@ -12,15 +12,14 @@ module Rouge
       aliases 'wy', '文言'
       filenames '*.wy', '*.wenyan', '*.文言'
 
-      KEYWORDS1 = %w[ 曰 有 者 今 噫 以 於 夫 若 也 遍 之 凡 施 豈 ]
+      KEYWORDS1 = %w[ 曰 有 者 今 噫 以 於 夫 若 也 遍 凡 施 取 豈 ]
       KEYWORDS2 = %w[
-        吾有 書之 昔之 是矣 云云 若非 或若
-        為是 乃止 之長 中之 是謂 乃得
-        之書 方悟 之義 今有
+        書之 昔之 是矣 云云 若非 或若
+        為是 乃止 是謂 乃得 之書 方悟 之義
         物之 嗚呼 之禍 或云 蓋謂
       ]
       KEYWORDS3 = %w[
-        名之曰 恆為是 之其餘 是術曰 必先得
+        名之曰 恆為是 是術曰 必先得
         之術也 之物也 吾嘗觀 之禍歟 乃作罷
       ]
       KEYWORDS4 = %w[
@@ -29,9 +28,9 @@ module Rouge
       ]
       KEYWORDS5 = %w[ 若其不然者 乃行是術曰 不知何禍歟 ]
       TYPES = %w[ 數 言 爻 列 術 物 元 ]
-      OPERATORS1 = %w[ 加 減 乘 除 變 充 銜 ]
-      OPERATORS2 = %w[ 等於 大於 小於 ]
-      OPERATORS3 = %w[ 不等於 不大於 不小於 ]
+      OPERATORS1 = %w[ 加 減 乘 除 變 充 銜 之 ]
+      OPERATORS2 = %w[ 等於 大於 小於 之長 中之 ]
+      OPERATORS3 = %w[ 不等於 不大於 不小於 之其餘 ]
       OPERATORS4 = %w[ 所餘幾何 中有陽乎 中無陰乎 ]
 
       private
@@ -87,6 +86,7 @@ module Rouge
         rule Regexp.new(OPERATORS3.join('|')), Operator
         rule Regexp.new(KEYWORDS2.join('|')), Keyword
         rule Regexp.new(OPERATORS2.join('|')), Operator
+        rule /[吾今]有/, Keyword::Declaration
         rule Regexp.new(KEYWORDS1.join('|')), Keyword
         rule Regexp.new(TYPES.join('|')), Keyword::Type
         rule Regexp.new(OPERATORS1.join('|')), Operator
