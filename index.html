@@ -32,7 +32,7 @@ soulblog-style: |
       {%- endif %}
     </div>
     <div class="card-footer">
-      <a href="/blog{{ post.url }}" class="text-decoration-none read-all">
+      <a href="{{ post.url | relative_url }}" class="text-decoration-none read-all">
         阅读全文
         <i class=bi-arrow-right aria-hidden></i>
       </a>
