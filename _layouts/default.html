@@ -49,9 +49,11 @@
     </nav>
     {%- endif %}
 
-    <!--<div class="alert alert-warning">
+    {%- comment %}
+    <div class="alert alert-warning">
       本博客正在施工中，内容可能会无法正常显示！
-    </div>-->
+    </div>
+    {%- endcomment %}
 
     <main id=main>
       <div class="soulblog-content">{{ content }}</div>
@@ -64,6 +66,43 @@
         </p>
         <p>本页最后修改于 {{ page.last_modified_at | date: "%Y-%m-%d %H:%M (%Z)" }}。</p>
       </footer>
+      {%- endif %}
+      {%- if page.collection == "posts" %}
+      <hr>
+      <section>
+        <h2>评论区</h2>
+        {%- assign comments = site.data.comments | where: 'post_url', page.url %}
+        {%- for comment in comments %}
+        <article class="comment card p-2 pb-0 mb-2">
+          <footer class="d-flex mb-3">
+            <div class="me-1 align-self-stretch">
+              <img class="border rounded" width=80 height=80 crossorigin=anonymous
+                   src="{{ comment.email | soulblog_gravatar }}" style="width:40px;height:40px">
+            </div>
+            <div class="flex-fill align-self-center">
+              {%- if comment.homepage %}
+              <a rel=nofollow crossorigin=anonymous
+                 href="{{ comment.homepage | escape }}"
+              >{{ comment.nickname }}</a>
+              {%- else %}
+              {{ comment.nickname }}
+              {%- endif %}
+              {%- if comment.email %}
+              ({{ comment.email | soulblog_emailsub }})
+              {%- endif %}
+            </div>
+          </footer>
+          {{ comment.content | markdownify }}
+          {%- if comment.reply %}
+          <article class="ms-4">
+            <header><h6>博主回复</h6></header>
+            {{ comment.reply | markdownify }}
+          </article>
+          {%- endif %}
+        </article>
+        {%- endfor %}
+        <div><a href="{{ site.soulblog-comment-url }}">发表评论…</a></div>
+      </section>
       {%- endif %}
     </main>
   </div>
