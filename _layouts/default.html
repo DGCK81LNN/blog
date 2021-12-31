@@ -90,6 +90,7 @@
               {%- if comment.email %}
               ({{ comment.email | soulblog_emailsub }})
               {%- endif %}
+              <span class="text-muted">{{ comment.date | date: "%Y-%m-%d" }}</span>
             </div>
           </footer>
           {{ comment.content | markdownify }}
