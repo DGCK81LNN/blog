@@ -64,7 +64,9 @@
             >{{ page.author.name | default: site.author.name }}</a> &middot;
           <time>{{ page.date | date: "%Y-%m-%d" }}</time>
         </p>
+        {%- if page.last_modified_at %}
         <p>本页最后修改于 {{ page.last_modified_at | date: "%Y-%m-%d %H:%M (%Z)" }}。</p>
+        {%- endif %}
       </footer>
       {%- endif %}
       {%- if page.collection == "posts" %}

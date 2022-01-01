@@ -8,7 +8,6 @@ group :jekyll_plugins do
   gem 'jekyll-optional-front-matter'
   gem 'jekyll-redirect-from'
   gem 'jekyll-textile-converter'
-  gem 'jekyll-last-modified-at' unless ENV['soulblog_no_last_modified_at']
   gem 'jekyll-feed'
 end
 gem 'RedCloth'
