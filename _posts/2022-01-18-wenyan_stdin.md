@@ -103,7 +103,7 @@ node compiled.js < input.txt > output.txt
 
 在“文言”编程中，输出被称作“**書**{: lzh}”，那么读取输入不妨叫做 “**閱**{: lzh}”；许多第三方的扩展库都叫做“某某**秘術**{: lzh}”，因此我决定把我的这个库命名为“**閱文秘術**{: lzh}”。
 
-[这里][src]是“**腳本秘術**{: lzh}”的 GitHub 仓库。
+[这里][src]是“**閱文秘術**{: lzh}”的 GitHub 仓库。
 
 [aplusb]: https://www.luogu.com.cn/problem/P1001
 [src]: https://github.com/DGCK81LNN/wenyan-stdin
@@ -112,8 +112,8 @@ node compiled.js < input.txt > output.txt
 {:js: .highlight.language-javascript}
 
 <aside markdown='block' class="card my-3 p-3 pb-0">
-![“腳本秘術”的代码中用到了很多嵌入的 JavaScript 表达式，它们跟“文言”代码的古汉语结合在一起，整体看起来十分怪异。]({%link assets/2022-01-18-1.jpg %})
+![“閱文秘術”的代码中用到了很多嵌入的 JavaScript 表达式，它们跟“文言”代码的古汉语结合在一起，整体看起来十分怪异。]({%link assets/2022-01-18-1.jpg %})
 
-![我节选了“腳本秘術”的一部分代码发给朋友，他形象地称嵌入的 JavaScript 表达式为“来自西洋巫术的神秘咒语”。]({%link assets/2022-01-18-2.jpg %})
+![我节选了“閱文秘術”的一部分代码发给朋友，他形象地称嵌入的 JavaScript 表达式为“来自西洋巫术的神秘咒语”。]({%link assets/2022-01-18-2.jpg %})
 </aside>
 
