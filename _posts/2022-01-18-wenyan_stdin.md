@@ -1,6 +1,6 @@
 ---
 date: 2022-01-18T17:04:31+0800
-last_modified_at: 2022-01-18T17:04:31+0800
+last_modified_at: 2022-01-23T16:41:51+0800
 tags: 编程 esolang
 ---
 
@@ -34,7 +34,7 @@ tags: 编程 esolang
 
 在这句代码中直接嵌入了一个 JavaScript 箭头函数 `str => process.stdout.write(str)`{: js}。利用这种方法，我们可以调用 Node.js 环境下的标准库来实现读取输入。但问题是，如果直接读取 `/dev/stdin` 的内容，就必须一次读取完整个输入数据，而无法在命令行进行人机交互。
 
-如果是 Node.js 开发，一般会采用原生的 `readline` 模块来读取用户输入。但它是异步运行的，要想用它来给“文言”程序读取输入，修改整个“文言”编译器的代码，让它编译出支持异步的程序，这似乎不太现实。于是我通过查阅各种资料，摸索出来了不使用异步操作读取命令行输入的办法：
+如果是 Node.js 开发，一般会采用原生的 `readline` 模块来读取用户输入。但它是异步运行的，要想用它来给“文言”程序读取输入，大概需要修改整个“文言”编译器的代码，让它编译出支持异步的程序，这似乎不太现实。于是我通过查阅各种资料，摸索出来了不使用异步操作读取命令行输入的办法：
 
 ```js
 // gets.js
@@ -53,7 +53,7 @@ function gets() {
     ++len
 
     // 如果已经换行就停止读入
-    if (buffer.subarray(len - EOL_BUFFER.length, len).equals(EOL)) break
+    if (buffer.subarray(len - EOL_BUFFER.length, len).equals(EOL_BUFFER)) break
 
     // 如果缓冲区已经写满就扩容
     if (len === buffer.length) {
