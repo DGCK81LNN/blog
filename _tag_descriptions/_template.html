@@ -5,15 +5,14 @@ soulblog-style: |
   article.card { min-width: 284px; }
 ---
 
-<p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
+<h1>{{ page.tag_name }}</h1>
 
-<!--<p><a href="projects.html" class="btn btn-primary">我的 Project 记录表</a></p>-->
-<p><a class="btn btn-primary disabled">我的 Project 记录表</a>（施工中，暂时关闭…）</p>
+{{ page.description | markdownify }}
 
-<h2>文章目录</h2>
+<h2>文章列表</h2>
 
 <div class="d-flex flex-wrap gap-2">
-  {%- for post in site.posts %}{%- if post.categories.size == 0 %}
+  {%- for post in page.posts %}{%- if post.categories.size == 0 %}
   <article class="col card">
     <header class="card-header">
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>

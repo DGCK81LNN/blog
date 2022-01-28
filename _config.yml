@@ -7,7 +7,7 @@ exclude:
 baseurl: /blog
 
 title: LNN的博客！
-permalink: ":categories/posts/:short_year:month:day_:title"
+permalink: "posts/:short_year:month:day_:title"
 locale: zh-CN
 author:
   name: DGCK81LNN
@@ -16,6 +16,7 @@ soulblog-comment-url: "https://www.wjx.top/vm/rljkHbJ.aspx"
 
 collections:
   diary_entries: { }
+  tag_descriptions: { }
 defaults:
 - scope: { type: "posts" }
   values:
@@ -33,3 +34,7 @@ defaults:
 - scope: { path: "_diary_entries/diarytxt" }
   values:
     category: diarytxt
+- scope: { type: "tag_pages" }
+  values:
+    layout: default
+    permalink: "tags/:slug"
