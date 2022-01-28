@@ -2,26 +2,28 @@
 
 require 'digest/md5'
 
-module MyFilters
-  def soulblog_gravatar(email)
-    base = "https://gravatar.loli.net/avatar/"
-    if email && !email.empty?
-      hash = Digest::MD5.hexdigest(email.downcase)
-      "#{base}#{hash}?d=identicon"
-    else
-      "#{base}?f=y&d=mp"
+module SoulBlog
+  module Filters
+    def soulblog_gravatar(email)
+      base = "https://gravatar.loli.net/avatar/"
+      if email && !email.empty?
+        hash = Digest::MD5.hexdigest(email.downcase)
+        "#{base}#{hash}?d=identicon"
+      else
+        "#{base}?f=y&d=mp"
+      end
+    end
+  
+    def soulblog_emailsub(input)
+      input.gsub(/[@._-]/, {
+        "@" => " at ",
+        "." => " dot ",
+        "_" => " underscore ",
+        "-" => " dash ",
+      })
     end
   end
-
-  def soulblog_emailsub(input)
-    input.gsub(/[@._-]/, {
-      "@" => " at ",
-      "." => " dot ",
-      "_" => " underscore ",
-      "-" => " dash ",
-    })
-  end
 end
-
-Liquid::Template.register_filter(MyFilters)
+  
+Liquid::Template.register_filter(SoulBlog::Filters)
 
