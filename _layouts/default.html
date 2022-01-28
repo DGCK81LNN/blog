@@ -64,6 +64,17 @@
             >{{ page.author.name | default: site.author.name }}</a> &middot;
           <time>{{ page.date | date: "%Y-%m-%d" }}</time>
         </p>
+        <p>
+          <span class=visually-hidden>标签：</span>
+          {%- for tag in page.tags %}
+          {%- assign tagdef = site.data.tags | find: 'name', tag %}
+          <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}.html" class="text-decoration-none">
+            <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
+          </a>
+          {%- else %}
+          没有标签
+          {%- endfor %}
+        </p>
         {%- if page.last_modified_at %}
         <p>本页最后修改于 {{ page.last_modified_at | date: "%Y-%m-%d %H:%M (%Z)" }}。</p>
         {%- endif %}
