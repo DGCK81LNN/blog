@@ -13,7 +13,7 @@ module SoulBlog
         "#{base}?f=y&d=mp"
       end
     end
-  
+
     def soulblog_emailsub(input)
       input.gsub(/[@._-]/, {
         "@" => " at ",
@@ -24,6 +24,6 @@ module SoulBlog
     end
   end
 end
-  
+
 Liquid::Template.register_filter(SoulBlog::Filters)
 
