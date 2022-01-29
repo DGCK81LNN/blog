@@ -10,7 +10,8 @@ module SoulBlog
       tag_defs.each do |tag_def|
         tag_name = tag_def['name']
         tag_slug = tag_def['slug']
-        posts = site.tags[tag_name] || []
+        posts = site.tags[tag_name]
+        next if posts.nil? || posts.empty?
 
         doc = tag_docs.find { |doc| doc.basename_without_ext === tag_slug }
         desc = doc ? doc.content : nil
