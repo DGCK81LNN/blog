@@ -62,8 +62,21 @@
         <p>
           <a href="{{ page.author.url | default: site.author.url | escape }}"
             >{{ page.author.name | default: site.author.name }}</a> &middot;
-          <time>{{ page.date | date: "%Y-%m-%d" }}</time>
+          <time datetime="{{ page.date | date: '%FT%T%z' }}">
+            {%- assign daytime = page.date | date: "%T" -%}
+            {%- if daytime == "00:00:00" -%}
+            {{- page.date | date: "%F" -}}
+            {%- else -%}
+            {{- page.date | date: "%F %H:%M" -}}
+            {%- endif -%}
+          </time>
         </p>
+        {%- if page.last_modified_at %}
+        <p>最后修改于
+          <time datetime="{{ page.last_modified_at | date: '%FT%T%z' }}"
+          >{{ page.last_modified_at | date: "%F %H:%M" }}</time
+          ></p>
+        {%- endif %}
         <p>
           <span class=visually-hidden>标签：</span>
           {%- for tag in page.tags %}
@@ -75,9 +88,6 @@
           没有标签
           {%- endfor %}
         </p>
-        {%- if page.last_modified_at %}
-        <p>本页最后修改于 {{ page.last_modified_at | date: "%Y-%m-%d %H:%M (%Z)" }}。</p>
-        {%- endif %}
       </footer>
       {%- endif %}
       {%- if page.collection == "posts" %}
