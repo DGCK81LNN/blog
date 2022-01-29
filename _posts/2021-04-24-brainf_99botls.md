@@ -1,11 +1,13 @@
 ---
 tags: 编程 esolang
-redirect_from: [ "/2021/04/24/new_brainf_fizzbuzz.html" ]
+redirect_from:
+- "/2021/04/24/new_brainf_fizzbuzz.html"
+- "/posts/210424_new_brainf_fizzbuzz"
 ---
 
-# 重写的brainf FizzBuzz
+# 重写的brainf 99bottles
 
-前两天想起之前写的brainfuck FizzBuzz还有很大优化空间，就改进了一下。
+前两天想起之前写的brainfuck 99bottles还有很大优化空间，就改进了一下。
 
 比起[之前的版本]，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。
 
