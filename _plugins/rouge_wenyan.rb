@@ -47,8 +47,14 @@ module Rouge
         end
       end
 
+      id = Javascript.id_regex
+
+      start do
+        @javascript = Javascript.new
+      end
+
       state :whitespace do
-        rule /\s+/, Text::Whitespace
+        rule /\s+/, Text
         rule /[。、]/ do
           if in_state?(:comment)
             token Comment
@@ -71,11 +77,11 @@ module Rouge
           groups Keyword, Literal::Number, Keyword::Type
           push :maybe_function_definition
         end
-        rule /(施|以施)(「[^」]*」)/ do
-          groups Keyword, Name::Function
+        rule %r/(施|以施)(「)(\s*)(#{id})(\s*)(」)/ do
+          groups Keyword, Punctuation, Text, Name::Function, Text, Punctuation
         end
-        rule /(是謂)(「[^」]*」)(之術也)/ do
-          groups Keyword, Name::Function, Keyword
+        rule %r/(是謂)(「)(\s*)(#{id})(\s*)(」)(之術也)/ do
+          groups Keyword, Punctuation, Text, Name::Function, Text, Punctuation, Keyword
         end
 
         # keywords and operators
@@ -98,25 +104,36 @@ module Rouge
       end
 
       state :variable_name do # mixin
-        rule /「[^」]*」/, Name::Variable
+        rule /(「)(\s*)(#{id})(\s*)(」)/ do
+          groups Punctuation, Text, Name::Variable, Text, Punctuation
+        end
+        rule /「/ do
+          token Punctuation
+          @javascript.reset!
+          @javascript.push(:expr_start)
+          push :javascript_expr
+        end
+      end
+
+      state :javascript_expr do
+        rule /[^」]+/ do
+          delegate @javascript
+        end
+        rule /」/, Punctuation, :pop!
       end
 
       state :maybe_function_definition do
         mixin :whitespace
-        rule /(名之曰)(「[^」]*」)/ do
-          groups Keyword, Name::Function
+        rule /(名之曰)(「)(#{id})(」)/ do
+          groups Keyword, Text, Name::Function, Text
         end
-        rule // do
-          pop!
-        end
+        rule(//) { pop! }
       end
 
       state :comment do
         mixin :whitespace
         mixin :string
-        rule // do
-          pop!
-        end
+        rule(//) { pop! }
       end
 
       state :string do # mixin
