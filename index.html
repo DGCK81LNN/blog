@@ -3,20 +3,34 @@ layout: default
 soulblog-style: |
   .read-all { display: block; text-align: center; }
   article.card { min-width: 284px; }
+soulblog-head: |
+  <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.11.0/vconsole.min.js"></script>
+  <script>
+    if (typeof VConsole === "function")
+      vConsole = new VConsole()
+  </script>
 ---
 
 <p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
 
-<div id='liveinfo' class="card mb-3" hidden>
+<div id='linf' class="card mb-3" hidden>
   <div class="card-body text-center">
-  <div>现在是中国标准时间<!--
-  --><span id='liveinfo-h26' hidden>（“27 小时制”）</span
-    ></div>
-  <div id='liveinfo-date' class="fw-bold">####年##月##日</div>
-  <div id='liveinfo-time' class="font-monospace" style="font-size: 2rem"
-    >##:##:##</div>
-  <div id='liveinfo-aqi'></div>
-</div>
+    <div>现在是中国标准时间<!--
+    --><span id='linf-h26' hidden>（“27 小时制”）</span
+      ></div>
+    <div id='linf-date' class="fw-bold">####年##月##日</div>
+    <div id='linf-time' class="font-monospace" style="font-size: 2rem"
+      >##:##:##</div>
+    <div id='linf-aqi' hidden>
+      <div><b id='linf-aqi-cityname'></b
+        >目前的空气质量为<!--
+      --><span id='linf-aqi-value' class="p-1 rounded"></span
+        ></div>
+      <div class="text-muted" style="font-size: 0.75rem"
+        ><a id='linf-aqi-link' target='blank'>详情</a> | <!--
+      -->空气质量数据来自 aqicn.org</div>
+    </div>
+  </div>
 </div>
 
 <!--<p><a href="projects.html" class="btn btn-primary">我的 Project 记录表</a></p>-->
@@ -63,10 +77,10 @@ soulblog-style: |
 <script>
   function $$$(id) { return document.getElementById(id) }
 
-  const liveEl = $$$("liveinfo")
-  const h26El = $$$("liveinfo-h26")
-  const dateEl = $$$("liveinfo-date")
-  const timeEl = $$$("liveinfo-time")
+  const liveEl = $$$("linf")
+  const h26El = $$$("linf-h26")
+  const dateEl = $$$("linf-date")
+  const timeEl = $$$("linf-time")
   function updateDateTime() {
     var ts = Date.now() - 10800000
     var h26 = false
@@ -98,7 +112,58 @@ soulblog-style: |
   _aqiFeed({
     lang: "cn",
     city: "tianjin/nankoulu",
-    container: "liveinfo-aqi",
-    display: "<b>%cityname</b>目前的空气质量为 %aqi <b>%impact</b>。"
+    container: "linf-aqi",
+    callback: function (response) {
+      var el = document.createElement("div")
+
+      el.innerHTML = response.aqit
+      var aqi = parseInt(el.textContent)
+
+      el.style.cssText = response.style
+      var bgColor = el.style.backgroundColor,
+        textColor = el.style.color
+
+      var cityname = response.cityname,
+        impact = response.impact,
+        attribution = response.attribution,
+        url = response.url
+
+      var details = []
+      /*el.innerHTML = response.details
+      var detailsNl = el.querySelectorAll("tr")
+      for (var i = 0; i < detailsNl.length; ++i) {
+        var itemEl = detailsNl[i]
+        var itemNl = itemEl.querySelectorAll("td")
+        if (itemNl.length < 3) continue
+
+        var itemNameEl = itemNl[0].querySelector("span"),
+          itemGraphEl = itemNl[1].querySelector("img")
+        if (!(itemNameEl && itemNameEl.firstChild)) continue
+
+        details.push({
+          name:  itemNameEl.firstChild.nodeValue.trim(),
+          value: itemNl[2].textContent.trim(),
+          graph: itemGraphEl && itemGraphEl.src
+        })
+      }*/
+
+      console.log(aqi)
+      console.log(bgColor)
+      console.log(textColor)
+      console.log(cityname)
+      console.log(impact)
+      console.log(details)
+      console.log(attribution)
+      console.log(url)
+      el = null
+
+      $$$("linf-aqi-cityname").textContent = cityname
+      var vel = $$$("linf-aqi-value")
+      vel.textContent = aqi + " " + impact
+      vel.style.backgroundColor = bgColor
+      vel.style.color = textColor
+      $$$("linf-aqi-link").href = url
+      $$$("linf-aqi").hidden = false
+    }
   })
 </script>
