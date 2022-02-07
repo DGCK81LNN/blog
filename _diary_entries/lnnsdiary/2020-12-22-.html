@@ -18,6 +18,8 @@ soulblog-style: |
         display: flex;
         justify-content: space-between;
     }
+    .numbers .card-body { overflow-x: auto; }
+    .numbers-digits { white-space: nowrap; }
     .numbers-digits>* {
         display: inline-block;
         text-align: center;
@@ -56,15 +58,15 @@ soulblog-style: |
     <div class=ometers>
         <div>
             <div class=ometers-linelabel>．．</div>
-            <meter min=1 max=7 value=1.5></meter>
+            <meter min=1 max=7 value=1.5><tt>[=X |   |   |   |   |   ]</tt></meter>
         </div>
         <div>
             <div class=ometers-linelabel></div>
-            <meter min=1 max=7 value=4></meter>
+            <meter min=1 max=7 value=4><tt>[===|===|===X   |   |   ]</tt></meter>
         </div>
         <div>
             <div class=ometers-linelabel>…??</div>
-            <meter min=1 max=7 value=5.6></meter>
+            <meter min=1 max=7 value=5.6><tt>[===|===|===|===|=X |   ]</tt></meter>
         </div>
         <div>
             <div class=ometers-linelabel></div>
@@ -80,7 +82,7 @@ soulblog-style: |
         </div>
 </figure>
 
-<aside lang=en-Qaac><div class="card">
+<aside lang=en-Qaac><div class="card numbers">
     <div class="card-header">．</div>
         <div class="card-body">
         <div class=numbers-hex><div class=numbers-bracket></div></div>

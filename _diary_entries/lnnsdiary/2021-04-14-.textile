@@ -1,21 +1,80 @@
 ---
 title: <span lang=en>Apr 14 @school<br>Apr 22 @school</span>
+lang: en
 ---
 
-h1[en]. Apr 14 @school
+h1. Apr 14 @school
 
-p[en]. no tablethack today &emsp; left tablet at home intentionally
+no tablethack today &emsp; left tablet at home intentionally
 &emsp; getting rid of one of the distractions
 
 ----
 
-![en]/blog/assets/2021-04-14.svg(I've never handed in physics homework once!! (and Geography))!
+<div style="overflow-x:auto">
+<svg width="480" height="144">
+<desc>I've never handed in physics homework once! [The letters are arranged in a snake shape, with many exclamation points distributed near the end of the sentence, and the words “and geography” written aside in small print.]</desc>
+<text style="font-size:16px;text-transform:uppercase"
+><tspan x="12" y="43">I</tspan
+><tspan x="25" y="40">'</tspan
+><tspan x="33" y="38">v</tspan
+><tspan x="48" y="35">e </tspan
+><tspan x="77" y="38">n</tspan
+><tspan x="92" y="49">e</tspan
+><tspan x="87" y="69">v</tspan
+><tspan x="74" y="83">e</tspan
+><tspan x="57" y="95">r </tspan
+><tspan x="62" y="128">h</tspan
+><tspan x="79" y="131">a</tspan
+><tspan x="95" y="127">n</tspan
+><tspan x="114" y="119">d</tspan
+><tspan x="130" y="109">e</tspan
+><tspan x="142" y="97">d </tspan
+><tspan x="163" y="68">i</tspan
+><tspan x="172" y="52">n </tspan
+><tspan x="203" y="31">P</tspan
+><tspan x="216" y="22">h</tspan
+><tspan x="234" y="20">y</tspan
+><tspan x="247" y="24">s</tspan
+><tspan x="257" y="41">i</tspan
+><tspan x="241" y="57">c</tspan
+><tspan x="235" y="76">s </tspan
+><tspan x="232" y="106">h</tspan
+><tspan x="241" y="120">o</tspan
+><tspan x="256" y="127">m</tspan
+><tspan x="276" y="122">e</tspan
+><tspan x="287" y="109">w</tspan
+><tspan x="297" y="91">o</tspan
+><tspan x="303" y="74">r</tspan
+><tspan x="311" y="57">k </tspan
+><tspan x="333" y="30">o</tspan
+><tspan x="352" y="33">n</tspan
+><tspan x="367" y="41">c</tspan
+><tspan x="385" y="48">e</tspan
+><tspan x="403" y="62">!</tspan
+><tspan x="413" y="69">!</tspan
+><tspan x="436" y="71">!</tspan
+><tspan x="453" y="76">!</tspan
+><tspan x="392" y="77">!</tspan
+><tspan x="371" y="75">!</tspan
+><tspan x="385" y="92">!</tspan
+><tspan x="402" y="94">!</tspan
+><tspan x="419" y="92">!</tspan
+><tspan x="436" y="100">!</tspan
+><tspan x="419" y="113">!</tspan
+><tspan x="403" y="118">!</tspan
+></text>
+<text style="font-size:10px"
+><tspan x="327" y="95">and </tspan
+><tspan x="315" y="108">Geography</tspan
+></text>
+</svg>
+</div>
 
-p[en]. and probably still won't until I can finish maths
+p. and probably still won't until I can finish maths
 homework early enough
 
-h1[en]. Apr 22 @school
+h1. Apr 22 @school
 
-p[en]. finished maths homework @ 11 PM last night
+finished maths homework @ 11 PM last night
 
-p[en]. very much earlier than usual, but it's not enough
+very much earlier than usual, but it's not enough
