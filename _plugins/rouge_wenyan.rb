@@ -186,13 +186,13 @@ module Rouge
         rule /[^『』「」]+/ do
           token comment_or(Str)
         end
-        rule /」{2,3}|』/ do
-          token comment_or(Str)
-          pop!
-        end
         rule /「「|『/ do
           token comment_or(Str::Escape)
           push :string_nested
+        end
+        rule /」{2,3}|』/ do
+          token comment_or(Str)
+          pop!
         end
         rule /./m do
           token comment_or(Str)
@@ -200,6 +200,9 @@ module Rouge
       end
 
       state :string_nested do
+        rule /[^『』「」]+/ do
+          token comment_or(Str)
+        end
         rule /「「|『/ do
           token comment_or(Str::Escape)
           push :string_nested
