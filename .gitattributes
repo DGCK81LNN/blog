@@ -1,1 +1,3 @@
-* text=crlf
+* text=auto eol=lf
+*.html -linguist-detectable
+_layouts/*.html linguist-detectable
