@@ -96,3 +96,142 @@ Derpibooru 官方没有提供修改图集内图片顺序的 API；我通过浏�
   }
 })().catch((err) => console.error(err));
 ```
+
+## 2022-02-16 EDIT
+
+我现在使用的最新代码。
+
+```js
+/**
+ * @typedef {{
+ *   comment_count: number,
+ *   created_at: string,
+ *   downvotes: number,
+ *   faves: number,
+ *   first_seen_at: string,
+ *   id: number,
+ *   score: number,
+ *   size: number,
+ *   tag_count: number,
+ *   updated_at: string,
+ *   upvotes: number,
+ *   wilson_score: number,
+ * }} ImageResponse
+ */
+
+const perPage = 50 // 获取图集内所有图片时，每页返回多少张（最高50）
+const filterId = 56027 // 图片过滤器编号（Everything）
+
+/**
+ * 获取图集内图片
+ * @param {number} galleryId 图集ID
+ * @param {number} perSet 每个图组的图片数量
+ */
+async function getImgList(galleryId, perSet = 6) {
+  const listImagesApi = `/api/v1/json/search/images?q=gallery_id:${galleryId}&sf=gallery_id:${galleryId}&sd=asc&filter_id=${filterId}&per_page=${perPage}&page=`
+
+  console.log("GET IMAGE LIST...")
+  /** @type {ImageResponse[]} */ var result = []
+  let i = 1
+
+  do {
+    var data = JSON.parse(await (await fetch(listImagesApi + i)).text())
+    result.push(...data["images"])
+    console.log(`✓ page ${i} of ${Math.ceil(data["total"] / perPage)}`)
+  } while (i++ * perPage < data["total"])
+
+  console.log(`FETCH COMPLETE!`)
+
+  /** @type {ImageResponse[][]} */ var sets = []
+  for (let i = 0; i < result.length; i += perSet) {
+    let set = result.slice(i, i + perSet)
+    sets.push(set)
+  }
+  return sets
+}
+
+/**
+ * @param {ImageResponse[][]} sets
+ */
+function toIds(sets) {
+  return sets.flat().map(img => img.id)
+}
+
+/**
+ * 提交新的图片顺序到服务器
+ * @param {number[]} sorted
+ * @param {number} galleryId 图集ID
+ */
+function submitOrder(sorted, galleryId) {
+  const orderImagesApi = `/galleries/${galleryId}/order`
+
+  console.log("SUBMITTING DATA...")
+  var xhr = new XMLHttpRequest()
+  xhr.open("PATCH", orderImagesApi)
+  xhr.setRequestHeader("Content-Type", "application/json")
+  xhr.setRequestHeader("x-csrf-token", window.booru.csrfToken)
+  xhr.send(
+    JSON.stringify({
+      image_ids: [...sorted],
+      _method: "PATCH",
+    })
+  )
+
+  return new Promise((resolve, reject) => {
+    xhr.onload = () => {
+      console.log("DONE!")
+      resolve()
+    }
+    xhr.onerror = () => {
+      reject("REQUEST FAILED!")
+    }
+  })
+}
+```
+
+```js
+// 整理主图集
+
+var galleryId = 14196
+var current = await getImgList(galleryId)
+console.log("original data: ", current)
+
+var coverIndex = -1
+current.forEach((set, i) => {
+  set.sort((l, r) => l.id - r.id)
+  set._wilsonSum = set.reduce((s, c) => s + c.wilson_score, 0)
+  if (set.findIndex(img => img.id === 2461114) !== -1) coverIndex = i
+})
+if (coverIndex === -1) throw "cover set not found"
+var coverSet = current[coverIndex]
+
+var wilsonSorted = current.slice()
+wilsonSorted.splice(coverIndex, 1)
+wilsonSorted.sort((l, r) => r._wilsonSum - l._wilsonSum)
+
+var result = toIds([
+  ...wilsonSorted.slice(4).sort((l, r) => l[5].id - r[5].id),
+  ...wilsonSorted.slice(0, 4).reverse(),
+  coverSet,
+])
+console.log("sorted data: ", result)
+
+await submitOrder(galleryId, result.slice().reverse())
+```
+
+```js
+// 整理其他图集
+
+var galleryId = 18473
+var current = await getImgList(galleryId)
+console.log("original data: ", current)
+
+current.forEach((set, i) => {
+  set.sort((l, r) => l.id - r.id)
+})
+
+var result = toIds(current.sort((l, r) => l[5].id - r[5].id))
+console.log("sorted data: ", result)
+
+await submitOrder(galleryId, result.slice().reverse())
+```
