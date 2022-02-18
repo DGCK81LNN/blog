@@ -10,100 +10,101 @@ seo:
   links: [ "https://www.bilibili.com/read/cv5787492" ]
 image: "/assets/droplet_cover.png"
 redirect_from:
-    - /2021/02/04/richard_droplet.html
+- /2021/02/04/richard_droplet.html
+- /richard_shenqide_shuidi_shi.html
 excerpt: |
-    # 神奇的水滴石
+  # 神奇的水滴石
 
-    <address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
+  <address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
 
-    我叫梅古里，一个普通的七年级学生，学习成绩优秀，毎次考试成绩都在班中的前五左右，却从来没有得过第一和第二。
-    
-    我身材瘦小，肤色比其他人都深，接近于古铜色，被他们喊作“非洲人”。班上大多数同学都看不见我的存在，而知音更是一个也没有。
+  我叫梅古里，一个普通的七年级学生，学习成绩优秀，毎次考试成绩都在班中的前五左右，却从来没有得过第一和第二。
+  
+  我身材瘦小，肤色比其他人都深，接近于古铜色，被他们喊作“非洲人”。班上大多数同学都看不见我的存在，而知音更是一个也没有。
 
-    平常，他们三五成群，有说有笑，而我只能在自己的座位上等待着一个能真正走进我的内心世界的人，等待着他的到来。
+  平常，他们三五成群，有说有笑，而我只能在自己的座位上等待着一个能真正走进我的内心世界的人，等待着他的到来。
 soulblog-excerpt-lang: md
 soulblog-style: |
-    .soulblog-content p:not(aside p):before {
-        content: "\3000\3000";
-    }
-    #chat-screen {
-        width: 400px;
-        max-width: 100%;
-        margin: auto;
-        background: #80808022;
-    }
-    #chat-screen .time {
-        text-align: center;
-        padding: 0.5rem;
-    }
-    #chat-screen .time span {
-        color: #888;
-        font-size: 0.75em;
-    }
-    #chat-screen .received {
-        text-align: left;
-        padding: 0.25rem;
-        position: relative;
-    }
-    #chat-screen .received span {
-        background: #FFF;
-        padding: 4px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        text-align: left;
-    }
-    #chat-screen .received:before {
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 0.9rem;
-        left: -0.4rem;
-        border: 0.4rem solid transparent;
-        border-right-color: white;
-    }
-    #chat-screen .sent {
-        text-align: right;
-        padding: 0.25rem;
-        position: relative;
-    }
-    #chat-screen .sent span {
-        background: #8E4;
-        padding: 4px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        text-align: left;
-    }
-    #chat-screen .sent:before {
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 0.9rem;
-        right: -0.4rem;
-        border: 0.4rem solid transparent;
-        border-left-color: #8E4;
-    }
-    #book-page {
-        background: #FED;
-        width: 320px;
-        max-width: 100%;
-        margin: auto;
-        padding: 4rem 2rem 2rem;
-        color: black;
-    }
-    #book-page h3 {
-        font-size: 1.5em;
-        font-weight: bold;
-        margin: 1em 0;
-        text-align: center;
-    }
-    #book-page p {
-        line-height: 2.3;
-    }
-    #book-page footer {
-        font-size: 0.75em;
-        margin: 3rem 0 0 0;
-        text-align: right;
-    }
+  .soulblog-content p:not(aside p):before {
+    content: "\3000\3000";
+  }
+  #chat-screen {
+    width: 400px;
+    max-width: 100%;
+    margin: auto;
+    background: #80808022;
+  }
+  #chat-screen .time {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  #chat-screen .time span {
+    color: #888;
+    font-size: 0.75em;
+  }
+  #chat-screen .received {
+    text-align: left;
+    padding: 0.25rem;
+    position: relative;
+  }
+  #chat-screen .received span {
+    background: #FFF;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: left;
+  }
+  #chat-screen .received:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0.9rem;
+    left: -0.4rem;
+    border: 0.4rem solid transparent;
+    border-right-color: white;
+  }
+  #chat-screen .sent {
+    text-align: right;
+    padding: 0.25rem;
+    position: relative;
+  }
+  #chat-screen .sent span {
+    background: #8E4;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: left;
+  }
+  #chat-screen .sent:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0.9rem;
+    right: -0.4rem;
+    border: 0.4rem solid transparent;
+    border-left-color: #8E4;
+  }
+  #book-page {
+    background: #FED;
+    width: 320px;
+    max-width: 100%;
+    margin: auto;
+    padding: 4rem 2rem 2rem;
+    color: black;
+  }
+  #book-page h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1em 0;
+    text-align: center;
+  }
+  #book-page p {
+    line-height: 2.3;
+  }
+  #book-page footer {
+    font-size: 0.75em;
+    margin: 3rem 0 0 0;
+    text-align: right;
+  }
 soulblog-no-attribution: true
 ---
 
