@@ -1,0 +1,6 @@
+---
+include:
+- "_plugins/*.rb"
+require:
+- jekyll
+max_files: 5000

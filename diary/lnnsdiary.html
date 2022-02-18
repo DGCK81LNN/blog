@@ -114,7 +114,8 @@ oulblog-head: |
 
 <h2 style="opacity: 0.5;">（正文）</h2>
 
-{% assign entries = site.diary_entries | where: "category", "lnnsdiary" -%}
+{% assign categories = "lnnsdiary" | split: " " -%}
+{% assign entries = site.diary_entries | where: "category", categories -%}
 {% for entry in entries -%}
 <article class="mb-5"
   {%- if entry.lang %} lang="{{ entry.lang }}" {%- endif -%}
@@ -126,7 +127,7 @@ oulblog-head: |
   | append: "</"
   | append: "style>"
   }}
-  {% endif -%}
+  {%- endif %}
 
   <div class="text-muted text-end">{{ entry.date | date: "%Y-%m-%d" }}</div>
 
