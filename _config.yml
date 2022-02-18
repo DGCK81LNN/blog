@@ -17,7 +17,9 @@ soulblog-comment-url: "https://www.wjx.top/vm/rljkHbJ.aspx"
 collections:
   diary_entries: { }
   tag_descriptions: { }
-  pages: { output: true }
+  pages:
+    output: true
+    layout: default
 
 defaults:
 - scope: { type: "posts" }
