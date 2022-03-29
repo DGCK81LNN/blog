@@ -32,12 +32,3 @@
 .soulblog-content>h2 {
   border-bottom: 1px solid silver;
 }
-
-@font-face {
-  font-family: LNNCrypt;
-  src: url(/blog/assets/LNNCrypt.woff);
-  unicode-range: U+E000-E03F;
-}
-[lang*="-Qaac"] {
-  font-family: LNNCrypt, var(--bs-font-sans-serif) !important;
-}
