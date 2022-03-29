@@ -1,6 +1,5 @@
-#mainwrap { margin: 0 auto; max-width: 992px; }
+#mainwrap { margin: 0 auto; max-width: 992px; padding: 0.5rem; }
 #footer { max-width: 992px; }
-#main { padding: 0.5rem; }
 
 .soulblog-content { overflow-wrap: break-word; }
 .soulblog-content img { max-width: 100%; }
