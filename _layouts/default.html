@@ -4,7 +4,7 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name=format-detection content="telephone=no">
-  <link rel=stylesheet href="https://dgck81lnn.github.io/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
   <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
   <link rel=stylesheet href="/blog/css/common.css">
   <link rel=stylesheet href="/blog/css/rouge-syntax.css">
@@ -39,7 +39,7 @@
   <div id="mainwrap">
     {%- if page.path != "index.html" and page.soulblog-no-breadcrumb != true %}
     <nav id=nav>
-      <ol class="breadcrumb">
+      <ol class="breadcrumb bg-light rounded p-3">
         <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
         {%- for item in page.soulblog-breadcrumb %}
         <li class="breadcrumb-item"><a href="{{ item.href | escape }}">{{ item.text }}</a></li>
