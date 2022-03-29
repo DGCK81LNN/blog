@@ -19,10 +19,12 @@ collections:
   tag_descriptions: { }
   pages:
     output: true
-    layout: default
 
 defaults:
 - scope: { type: "posts" }
+  values:
+    layout: default
+- scope: { type: "pages" }
   values:
     layout: default
 - scope: { path: "diary" }
