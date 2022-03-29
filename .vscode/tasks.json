@@ -8,6 +8,7 @@
       "type": "shell",
       "command": "jekyll build --watch",
       "problemMatcher": ["$jekyll-error-watch", "$jekyll-warning-watch"],
+      "isBackground": true
     },
     {
       "label": "jekyll build",
