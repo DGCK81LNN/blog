@@ -82,9 +82,11 @@
 </html>
 <!------------------------------------------------------------------------------
   page:
-    path: {{ page.path }}
-    url: {{ page.url }}
-    collection: {{ page.collection }}
-    layout: {{ page.layout }}
-    soulblog-foo: {{ page.soulblog-foo }}
+    path: {{ page.path | jsonify }}
+    dir: {{ page.dir | jsonify }}
+    name: {{ page.name | jsonify }}
+    url: {{ page.url | jsonify }}
+    id: {{ page.id | jsonify }}
+    collection: {{ page.collection | jsonify }}
+    layout: {{ page.layout | jsonify }}
 ------------------------------------------------------------------------------->
