@@ -18,7 +18,7 @@ soulblog-style: |
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
       {%- for tag in post.tags %}
       {%- assign tagdef = site.data.tags | find: 'name', tag %}
-      <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}.html" class="text-decoration-none">
+      <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}" class="text-decoration-none">
         <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
       </a>
       {%- endfor %}
