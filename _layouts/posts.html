@@ -1,11 +1,11 @@
 ---
 layout: base
 ---
-<div class="soulblog-content">{{ content }}</div>
-<footer class="text-muted">
-  <p>
+<footer>
+  <p class="text-muted">
     <a href="{{ page.author.url | default: site.author.url | escape }}"
-      >{{ page.author.name | default: site.author.name }}</a> &middot;
+      >{{ page.author.name | default: site.author.name }}</a>
+    &middot;
     <time datetime="{{ page.date | date: '%FT%T%z' }}">
       {%- assign daytime = page.date | date: "%T" -%}
       {%- if daytime == "00:00:00" -%}
@@ -14,25 +14,26 @@ layout: base
       {{- page.date | date: "%F %H:%M" -}}
       {%- endif -%}
     </time>
-  </p>
-  {%- if page.last_modified_at %}
-  <p>最后修改于
-    <time datetime="{{ page.last_modified_at | date: '%FT%T%z' }}"
+    {%- if page.last_modified_at %}
+    &middot;
+    <span>最后更新于 <time datetime="{{ page.last_modified_at | date: '%FT%T%z' }}"
     >{{ page.last_modified_at | date: "%F %H:%M" }}</time
-    ></p>
-  {%- endif %}
-  {%- if page.tags != empty %}
-  <p>
-    <span class=visually-hidden>标签：</span>
-    {%- for tag in page.tags %}
-    {%- assign tagdef = site.data.tags | find: 'name', tag %}
-    <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}" class="text-decoration-none">
-      <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
-    </a>
-    {%- endfor %}
+    ></span>
+    {%- endif %}
+    {%- if page.tags != empty %}
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      {%- for tag in page.tags %}
+      {%- assign tagdef = site.data.tags | find: 'name', tag %}
+      <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}" class="text-decoration-none">
+        <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
+      </a>
+      {%- endfor %}
+      </span>
+    {%- endif %}
   </p>
-  {%- endif %}
 </footer>
+<div class="soulblog-content">{{ content }}</div>
 
 <hr>
 
