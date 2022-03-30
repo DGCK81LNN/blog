@@ -17,14 +17,15 @@ soulblog-comment-url: "https://www.wjx.top/vm/rljkHbJ.aspx"
 collections:
   diary_entries: { }
   tag_descriptions: { }
-  pages:
+  pages_:
     output: true
+    permalink: "pages/:path"
 
 defaults:
 - scope: { type: "posts" }
   values:
     layout: posts
-- scope: { type: "pages" }
+- scope: { type: "pages_" }
   values:
     layout: default
 - scope: { path: "diary" }

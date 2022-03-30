@@ -1,5 +1,6 @@
 ---
 title: 神奇的水滴石
+layout: posts
 date: 2021-04-30
 author:
   name: 天府灵山行者
