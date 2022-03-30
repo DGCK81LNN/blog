@@ -1,0 +1,74 @@
+---
+layout: base
+---
+<div class="soulblog-content">{{ content }}</div>
+<footer class="text-muted">
+  <p>
+    <a href="{{ page.author.url | default: site.author.url | escape }}"
+      >{{ page.author.name | default: site.author.name }}</a> &middot;
+    <time datetime="{{ page.date | date: '%FT%T%z' }}">
+      {%- assign daytime = page.date | date: "%T" -%}
+      {%- if daytime == "00:00:00" -%}
+      {{- page.date | date: "%F" -}}
+      {%- else -%}
+      {{- page.date | date: "%F %H:%M" -}}
+      {%- endif -%}
+    </time>
+  </p>
+  {%- if page.last_modified_at %}
+  <p>最后修改于
+    <time datetime="{{ page.last_modified_at | date: '%FT%T%z' }}"
+    >{{ page.last_modified_at | date: "%F %H:%M" }}</time
+    ></p>
+  {%- endif %}
+  {%- if page.tags != empty %}
+  <p>
+    <span class=visually-hidden>标签：</span>
+    {%- for tag in page.tags %}
+    {%- assign tagdef = site.data.tags | find: 'name', tag %}
+    <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}.html" class="text-decoration-none">
+      <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
+    </a>
+    {%- endfor %}
+  </p>
+  {%- endif %}
+</footer>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <!-- post_url: {{ page.url }} -->
+  {%- assign comments = site.data.comments | where: 'post_url', page.url %}
+  {%- for comment in comments %}
+  <article class="comment card p-2 pb-0 mb-2">
+    <footer class="d-flex mb-3">
+      <div class="me-1 align-self-stretch">
+        <img class="border rounded" width=80 height=80 crossorigin=anonymous
+             src="{{ comment.email | soulblog_gravatar }}" style="width:40px;height:40px">
+      </div>
+      <div class="flex-fill align-self-center">
+        {%- if comment.homepage %}
+        <a rel=nofollow crossorigin=anonymous
+           href="{{ comment.homepage | escape }}"
+        >{{ comment.nickname }}</a>
+        {%- else %}
+        {{ comment.nickname }}
+        {%- endif %}
+        {%- if comment.email %}
+        ({{ comment.email | soulblog_emailsub }})
+        {%- endif %}
+        <span class="text-muted">{{ comment.date | date: "%Y-%m-%d" }}</span>
+      </div>
+    </footer>
+    {{ comment.content | markdownify }}
+    {%- if comment.reply %}
+    <article class="ms-4">
+      <header><h6>博主回复</h6></header>
+      {{ comment.reply | markdownify }}
+    </article>
+    {%- endif %}
+  </article>
+  {%- endfor %}
+  <div><a target=_blank href="{{ site.soulblog-comment-url }}">发表评论…</a></div>
+</section>

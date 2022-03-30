@@ -23,7 +23,7 @@ collections:
 defaults:
 - scope: { type: "posts" }
   values:
-    layout: default
+    layout: posts
 - scope: { type: "pages" }
   values:
     layout: default
