@@ -38,14 +38,23 @@ layout: base
 
 <section>
   <h2>评论区</h2>
-  <!-- post_url: {{ page.url }} -->
   {%- assign comments = site.data.comments | where: 'post_url', page.url %}
   {%- for comment in comments %}
+  {%- capture avatar -%}
+    https://gravatar.loli.net/avatar/
+      {%- if comment.email_hash -%}
+        {{ comment.email_hash }}?d=identicon
+      {%- elsif comment.email -%}
+        {{ comment.email | downcase | soulblog_md5 }}?d=identicon
+      {%- else -%}
+        ?f=y&d=mp
+    {%- endif %}
+  {%- endcapture %}
   <article class="comment card p-2 pb-0 mb-2">
     <footer class="d-flex mb-3">
       <div class="me-1 align-self-stretch">
         <img class="border rounded" width=80 height=80 crossorigin=anonymous
-             src="{{ comment.email | soulblog_gravatar }}" style="width:40px;height:40px">
+             src="{{ avatar }}" style="width:40px;height:40px">
       </div>
       <div class="flex-fill align-self-center">
         {%- if comment.homepage %}
