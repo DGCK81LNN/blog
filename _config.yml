@@ -4,11 +4,12 @@ excerpt_separator: "\n\n\n"
 exclude:
   - LICENSE
   - README.md
+url: "https://dgck81lnn.github.io"
 baseurl: /blog
 
 title: LNN的博客！
 permalink: "posts/:short_year:month:day_:title"
-locale: zh-CN
+lang: zh_CN
 author:
   name: DGCK81LNN
   url: "https://github.com/DGCK81LNN"
@@ -28,6 +29,8 @@ defaults:
 - scope: { type: "pages_" }
   values:
     layout: default
+    seo:
+      type: WebPage
 - scope: { path: "diary" }
   values:
     soulblog-breadcrumb:
