@@ -272,20 +272,20 @@ int n;
 int x, y;
 
 int main() {
-	cin >> n;
-	
-	int i;
-	for (i = 1; i <= n; ++i)
-		cin >> a[i] >> b[i] >> g[i] >> k[i];
-	
-	cin >> x >> y;
-	for (i = n; i > 0; --i)
-		if (x >= a[i] && x <= a[i] + g[i] &&
-			y >= b[i] && y <= b[i] + k[i]) {
-			cout << i << endl;
-			return 0;
-		}
-	cout << -1 << endl;
-	return 0;
+  cin >> n;
+  
+  int i;
+  for (i = 1; i <= n; ++i)
+    cin >> a[i] >> b[i] >> g[i] >> k[i];
+  
+  cin >> x >> y;
+  for (i = n; i > 0; --i)
+    if (x >= a[i] && x <= a[i] + g[i] &&
+      y >= b[i] && y <= b[i] + k[i]) {
+      cout << i << endl;
+      return 0;
+    }
+  cout << -1 << endl;
+  return 0;
 }
 ```

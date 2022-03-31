@@ -1,5 +1,4 @@
 ---
-title: <span lang=en>Apr 14 @school<br>Apr 22 @school</span>
 lang: en
 ---
 
