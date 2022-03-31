@@ -38,7 +38,7 @@
   </header>
 
   <div id="mainwrap">
-    {%- if page.soulblog-no-breadcrumb != true %}
+    {%- unless page.soulblog-no-breadcrumb %}
     <nav id=nav>
       <ol class="breadcrumb bg-light rounded p-3">
         <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
@@ -48,7 +48,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
       </ol>
     </nav>
-    {%- endif %}
+    {%- endunless %}
 
     {%- comment %}
     <div class="alert alert-warning">
