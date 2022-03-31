@@ -117,20 +117,23 @@ oulblog-head: |
 {% assign categories = "lnnsdiary" | split: " " -%}
 {% assign entries = site.diary_entries | where: "category", categories -%}
 {% for entry in entries -%}
-<article class="mb-5"
-  {%- if entry.lang %} lang="{{ entry.lang }}" {%- endif -%}
->
-  {% if entry.soulblog-style -%}
-  {{ entry.soulblog-style
-  | prepend: "style scoped>"
-  | prepend: "<"
-  | append: "</"
-  | append: "style>"
-  }}
-  {%- endif %}
+<article class="mb-5">
+  <footer class="text-muted text-end">{{ entry.date | date: "%Y-%m-%d" }}</footer>
 
-  <div class="text-muted text-end">{{ entry.date | date: "%Y-%m-%d" }}</div>
+  <div
+    {%- if entry.lang %} lang="{{ entry.lang }}" {%- endif -%}
+  >
 
-  {{ entry.content }}
+{% if entry.soulblog-style -%}
+{{ entry.soulblog-style
+| prepend: "style scoped>"
+| prepend: "<"
+| append: "</"
+| append: "style>"
+}}
+{%- endif %}
+{{ entry.content }}
+
+  </div>
 </article>
 {% endfor -%}

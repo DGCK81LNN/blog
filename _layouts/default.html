@@ -1,4 +1,8 @@
 ---
 layout: base
 ---
-<div class="soulblog-content">{{ content }}</div>
+<div class="soulblog-content"
+  {%- if page.lang %} lang="{{ page.lang }}" {%- endif -%}
+>
+{{ content }}
+</div>

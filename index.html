@@ -45,7 +45,9 @@ soulblog-style: |
       </a>
       {%- endfor %}
     </header>
-    <div class="card-body">
+    <div class="card-body"
+      {%- if post.lang %} lang="{{ post.lang }}" {%- endif -%}
+    >
       {%- assign lang = post.soulblog-excerpt-lang %}
       {%- if lang == "textile" %}
       {{ post.excerpt | textilize }}
