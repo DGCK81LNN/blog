@@ -1,6 +1,7 @@
 ---
 tags: 编程 日常写代码
 redirect_from: [ "/2021/08/18/rearranging_derpibooru_gallery.html" ]
+last_modified_at: 2022-04-15T11:35:00+0800
 ---
 
 # 用自动脚本整理 [Derpibooru](https://derpibooru.org) 图集
@@ -159,10 +160,10 @@ function toIds(sets) {
 
 /**
  * 提交新的图片顺序到服务器
- * @param {number[]} sorted
  * @param {number} galleryId 图集ID
+ * @param {number[]} sorted
  */
-function submitOrder(sorted, galleryId) {
+function submitOrder(galleryId, sorted) {
   const orderImagesApi = `/galleries/${galleryId}/order`
 
   console.log("SUBMITTING DATA...")
