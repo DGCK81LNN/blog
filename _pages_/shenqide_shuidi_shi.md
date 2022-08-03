@@ -1,7 +1,7 @@
 ---
 title: 神奇的水滴石
 layout: posts
-date: 2021-04-30
+date: 2020-04-30
 author:
   name: 天府灵山行者
   url: https://space.bilibili.com/300711293
@@ -960,7 +960,7 @@ _给相互陪伴了三年的同学们。_
         <p class="card-text">在这部作品中，“伊楠斯”的早期经历代表了Richard本人（只是极度夸大了，Richard和他曾喜欢的Sunny仅是越走越远，“没有机会了”），而“梅古里”则代表一个假想的、想要治愈他的伤痛的女生。</p>
         <p class="card-text">据我所知，Richard使用iPhone自带的备忘录进行创作。当今智能手机的便捷大大降低了写作的门槛，更多人可以通过文字表达自己的内心所想。都说“字如其人”，其实同样“文如其人”：Richard是个性格比较古怪的男生，他笔下的人物总是体现出他与众不同的“脑回路”。</p>
         <p class="card-text">我认为，这篇小说与其说是Richard的创作，不如说是他的“日记”，它只有对作者本人（以及，如果有，十分关心他的人――他的“梅古里”）才有意义。这篇小说和目前只发布了第一部的所谓“<i>Love with Richard</i>三部曲”，又都像是Richard留给可能存在的他的“梅古里”的“攻略”，处处体现了Richard一直期待着一个像Sunny那样的女生能够“治愈他心底的旧伤”。</p>
-        <p class="card-text">在此作品之后，Richard通过信息技术课上学习的Python，制作了“<i>Love with Richard</i>三部曲”的第一部――“互动式小说”<a href="https://github.com/DGCK81LNN/LoveWithRichard"><i>Love with Richard under Epidemic</i></a>。它不能算是严格意义上的“互动式小说”，因为读者交互的方式是在几个选项中选择，而不是输入自然语言的指令。这部作品更为直接地写了Richard和一个假想女生的故事。目前Richard还在创作“三部曲”的其余部分。</p>
+        <p class="card-text">在此作品之后，Richard通过信息技术课上学习的Python，制作了“<i>Love with Richard</i>三部曲”的第一部――“互动式小说”<a href="https://github.com/DGCK81LNN/LoveWithRichard"><i>Love with Richard under Epidemic</i></a>。这部作品更为直接地写了Richard和一个假想女生的故事。目前Richard还在创作“三部曲”的其余部分。</p>
     </div>
     <div class="card-footer"><span itemprop=author>DGCK81LNN</span> &middot; <span item=dateCreated>2021-04-10</span></div>
 </div></aside>
