@@ -1,6 +1,6 @@
 ---
 date: 2022-01-18T17:04:31+0800
-last_modified_at: 2022-01-29T14:39:28+0800
+last_modified_at: 2022-09-07T12:45:17+0800
 tags: 编程 esolang
 ---
 
@@ -120,7 +120,7 @@ node compiled.js < input.txt > output.txt
 >图片</button>
 </h2>
 <div class="accordion-collapse collapse" id='collapse1'>
-<div class="accordion-body pb-0"  markdown='block'>
+<div class="accordion-body pb-0" markdown='block'>
 ![“閱文秘術”的代码中用到了很多嵌入的 JavaScript 表达式，它们跟“文言”代码的古汉语结合在一起，整体看起来十分怪异。]({%link assets/2022-01-18-1.jpg %})
 
 ![我节选了“閱文秘術”的一部分代码发给朋友，他形象地称嵌入的 JavaScript 表达式为“来自西洋巫术的神秘咒语”。]({%link assets/2022-01-18-2.jpg %})
@@ -133,7 +133,7 @@ node compiled.js < input.txt > output.txt
 >“閱文秘術”的完整源代码，带语法高亮</button>
 </h2>
 <div class="accordion-collapse collapse" id='collapse2'>
-<div class="accordion-body pb-0"  markdown='block'>
+<div class="accordion-body pb-0" markdown='block'>
 ```wenyan
 夫「require("fs")」。名之曰「fs」。
 吾有一物。曰「Buffer.from(require("os").EOL)」。名之曰「行尾」。
@@ -154,6 +154,7 @@ node compiled.js < input.txt > output.txt
       夫「器」。名之曰「舊器」。
       夫「舊器」之長。加其以一千零二十四。施「Buffer.alloc」於其。昔之「器」者。今其是矣。
       施「(n=>o=>n.set(o))」於「器」於「舊器」。
+      昔之「舊器」者。今「null」是矣。
     云云。
     施「(sup=>sub=>len=>sup.subarray(len-sub.length,len).equals(sub))」於「器」於「行尾」於「器容」。
     若其然者乃止也。
