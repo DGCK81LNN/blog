@@ -3,7 +3,7 @@ layout: default
 soulblog-no-breadcrumb: true
 soulblog-style: |
   .read-all { display: block; text-align: center; }
-  article.card { min-width: 284px; }
+  .excerptcard { min-width: 284px; }
 ---
 
 <p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
@@ -29,13 +29,12 @@ soulblog-style: |
 </div>
 
 <!--<p><a href="projects.html" class="btn btn-primary">我的 Project 记录表</a></p>-->
-<p><a class="btn btn-primary disabled">我的 Project 记录表</a>（施工中，暂时关闭…）</p>
 
 <h2>文章目录</h2>
 
 <div class="d-flex flex-wrap gap-2">
-  {%- for post in site.posts %}{%- if post.categories.size == 0 %}
-  <article class="col card">
+  {%- for post in site.posts %}
+  <article class="col card excerptcard">
     <header class="card-header">
       <time>{{ post.date | date: "%Y-%m-%d" }}</time>
       {%- for tag in post.tags %}
@@ -64,7 +63,7 @@ soulblog-style: |
       </a>
     </div>
   </article>
-  {%- endif %}{%- endfor %}
+  {%- endfor %}
 </div>
 
 <script crossorigin=anonymous
