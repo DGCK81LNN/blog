@@ -17,7 +17,7 @@ soulblog-comment-url: "https://www.wjx.top/vm/rljkHbJ.aspx"
 
 collections:
   diary_entries: { }
-  tag_descriptions: { }
+  tags: { }
   pages_:
     output: true
     permalink: "pages/:path"
@@ -36,7 +36,3 @@ defaults:
     soulblog-breadcrumb:
     - text: '我的日记存档'
       href: '/blog/diary/'
-- scope: { type: "tag_pages" }
-  values:
-    layout: default
-    permalink: "tags/:slug"

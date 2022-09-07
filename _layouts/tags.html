@@ -1,13 +1,15 @@
 ---
 layout: default
-soulblog-style: |
-  .read-all { display: block; text-align: center; }
-  article.card { min-width: 284px; }
 ---
+
+<style>
+.read-all { display: block; text-align: center; }
+article.card { min-width: 284px; }
+</style>
 
 <h1>{{ page.tag_name }}</h1>
 
-{{ page.description | markdownify }}
+{{ content }}
 
 <h2>文章列表</h2>
 
