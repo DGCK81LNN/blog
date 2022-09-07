@@ -7,3 +7,10 @@
     这是一条测试评论
   reply: |
     这是一条测试回复
+- date: 2022-09-07T18:54:06+0800
+  post_url: "/posts/220118_wenyan_stdin"
+  nickname: "DGCK81LNN"
+  email_hash: "b57408c9ef25d27a791ba9b871aa03f9"
+  homepage: "https://github.com/DGCK81LNN"
+  content: |
+    使用例：[文言标准输入语法糖《閱文秘術》使用例](https://dgck81lnn.blog.luogu.org/wenyan-stdin-examples)
