@@ -32,3 +32,8 @@
 .soulblog-content>h2 {
   border-bottom: 1px solid silver;
 }
+
+/** Programming ligatures look terrible in brainfuck code, disable them */
+.highlighter-rouge.language-brainfuck {
+  font-variant-ligatures: none;
+}
