@@ -105,11 +105,12 @@
 }
 /* Base Style */
 .highlight .o {
-  color: #c2d800;
+  color: #a5b800;
+  font-weight: bold;
 }
 /* Operator Word */
 .highlight .ow {
-  color: #c2d800;
+  color: #a5b800;
 }
 /* Base Style */
 .highlight .c {
