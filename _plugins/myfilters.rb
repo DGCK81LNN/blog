@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'digest/md5'
+require 'base64'
 
 module SoulBlog
   module Filters
@@ -15,6 +16,10 @@ module SoulBlog
         "_" => " underscore ",
         "-" => " dash ",
       })
+    end
+
+    def soulblog_base64(str)
+      Base64.strict_encode64(str)
     end
   end
 end
