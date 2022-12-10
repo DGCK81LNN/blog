@@ -31,6 +31,7 @@ tags: 编程 esolang
 ```wenyan
 施「(str=>process.stdout.write(str))」於『問天地好在』。
 ```
+{: lzh}
 
 在这句代码中直接嵌入了一个 JavaScript 箭头函数 `str => process.stdout.write(str)`{: js}。利用这种方法，我们可以调用 Node.js 环境下的标准库来实现读取输入。但问题是，如果直接读取 `/dev/stdin` 的内容，就必须一次读取完整个输入数据，而无法在命令行进行人机交互。
 
@@ -78,12 +79,14 @@ function gets() {
 ```wenyan
 閱三行。名之曰「甲」曰「乙」曰「丙」。
 ```
+{: lzh}
 
 这就相当于：
 
 ```wenyan
 施「閱行」。施「閱行」。施「閱行」。名之曰「甲」曰「乙」曰「丙」。
 ```
+{: lzh}
 
 不过，在解算法题的时候，我们往往需要从输入中读入数字、字符、单词，而不是读取一整行，所以我还添加了这些读取特定类型数据的方法：`「閱數」`{: wy}、`「閱字」`{: wy}、`「閱言」`{: wy}，并为它们定义了相应的语法糖。
 
@@ -93,6 +96,7 @@ function gets() {
 閱二數。名之曰「甲」曰「乙」。
 加「甲」以「乙」。書之。
 ```
+{: lzh}
 
 当然，要想得到正确的输出，我们不能直接用“文言”的解释器来运行这个程序，因为这样会输出中文数字；需要先把程序编译成 JavaScript，再调用 Node.js 运行编译出的代码。
 
@@ -108,7 +112,7 @@ node compiled.js < input.txt > output.txt
 [aplusb]: https://www.luogu.com.cn/problem/P1001
 [src]: https://github.com/DGCK81LNN/wenyan-stdin
 {:lzh: lang='lzh-Hant'}
-{:wy: .highlight.language-wenyan}
+{:wy: .highlight.language-wenyan lzh}
 {:js: .highlight.language-javascript}
 
 <aside class="accordion my-3">
@@ -122,8 +126,10 @@ node compiled.js < input.txt > output.txt
 <div class="accordion-collapse collapse" id='collapse1'>
 <div class="accordion-body pb-0" markdown='block'>
 ![“閱文秘術”的代码中用到了很多嵌入的 JavaScript 表达式，它们跟“文言”代码的古汉语结合在一起，整体看起来十分怪异。]({%link assets/2022-01-18-1.jpg %})
+{: style="max-width: 500px; display: block; margin: auto;"}
 
 ![我节选了“閱文秘術”的一部分代码发给朋友，他形象地称嵌入的 JavaScript 表达式为“来自西洋巫术的神秘咒语”。]({%link assets/2022-01-18-2.jpg %})
+{: style="max-width: 500px; display: block; margin: auto;"}
 </div></div></div>
 <div class="accordion-item">
 <h2 class="accordion-header">
@@ -267,5 +273,6 @@ node compiled.js < input.txt > output.txt
 或云『閱八數』。蓋謂『施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」』。
 或云『閱九數』。蓋謂『施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」。施「閱數」』。
 ```
+{: lzh}
 </div></div></div>
 </aside>
