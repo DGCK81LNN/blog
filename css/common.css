@@ -34,6 +34,19 @@
 }
 
 /** Programming ligatures look terrible in brainfuck code, disable them */
-.highlighter-rouge.language-brainfuck {
+.soulblog-content .highlighter-rouge.language-brainfuck {
   font-variant-ligatures: none;
+}
+
+/** Programming ligatures look terrible in brainfuck code, disable them */
+.soulblog-content pre:lang(lzh-Hant),
+.soulblog-content code:lang(lzh-Hant),
+.soulblog-content kbd:lang(lzh-Hant),
+.soulblog-content samp:lang(lzh-Hant) {
+  font-family: "Sarasa Mono CL", var(--bs-font-monospace);
+}
+
+/** Hide comment section placeholder once loaded */
+.utterances[style~="height:"] ~ .soulblog-utterances-placeholder {
+  display: none !important;
 }
