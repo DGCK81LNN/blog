@@ -1,6 +1,7 @@
 ---
 date: 2022-10-08T10:03:44+0800
 tags: 编程 日常写代码
+last_modified_at: 2022-12-11T00:48:56+0800
 ---
 
 # Javscript 版的原义字符串？
@@ -142,6 +143,13 @@ cts`
 
 （看起来目前版本的 Rouge 语法高亮不认识模板字符串里的“`\\`”，我得去发个 issue〔或者 PR〕。）
 
+<aside class="card my-3 w-75 mx-auto">
+<div class="card-header">2022-12-10 更新</div>
+<div class="card-body pb-0" markdown=1>
+[我提交的 PR](https://github.com/rouge-ruby/rouge/pull/1878) 已经被合并了。
+</div>
+</aside>
+
 插值还是可以用的，并且也会被奇数个斜杠“假装转义掉”：
 
 ~~~js
@@ -184,7 +192,7 @@ function identity(parts, ...values) {
 }
 ~~~
 
-不过 MDN 上的做法，是直接把“非原义”字符串放在本来是原义字符串的位置上丢给 `String.raw`{: js} 来处理。懒人必备。
+不过 MDN 上的做法，是直接把“非原义”字符串放在本来是原义字符串的位置上丢给 `String.raw`{: js} 来处理。简单粗暴。
 
 ~~~js
 function identity(parts, ...values) {
@@ -242,7 +250,7 @@ cts("\n")
 
 最后两个例子看起来似乎还不错，可以写出漂亮的多行字符串，并且可以随便缩进。不过 [Prettier 似乎不太喜欢我的这种写法][prettierlink]。
 
-[prettierlink]: https://prettier.io/playground/#N4Igxg9gdgLgprEAucMDOAKAOiLWo4CU+ABgA4CWlABGgK5QTUA2F1A1gIYC2n1AVkzjUKzJvUYA6EqXhQyTStzj8+zTgBpq0NWxicA7nzQ8+RtBGmkdLNgdHDudeCzrsKUasNWeIrKBoyUCSs1JzqJl7a-tIYhCAaIBBkMBTQaMignABO2RAGAAo5CBko4UYAnhmJAEbZnGDscDAAyjxwADIecMgAZuFocLX1jc0tZA0eAObIMNl0QyBw3DVwACZr6x2cUFN0nFNwAGIQ2bwwqbvIIJzOEAkgABYw3MwA6o8U8GgTYHAtJS+FAAbl8KtcwGhqiAPINsjACvUprw+gNFvw0AAPFrTZhwACKdAg8FRzEGiQm2Th1xqnFWzAeZGyHhgbwoaxgj2QAA4AAwUvKDN71MjXJlwOHAnqJACORPgiOSpRuaAAtFA4Ot1g9snA5RRdYiDiikP0yYtBtwKKTySA0LiCfKeqa0Yl9DU2RyuUgAExu+qiaYAYQg3BNSzQAFYHnRBgAVOmlM224ELACSUE2sBaYGZKQAgpmWjAKnibXAAL4VoA
+[prettierlink]: https://prettier.io/playground/#N4Igxg9gdgLgprEAucMDOAKAOiLWo4CU+ABgA4CWlABGgK5QTUA2F1A1gIYC2n1AVkzjUKzJvUYA6EqXhQyTStzj8+zTgBpq0NWxicA7nzQ8+RtBGmkdLNgdHDudeCzrsKUasNWeIrKBoyUCSs1JzqJl7a-tIYhCAaIBBkMBTQaMignABO2RAGAAo5CBko4UYAnhmJAEbZnGDscDAAyjxwADIecMgAZuFocLX1jc0tZA0eAObIMNl0QyBw3DVwACZr6x2cUFN0nFNwAGIQ2bwwqbvIIJzOEAkgABYw3MwA6o8U8GgTYHAtJS+FAAbl8KtcwGhqiAPINsjACvUprw+gNFvw0AAPFrTZhwACKdAg8FRzEGiQm2Th1xqnFWzAeZGyHhgbwoaxgj2QAA4AAwUvKDN71MjXJlwOHAnqJACORPgiOSpRuaAAtFA4Ot1g9snA5RRdYiDiikP0yYtBtwKKTySA0LiCfKeqa0Yl9DU2RyuUgAExu+qiaYAYQg3BNSzQAFYHnRBgAVOmlM224ELACSUE2sBaYGZKQAgpmWjAKnibXAAL4VoA "Prettier playground"
 
 ~~~js
 cts(
