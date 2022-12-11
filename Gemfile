@@ -11,3 +11,4 @@ group :jekyll_plugins do
   gem 'jekyll-feed'
 end
 gem 'RedCloth'
+gem 'rouge-lexers-wenyan'
