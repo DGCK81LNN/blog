@@ -1,10 +1,10 @@
 ---
 date: 2022-10-08T10:03:44+0800
 tags: 编程 日常写代码
-last_modified_at: 2022-12-11T00:48:56+0800
+last_modified_at: 2023-04-26T19:28+0800
 ---
 
-# Javscript 版的原义字符串？
+# Javascript 版的原义字符串？
 
 ~~~js
 let s = cts`Hello, ``world``!`() // "Hello, `world`!"
