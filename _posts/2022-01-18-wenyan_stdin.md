@@ -1,6 +1,6 @@
 ---
 date: 2022-01-18T17:04:31+0800
-last_modified_at: 2022-09-07T12:45:17+0800
+last_modified_at: 2023-05-31T21:16:21+0800
 tags: 编程 esolang
 ---
 
@@ -46,7 +46,8 @@ const EOL_BUFFER = Buffer.from(require("os").EOL)
 
 function gets() {
   // 缓冲区，以及已读入的字节数
-  var buffer = Buffer.alloc(SEGMENT_LEN), len = 0
+  let buffer = Buffer.alloc(SEGMENT_LEN)
+  let len = 0
 
   while (true) {
     // 读取一字节，如果 EOF 就停止读入
@@ -58,7 +59,7 @@ function gets() {
 
     // 如果缓冲区已经写满就扩容
     if (len === buffer.length) {
-      var oldBuffer = buffer
+      const oldBuffer = buffer
       buffer = Buffer.alloc(oldBuffer.length + SEGMENT_LEN)
       buffer.set(oldBuffer)
     }
