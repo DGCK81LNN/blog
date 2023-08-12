@@ -1,6 +1,7 @@
 ---
 tags: 编程 日常写代码
 redirect_from: [ "/2021/01/23/richards_text_encryption.html" ]
+last_modified_at: 2023-08-13T00:38+0800
 ---
 
 # Richard写的文本加密算法
@@ -10,7 +11,7 @@ Richard在他的新作品中使用一种可逆的加密算法来把源代码中�
 
 ```
      $554A 啊
- ↓最高有效位
+ v最高有效位
 01010101 01001010
 ↓↓|||||| ||||||||
 01101010 10110101
@@ -18,7 +19,7 @@ Richard在他的新作品中使用一种可逆的加密算法来把源代码中�
 ```
 ```
      $0052 R
-          ↓最高有效位
+          v最高有效位
 00000000 01010010
 ↓↓↓↓↓↓↓↓ ↓↓||||||
 00000000 01101101
@@ -252,3 +253,163 @@ def toBin(dec):
         dec >>= 1
     return bin
 ```
+
+---
+
+{:py: .highlight.language-py}
+
+## 2023-08-12 更新
+
+经过我的学习，`sts` 算法现已有更好的实现。
+
+### 改良 `sts` 第二代
+
+<ul class="nav nav-tabs" role='tablist'>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link active" id='v2-tab-py' data-bs-toggle='tab' data-bs-target="#v2-pane-py" type='button' role='tab' aria-controls='v2-pane-py' aria-selected='true'>Python</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='v2-tab-rb' data-bs-toggle='tab' data-bs-target="#v2-pane-rb" type='button' role='tab' aria-controls='v2-pane-rb'>Ruby</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='v2-tab-js' data-bs-toggle='tab' data-bs-target="#v2-pane-js" type='button' role='tab' aria-controls='v2-pane-js'>JavaScript</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='v2-tab-lua' data-bs-toggle='tab' data-bs-target="#v2-pane-lua" type='button' role='tab' aria-controls='v2-pane-lua'>Lua (Scribunto)</button>
+ </li>
+</ul>
+<div class="tab-content" markdown='1'>
+  <div class="tab-pane fade show active" id='v2-pane-py' role='tabpanel' aria-labelledby='v2-tab-py' tabindex='0' markdown='1'>
+~~~py
+def sts(string):
+    out = ""
+    for char in string:
+        codePoint = ord(char)
+        bits = codePoint >> 1
+        bits |= bits >> 1
+        bits |= bits >> 2
+        bits |= bits >> 4
+        bits |= bits >> 8
+        bits |= bits >> 16
+        out += chr(codePoint ^ bits)
+    return out
+~~~
+  </div>
+  <div class="tab-pane fade" id='v2-pane-rb' role='tabpanel' aria-labelledby='v2-tab-rb' tabindex='0' markdown='1'>
+~~~ruby
+def sts(string)
+  out = String.new(encoding: "UTF-8")
+  string.each_codepoint do |codePoint|
+    bits = codePoint >> 1
+    bits |= bits >> 1
+    bits |= bits >> 2
+    bits |= bits >> 4
+    bits |= bits >> 8
+    bits |= bits >> 16
+    out << (codePoint ^ bits)
+  end
+  out
+end
+~~~
+  </div>
+  <div class="tab-pane fade" id='v2-pane-js' role='tabpanel' aria-labelledby='v2-tab-js' tabindex='0' markdown='1'>
+~~~js
+function sts(string) {
+  let out = ""
+  for (let char of string) {
+    const codePoint = char.codePointAt(0)
+    let bits = codePoint >> 1
+    bits |= bits >> 1
+    bits |= bits >> 2
+    bits |= bits >> 4
+    bits |= bits >> 8
+    bits |= bits >> 16
+    out += String.fromCodePoint(codePoint ^ tmp)
+  }
+  return out
+}
+~~~
+  </div>
+  <div class="tab-pane fade" id='v2-pane-lua' role='tabpanel' aria-labelledby='v2-tab-lua' tabindex='0' markdown='1'>
+~~~lua
+local bit32 = require("bit32")
+local ustring = mw.ustring
+
+local function sts(str)
+  local out = ""
+  for codePoint in ustring.gcodepoint(str) do
+    local bits = bit32.rshift(codePoint, 1)
+    bits = bit32.bor(bits, bit32.rshift(bits, 1))
+    bits = bit32.bor(bits, bit32.rshift(bits, 2))
+    bits = bit32.bor(bits, bit32.rshift(bits, 4))
+    bits = bit32.bor(bits, bit32.rshift(bits, 8))
+    bits = bit32.bor(bits, bit32.rshift(bits, 16))
+    out = out .. ustring.char(bit32.bxor(codePoint, bits))
+  end
+  return out
+end
+~~~
+  </div>
+</div>
+
+运用类似 MSB（最高有效位）算法的一系列按位运算，就可以得到字符编码中需要反转的位掩码（`bits`{: py}，也是第一版改良实现中的 `~shifter`{: py}），无需使用之前的 `while`{: py} 循环。这种 MSB 计算方法要求操作是 32 位整数，否则需要调整 `tmp |= tmp >> N`{: py} 语句的数量；不过因为字符编码最多超不过 21 位，所以实际上不用担心。
+
+此版本虽然在 Python、Ruby 领域已被下文的新版本取代，但在使用 JavaScript、Lua 等没有（或由于某些原因选择不使用）可变长度整数或原生 MSB 函数的编程语言实现时，仍然是最优的方法。
+
+### 改良 `sts` 第三代
+
+<ul class="nav nav-tabs" role='tablist'>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link active" id='v3-tab-py' data-bs-toggle='tab' data-bs-target="#v3-pane-py" type='button' role='tab' aria-controls='v3-pane-py' aria-selected='true'>Python</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='v3-tab-rb' data-bs-toggle='tab' data-bs-target="#v3-pane-rb" type='button' role='tab' aria-controls='v3-pane-rb'>Ruby</button>
+ </li>
+</ul>
+<div class="tab-content" markdown='1'>
+ <div class="tab-pane fade show active" id='v3-pane-py' role='tabpanel' aria-labelledby='v3-tab-py' tabindex='0' markdown='1'>
+~~~py
+def sts(string):
+    out = ""
+    for char in string:
+        codePoint = ord(char)
+        out += chr(codePoint ^ ~(-1 << (codePoint.bit_length() - 1)))
+    return out
+~~~
+ </div>
+ <div class="tab-pane fade" id='v3-pane-rb' role='tabpanel' aria-labelledby='v3-tab-rb' tabindex='0' markdown='1'>
+~~~ruby
+def sts(string)
+  out = String.new(encoding: "UTF-8")
+  string.each_codepoint do |codePoint|
+    out << (codePoint ^ ~(-1 << (codePoint.bit_length - 1)))
+  end
+  out
+end
+~~~
+ </div>
+</div>
+
+Python、Ruby 中的整型是可变长度的，可以直接通过其 `bit_length` 方法求得长度，于是获得刚才所说的 `bits` 就更简单了，它就是 `~(-1 << (cp.bit_length() - 1))`{: py}，或 `(1 << (cp.bit_length() - 1)) - 1`{: py}。
+
+### 速度测试
+
+在 Python 中用四个版本的 `sts` 对这段示例文本
+
+    经过两个多月的网课，疫情基本结束，学校终于要复课了。
+    
+    2020.4.20。复课的第一天，我满怀期待地走进了校门。熟悉的景象在我眼前展开，只是所有人都戴了个口罩。顶着大风，仿佛回到了二三月份。
+    
+    走在我前面的是我的8B班同学Richard。三个多月没看见他，他在我眼中更加高大了。我在网课时曾屡次想念过他，现在，我可以以学习为理由来接近他，和他在一起。
+    
+    我在上个学期观察过他，他很少和Sunny说话，Sunny也没有去主动找他。但我猜不出他是否已经放弃了Sunny。机不可失时不再来，我得在结课考之前追求到他。
+
+分别进行加密操作测试，结果如下：
+
+{: .table}
+|     版本     | 实验次数 | 平均用时（毫秒） |
+|:------------:|:--------:|:----------------:|
+| Richard 原版 |      500 |            5.688 |
+|   改良一代   |     5000 |            0.595 |
+|   改良二代   |    50000 |            0.192 |
+|   改良三代   |    50000 |            0.116 |
