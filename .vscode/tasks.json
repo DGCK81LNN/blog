@@ -6,7 +6,7 @@
     {
       "label": "jekyll build (watch)",
       "type": "shell",
-      "command": "jekyll build --watch",
+      "command": "bundle exec jekyll build --watch",
       "problemMatcher": ["$jekyll-error-watch", "$jekyll-warning-watch"],
       "isBackground": true,
       "group": "build",
@@ -14,7 +14,7 @@
     {
       "label": "jekyll build",
       "type": "shell",
-      "command": "jekyll build",
+      "command": "bundle exec jekyll build",
       "problemMatcher": ["$jekyll-error", "$jekyll-warning"],
       "group": "build",
     }
