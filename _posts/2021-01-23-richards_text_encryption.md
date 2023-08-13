@@ -1,7 +1,7 @@
 ---
 tags: 编程 日常写代码
 redirect_from: [ "/2021/01/23/richards_text_encryption.html" ]
-last_modified_at: 2023-08-13T00:49+0800
+last_modified_at: 2023-08-13T15:51+0800
 ---
 
 # Richard写的文本加密算法
@@ -11,17 +11,17 @@ Richard在他的新作品中使用一种可逆的加密算法来把源代码中�
 
 ```
      $554A 啊
- v最高有效位
+ V最高有效位
 01010101 01001010
-↓↓|||||| ||||||||
+VV|||||| ||||||||
 01101010 10110101
      $6AB5 檵
 ```
 ```
      $0052 R
-          v最高有效位
+          V最高有效位
 00000000 01010010
-↓↓↓↓↓↓↓↓ ↓↓||||||
+VVVVVVVV VV||||||
 00000000 01101101
      $006D m
 ```
@@ -264,7 +264,7 @@ def toBin(dec):
 
 ### 改良 `sts` 第二代
 
-<ul class="nav nav-tabs" role='tablist'>
+<ul class="nav nav-underline px-2 " role='tablist'>
  <li class="nav-item" role='presentation'>
   <button class="nav-link active" id='v2-tab-py' data-bs-toggle='tab' data-bs-target="#v2-pane-py" type='button' role='tab' aria-controls='v2-pane-py' aria-selected='true'>Python</button>
  </li>
@@ -324,7 +324,7 @@ function sts(string) {
     bits |= bits >> 4
     bits |= bits >> 8
     bits |= bits >> 16
-    out += String.fromCodePoint(codePoint ^ tmp)
+    out += String.fromCodePoint(codePoint ^ bits)
   }
   return out
 }
@@ -358,7 +358,7 @@ end
 
 ### 改良 `sts` 第三代
 
-<ul class="nav nav-tabs" role='tablist'>
+<ul class="nav nav-underline px-2 " role='tablist'>
  <li class="nav-item" role='presentation'>
   <button class="nav-link active" id='v3-tab-py' data-bs-toggle='tab' data-bs-target="#v3-pane-py" type='button' role='tab' aria-controls='v3-pane-py' aria-selected='true'>Python</button>
  </li>
