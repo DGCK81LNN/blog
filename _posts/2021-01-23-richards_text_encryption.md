@@ -1,7 +1,7 @@
 ---
 tags: 编程 日常写代码
 redirect_from: [ "/2021/01/23/richards_text_encryption.html" ]
-last_modified_at: 2023-08-13T15:51+0800
+last_modified_at: 2023-11-18T10:41+0800
 ---
 
 # Richard写的文本加密算法
@@ -396,6 +396,7 @@ Python、Ruby 中的整型是可变长度的，可以直接通过其 `bit_length
 
 在 Python 中用四个版本的 `sts` 对这段示例文本
 
+{: title="原 汤 化 原 食"}
     经过两个多月的网课，疫情基本结束，学校终于要复课了。
     
     2020.4.20。复课的第一天，我满怀期待地走进了校门。熟悉的景象在我眼前展开，只是所有人都戴了个口罩。顶着大风，仿佛回到了二三月份。
@@ -406,10 +407,227 @@ Python、Ruby 中的整型是可变长度的，可以直接通过其 `bit_length
 
 分别进行加密操作测试，结果如下：
 
-{: .table}
+{: .table .w-auto}
 |     版本     | 实验次数 | 平均用时（毫秒） |
 |:------------:|:--------:|:----------------:|
 | Richard 原版 |      500 |            5.688 |
 |   改良一代   |     5000 |            0.595 |
 |   改良二代   |    50000 |            0.192 |
 |   改良三代   |    50000 |            0.116 |
+
+## 2023-11-18 更新
+
+8 月 28 日，我发现 `sts` 算法具有一个问题：由于字符编码 `D800` 至 `DFFF` 为 UTF-16 代理字，用于在 UTF-16 中编码 `U+10000` 及以上的字符，这个范围内的编码不是合法的 Unicode 字符；这意味着 `A000` 至 `A7FF` 范围内的字符经过 `sts` 编码后，会得到不正确的 Unicode 文本；轻则出现问号替代字符，重则直接报错。
+
+不过，`A000` 至 `A7FF` 范围内的字符显然完全不是我们会用到的（见下表），上述问题其实可以不用解决。考虑这个问题只是~~因为太闲了~~{:.text-secondary}为了严谨。
+
+<div class="table-responsive" markdown='1'>
+
+{:.table .w-auto .text-nowrap}
+| 范围             | 名称             | 英文名称              |
+|------------------|------------------|-----------------------|
+| `U+A000..U+A48F` | 彝文音节         | Yi Syllables          |
+| `U+A490..U+A4CF` | 彝文部首         | Yi Radicals           |
+| `U+A4D0..U+A4FF` | 老傈僳文         | Lisu                  |
+| `U+A500..U+A63F` | 瓦伊语文字       | Vai                   |
+| `U+A640..U+A69F` | 西里尔字母扩展-B | Cyrillic Extended-B   |
+| `U+A6A0..U+A6FF` | 巴姆穆文字       | Bamum                 |
+| `U+A700..U+A71F` | 声调修饰符号     | Modifier Tone Letters |
+| `U+A720..U+A7FF` | 拉丁文扩展-D     | Latin Extended-D      |
+
+</div>
+
+在 Python 实现中，只要不试图将包含 UTF-16 代理字的密文以默认的 UTF-8 编码存入文件或直接输出，就不会出现异常，因为 Python 中的字符串是以代码点为单位存储，而不是以编码过的字节序列形式存储的，只有在输出、写入到文件等操作的过程中，字符串才会被编码。如果确实需要将 `sts` 密文保存成文件，可以考虑自己实现 UTF-8 编解码。
+
+后来我发现这种编码方法还有另一个问题：Unicode 第 16 平面上的字符（`U+100000..U+10FFFF`）是肯定没办法编码的，因为这个范围经过 `sts` 会变成 `U+1F0000..U+1FFFFF`，是根本不存在的。第 16 平面内的字符全部属于**补充私人使用区-B**（*Supplementary Private Use Area-B*），如此偏远的区段基本很少会用到；但由于问题的存在，`sts` 目前的所有实现都已经不完美了。
+
+<aside class="card my-3 p-3 pb-0" markdown='1'>
+
+关于 Unicode 代码点的最大值为什么是 `U+10FFFF` 这样一个奇怪的数（每 65536 个代码点为一个平面，平面序号从 0 到 16，共 ***17*** 个平面），我看到一个叫 [tomatofrommars](https://github.com/tomatofrommars) 的人在[一篇博文](https://lunawen.com/basics/20201129-luna-tech-unicode-plane/ "Unicode - 平面（Plane）的概念 — Luna Wen")下的评论说得很好：
+
+> 划分 17 个平面是受限于 UTF-16 编码空间的结果。
+>
+> 1990 年的 Unicode 还只有 16 位，彼时的另一大标准 ISO 的*通用字符集*要发布一个 32 位的方案——ISO/IEC 10646，能编码更多字符，但也更耗空间。
+> 
+> 同是 Unicode 联盟成员的各大软件公司都反对这个方案。为了计算机的未来，双方就协商出了一个相互兼容的方案——*UTF-16*。
+> 
+> UTF-16 编码的**扩展平面**字符占 32 位，减去固定高位代理（110110）和固定低位代理（110111）所占位数 12 位，剩余 20 位，按照单个平面 65536 个字符设定，20 位可划分的平面数为 2^20 / 65536 = 16 个平面，再加上 1 个基本平面，就是 17 个平面。
+>
+> 代理数值的确定：个人猜测，这里的高位代理和低位代理要求成对出现，排除基本平面内已经分配了的空间，连续且空间最大的范围就只剩 0xD800 ~ 0xDFFF 了，即 `11011000 00000000` ~ `11011111 00000000`。
+
+~~所以 `sts` 有“BUG”归根结底都是 UTF-16 害的~~
+
+</aside>
+
+为了解决以上问题，我们可以直接在 UTF-8 编码的字节序列的层面上编写 `sts` 算法。
+
+<ul class="nav nav-underline px-2" role='tablist'>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link active" id='utf8-tab-rb' data-bs-toggle='tab' data-bs-target="#utf8-pane-rb" type='button' role='tab' aria-controls='utf8-pane-rb' aria-selected='true'>Ruby</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='utf8-tab-lua' data-bs-toggle='tab' data-bs-target="#utf8-pane-lua" type='button' role='tab' aria-controls='utf8-pane-lua'>Lua (Scribunto)</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='utf8-tab-py' data-bs-toggle='tab' data-bs-target="#utf8-pane-py" type='button' role='tab' aria-controls='utf8-pane-py'>Python</button>
+ </li>
+ <li class="nav-item" role='presentation'>
+  <button class="nav-link" id='utf8-tab-js' data-bs-toggle='tab' data-bs-target="#utf8-pane-js" type='button' role='tab' aria-controls='utf8-pane-js'>JavaScript</button>
+ </li>
+</ul>
+<div class="tab-content" markdown='1'>
+  <div class="tab-pane fade show active" id='utf8-pane-rb' role='tabpanel' aria-labelledby='utf8-tab-rb' tabindex='0' markdown='1'>
+
+~~~ruby
+def sts_utf8(string)
+  bytes = string.bytes
+  zero = false
+  bytes.map! do |byte|
+    bits =
+      case
+      when byte >= 0xf8 then raise ArgumentError, "invalid byte sequence in UTF-8"
+      when byte >= 0xf0 then        byte & 0x07
+      when byte >= 0xe0 then        byte & 0x0f
+      when byte >= 0xc0 then        byte & 0x1f
+      when byte >= 0x80 then zero ? byte & 0x3f : 0x40
+      else                          byte
+      end
+    zero = bits.zero?
+    byte ^ ~(-1 << (bits.bit_length - 1))
+  end
+  bytes.pack("C*")
+end
+
+def sts_encode(string)
+  sts_utf8(string.encode("UTF-8"))
+end
+
+def sts_decode(string)
+  sts_utf8(string).force_encoding("UTF-8")
+end
+~~~
+
+  </div>
+  <div class="tab-pane fade" id='utf8-pane-lua' role='tabpanel' aria-labelledby='utf8-tab-lua' tabindex='0' markdown='1'>
+
+~~~lua
+local bit32 = require("bit32")
+
+local function sts(str)
+  local bytes = { str:byte(1, #str) }
+  local zero = false
+  for i, byte in ipairs(bytes) do
+    local bits
+    if     byte >= 0xf8 then error("bad utf-8 string in 'sts'")
+    elseif byte >= 0xf0 then bits = bit32.band(byte, 0x07)
+    elseif byte >= 0xe0 then bits = bit32.band(byte, 0x0f)
+    elseif byte >= 0xc0 then bits = bit32.band(byte, 0x1f)
+    elseif byte >= 0x80 then
+      if zero then           bits = bit32.band(byte, 0x3f)
+      else                   bits = 0x40
+      end
+    else                     bits = byte
+    end
+    zero = bits == 0
+
+    bits = bit32.rshift(bits, 1)
+    bits = bit32.bor(bits, bit32.rshift(bits, 1))
+    bits = bit32.bor(bits, bit32.rshift(bits, 2))
+    bits = bit32.bor(bits, bit32.rshift(bits, 4))
+    bytes[i] = bit32.bxor(byte, bits)
+  end
+  return string.char(unpack(bytes))
+end
+~~~
+
+  </div>
+  <div class="tab-pane fade" id='utf8-pane-py' role='tabpanel' aria-labelledby='utf8-tab-py' tabindex='0' markdown='1'>
+
+~~~py
+def sts_utf8(data: bytes):
+    out = []
+    zero = False
+    for byte in data:
+        if   byte >= 0xf8: raise UnicodeDecodeError("invalid start byte")
+        elif byte >= 0xf0: bits = byte & 0x07
+        elif byte >= 0xe0: bits = byte & 0x0f
+        elif byte >= 0xc0: bits = byte & 0x1f
+        elif byte >= 0x80: bits = byte & 0x3f if zero else 0x40
+        else:              bits = byte
+        zero = bits == 0
+        out.append(byte ^ ~(-1 << (bits.bit_length() - 1)))
+    return bytes(*out)
+
+def sts_encode(string: str):
+    return sts_utf8(string.encode(encoding='utf-8'))
+
+def sts_decode(data: bytes):
+    return sts_utf8(data).decode(encoding='utf-8')
+~~~
+
+  </div>
+  <div class="tab-pane fade" id='utf8-pane-js' role='tabpanel' aria-labelledby='utf8-tab-js' tabindex='0' markdown='1'>
+
+~~~js
+/** @type {TextEncoder} */
+let textEncoder
+/** @type {TextDecoder} */
+let textDecoder
+
+/** @param {Uint8Array} bytes */
+function stsUTF8(bytes) {
+  bytes = bytes.slice(0)
+  let zero = false
+  for (let i = 0; i < bytes.length; i++) {
+    const byte = bytes[i]
+    let bits = byte
+    if      (byte >= 0xf8) throw new RangeError("Invalid byte")
+    else if (byte >= 0xf0) bits =        byte & 0x07
+    else if (byte >= 0xe0) bits =        byte & 0x0f
+    else if (byte >= 0xc0) bits =        byte & 0x1f
+    else if (byte >= 0x80) bits = zero ? byte & 0x3f : 0x40
+    zero = bits === 0
+
+    bits >>= 1
+    bits |= bits >> 1
+    bits |= bits >> 2
+    bits |= bits >> 4
+    bytes[i] = byte ^ bits
+  }
+  return bytes
+}
+
+/** @param {string} string */
+function stsEncode(string) {
+  textEncoder ||= new TextEncoder()
+  return stsUTF8(textEncoder.encode(string))
+}
+
+/** @param {Uint8Array} bytes */
+function stsDecode(bytes) {
+  textDecoder ||= new TextDecoder()
+  return textDecoder.decode(stsUTF8(bytes))
+}
+~~~
+
+  </div>
+</div>
+
+另外，以 UTF-16 为基础进行编码也未尝不是一种思路。在 JavaScript 中实现这种方法尤为容易：
+
+~~~js
+/** @param {string} string */
+function stsUTF16(string) {
+  let out = ""
+  for (let i = 0; i < string.length; i++) {
+    const charCode = string.charCodeAt(i)
+    let bits = charCode >> 1
+    bits |= bits >> 1
+    bits |= bits >> 2
+    bits |= bits >> 4
+    bits |= bits >> 8
+    out += String.fromCharCode(charCode ^ bits)
+  }
+  return out
+}
+~~~
