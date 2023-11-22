@@ -139,5 +139,5 @@ while (true) {
 ```
 
 <figure>
-<video style="width: 290px; max-width:100%" src="{% link assets/blockly_pond.mp4 %}" controls></video>
+<video style="width: 290px; max-width:100%" src="{% link assets/blockly_pond.mp4 %}" controls playsinline></video>
 </figure>
