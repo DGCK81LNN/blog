@@ -2,6 +2,7 @@
 date: 2023-08-26T16:56+0800
 tags: 游戏 原神
 last_modified_at: 2023-09-02T15:41+0800
+redirect_from: [ "/posts/230826_gi-graphics-driver" ]
 soulblog-head: |
   <meta name=keywords content="原神,电脑端,枫丹,闪退,崩溃,卡死,复发,Windows 10,Windows 11,原神,Intel Iris Xe,英特尔,锐炬,Xe,核显,集成显卡,驱动">
 ---

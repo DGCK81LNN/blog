@@ -1,6 +1,6 @@
 ---
 tags: 编程 前端
-redirect_from: [ "/2020/09/22/ecma-ver-test.html" ]
+redirect_from: [ "/2020/09/22/ecma-ver-test.html", "/posts/200922_ecma-ver-test" ]
 ---
 
 # 鉴别浏览器ECMAScript版本
