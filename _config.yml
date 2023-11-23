@@ -36,3 +36,6 @@ defaults:
     soulblog-breadcrumb:
     - text: '我的日记存档'
       href: '/blog/diary/'
+
+katex:
+  js_path: '_plugins/assets'
