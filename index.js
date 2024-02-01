@@ -34,7 +34,7 @@ setInterval(updateDateTime, 250)
 
 _aqiFeed({
   lang: "cn",
-  city: "jiangsu/nanjing/xianlindaxuecheng",
+  city: "tianjin/qinjiandao",
   container: "linf-aqi",
   callback: function (response) {
     var el = document.createElement("div")
