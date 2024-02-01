@@ -13,7 +13,6 @@ lang: zh_CN
 author:
   name: DGCK81LNN
   url: "https://github.com/DGCK81LNN"
-soulblog-comment-url: "https://www.wjx.top/vm/rljkHbJ.aspx"
 
 collections:
   diary_entries: { }
@@ -37,5 +36,5 @@ defaults:
     - text: '我的日记存档'
       href: '/blog/diary/'
 
-katex:
-  js_path: '_plugins/assets'
+kramdown:
+  math_engine: katex
