@@ -15,7 +15,11 @@
   <link rel=icon href="/site_icon.png">
   <link rel="shortcut icon" href="/site_icon.png">
   <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  {% if page.soulblog-no-seo -%}
+  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+  {% else -%}
   {% seo %}
+  {% endif -%}
   {% if page.soulblog-style -%}
   {{- page.soulblog-style
     | prepend: "style>"
