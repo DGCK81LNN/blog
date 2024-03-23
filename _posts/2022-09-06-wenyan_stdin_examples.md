@@ -14,7 +14,8 @@ tags: 编程 esolang
 [閱文秘術]: https://github.com/DGCK81LNN/wenyan-stdin
 [文淵閣]: https://wyg.wy-lang.org/
 
-{:wenyan: .highlight.language-wenyan lang="lzh-Hant"}
+{:lzh: lang="lzh-Hant"}
+{:wenyan: .highlight.language-wenyan lzh}
 {:js: .highlight.language-javascript}
 
 
@@ -68,6 +69,7 @@ tags: 编程 esolang
 
 夫「段數」。書之。
 ~~~
+{: lzh}
 
 [本程序评测记录](https://www.luogu.com.cn/record/71509026)
 
@@ -144,6 +146,7 @@ tags: 编程 esolang
 
 夫「總值」。施「(n=>n.toFixed(2))」於其。書之。
 ~~~
+{: lzh}
 
 贪心。把每一堆的重量、价值以及性价比存储在结构体（`物`{: wenyan}）的数组（`列`{: wenyan}）里，然后反复遍历数组找出性价比最高的一堆，并从数组中删除（`今不復存矣`{: wenyan}），直到背包装满或全部装下为止。
 
@@ -241,6 +244,7 @@ tags: 编程 esolang
 
 夫「秘數」。書之。
 ~~~
+{: lzh}
 
 [本程序评测记录](https://www.luogu.com.cn/record/86028261)
 
@@ -308,6 +312,7 @@ tags: 编程 esolang
 	夫「等式」。書之。夫「等式」之長。書之。
 云云。
 ~~~
+{: lzh}
 
 字符串。读入的时候每行先尝试直接读取两个数字。如果返回了 `undefined`{: js}，说明这一行有字母。先用 `閱一白。噫`{: wenyan} 跳过换行符，然后再 `閱一字`{: wenyan} 把字母读进来，相当于 C 语言的
 
@@ -321,6 +326,7 @@ scanf(" %c", &chr);
 ~~~wenyan
 吾有一元。名之曰「空無」。
 ~~~
+{: lzh}
 
 这会编译成：
 
