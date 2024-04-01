@@ -12,10 +12,9 @@ image: "/assets/droplet_cover.png"
 redirect_from:
 - /2021/02/04/richard_droplet.html
 - /richard_shenqide_shuidi_shi.html
+- /pages/shenqide_shuidi_shi
 excerpt: |
   # 神奇的水滴石
-
-  <address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
 
   我叫梅古里，一个普通的七年级学生，学习成绩优秀，毎次考试成绩都在班中的前五左右，却从来没有得过第一和第二。
   
@@ -46,7 +45,7 @@ soulblog-style: |
     padding: 0.25rem;
     position: relative;
   }
-  #chat-screen .received span {
+  #chat-screen .received .msgbody {
     background: #FFF;
     padding: 4px 8px;
     border-radius: 4px;
@@ -67,7 +66,7 @@ soulblog-style: |
     padding: 0.25rem;
     position: relative;
   }
-  #chat-screen .sent span {
+  #chat-screen .sent .msgbody {
     background: #8E4;
     padding: 4px 8px;
     border-radius: 4px;
@@ -105,12 +104,9 @@ soulblog-style: |
     margin: 3rem 0 0 0;
     text-align: right;
   }
-soulblog-no-attribution: true
 ---
 
 <h1><img src="/blog/assets/droplet_banner.png" class="w-100" alt="神奇的水滴石"></h1>
-
-<address><a href="https://space.bilibili.com/300711293">天府灵山行者</a> 2020年4月</address>
 
 _给相互陪伴了三年的同学们。_
 
@@ -278,16 +274,16 @@ _给相互陪伴了三年的同学们。_
 
 快六点时，伊楠斯掏出手机，把球放在一边。我为寻找他在隐瞒的事情，跑到操场上去看。而他发现我在偷看后立马把手机放回裤兜里，但我依然看到了一点他的微信聊天内容：
 
-<figure aria-label="微信聊天界面"><div id="chat-screen">
+<figure><div id="chat-screen">
 <div class=time><span>16:52</span></div>
-<div class=received aria-label="收到的消息"><span style="width: 12em">你先别让小梅走，我这边要至少一个小时</span></div>
-<div class=sent aria-label="发出的消息"><span>好的</span></div>
-<div class=sent aria-label="发出的消息"><span>你弄完了告诉我</span></div>
+<div class=received><span class=visually-hidden>对方说：</span><span class=msgbody style="width: 12em">你先别让小梅走，我这边要至少一个小时</span></div>
+<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>好的</span></div>
+<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>你弄完了告诉我</span></div>
 <div class=time><span>17:50</span></div>
-<div class=received aria-label="收到的消息"><span>大功告成</span></div>
-<div class=received aria-label="收到的消息"><span>你可以走了</span></div>
-<div class=sent aria-label="发出的消息"><span>好嘞</span></div>
-<div class=sent aria-label="发出的消息"><span>终于要解脱了！</span></div>
+<div class=received><span class=visually-hidden>对方说：</span><span class=msgbody>大功告成</span></div>
+<div class=received><span class=visually-hidden>对方说：</span><span class=msgbody>你可以走了</span></div>
+<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>好嘞</span></div>
+<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>终于要解脱了！</span></div>
 </div></figure>
 
 我已察觉到他很不对劲，就问他：“你这是在干什么呢?”
