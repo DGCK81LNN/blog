@@ -276,14 +276,14 @@ _给相互陪伴了三年的同学们。_
 
 <figure><div id="chat-screen">
 <div class=time><span>16:52</span></div>
-<div class=received><span class=visually-hidden>对方说：</span><span class=msgbody style="width: 12em">你先别让小梅走，我这边要至少一个小时</span></div>
-<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>好的</span></div>
-<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>你弄完了告诉我</span></div>
+<div class=received><span class='visually-hidden'>对方说：</span><span class=msgbody style="width: 12em">你先别让小梅走，我这边要至少一个小时</span></div>
+<div class=sent><span class='visually-hidden'>伊楠斯说：</span><span class=msgbody>好的</span></div>
+<div class=sent><span class='visually-hidden'>伊楠斯说：</span><span class=msgbody>你弄完了告诉我</span></div>
 <div class=time><span>17:50</span></div>
-<div class=received><span class=visually-hidden>对方说：</span><span class=msgbody>大功告成</span></div>
-<div class=received><span class=visually-hidden>对方说：</span><span class=msgbody>你可以走了</span></div>
-<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>好嘞</span></div>
-<div class=sent><span class=visually-hidden>伊楠斯说：</span><span class=msgbody>终于要解脱了！</span></div>
+<div class=received><span class='visually-hidden'>对方说：</span><span class=msgbody>大功告成</span></div>
+<div class=received><span class='visually-hidden'>对方说：</span><span class=msgbody>你可以走了</span></div>
+<div class=sent><span class='visually-hidden'>伊楠斯说：</span><span class=msgbody>好嘞</span></div>
+<div class=sent><span class='visually-hidden'>伊楠斯说：</span><span class=msgbody>终于要解脱了！</span></div>
 </div></figure>
 
 我已察觉到他很不对劲，就问他：“你这是在干什么呢?”
