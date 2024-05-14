@@ -7,7 +7,7 @@
 <b lang='en'>Esoteric programming language</b>，简称<span>Esolang</span>，它们的设计被用于测试计算机语言设计的极限，作为一个概念的证明，或仅仅是一个玩笑。<span lang=en>Esolang</span>创作者［……］几乎不会在意语言的可用性，甚至恰恰相反，会故意增加使用难度。
 </blockquote>
 <figcaption markdown='span'>
-——<cite>张凯强[《文言文编程火了，可我完全学不懂》](https://cloud.tencent.com/developer/article/1560964)</cite>
+——<cite>张凯强[《文言文编程火了，可我完全学不懂》](https://mp.weixin.qq.com/s/RzhXVgekIezluGVOZo7Eog)</cite>
 </figcaption>
 </figure>
 </div></div>
