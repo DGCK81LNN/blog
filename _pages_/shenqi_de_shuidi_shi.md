@@ -104,6 +104,7 @@ soulblog-style: |
     margin: 3rem 0 0 0;
     text-align: right;
   }
+soulblog-license: 本文作者保留所有权利。
 ---
 
 <h1><img src="/blog/assets/droplet_banner.png" class="w-100" alt="神奇的水滴石"></h1>
