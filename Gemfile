@@ -10,7 +10,7 @@ group :jekyll_plugins do
   gem 'jekyll-redirect-from'
   gem 'jekyll-textile-converter'
   gem 'jekyll-feed'
-  gem 'jekyll-katex'
 end
 gem 'RedCloth'
+gem 'kramdown-math-katex'
 gem 'rouge-lexers-wenyan'

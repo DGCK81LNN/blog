@@ -8,15 +8,25 @@ jobs:
     if: ${{ !(github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '@@__LNN_NO_BUILD__@@')) }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v4
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
       with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - uses: helaili/jekyll-action@v2
+        ruby-version: '3.2'
+        bundler-cache: true
+    - name: Build
+      uses: limjh16/jekyll-action-ts@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        enable_cache: true
       env:
         TZ: 'Asia/Shanghai'
+    - name: Push
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        
+        publish_dir: ./_site
+        force_orphan: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
