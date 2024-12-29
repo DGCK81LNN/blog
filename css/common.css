@@ -50,3 +50,13 @@
 .utterances[style~="height:"] ~ .soulblog-utterances-placeholder {
   display: none !important;
 }
+
+/** Uiua code font */
+@font-face {
+  font-family: Uiua386;
+  src: url(../assets/uiua386/Uiua386.woff2);
+}
+.language-uiua, .language-uiua code {
+  font-family: Uiua386, var(--bs-font-monospace);
+  font-synthesis: none;
+}
