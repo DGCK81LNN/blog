@@ -1,0 +1,62 @@
+#mainwrap { margin: 0 auto; max-width: 992px; padding: 0.5rem; }
+#footer { max-width: 992px; }
+
+.soulblog-content { overflow-wrap: break-word; }
+.soulblog-content img { max-width: 100%; }
+.soulblog-content pre {
+  padding: 1rem;
+  font-size: inherit;
+  border-radius: 0.25rem;
+  background-color: #fcfcfc;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+  white-space: pre;
+  overflow: auto;
+  max-height: 65vh;
+}
+.soulblog-content code:not(pre>code) {
+  font-size: inherit;
+  border-radius: 0.25rem;
+  background-color: #f4f4f4;
+  padding: 2px;
+}
+.soulblog-content blockquote {
+  border-left: 0.25em solid silver;
+  padding-left: 1.75em;
+}
+.soulblog-content hr {
+  height: 0.25em;
+  border: none;
+  background-color: silver;
+}
+.soulblog-content>h1,
+.soulblog-content>h2 {
+  border-bottom: 1px solid silver;
+}
+
+/** Programming ligatures look terrible in brainfuck code, disable them */
+.soulblog-content .highlighter-rouge.language-brainfuck {
+  font-variant-ligatures: none;
+}
+
+/** Programming ligatures look terrible in brainfuck code, disable them */
+.soulblog-content pre:lang(lzh-Hant),
+.soulblog-content code:lang(lzh-Hant),
+.soulblog-content kbd:lang(lzh-Hant),
+.soulblog-content samp:lang(lzh-Hant) {
+  font-family: "Sarasa Mono CL", var(--bs-font-monospace);
+}
+
+/** Hide comment section placeholder once loaded */
+.utterances[style~="height:"] ~ .soulblog-utterances-placeholder {
+  display: none !important;
+}
+
+/** Uiua code font */
+@font-face {
+  font-family: Uiua386;
+  src: url(../assets/uiua386/Uiua386.woff2);
+}
+.language-uiua, .language-uiua code {
+  font-family: Uiua386, var(--bs-font-monospace);
+  font-synthesis: none;
+}
