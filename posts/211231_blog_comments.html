@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>给 Jekyll 博客添加评论区 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="给 Jekyll 博客添加评论区" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="给 Jekyll 博客添加评论区 近日我给这个博客添加了评论区。因为是使用 Github Pages 和 Jekyll 构建的静态网页博客，不方便实时地把评论添加到网站上。 给静态博客添加评论区的一个常见方法是使用 Disqus。这是一个博客评论平台，只需在自己的静态站上引用相应的脚本，就可以创建一个评论区。" />
+<meta property="og:description" content="给 Jekyll 博客添加评论区 近日我给这个博客添加了评论区。因为是使用 Github Pages 和 Jekyll 构建的静态网页博客，不方便实时地把评论添加到网站上。 给静态博客添加评论区的一个常见方法是使用 Disqus。这是一个博客评论平台，只需在自己的静态站上引用相应的脚本，就可以创建一个评论区。" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/211231_blog_comments" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/211231_blog_comments" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-31T21:51:40+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="给 Jekyll 博客添加评论区" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2021-12-31T21:51:40+08:00","datePublished":"2021-12-31T21:51:40+08:00","description":"给 Jekyll 博客添加评论区 近日我给这个博客添加了评论区。因为是使用 Github Pages 和 Jekyll 构建的静态网页博客，不方便实时地把评论添加到网站上。 给静态博客添加评论区的一个常见方法是使用 Disqus。这是一个博客评论平台，只需在自己的静态站上引用相应的脚本，就可以创建一个评论区。","headline":"给 Jekyll 博客添加评论区","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/211231_blog_comments"},"url":"https://dgck81lnn.github.io/blog/posts/211231_blog_comments"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">给 Jekyll 博客添加评论区</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2021-12-31T21:51:40+0800">2021-12-31 21:51</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="给-jekyll-博客添加评论区">给 Jekyll 博客添加评论区</h1>
+
+<p>近日我给这个博客添加了评论区。因为是使用 <a href="https://pages.github.com/">Github Pages</a> 和 <a href="https://jekyllcn.com/">Jekyll</a> 构建的静态网页博客，不方便实时地把评论添加到网站上。</p>
+
+<p>给静态博客添加评论区的一个常见方法是使用 <a href="https://disqus.com/">Disqus</a>。这是一个博客评论平台，只需在自己的静态站上引用相应的脚本，就可以创建一个评论区。</p>
+
+<p><img src="/blog/assets/2021-12-31-disqus.jpg" alt="在评论区上方还可以选择表情符号进行快速互动。" /></p>
+
+<p>不过，Disqus 在中国大陆无法访问，而其它类似的平台基本都没有免费订阅方案，所以我放弃了这个方法，使用了一种另类的办法。</p>
+
+<p>我用问卷星创建了<a href="https://www.wjx.top/vm/rljkHbJ.aspx">一个表单</a>用来接收评论；在 Jekyll 博客中添加了一个 <code class="language-plaintext highlighter-rouge">comments</code> 数据文件，用来存储全站的所有评论：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">date</span><span class="pi">:</span> <span class="s">2021-12-30T22:08:41+0800</span>
+  <span class="na">post_url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/posts/210306_rouge_test"</span>
+  <span class="na">nickname</span><span class="pi">:</span> <span class="s2">"</span><span class="s">DGCK81LNN"</span>
+  <span class="na">email</span><span class="pi">:</span> <span class="s2">"</span><span class="s">triluolnn@163.com"</span>
+  <span class="na">homepage</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://github.com/DGCK81LNN"</span>
+  <span class="na">content</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">这是一条测试评论</span>
+  <span class="na">reply</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">这是一条测试回复</span>
+</code></pre></div></div>
+
+<p>一旦有人评论（不会真的有吧😅），我就手动把评论写进数据文件中。</p>
+
+<p>我还写了<a href="https://github.com/DGCK81LNN/blog/blob/24fa2788508f7b938ae7db03f2c96d65520a0371/_plugins/myfilters.rb">一个 Liquid 扩展</a>来显示 Gravatar 头像，因为需要对用户的邮箱地址生成 MD5 哈希。虽然 Gravatar 在国内一样无法访问，不过可以用 loli.net 镜像站。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://gravatar.loli.net/avatar/b57408c9ef25d27a791ba9b871aa03f9
+</code></pre></div></div>
+
+<p><img src="https://gravatar.loli.net/avatar/b57408c9ef25d27a791ba9b871aa03f9" alt="使用这个网址应该就可以正常显示出我的头像。" /></p>
+
+<p>这个扩展里还有一个 Liquid 过滤器，可以把邮箱地址中的一些字符改成英文单词（如：triluolnn at 163 dot com）。</p>
+
+<p>然后，在布局模板里添加了评论区的代码。值得注意的是，通过判断 <code class="language-plaintext highlighter-rouge">page.collection</code> 的值，可以只在博文中显示评论区：（Jekyll 文档的“变量”一页上好像没提这个变量）</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%-</span><span class="w"> </span><span class="nt">if</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">collection</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"posts"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<p><a href="/blog/posts/210306_rouge_test">这篇博文</a>下有一条测试评论，可以看到评论的显示效果，我自己觉得比较满意。</p>
+
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/211231_blog_comments"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2021-12-31-blog_comments.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2021-12-31-blog_comments.md"
+    dir: null
+    name: "2021-12-31-blog_comments.md"
+    url: "/posts/211231_blog_comments"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

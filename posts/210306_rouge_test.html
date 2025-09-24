@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Rouge代码高亮测试 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Rouge代码高亮测试" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="Rouge代码高亮测试 本站之前使用prism.js进行语法高亮，近期改为直接给GitHub Pages使用的Jekyll使用的Kramdown使用的Rouge提供样式表。" />
+<meta property="og:description" content="Rouge代码高亮测试 本站之前使用prism.js进行语法高亮，近期改为直接给GitHub Pages使用的Jekyll使用的Kramdown使用的Rouge提供样式表。" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/210306_rouge_test" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/210306_rouge_test" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-06T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Rouge代码高亮测试" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2021-03-06T00:00:00+08:00","datePublished":"2021-03-06T00:00:00+08:00","description":"Rouge代码高亮测试 本站之前使用prism.js进行语法高亮，近期改为直接给GitHub Pages使用的Jekyll使用的Kramdown使用的Rouge提供样式表。","headline":"Rouge代码高亮测试","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/210306_rouge_test"},"url":"https://dgck81lnn.github.io/blog/posts/210306_rouge_test"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Rouge代码高亮测试</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2021-03-06T00:00:00+0800">2021-03-06</time>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="rouge代码高亮测试">Rouge代码高亮测试</h1>
+
+<p>本站之前使用<a href="https://prismjs.com">prism.js</a>进行语法高亮，近期改为直接给GitHub Pages使用的<a href="https://jekyllrb.com">Jekyll</a>使用的<a href="https://kramdown.gettalong.org/">Kramdown</a>使用的<a href="http://rouge.jneen.net/">Rouge</a>提供样式表。</p>
+
+<h2 id="typescript">TypeScript</h2>
+
+<p>以下代码来自<a href="https://github.com/DGCK81LNN/lnnbot/blob/19da0d352ff98b5bab9c7b125c9ab11205add906/src/command-l/video.ts">https://github.com/DGCK81LNN/lnnbot/blob/19da0d352ff98b5bab9c7b125c9ab11205add906/src/command-l/video.ts</a></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Message</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">mirai-ts</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SendReplyFunction</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../types</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+    <span class="nx">ResponseWrapper</span><span class="p">,</span>
+    <span class="nx">VideoCopyright</span><span class="p">,</span>
+    <span class="nx">VideoViewResponse</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./types</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">logger</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./logger</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Avbv</span><span class="p">,</span> <span class="nx">formatDuration</span><span class="p">,</span> <span class="nx">formatTime</span><span class="p">,</span> <span class="nx">formatStatistic</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./utils</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">localConvertAVBV</span><span class="p">(</span><span class="nx">errmsg</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`尝试本地转换AV-BV`</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">errmsg</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="s2">本地AV-BV号转换结果：</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">msg</span> <span class="o">+=</span> <span class="s2">`av</span><span class="p">${</span><span class="nx">Avbv</span><span class="p">.</span><span class="nf">toAV</span><span class="p">(</span><span class="nx">id</span><span class="p">)}</span><span class="s2">　</span><span class="p">${</span><span class="nx">Avbv</span><span class="p">.</span><span class="nf">toBV</span><span class="p">(</span><span class="nx">id</span><span class="p">)}</span><span class="s2">`</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nf">success</span><span class="p">(</span><span class="s2">`成功`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`转换失败`</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+        <span class="nx">msg</span> <span class="o">+=</span> <span class="s2">`出错：</span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">Message</span><span class="p">.</span><span class="nc">Plain</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="k">async</span> <span class="kd">function</span> <span class="nf">video</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="dl">"</span><span class="s2">aid</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">bvid</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">(</span><span class="kd">type</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="nx">T</span> <span class="kd">extends</span> <span class="dl">"</span><span class="s2">aid</span><span class="dl">"</span> <span class="p">?</span> <span class="kr">number</span> <span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">sendReply</span><span class="p">:</span> <span class="nx">SendReplyFunction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="nx">ResponseWrapper</span><span class="o">&lt;</span><span class="nx">VideoViewResponse</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s2">`https://api.bilibili.com/x/web-interface/view?</span><span class="p">${</span><span class="kd">type</span><span class="p">}</span><span class="s2">=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span> <span class="na">responseType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">json</span><span class="dl">"</span> <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">请求错误</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nf">sendReply</span><span class="p">(</span><span class="nf">localConvertAVBV</span><span class="p">(</span><span class="s2">`请求出错：</span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">id</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">wrapper</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">code</span> <span class="o">||</span> <span class="o">!</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">"</span><span class="s2">服务器错误</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">wrapper</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nf">sendReply</span><span class="p">(</span><span class="nf">localConvertAVBV</span><span class="p">(</span><span class="s2">`服务器错误 </span><span class="p">${</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">code</span><span class="p">}</span><span class="s2">：</span><span class="p">${</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">id</span><span class="p">));</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">wrapper</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">attributes</span><span class="p">:</span> <span class="nb">String</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">rights</span><span class="p">.</span><span class="nx">is_cooperation</span><span class="p">)</span> <span class="nx">attributes</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">联合投稿</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">rights</span><span class="p">.</span><span class="nx">is_stein_gate</span><span class="p">)</span> <span class="nx">attributes</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">互动视频</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">rights</span><span class="p">.</span><span class="nx">download</span><span class="p">)</span> <span class="nx">attributes</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">不允许下载</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">rights</span><span class="p">.</span><span class="nx">movie</span><span class="p">)</span> <span class="nx">attributes</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">电影</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">rights</span><span class="p">.</span><span class="nx">no_reprint</span><span class="p">)</span> <span class="nx">attributes</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">未经作者授权，禁止转载</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="k">await</span> <span class="nf">sendReply</span><span class="p">(</span>
+        <span class="nx">Message</span><span class="p">.</span><span class="nc">Image</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">pic</span><span class="p">),</span>
+        <span class="nx">Message</span><span class="p">.</span><span class="nc">Plain</span><span class="p">(</span><span class="s2">`\n`</span> <span class="o">+</span>
+            <span class="s2">`</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">\n`</span> <span class="o">+</span>
+            <span class="s2">`\n`</span> <span class="o">+</span>
+            <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">staff</span><span class="p">?.</span><span class="nx">length</span> <span class="p">?</span>
+                <span class="s2">`制作组：\n`</span> <span class="o">+</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">staff</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">staff</span> <span class="o">=&gt;</span>
+                    <span class="s2">`</span><span class="p">${</span><span class="nx">staff</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2"> - @</span><span class="p">${</span><span class="nx">staff</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">（UID: </span><span class="p">${</span><span class="nx">staff</span><span class="p">.</span><span class="nx">mid</span><span class="p">}</span><span class="s2">）`</span>
+                <span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">)</span>
+                <span class="p">:</span> <span class="s2">`UP主：@</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">owner</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">（UID: </span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">owner</span><span class="p">.</span><span class="nx">mid</span><span class="p">}</span><span class="s2">）`</span>
+            <span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span>
+            <span class="s2">`时长：</span><span class="p">${</span><span class="nf">formatDuration</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">duration</span><span class="p">)}</span><span class="s2">　</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">copyright</span> <span class="o">===</span> <span class="nx">VideoCopyright</span><span class="p">.</span><span class="nx">Original</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">自制</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">转载</span><span class="dl">"</span><span class="p">}</span><span class="s2">　二级分区：</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">tname</span><span class="p">}</span><span class="s2">\n`</span> <span class="o">+</span>
+            <span class="s2">`发布时间:</span><span class="p">${</span><span class="nf">formatTime</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">pubdate</span><span class="p">)}</span><span class="s2">\n`</span> <span class="o">+</span>
+            <span class="s2">`av</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">aid</span><span class="p">}</span><span class="s2">　</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">bvid</span><span class="p">}</span><span class="s2">\n`</span> <span class="o">+</span>
+            <span class="p">(</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">length</span> <span class="p">?</span> <span class="s2">`属性：</span><span class="p">${</span><span class="nx">attributes</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> - </span><span class="dl">"</span><span class="p">)}</span><span class="s2">\n`</span> <span class="p">:</span> <span class="dl">""</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span>
+            <span class="s2">`简介：\n`</span> <span class="o">+</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">desc</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span>
+            <span class="s2">`\n`</span> <span class="o">+</span>
+            <span class="s2">`</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">view</span><span class="p">)}</span><span class="s2">次播放　</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">danmaku</span><span class="p">)}</span><span class="s2">条弹幕\n`</span> <span class="o">+</span>
+            <span class="s2">`</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">like</span><span class="p">)}</span><span class="s2">人点赞　</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">coin</span><span class="p">)}</span><span class="s2">个硬币　</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">favorite</span><span class="p">)}</span><span class="s2">人收藏\n`</span> <span class="o">+</span>
+            <span class="s2">`</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">share</span><span class="p">)}</span><span class="s2">次转发　</span><span class="p">${</span><span class="nf">formatStatistic</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">stat</span><span class="p">.</span><span class="nx">reply</span><span class="p">)}</span><span class="s2">条评论\n`</span> <span class="o">+</span>
+            <span class="s2">`\n`</span> <span class="o">+</span>
+            <span class="s2">`【分P】</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">pages</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="s2">个\n`</span> <span class="o">+</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">pages</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">page</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">page</span><span class="p">.</span><span class="nx">page</span><span class="p">}</span><span class="s2">. </span><span class="p">${</span><span class="nx">page</span><span class="p">.</span><span class="nx">part</span><span class="p">}</span><span class="s2"> （</span><span class="p">${</span><span class="nf">formatDuration</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">duration</span><span class="p">)}</span><span class="s2">）`</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span> <span class="o">+</span>
+            <span class="s2">`\n`</span> <span class="o">+</span>
+            <span class="s2">`使用 /l av</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">aid</span><span class="p">}</span><span class="s2"> -tags 查询视频的标签；\n`</span> <span class="o">+</span>
+            <span class="s2">`使用 /l av</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">aid</span><span class="p">}</span><span class="s2"> -comments 查询视频的热门评论；\n`</span> <span class="o">+</span>
+            <span class="s2">`使用 /l av</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">aid</span><span class="p">}</span><span class="s2"> -comments -oldest 查询视频的最先10条评论；\n`</span> <span class="o">+</span>
+            <span class="s2">`使用 /l av</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">aid</span><span class="p">}</span><span class="s2"> -comments -latest 查询视频的最新10条评论。`</span>
+        <span class="p">),</span>
+    <span class="p">);</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nf">success</span><span class="p">(</span><span class="s2">`成功`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="html">HTML</h2>
+
+<p>以下代码来自<a href="https://github.com/DGCK81LNN/dgck81lnn.github.io/blob/0c2c275dd54891e53d939abb5f6dd87e373407df/apps/index.html">https://github.com/DGCK81LNN/dgck81lnn.github.io/blob/0c2c275dd54891e53d939abb5f6dd87e373407df/apps/index.html</a></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"cmn"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!--
+  这是灵魂小站 / 应用!
+  ID: apps.index // soulapps
+--&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, shrink-to-fit=no"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"format-detection"</span> <span class="na">content=</span><span class="s">"telephone=no"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/css/commons.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">href=</span><span class="s">"/site_icon.png"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"/site_icon.png"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/site_icon.png"</span> <span class="na">sizes=</span><span class="s">"160x160"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcdn.net/ajax/libs/bootstrap-vue/2.21.0/bootstrap-vue-icons.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/commons.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>应用 - 灵魂小站<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nc">.flex</span> <span class="p">{</span>
+      <span class="nl">flex-wrap</span><span class="p">:</span> <span class="nb">wrap</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.card</span> <span class="p">{</span>
+      <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+      <span class="nl">min-width</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">1rem</span> <span class="m">8px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.card-link</span> <span class="p">{</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">3px</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.card</span> <span class="nt">img</span> <span class="p">{</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;soul-header&gt;&lt;/soul-header&gt;</span>
+    <span class="nt">&lt;soul-main&gt;</span>
+      <span class="nt">&lt;b-breadcrumb&gt;</span>
+        <span class="nt">&lt;b-breadcrumb-item</span> <span class="na">href=</span><span class="s">"/home"</span><span class="nt">&gt;</span>主站<span class="nt">&lt;/b-breadcrumb-item&gt;</span>
+        <span class="nt">&lt;b-breadcrumb-item</span> <span class="na">active</span><span class="nt">&gt;</span>应用<span class="nt">&lt;/b-breadcrumb-item&gt;</span>
+      <span class="nt">&lt;/b-breadcrumb&gt;</span>
+
+      <span class="nt">&lt;b-card-group</span> <span class="na">deck</span> <span class="na">class=</span><span class="s">"flex"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;b-card</span>
+        <span class="na">v-for=</span><span class="s">"item in a"</span>
+        <span class="na">:key=</span><span class="s">"item.title"</span>
+        <span class="na">class=</span><span class="s">"card"</span>
+        <span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">slot=</span><span class="s">"header"</span> <span class="na">class=</span><span class="s">"clearfix"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;b-link</span>
+            <span class="na">v-if=</span><span class="s">"item.link"</span>
+            <span class="na">class=</span><span class="s">"card-link"</span>
+            <span class="na">:href=</span><span class="s">"item.link"</span>
+            <span class="nt">&gt;</span>进入<span class="nt">&lt;/b-link&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">v-html=</span><span class="s">"item.body"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;/b-card&gt;</span>
+      <span class="nt">&lt;/b-container&gt;</span>
+    <span class="nt">&lt;/soul-main&gt;</span>
+    <span class="nt">&lt;soul-footer&gt;&lt;/soul-footer&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    <span class="kd">const</span> <span class="nx">vm</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+      <span class="na">el</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#app</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">a</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">灵魂实验室</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">body</span><span class="p">:</span> <span class="s2">`&lt;p&gt;
+                  运行JavaScript... 或者一些奇怪的编程语言。
+                &lt;/p&gt;`</span><span class="p">,</span>
+                <span class="na">link</span><span class="p">:</span> <span class="dl">"</span><span class="s2">lab/</span><span class="dl">"</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">更多内容即将到来...</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">body</span><span class="p">:</span> <span class="dl">""</span>
+              <span class="p">}</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="ruby">ruby</h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">subj</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">expl</span> <span class="o">=</span> <span class="p">[</span><span class="nb">gets</span><span class="p">,</span> <span class="nb">gets</span><span class="p">,</span> <span class="nb">gets</span><span class="p">].</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="o">&lt;&lt;</span><span class="no">END</span><span class="sh">
+</span><span class="si">#{</span><span class="n">subj</span><span class="si">}#{</span><span class="n">act</span><span class="si">}</span><span class="sh">是怎么回事呢？</span><span class="si">#{</span><span class="n">subj</span><span class="si">}</span><span class="sh">相信大家都很熟悉，但是</span><span class="si">#{</span><span class="n">subj</span><span class="si">}#{</span><span class="n">act</span><span class="si">}</span><span class="sh">是怎么回事呢，下面就让小编带大家一起了解吧。
+</span><span class="si">#{</span><span class="n">subj</span><span class="si">}#{</span><span class="n">act</span><span class="si">}</span><span class="sh">，其实就是</span><span class="si">#{</span><span class="n">expl</span><span class="si">}</span><span class="sh">，大家可能会很惊讶</span><span class="si">#{</span><span class="n">subj</span><span class="si">}</span><span class="sh">怎么会</span><span class="si">#{</span><span class="n">act</span><span class="si">}</span><span class="sh">呢？但事实就是这样，小编也感到非常惊讶。
+这就是关于</span><span class="si">#{</span><span class="n">subj</span><span class="si">}#{</span><span class="n">act</span><span class="si">}</span><span class="sh">的事情了，大家有什么想法呢，欢迎在评论区告诉小编一起讨论哦！
+</span><span class="no">END</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s0</span> <span class="o">=</span> <span class="mf">0.0002908882045634</span> <span class="c1"># sin 1'</span>
+<span class="n">c0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s0</span><span class="p">,</span> <span class="n">c0</span>
+<span class="mi">1</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="mi">5400</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="nb">format</span><span class="p">(</span><span class="s2">"sin %2d° %2d' = %.9f"</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">60</span><span class="p">,</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">60</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">*</span> <span class="n">c0</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">s0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>以下代码来自<a href="https://www.luogu.com.cn/record/47491997">https://www.luogu.com.cn/record/47491997</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">DigitDisplay</span>
+  <span class="vc">@@d</span> <span class="o">=</span> <span class="p">[[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]]</span>
+  <span class="kp">module_function</span>
+  <span class="k">def</span> <span class="nf">add_digit</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">4</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+      <span class="vc">@@d</span><span class="p">[</span><span class="n">line</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span><span class="n">digit</span><span class="p">[</span><span class="n">line</span><span class="p">])</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">to_s</span>
+    <span class="vc">@@d</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="n">l</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span> <span class="p">}.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">gets</span> <span class="c1"># skip first line of input (number of digits)</span>
+<span class="nb">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">each_char</span> <span class="k">do</span> <span class="o">|</span><span class="n">char</span><span class="o">|</span>
+    <span class="no">DigitDisplay</span><span class="p">.</span><span class="nf">add_digit</span><span class="p">(</span>
+        <span class="k">case</span> <span class="n">char</span>
+        <span class="k">when</span> <span class="s2">"0"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"1"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"2"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.."</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"3"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"4"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"5"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.."</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"6"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.."</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"7"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"8"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">when</span> <span class="s2">"9"</span> <span class="k">then</span> <span class="p">[</span><span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"X.X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">,</span> <span class="s2">"..X"</span><span class="p">,</span> <span class="s2">"XXX"</span><span class="p">]</span>
+        <span class="k">end</span>
+    <span class="p">)</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="no">DigitDisplay</span>
+</code></pre></div></div>
+
+<h2 id="c">C++</h2>
+
+<p>以下代码来自<a href="https://www.luogu.com.cn/record/40823805">https://www.luogu.com.cn/record/40823805</a></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">16384</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">dim</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">dim</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="n">dim</span><span class="p">],</span> <span class="n">k</span><span class="p">[</span><span class="n">dim</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+  
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span>
+      <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/210306_rouge_test"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2021-03-06-rouge_test.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2021-03-06-rouge_test.md"
+    dir: null
+    name: "2021-03-06-rouge_test.md"
+    url: "/posts/210306_rouge_test"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

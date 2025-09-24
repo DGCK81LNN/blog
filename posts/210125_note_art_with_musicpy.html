@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>用musicpy制作音符画 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="用musicpy制作音符画" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="用musicpy制作音符画 musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（ 今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。" />
+<meta property="og:description" content="用musicpy制作音符画 musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（ 今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/210125_note_art_with_musicpy" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/210125_note_art_with_musicpy" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-25T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="用musicpy制作音符画" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2022-09-07T12:45:17+08:00","datePublished":"2021-01-25T00:00:00+08:00","description":"用musicpy制作音符画 musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（ 今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。","headline":"用musicpy制作音符画","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/210125_note_art_with_musicpy"},"url":"https://dgck81lnn.github.io/blog/posts/210125_note_art_with_musicpy"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">用musicpy制作音符画</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2021-01-25T00:00:00+0800">2021-01-25</time>
+    &middot;
+    <span>最后更新于 <time datetime="2022-09-07T12:45:17+0800"
+    >2022-09-07 12:45</time
+    ></span>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+      <a href="/blog/tags/music" class="text-decoration-none">
+        <span class="badge bg-primary">音乐</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="用musicpy制作音符画">用<a href="https://github.com/Rainbow-Dreamer/musicpy">musicpy</a>制作音符画</h1>
+
+<p>musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（</p>
+
+<p>今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。</p>
+
+<figure>
+<img src="/blog/assets/note_art_with_musicpy.png" alt="在这张屏幕截图中可以看到，在钢琴瀑布中有一串紫色音符排列成一段正弦波，还有其他不同颜色的音符" />
+<figcaption>用一段musicpy代码生成的正弦波（紫色音符）。<br />钢琴瀑布软件：PianoFromAbove</figcaption>
+</figure>
+
+<p>为了让音符顺滑，我改了<code class="language-plaintext highlighter-rouge">musicpy.py</code>源代码，在<code class="language-python highlight language-python highlighter-rouge"><span class="nf">write</span><span class="p">()</span></code>的定义里把输出MIDI的分辨率设为了1920：</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- MyMIDI = MIDIFile(track_number, deinterleave=deinterleave)
+</span><span class="gi">+ MyMIDI = MIDIFile(track_number, deinterleave=deinterleave, ticks_per_quarternote=1920)
+</span></code></pre></div></div>
+
+<p>我使用的代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">musicpy</span>
+<span class="kn">import</span> <span class="n">math</span>
+
+<span class="k">def</span> <span class="nf">achord</span><span class="p">(</span><span class="o">*</span><span class="n">notes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">musicpy</span><span class="p">.</span><span class="nf">chord</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+
+<span class="n">mychord</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">108</span><span class="p">:</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">asin</span><span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="mi">44</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">math</span><span class="p">.</span><span class="nf">asin</span><span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="mi">21</span><span class="p">)</span> <span class="o">/</span> <span class="mi">44</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+    <span class="n">nc</span> <span class="o">=</span> <span class="nf">achord</span><span class="p">(</span><span class="n">musicpy</span><span class="p">.</span><span class="nf">degree_to_note</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mychord</span><span class="p">:</span>
+        <span class="n">mychord</span> <span class="o">+=</span> <span class="n">nc</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mychord</span> <span class="o">=</span> <span class="n">nc</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">musicpy</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">up.mid</span><span class="sh">"</span><span class="p">,</span> <span class="n">mychord</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>以上代码会输出每个音符的音高和时长，并写入上行的半个周期到up.mid。偷了点懒，我把<code class="language-python highlight language-python highlighter-rouge"><span class="n">musicpy</span><span class="p">.</span><span class="nf">degree_to_note</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code>中的<code class="language-python highlight language-python highlighter-rouge"><span class="n">i</span></code>改成<code class="language-python highlight language-python highlighter-rouge"><span class="mi">129</span> <span class="o">-</span> <span class="n">i</span></code>，<code class="language-python highlight language-python highlighter-rouge"><span class="sh">"</span><span class="s">up.mid</span><span class="sh">"</span></code>改成<code class="language-python highlight language-python highlighter-rouge"><span class="sh">"</span><span class="s">down.mid</span><span class="sh">"</span></code>，得到了下行的半个周期。</p>
+
+<p>用类似的思路可以得到其他图形。注意用<code class="language-python highlight language-python highlighter-rouge"><span class="o">&amp;</span></code>运算符可以让两个<code class="language-python highlight language-python highlighter-rouge"><span class="n">musicpy</span><span class="p">.</span><span class="n">chord</span></code>同时播放。</p>
+
+<h2 id="2022-09-07-更新">2022-09-07 更新</h2>
+
+<p>虽然由于不太习惯使用 Python 的缘故，音符画的问题我已经改用其他方法解决了，但刚刚我发现 musicpy 更新了一些内容，添加了更多好的功能。特别是音轨和乐曲类型的加入简直是史诗级加强。</p>
+
+<p>现在输出 MIDI 文件的默认分辨率是 960，基本上足够用来做音符画了，并且如果需要的话也可以在调用 <code class="language-python highlight language-python highlighter-rouge"><span class="n">write</span></code> 或 <code class="language-python highlight language-python highlighter-rouge"><span class="n">play</span></code> 时直接指定需要的输出分辨率：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">out.mid</span><span class="sh">"</span><span class="p">,</span> <span class="n">mychord</span><span class="p">,</span> <span class="n">ticks_per_quarternote</span><span class="o">=</span><span class="mi">384</span><span class="p">)</span>
+</code></pre></div></div>
+
+<aside class="card mt-5 mb-3 p-3 pb-0">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">up</span> <span class="o">=</span> <span class="nc">N</span><span class="p">(</span><span class="sh">"</span><span class="s">C4</span><span class="sh">"</span><span class="p">)()</span> <span class="o">@</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">updown</span> <span class="o">=</span> <span class="n">up</span> <span class="o">//</span> <span class="mi">1</span> <span class="o">+</span> <span class="o">~</span><span class="n">up</span>
+</code></pre></div>  </div>
+
+</aside>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/210125_note_art_with_musicpy"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2021-01-25-note_art_with_musicpy.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2021-01-25-note_art_with_musicpy.md"
+    dir: null
+    name: "2021-01-25-note_art_with_musicpy.md"
+    url: "/posts/210125_note_art_with_musicpy"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

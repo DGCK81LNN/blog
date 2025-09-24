@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>brainfuck二进制转十进制 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="brainfuck二进制转十进制" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="brainfuck二进制转十进制 诶――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，诶……我写了个程序，二进制转十进制：" />
+<meta property="og:description" content="brainfuck二进制转十进制 诶――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，诶……我写了个程序，二进制转十进制：" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/201204_brainf_bin2dec" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/201204_brainf_bin2dec" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-04T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="brainfuck二进制转十进制" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2020-12-04T00:00:00+08:00","datePublished":"2020-12-04T00:00:00+08:00","description":"brainfuck二进制转十进制 诶――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，诶……我写了个程序，二进制转十进制：","headline":"brainfuck二进制转十进制","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/201204_brainf_bin2dec"},"url":"https://dgck81lnn.github.io/blog/posts/201204_brainf_bin2dec"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">brainfuck二进制转十进制</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2020-12-04T00:00:00+0800">2020-12-04</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="brainfuck二进制转十进制">brainfuck二进制转十进制</h1>
+
+<p><em>诶――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，诶……我写了个程序，二进制转十进制：</em></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;cmath&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">){</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span> 
+        <span class="n">c</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>但是超过2<sup>20</sup>-1了就不好用，L老师你能不能教教我更好的方法，帮助治疗一下我的程序。他一说我啪地就站起来了，很快啊！我说你这个没用，我这个有用：</em></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">a</span> <span class="o">==</span> <span class="sc">'1'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">n</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="sc">'1'</span><span class="p">)</span>
+            <span class="n">n</span> <span class="o">|=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>当时就流眼泪了，他说L老师对不――对不起，我是……他说他是乱写的，他可不是乱写的啊！取模、乘方、整除，训练有素。后来他说他学过三四个星期算法，啊看来是――有备而来。我劝！这位同学――耗子尾汁，好好反思，以后――不要再犯――这样的聪明</em>（指把二进制当作十进制读入）<em>，小聪明啊！</em></p>
+
+<div style="height:30rem;width:100%;max-width:50rem" aria-label="彩条屏"><div style="height:70%"><div style="width:14.2857%;height:100%;display:inline-block;background:#ccc"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#cc1"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1cc"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1c1"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#c1c"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#c11"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#11c"> </div></div><div style="height:10%"><div style="width:14.2857%;height:100%;display:inline-block;background:#11c"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#111"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#c1c"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#111"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1cc"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#111"> </div><div style="width:14.2857%;height:100%;display:inline-block;background:#1c1"> </div></div><div style="height:20%"><div style="width:17.8571%;height:100%;display:inline-block;background:#118"> </div><div style="width:17.8571%;height:100%;display:inline-block;background:#eee"> </div><div style="width:17.8571%;height:100%;display:inline-block;background:#51c"> </div><div style="width:46.4285%;height:100%;display:inline-block;background:linear-gradient(to right,#111,#ccc)"> </div></div></div>
+
+<p>（⬆这是一堆带background-color的&lt;div&gt;，硬核彩条屏）</p>
+
+<p>随后我突发奇想，能不能用brainf写一个二进制转十进制。最后搞出来这么个东西。</p>
+
+<p>由于把读到的数直接存在了一个单元格里，能处理的数据位数取决于单元格的数据类型，如单字节的单元格就最多可以算到255。</p>
+
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">bin2dec
+
+先在这存个负1，稍后作为输出结束的标识。
+</span><span class="nf">-</span><span class="nb">&gt;&gt;&gt;</span><span class="c1">
+【读入二进制数】
+{ －1 0 n=0 'a=0 }
+只读取一行输入，读到换行符或EOF就离开循环。
+</span><span class="nf">++++++++++,----------</span><span class="p">[</span><span class="c1"> 循环体开始
+ 现在读到的东西不是换行符，假设它只能是0（48）或1（49）。
+ 且它已经在上一行被减了10，所以现在只能是38或39。
+ { －1 0 n 'a=38\39 }
+ 因为读到了新的数位，所以把n乘以2。
+ </span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 把n放在左边一格
+ { －1 n '0 a }
+ </span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 再乘2挪回来
+ { －1 '0 n=2n a }
+ 把a减去38，使它变成0或1。
+ </span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">------</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 先减6个6
+ </span><span class="nb">&lt;</span><span class="nf">--</span><span class="c1"> 再减2
+ { －1 0 n 'a=0\1 }
+ 给n加上a。
+ </span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+ { －1 0 n=n＋a '0 }
+</span><span class="nf">++++++++++,----------</span><span class="p">]</span><span class="c1"> 循环体结束
+{ －1 0 n '0 }
+【把得到的数用十进制表示】
+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+ 现在n是我们要处理的数。
+ 把n除以10，余数放在左边一格，商放在右边一格。
+ { … 余数=0 'n 商=0 }
+ </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> 把n一个一个地挪到左边一格，如果n=0了就停停，这样操作最多9次。
+  </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1">
+  </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> 如果完成后n还不是0，
+   </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 就再给n减1，把左边一格清零，右边一格加1。
+   </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 为防止n为0导致意外退出循环，强行把指针移到一个不是0的格子左边。
+   现在如果n为0，指针在n上；否则指针在已经清空的余数格子上。
+   由于一定是0，可以安全退出10层循环。
+  </span><span class="p">]]]]]]]]</span><span class="c1">
+ </span><span class="p">]</span><span class="c1">
+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 如果n为0了，就把商当作新的n进行同样的操作，否则指针回到n上继续计算。
+上面的运算一直进行到商为0为止。
+现在内存里是一个负1后面紧跟着得到的十进制数从低到高的每一位。
+【输出得到的十进制数】
+向左遍历直到负1那里为止。
+</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="c1">
+ 给数加上48，得到数字的ASCII。
+ </span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+ 输出得到的数位，然后把它清零。
+ </span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;</span><span class="nf">+</span><span class="p">]</span><span class="c1">
+最后输出换行符。
+</span><span class="nf">++++++++++.</span><span class="c1">
+</span></code></pre></div></div>
+
+<p><em>诶――写程序，要以和为贵，要讲码德，不要搞――浪费内存。谢谢朋友们！</em></p>
+
+<hr />
+
+<p>DGCK81LNN<br />2020年12月4日 (五) 08:03 (CST)</p>
+
+<p><strong>参考资料</strong></p>
+<ul>
+  <li><a href="http://mazonka.com/brainf">Brainfuck Base expansion</a></li>
+</ul>
+
+<hr />
+
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">赠品：dec2bin（
+与bin2dec大同小异，不加注释了，请对照阅读
+</span><span class="nf">-</span><span class="nb">&gt;&gt;&gt;</span><span class="c1">
+</span><span class="nf">++++++++++,----------</span><span class="p">[</span><span class="c1">
+ </span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+ </span><span class="nb">&lt;</span><span class="p">[</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">++++++++++</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+ </span><span class="nb">&gt;&gt;&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">------</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+ </span><span class="nb">&lt;</span><span class="nf">--</span><span class="c1">
+ </span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+</span><span class="nf">++++++++++,----------</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;</span><span class="p">[</span><span class="c1">
+ </span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1">
+  </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+ </span><span class="p">]</span><span class="c1">
+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="p">[</span><span class="nf">-</span><span class="c1">
+ </span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nf">-</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+ </span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;</span><span class="nf">+</span><span class="p">]</span><span class="c1">
+</span><span class="nf">++++++++++.</span><span class="c1">
+</span></code></pre></div></div>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/201204_brainf_bin2dec"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2020-12-04-brainf_bin2dec.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2020-12-04-brainf_bin2dec.md"
+    dir: null
+    name: "2020-12-04-brainf_bin2dec.md"
+    url: "/posts/201204_brainf_bin2dec"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

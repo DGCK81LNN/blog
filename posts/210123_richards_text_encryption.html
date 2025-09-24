@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Richard写的文本加密算法 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Richard写的文本加密算法" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="Richard写的文本加密算法 Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌“最高的一个有效位”‌（即最高的一个1）以下的每一位都反转，如：" />
+<meta property="og:description" content="Richard写的文本加密算法 Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌“最高的一个有效位”‌（即最高的一个1）以下的每一位都反转，如：" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/210123_richards_text_encryption" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/210123_richards_text_encryption" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-23T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Richard写的文本加密算法" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2023-11-18T10:41:00+08:00","datePublished":"2021-01-23T00:00:00+08:00","description":"Richard写的文本加密算法 Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌“最高的一个有效位”‌（即最高的一个1）以下的每一位都反转，如：","headline":"Richard写的文本加密算法","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/210123_richards_text_encryption"},"url":"https://dgck81lnn.github.io/blog/posts/210123_richards_text_encryption"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Richard写的文本加密算法</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2021-01-23T00:00:00+0800">2021-01-23</time>
+    &middot;
+    <span>最后更新于 <time datetime="2023-11-18T10:41:00+0800"
+    >2023-11-18 10:41</time
+    ></span>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="richard写的文本加密算法">Richard写的文本加密算法</h1>
+
+<p>Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌<em>“最高的一个有效位”</em>‌（即最高的一个1）以下的每一位都反转，如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     $554A 啊
+ V最高有效位
+01010101 01001010
+VV|||||| ||||||||
+01101010 10110101
+     $6AB5 檵
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     $0052 R
+          V最高有效位
+00000000 01010010
+VVVVVVVV VV||||||
+00000000 01101101
+     $006D m
+</code></pre></div></div>
+
+<h2 id="原实现">原实现</h2>
+
+<p>虽然算法很简单，但由于历史原因，该算法的实现十分阴间。这是Python源代码（我调整了函数的顺序）：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">str1</span><span class="p">):</span>
+    <span class="n">b</span><span class="o">=</span><span class="sh">""</span>
+    <span class="n">a</span><span class="o">=</span><span class="nf">stn</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">str</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="n">i</span>
+            <span class="n">x</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="sh">"</span><span class="s">0</span><span class="sh">"</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="sh">"</span><span class="s">1</span><span class="sh">"</span>
+        <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="sh">"</span><span class="s">1</span><span class="sh">"</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="sh">"</span><span class="s">0</span><span class="sh">"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span><span class="o">+=</span><span class="sh">"</span><span class="s">2</span><span class="sh">"</span>
+            <span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">str2</span><span class="o">=</span><span class="nf">nts</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">str2</span>
+
+<span class="k">def</span> <span class="nf">nts</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">str1</span><span class="o">=</span><span class="sh">""</span>
+    <span class="n">ls</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">str</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="sh">"</span><span class="s">2</span><span class="sh">"</span><span class="p">:</span>
+            <span class="n">ls</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">str1</span><span class="p">))</span>
+            <span class="n">str1</span><span class="o">=</span><span class="sh">""</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">str1</span><span class="o">+=</span><span class="n">k</span>
+    <span class="n">b</span><span class="o">=</span><span class="sh">""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
+        <span class="n">b</span><span class="o">+=</span><span class="nf">chr</span><span class="p">(</span><span class="nf">num2t10</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">num2t10</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">num</span><span class="o">=</span><span class="nf">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">num1</span><span class="o">=</span><span class="sh">""</span>
+    <span class="n">num2</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+        <span class="n">num1</span><span class="o">+=</span><span class="n">num</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">num1</span><span class="p">)):</span>
+        <span class="n">num2</span><span class="o">+=</span><span class="nf">int</span><span class="p">(</span><span class="n">num1</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">j</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num2</span>
+
+<span class="k">def</span> <span class="nf">stn</span><span class="p">(</span><span class="n">str1</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="sh">""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">str1</span><span class="p">:</span>
+        <span class="n">a</span><span class="o">+=</span><span class="nf">str</span><span class="p">((</span><span class="nf">num10t2</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="n">i</span><span class="p">))))</span>
+        <span class="n">a</span><span class="o">+=</span><span class="sh">"</span><span class="s">2</span><span class="sh">"</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">num10t2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">str1</span><span class="o">=</span><span class="sh">""</span>
+    <span class="n">str2</span><span class="o">=</span><span class="sh">""</span>
+    <span class="k">while</span> <span class="n">num</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">num</span><span class="o">%</span><span class="mi">2</span>
+        <span class="n">str1</span><span class="o">+=</span><span class="nf">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">num</span><span class="o">=</span><span class="nf">int</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">str1</span><span class="p">)):</span>
+        <span class="n">str2</span><span class="o">+=</span><span class="n">str1</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">str2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>为了方便理解，这是我修改了变量名的版本：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">origin</span><span class="p">):</span> <span class="c1"># OPTIMIZE
+</span>    <span class="sh">"""</span><span class="s">加密/解密主函数。
+    
+    由于实质上是异或加密，所以加密和解密是同一个算法。
+    </span><span class="sh">"""</span>
+    <span class="n">resultEncoded</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="n">originEncoded</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="nf">stn</span><span class="p">(</span><span class="n">origin</span><span class="p">))</span> <span class="c1"># 第一步是调用stn()，先看stn()的定义
+</span>    <span class="n">isHighestBit</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">originEncoded</span><span class="p">:</span> <span class="c1"># 这个循环用来进行迫真按位运算
+</span>        <span class="k">if</span> <span class="n">isHighestBit</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="n">bit</span>
+            <span class="n">isHighestBit</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">elif</span> <span class="n">bit</span> <span class="o">==</span> <span class="sh">'</span><span class="s">0</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="sh">'</span><span class="s">1</span><span class="sh">'</span>
+        <span class="k">elif</span> <span class="n">bit</span> <span class="o">==</span> <span class="sh">'</span><span class="s">1</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="sh">'</span><span class="s">0</span><span class="sh">'</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultEncoded</span> <span class="o">+=</span> <span class="sh">'</span><span class="s">2</span><span class="sh">'</span>
+            <span class="n">isHighestBit</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="nf">nts</span><span class="p">(</span><span class="n">resultEncoded</span><span class="p">)</span> <span class="c1"># 最后调用nts()，看nts()的定义
+</span>
+<span class="k">def</span> <span class="nf">stn</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">把每个字符的字符编码转换成二进制数，然后每个数后用</span><span class="sh">'</span><span class="s">2</span><span class="sh">'</span><span class="s">连接。
+    
+    如：</span><span class="sh">"</span><span class="s">ABC</span><span class="sh">"</span><span class="s"> → </span><span class="sh">"</span><span class="s">100000121000010210000112</span><span class="sh">"</span><span class="s">
+    </span><span class="sh">"""</span>
+    <span class="c1"># 实际上，一开始采用的加密算法是这个函数；
+</span>    <span class="c1"># 由于密文的体积太大，才有了现在的版本。
+</span>    <span class="n">encoded</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">encoded</span> <span class="o">+=</span> <span class="nf">str</span><span class="p">(</span><span class="nf">num10t2</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)));</span> <span class="c1"># 对char的代码点调用了num10t2()
+</span>        <span class="n">encoded</span> <span class="o">+=</span> <span class="sh">'</span><span class="s">2</span><span class="sh">'</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span> <span class="c1"># ???: 为什么要转成int？？？
+</span>
+<span class="k">def</span> <span class="nf">num10t2</span><span class="p">(</span><span class="n">decimal</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">把正整数用二进制表示。
+    </span><span class="sh">"""</span>
+    <span class="n">reversedBinary</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">while</span> <span class="n">decimal</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">reversedBinary</span> <span class="o">+=</span> <span class="nf">str</span><span class="p">(</span><span class="n">decimal</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># OPTIMIZE: 建议改成：decimal &amp; 1
+</span>        <span class="c1"># OPTIMIZE: 为什么要事后手动倒转字符串，而不是直接把这里新增的字符拼接在字符串的开头？
+</span>        <span class="n">decimal</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">decimal</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># OPTIMIZE: decimal &gt;&gt;= 1 它不香吗？
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">)):</span>
+        <span class="n">binary</span> <span class="o">+=</span> <span class="n">reversedBinary</span><span class="p">[</span><span class="nf">len</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span> <span class="c1"># ???: 为什么要转成int？？？
+</span>
+<span class="k">def</span> <span class="nf">nts</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">解码“encode()”生成的密文。
+    </span><span class="sh">"""</span>
+    <span class="n">binaryBuffer</span> <span class="o">=</span> <span class="sh">""</span> <span class="c1"># 存储一个二进制数，遇到'2'就拿走使用并清空
+</span>    <span class="n">binaryList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nf">str</span><span class="p">(</span><span class="n">encoded</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="sh">'</span><span class="s">2</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">binaryList</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">binaryBuffer</span><span class="p">))</span> <span class="c1"># HACK: 为什么要转成int？？？
+</span>            <span class="n">binaryBuffer</span> <span class="o">=</span> <span class="sh">""</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">binaryBuffer</span> <span class="o">+=</span> <span class="n">bit</span>
+    <span class="n">decoded</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">binary</span> <span class="ow">in</span> <span class="n">binaryList</span><span class="p">:</span>
+        <span class="n">decoded</span> <span class="o">+=</span> <span class="nf">chr</span><span class="p">(</span><span class="nf">num2t10</span><span class="p">(</span><span class="n">binary</span><span class="p">))</span> <span class="c1"># 对代码点的二进制调用了num2t10()
+</span>    <span class="k">return</span> <span class="n">decoded</span>
+
+<span class="k">def</span> <span class="nf">num2t10</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">解析二进制数。
+    </span><span class="sh">"""</span>
+    <span class="c1"># OPTIMIZE
+</span>    <span class="c1"># 这算法看得我人都傻了
+</span>    <span class="n">binary</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+    <span class="n">reversedBinary</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="n">decimal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">binary</span><span class="p">)):</span>
+        <span class="n">reversedBinary</span> <span class="o">+=</span> <span class="n">binary</span><span class="p">[</span><span class="nf">len</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">)):</span>
+        <span class="n">decimal</span> <span class="o">+=</span> <span class="nf">int</span><span class="p">(</span><span class="n">reversedBinary</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="c1"># 1 &lt;&lt; i 它不香吗？
+</span>        <span class="c1"># 就算要乘方，** 运算符不知道？？
+</span>    <span class="k">return</span> <span class="n">decimal</span>
+</code></pre></div></div>
+
+<p>我必须吐槽<code class="language-plaintext highlighter-rouge">num10t2</code>和<code class="language-plaintext highlighter-rouge">num2t10</code>这两个函数名，人家整数本来就是按二进制存储的，显示成十进制只是为了给人看的；况且好好的按位运算，非要用字符串来实现，白拼接那么多次字符串。于是我重写了一下这个算法。</p>
+
+<h2 id="我重写的算法">我重写的算法</h2>
+
+<p>JS：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sts</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+    <span class="p">[...</span><span class="nx">string</span><span class="p">].</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">char</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">codePoint</span> <span class="o">=</span> <span class="nx">char</span><span class="p">.</span><span class="nf">codePointAt</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+            <span class="nx">shifter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nx">temp</span> <span class="o">=</span> <span class="nx">codePoint</span><span class="p">;</span>
+        <span class="k">while </span><span class="p">(</span><span class="nx">temp</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">shifter</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">out</span> <span class="o">+=</span> <span class="nb">String</span><span class="p">.</span><span class="nf">fromCodePoint</span><span class="p">(</span><span class="nx">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="nx">shifter</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">out</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Richard只会Python，所以又给他写了个Python版：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">codePoint</span> <span class="o">=</span> <span class="nf">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">shifter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">codePoint</span>
+        <span class="k">while</span> <span class="n">temp</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+            <span class="n">shifter</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="nf">chr</span><span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="n">shifter</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div></div>
+
+<p>又写了个Ruby版练手：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="n">string</span><span class="p">.</span><span class="nf">each_codepoint</span> <span class="k">do</span> <span class="o">|</span><span class="n">codePoint</span><span class="o">|</span>
+        <span class="n">shifter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">codePoint</span>
+        <span class="k">until</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span><span class="p">).</span><span class="nf">zero?</span>
+            <span class="n">temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+            <span class="n">shifter</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="k">end</span>
+        <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="n">shifter</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">out</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>顺便用按位运算重新实现了<code class="language-plaintext highlighter-rouge">num10t2()</code>和<code class="language-plaintext highlighter-rouge">num2t10()</code>：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fromBin</span><span class="p">(</span><span class="nb">bin</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nf">isinstance</span><span class="p">(</span><span class="nb">bin</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="c1"># 永远不要把二进制数转换成int！！
+</span>    <span class="n">dec</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">bin</span><span class="p">:</span>
+        <span class="n">dec</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="sh">"</span><span class="s">1</span><span class="sh">"</span><span class="p">:</span>
+            <span class="n">dec</span> <span class="o">|=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dec</span>
+
+<span class="k">def</span> <span class="nf">toBin</span><span class="p">(</span><span class="n">dec</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">dec</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dec</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="nb">bin</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">while</span> <span class="n">dec</span><span class="p">:</span>
+        <span class="nb">bin</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">dec</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">bin</span> <span class="c1"># 把新的数位追加到bin的开头
+</span>        <span class="n">dec</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">bin</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2023-08-12-更新">2023-08-12 更新</h2>
+
+<p>经过我的学习，<code class="language-plaintext highlighter-rouge">sts</code> 算法现已有更好的实现。</p>
+
+<h3 id="改良-sts-第二代">改良 <code class="language-plaintext highlighter-rouge">sts</code> 第二代</h3>
+
+<ul class="nav nav-underline px-2 " role="tablist">
+ <li class="nav-item" role="presentation">
+  <button class="nav-link active" id="v2-tab-py" data-bs-toggle="tab" data-bs-target="#v2-pane-py" type="button" role="tab" aria-controls="v2-pane-py" aria-selected="true">Python</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="v2-tab-rb" data-bs-toggle="tab" data-bs-target="#v2-pane-rb" type="button" role="tab" aria-controls="v2-pane-rb">Ruby</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="v2-tab-js" data-bs-toggle="tab" data-bs-target="#v2-pane-js" type="button" role="tab" aria-controls="v2-pane-js">JavaScript</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="v2-tab-lua" data-bs-toggle="tab" data-bs-target="#v2-pane-lua" type="button" role="tab" aria-controls="v2-pane-lua">Lua (Scribunto)</button>
+ </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="v2-pane-py" role="tabpanel" aria-labelledby="v2-tab-py" tabindex="0">
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">codePoint</span> <span class="o">=</span> <span class="nf">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">codePoint</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+        <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+        <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+        <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="nf">chr</span><span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="n">bits</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>    </div>
+  </div>
+  <div class="tab-pane fade" id="v2-pane-rb" role="tabpanel" aria-labelledby="v2-tab-rb" tabindex="0">
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="no">String</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">encoding: </span><span class="s2">"UTF-8"</span><span class="p">)</span>
+  <span class="n">string</span><span class="p">.</span><span class="nf">each_codepoint</span> <span class="k">do</span> <span class="o">|</span><span class="n">codePoint</span><span class="o">|</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">codePoint</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+    <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+    <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+    <span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>
+    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="n">bits</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="n">out</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </div>
+  <div class="tab-pane fade" id="v2-pane-js" role="tabpanel" aria-labelledby="v2-tab-js" tabindex="0">
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sts</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">out</span> <span class="o">=</span> <span class="dl">""</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">char</span> <span class="k">of</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">codePoint</span> <span class="o">=</span> <span class="nx">char</span><span class="p">.</span><span class="nf">codePointAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">bits</span> <span class="o">=</span> <span class="nx">codePoint</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>
+    <span class="nx">out</span> <span class="o">+=</span> <span class="nb">String</span><span class="p">.</span><span class="nf">fromCodePoint</span><span class="p">(</span><span class="nx">codePoint</span> <span class="o">^</span> <span class="nx">bits</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">out</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </div>
+  <div class="tab-pane fade" id="v2-pane-lua" role="tabpanel" aria-labelledby="v2-tab-lua" tabindex="0">
+    <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">bit32</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"bit32"</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">ustring</span> <span class="o">=</span> <span class="n">mw</span><span class="p">.</span><span class="n">ustring</span>
+
+<span class="kd">local</span> <span class="k">function</span> <span class="nf">sts</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">out</span> <span class="o">=</span> <span class="s2">""</span>
+  <span class="k">for</span> <span class="n">codePoint</span> <span class="k">in</span> <span class="n">ustring</span><span class="p">.</span><span class="n">gcodepoint</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="k">do</span>
+    <span class="kd">local</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">codePoint</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">out</span> <span class="o">..</span> <span class="n">ustring</span><span class="p">.</span><span class="n">char</span><span class="p">(</span><span class="n">bit32</span><span class="p">.</span><span class="n">bxor</span><span class="p">(</span><span class="n">codePoint</span><span class="p">,</span> <span class="n">bits</span><span class="p">))</span>
+  <span class="k">end</span>
+  <span class="k">return</span> <span class="n">out</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </div>
+</div>
+
+<p>运用类似 MSB（最高有效位）算法的一系列按位运算，就可以得到字符编码中需要反转的位掩码（<code class="language-py highlight language-py highlighter-rouge"><span class="n">bits</span></code>，也是第一版改良实现中的 <code class="language-py highlight language-py highlighter-rouge"><span class="o">~</span><span class="n">shifter</span></code>），无需使用之前的 <code class="language-py highlight language-py highlighter-rouge"><span class="k">while</span></code> 循环。这种 MSB 计算方法要求操作是 32 位整数，否则需要调整 <code class="language-py highlight language-py highlighter-rouge"><span class="n">bits</span> <span class="o">|=</span> <span class="n">bits</span> <span class="o">&gt;&gt;</span> <span class="n">N</span></code> 语句的数量；不过因为字符编码最多超不过 21 位，所以实际上不用担心。</p>
+
+<p>此版本虽然在 Python、Ruby 领域已被下文的新版本取代，但在使用 JavaScript、Lua 等没有（或由于某些原因选择不使用）可变长度整数或原生 MSB 函数的编程语言实现时，仍然是最优的方法。</p>
+
+<h3 id="改良-sts-第三代">改良 <code class="language-plaintext highlighter-rouge">sts</code> 第三代</h3>
+
+<ul class="nav nav-underline px-2 " role="tablist">
+ <li class="nav-item" role="presentation">
+  <button class="nav-link active" id="v3-tab-py" data-bs-toggle="tab" data-bs-target="#v3-pane-py" type="button" role="tab" aria-controls="v3-pane-py" aria-selected="true">Python</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="v3-tab-rb" data-bs-toggle="tab" data-bs-target="#v3-pane-rb" type="button" role="tab" aria-controls="v3-pane-rb">Ruby</button>
+ </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="v3-pane-py" role="tabpanel" aria-labelledby="v3-tab-py" tabindex="0">
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">codePoint</span> <span class="o">=</span> <span class="nf">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="nf">chr</span><span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">codePoint</span><span class="p">.</span><span class="nf">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>    </div>
+  </div>
+  <div class="tab-pane fade" id="v3-pane-rb" role="tabpanel" aria-labelledby="v3-tab-rb" tabindex="0">
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="no">String</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">encoding: </span><span class="s2">"UTF-8"</span><span class="p">)</span>
+  <span class="n">string</span><span class="p">.</span><span class="nf">each_codepoint</span> <span class="k">do</span> <span class="o">|</span><span class="n">codePoint</span><span class="o">|</span>
+    <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">codePoint</span> <span class="o">^</span> <span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">codePoint</span><span class="p">.</span><span class="nf">bit_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+  <span class="k">end</span>
+  <span class="n">out</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </div>
+</div>
+
+<p>Python、Ruby 中的整型是可变长度的，可以直接通过其 <code class="language-plaintext highlighter-rouge">bit_length</code> 方法求得长度，于是获得刚才所说的 <code class="language-plaintext highlighter-rouge">bits</code> 就更简单了，它就是 <code class="language-py highlight language-py highlighter-rouge"><span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">cp</span><span class="p">.</span><span class="nf">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span></code>，或 <code class="language-py highlight language-py highlighter-rouge"><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">cp</span><span class="p">.</span><span class="nf">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span></code>。</p>
+
+<h3 id="速度测试">速度测试</h3>
+
+<p>在 Python 中用四个版本的 <code class="language-plaintext highlighter-rouge">sts</code> 对这段示例文本</p>
+
+<div title="原 汤 化 原 食" class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>经过两个多月的网课，疫情基本结束，学校终于要复课了。
+
+2020.4.20。复课的第一天，我满怀期待地走进了校门。熟悉的景象在我眼前展开，只是所有人都戴了个口罩。顶着大风，仿佛回到了二三月份。
+
+走在我前面的是我的8B班同学Richard。三个多月没看见他，他在我眼中更加高大了。我在网课时曾屡次想念过他，现在，我可以以学习为理由来接近他，和他在一起。
+
+我在上个学期观察过他，他很少和Sunny说话，Sunny也没有去主动找他。但我猜不出他是否已经放弃了Sunny。机不可失时不再来，我得在结课考之前追求到他。
+</code></pre></div></div>
+
+<p>分别进行加密操作测试，结果如下：</p>
+
+<table class="table w-auto">
+  <thead>
+    <tr>
+      <th style="text-align: center">版本</th>
+      <th style="text-align: center">实验次数</th>
+      <th style="text-align: center">平均用时（毫秒）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Richard 原版</td>
+      <td style="text-align: center">500</td>
+      <td style="text-align: center">5.688</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">改良一代</td>
+      <td style="text-align: center">5000</td>
+      <td style="text-align: center">0.595</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">改良二代</td>
+      <td style="text-align: center">50000</td>
+      <td style="text-align: center">0.192</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">改良三代</td>
+      <td style="text-align: center">50000</td>
+      <td style="text-align: center">0.116</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="2023-11-18-更新">2023-11-18 更新</h2>
+
+<p>8 月 28 日，我发现 <code class="language-plaintext highlighter-rouge">sts</code> 算法具有一个问题：由于字符编码 <code class="language-plaintext highlighter-rouge">D800</code> 至 <code class="language-plaintext highlighter-rouge">DFFF</code> 为 UTF-16 代理字，用于在 UTF-16 中编码 <code class="language-plaintext highlighter-rouge">U+10000</code> 及以上的字符，这个范围内的编码不是合法的 Unicode 字符；这意味着 <code class="language-plaintext highlighter-rouge">A000</code> 至 <code class="language-plaintext highlighter-rouge">A7FF</code> 范围内的字符经过 <code class="language-plaintext highlighter-rouge">sts</code> 编码后，会得到不正确的 Unicode 文本；轻则出现问号替代字符，重则直接报错。</p>
+
+<p>不过，<code class="language-plaintext highlighter-rouge">A000</code> 至 <code class="language-plaintext highlighter-rouge">A7FF</code> 范围内的字符显然完全不是我们会用到的（见下表），上述问题其实可以不用解决。考虑这个问题只是<del class="text-secondary">因为太闲了</del>为了严谨。</p>
+
+<div class="table-responsive">
+
+  <table class="table w-auto text-nowrap">
+    <thead>
+      <tr>
+        <th>范围</th>
+        <th>名称</th>
+        <th>英文名称</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A000..U+A48F</code></td>
+        <td>彝文音节</td>
+        <td>Yi Syllables</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A490..U+A4CF</code></td>
+        <td>彝文部首</td>
+        <td>Yi Radicals</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A4D0..U+A4FF</code></td>
+        <td>老傈僳文</td>
+        <td>Lisu</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A500..U+A63F</code></td>
+        <td>瓦伊语文字</td>
+        <td>Vai</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A640..U+A69F</code></td>
+        <td>西里尔字母扩展-B</td>
+        <td>Cyrillic Extended-B</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A6A0..U+A6FF</code></td>
+        <td>巴姆穆文字</td>
+        <td>Bamum</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A700..U+A71F</code></td>
+        <td>声调修饰符号</td>
+        <td>Modifier Tone Letters</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">U+A720..U+A7FF</code></td>
+        <td>拉丁文扩展-D</td>
+        <td>Latin Extended-D</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<p>在 Python 实现中，只要不试图将包含 UTF-16 代理字的密文以默认的 UTF-8 编码存入文件或直接输出，就不会出现异常，因为 Python 中的字符串是以代码点为单位存储，而不是以编码过的字节序列形式存储的，只有在输出、写入到文件等操作的过程中，字符串才会被编码。如果确实需要将 <code class="language-plaintext highlighter-rouge">sts</code> 密文保存成文件，可以考虑自己实现 UTF-8 编解码。</p>
+
+<p>后来我发现这种编码方法还有另一个问题：Unicode 第 16 平面上的字符（<code class="language-plaintext highlighter-rouge">U+100000..U+10FFFF</code>）是肯定没办法编码的，因为这个范围经过 <code class="language-plaintext highlighter-rouge">sts</code> 会变成 <code class="language-plaintext highlighter-rouge">U+1F0000..U+1FFFFF</code>，是根本不存在的。第 16 平面内的字符全部属于<strong>补充私人使用区-B</strong>（<em>Supplementary Private Use Area-B</em>），如此偏远的区段基本很少会用到；但由于问题的存在，<code class="language-plaintext highlighter-rouge">sts</code> 目前的所有实现都已经不完美了。</p>
+
+<aside class="card my-3 p-3 pb-0">
+
+  <p>关于 Unicode 代码点的最大值为什么是 <code class="language-plaintext highlighter-rouge">U+10FFFF</code> 这样一个奇怪的数（每 65536 个代码点为一个平面，平面序号从 0 到 16，共 <strong><em>17</em></strong> 个平面），我看到一个叫 <a href="https://github.com/tomatofrommars">tomatofrommars</a> 的人在<a href="https://lunawen.com/basics/20201129-luna-tech-unicode-plane/" title="Unicode - 平面（Plane）的概念 — Luna Wen">一篇博文</a>下的评论说得很好：</p>
+
+  <blockquote>
+    <p>划分 17 个平面是受限于 UTF-16 编码空间的结果。</p>
+
+    <p>1990 年的 Unicode 还只有 16 位，彼时的另一大标准 ISO 的<em>通用字符集</em>要发布一个 32 位的方案——ISO/IEC 10646，能编码更多字符，但也更耗空间。</p>
+
+    <p>同是 Unicode 联盟成员的各大软件公司都反对这个方案。为了计算机的未来，双方就协商出了一个相互兼容的方案——<em>UTF-16</em>。</p>
+
+    <p>UTF-16 编码的<strong>扩展平面</strong>字符占 32 位，减去固定高位代理（110110）和固定低位代理（110111）所占位数 12 位，剩余 20 位，按照单个平面 65536 个字符设定，20 位可划分的平面数为 2^20 / 65536 = 16 个平面，再加上 1 个基本平面，就是 17 个平面。</p>
+
+    <p>代理数值的确定：个人猜测，这里的高位代理和低位代理要求成对出现，排除基本平面内已经分配了的空间，连续且空间最大的范围就只剩 0xD800 ~ 0xDFFF 了，即 <code class="language-plaintext highlighter-rouge">11011000 00000000</code> ~ <code class="language-plaintext highlighter-rouge">11011111 00000000</code>。</p>
+  </blockquote>
+
+  <p><del>所以 <code class="language-plaintext highlighter-rouge">sts</code> 有“BUG”归根结底都是 UTF-16 害的</del></p>
+
+</aside>
+
+<p>为了解决以上问题，我们可以直接在 UTF-8 编码的字节序列的层面上编写 <code class="language-plaintext highlighter-rouge">sts</code> 算法。</p>
+
+<ul class="nav nav-underline px-2" role="tablist">
+ <li class="nav-item" role="presentation">
+  <button class="nav-link active" id="utf8-tab-rb" data-bs-toggle="tab" data-bs-target="#utf8-pane-rb" type="button" role="tab" aria-controls="utf8-pane-rb" aria-selected="true">Ruby</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="utf8-tab-lua" data-bs-toggle="tab" data-bs-target="#utf8-pane-lua" type="button" role="tab" aria-controls="utf8-pane-lua">Lua (Scribunto)</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="utf8-tab-py" data-bs-toggle="tab" data-bs-target="#utf8-pane-py" type="button" role="tab" aria-controls="utf8-pane-py">Python</button>
+ </li>
+ <li class="nav-item" role="presentation">
+  <button class="nav-link" id="utf8-tab-js" data-bs-toggle="tab" data-bs-target="#utf8-pane-js" type="button" role="tab" aria-controls="utf8-pane-js">JavaScript</button>
+ </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="utf8-pane-rb" role="tabpanel" aria-labelledby="utf8-tab-rb" tabindex="0">
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts_utf8</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">bytes</span> <span class="o">=</span> <span class="n">string</span><span class="p">.</span><span class="nf">bytes</span>
+  <span class="n">zero</span> <span class="o">=</span> <span class="kp">false</span>
+  <span class="n">bytes</span><span class="p">.</span><span class="nf">map!</span> <span class="k">do</span> <span class="o">|</span><span class="n">byte</span><span class="o">|</span>
+    <span class="n">bits</span> <span class="o">=</span>
+      <span class="k">case</span>
+      <span class="k">when</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf8</span> <span class="k">then</span> <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"invalid byte sequence in UTF-8"</span>
+      <span class="k">when</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf0</span> <span class="k">then</span>        <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x07</span>
+      <span class="k">when</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xe0</span> <span class="k">then</span>        <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x0f</span>
+      <span class="k">when</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xc0</span> <span class="k">then</span>        <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1f</span>
+      <span class="k">when</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0x80</span> <span class="k">then</span> <span class="n">zero</span> <span class="p">?</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span> <span class="p">:</span> <span class="mh">0x40</span>
+      <span class="k">else</span>                          <span class="n">byte</span>
+      <span class="k">end</span>
+    <span class="n">zero</span> <span class="o">=</span> <span class="n">bits</span><span class="p">.</span><span class="nf">zero?</span>
+    <span class="n">byte</span> <span class="o">^</span> <span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">bits</span><span class="p">.</span><span class="nf">bit_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="k">end</span>
+  <span class="n">bytes</span><span class="p">.</span><span class="nf">pack</span><span class="p">(</span><span class="s2">"C*"</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">sts_encode</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">sts_utf8</span><span class="p">(</span><span class="n">string</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="s2">"UTF-8"</span><span class="p">))</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">sts_decode</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">sts_utf8</span><span class="p">(</span><span class="n">string</span><span class="p">).</span><span class="nf">force_encoding</span><span class="p">(</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+
+  </div>
+  <div class="tab-pane fade" id="utf8-pane-lua" role="tabpanel" aria-labelledby="utf8-tab-lua" tabindex="0">
+
+    <div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">local</span> <span class="n">bit32</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"bit32"</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="k">function</span> <span class="nf">sts</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">bytes</span> <span class="o">=</span> <span class="p">{</span> <span class="n">str</span><span class="p">:</span><span class="n">byte</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">str</span><span class="p">)</span> <span class="p">}</span>
+  <span class="kd">local</span> <span class="n">zero</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">byte</span> <span class="k">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span> <span class="k">do</span>
+    <span class="kd">local</span> <span class="n">bits</span>
+    <span class="k">if</span>     <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf8</span> <span class="k">then</span> <span class="nb">error</span><span class="p">(</span><span class="s2">"bad utf-8 string in 'sts'"</span><span class="p">)</span>
+    <span class="k">elseif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf0</span> <span class="k">then</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">band</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">)</span>
+    <span class="k">elseif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xe0</span> <span class="k">then</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">band</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mh">0x0f</span><span class="p">)</span>
+    <span class="k">elseif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xc0</span> <span class="k">then</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">band</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mh">0x1f</span><span class="p">)</span>
+    <span class="k">elseif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0x80</span> <span class="k">then</span>
+      <span class="k">if</span> <span class="n">zero</span> <span class="k">then</span>           <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">band</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">)</span>
+      <span class="k">else</span>                   <span class="n">bits</span> <span class="o">=</span> <span class="mh">0x40</span>
+      <span class="k">end</span>
+    <span class="k">else</span>                     <span class="n">bits</span> <span class="o">=</span> <span class="n">byte</span>
+    <span class="k">end</span>
+    <span class="n">zero</span> <span class="o">=</span> <span class="n">bits</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bor</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">bit32</span><span class="p">.</span><span class="n">rshift</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">bytes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bit32</span><span class="p">.</span><span class="n">bxor</span><span class="p">(</span><span class="n">byte</span><span class="p">,</span> <span class="n">bits</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="k">return</span> <span class="nb">string.char</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="n">bytes</span><span class="p">))</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+
+  </div>
+  <div class="tab-pane fade" id="utf8-pane-py" role="tabpanel" aria-labelledby="utf8-tab-py" tabindex="0">
+
+    <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sts_utf8</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">zero</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span>   <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf8</span><span class="p">:</span> <span class="k">raise</span> <span class="nc">UnicodeDecodeError</span><span class="p">(</span><span class="sh">"</span><span class="s">invalid start byte</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf0</span><span class="p">:</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x07</span>
+        <span class="k">elif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xe0</span><span class="p">:</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x0f</span>
+        <span class="k">elif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0xc0</span><span class="p">:</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x1f</span>
+        <span class="k">elif</span> <span class="n">byte</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">:</span> <span class="n">bits</span> <span class="o">=</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span> <span class="k">if</span> <span class="n">zero</span> <span class="k">else</span> <span class="mh">0x40</span>
+        <span class="k">else</span><span class="p">:</span>              <span class="n">bits</span> <span class="o">=</span> <span class="n">byte</span>
+        <span class="n">zero</span> <span class="o">=</span> <span class="n">bits</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">out</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">byte</span> <span class="o">^</span> <span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">bits</span><span class="p">.</span><span class="nf">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="nf">bytes</span><span class="p">(</span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sts_encode</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nf">sts_utf8</span><span class="p">(</span><span class="n">string</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sts_decode</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nf">sts_utf8</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="nf">decode</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+  </div>
+  <div class="tab-pane fade" id="utf8-pane-js" role="tabpanel" aria-labelledby="utf8-tab-js" tabindex="0">
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/** @type {TextEncoder} */</span>
+<span class="kd">let</span> <span class="nx">textEncoder</span>
+<span class="cm">/** @type {TextDecoder} */</span>
+<span class="kd">let</span> <span class="nx">textDecoder</span>
+
+<span class="cm">/** @param {Uint8Array} bytes */</span>
+<span class="kd">function</span> <span class="nf">stsUTF8</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">bytes</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nx">zero</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">byte</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="kd">let</span> <span class="nx">bits</span> <span class="o">=</span> <span class="nx">byte</span>
+    <span class="k">if      </span><span class="p">(</span><span class="nx">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf8</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">RangeError</span><span class="p">(</span><span class="dl">"</span><span class="s2">Invalid byte</span><span class="dl">"</span><span class="p">)</span>
+    <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">byte</span> <span class="o">&gt;=</span> <span class="mh">0xf0</span><span class="p">)</span> <span class="nx">bits</span> <span class="o">=</span>        <span class="nx">byte</span> <span class="o">&amp;</span> <span class="mh">0x07</span>
+    <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">byte</span> <span class="o">&gt;=</span> <span class="mh">0xe0</span><span class="p">)</span> <span class="nx">bits</span> <span class="o">=</span>        <span class="nx">byte</span> <span class="o">&amp;</span> <span class="mh">0x0f</span>
+    <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">byte</span> <span class="o">&gt;=</span> <span class="mh">0xc0</span><span class="p">)</span> <span class="nx">bits</span> <span class="o">=</span>        <span class="nx">byte</span> <span class="o">&amp;</span> <span class="mh">0x1f</span>
+    <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">byte</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="nx">bits</span> <span class="o">=</span> <span class="nx">zero</span> <span class="p">?</span> <span class="nx">byte</span> <span class="o">&amp;</span> <span class="mh">0x3f</span> <span class="p">:</span> <span class="mh">0x40</span>
+    <span class="nx">zero</span> <span class="o">=</span> <span class="nx">bits</span> <span class="o">===</span> <span class="mi">0</span>
+
+    <span class="nx">bits</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+    <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">byte</span> <span class="o">^</span> <span class="nx">bits</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">bytes</span>
+<span class="p">}</span>
+
+<span class="cm">/** @param {string} string */</span>
+<span class="kd">function</span> <span class="nf">stsEncode</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">textEncoder</span> <span class="o">||=</span> <span class="k">new</span> <span class="nc">TextEncoder</span><span class="p">()</span>
+  <span class="k">return</span> <span class="nf">stsUTF8</span><span class="p">(</span><span class="nx">textEncoder</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="nx">string</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="cm">/** @param {Uint8Array} bytes */</span>
+<span class="kd">function</span> <span class="nf">stsDecode</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">textDecoder</span> <span class="o">||=</span> <span class="k">new</span> <span class="nc">TextDecoder</span><span class="p">()</span>
+  <span class="k">return</span> <span class="nx">textDecoder</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="nf">stsUTF8</span><span class="p">(</span><span class="nx">bytes</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+
+<p>另外，以 UTF-16 为基础进行编码也未尝不是一种思路。在 JavaScript 中实现这种方法尤为容易：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/** @param {string} string */</span>
+<span class="kd">function</span> <span class="nf">stsUTF16</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">out</span> <span class="o">=</span> <span class="dl">""</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">charCode</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nf">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">bits</span> <span class="o">=</span> <span class="nx">charCode</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+    <span class="nx">bits</span> <span class="o">|=</span> <span class="nx">bits</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+    <span class="nx">out</span> <span class="o">+=</span> <span class="nb">String</span><span class="p">.</span><span class="nf">fromCharCode</span><span class="p">(</span><span class="nx">charCode</span> <span class="o">^</span> <span class="nx">bits</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">out</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/210123_richards_text_encryption"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2021-01-23-richards_text_encryption.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2021-01-23-richards_text_encryption.md"
+    dir: null
+    name: "2021-01-23-richards_text_encryption.md"
+    url: "/posts/210123_richards_text_encryption"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="LNN的博客！" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="LNN的博客！" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"headline":"LNN的博客！","name":"LNN的博客！","url":"https://dgck81lnn.github.io/blog/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <style>.read-all { display: block; text-align: center; }
+.excerptcard { min-width: 284px; }
+</style>
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+
+    <main id=main>
+<div class="soulblog-content">
+<p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
+
+<div id='linf' class="card mb-3" hidden>
+  <div class="card-body text-center">
+    <div>现在是中国标准时间<!--
+    --><span id='linf-h26' hidden>（“27 小时制”）</span
+      ></div>
+    <div id='linf-date' class="fw-bold">####年##月##日</div>
+    <div id='linf-time' class="font-monospace" style="font-size: 2rem"
+      >##:##:##</div>
+    <div id='linf-aqi' hidden>
+      <div><b id='linf-aqi-cityname'></b
+        >目前的空气质量为<!--
+      --><span id='linf-aqi-value' class="p-1 rounded"></span
+        ></div>
+      <div class="text-muted" style="font-size: 0.75rem"
+        ><a id='linf-aqi-link' target='blank'>详情</a> | <!--
+      -->空气质量数据来自 aqicn.org</div>
+    </div>
+  </div>
+</div>
+
+<!--<p><a href="projects.html" class="btn btn-primary">我的 Project 记录表</a></p>-->
+
+<h2>文章目录</h2>
+
+<div class="d-flex flex-wrap gap-2">
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2024-12-29</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="uiua-99bottles"><a href="https://uiua.org" target="_blank"><img src="https://www.uiua.org/assets/uiua-logo.png" alt="" style="height:1em;vertical-align:bottom" class="me-1" />Uiua</a> 99bottles</h1>
+
+<p>Uiua 是一门还在迭代开发中的、基于堆栈（stack-based）的阵列编程（array programming）语言，在设计上借鉴了 BQN、APL、J 语言。</p>
+
+<div class="language-uiua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">瓶</span><span class="w"> </span><span class="p">←</span><span class="w"> </span><span class="p">(</span><span class="w">
+  </span><span class="kd">⍣</span><span class="p">(</span><span class="s">"No"</span><span class="w"> </span><span class="sc">@s</span><span class="w"> </span><span class="k">°</span><span class="m">0</span><span class="p">|</span><span class="m">1</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="k">°</span><span class="m">1</span><span class="p">|:</span><span class="sc">@s</span><span class="p">)</span><span class="w">
+  </span><span class="s">$"</span><span class="si">_</span><span class="s"> bottle</span><span class="si">_</span><span class="s"> of beer"</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">墙</span><span class="w"> </span><span class="p">←</span><span class="w"> </span><span class="s">$"</span><span class="si">_</span><span class="s"> on the wall"</span><span class="w"> </span><span class="n">瓶</span><span class="w">
+</span><span class="n">拿</span><span class="w"> </span><span class="p">←</span><span class="w"> </span><span class="kd">⍣</span><span class="p">(</span><span class="w">
+  </span><span class="k">⍩</span><span class="p">(</span><span class="s">$"Go to the store, buy some more,\n</span><span class="si">_</span><span class="s">"</span><span class="w"> </span><span class="n">墙</span><span class="m">99</span><span class="p">)</span><span class="w"> </span><span class="k">°</span><span class="m">0</span><span class="w">
+</span><span class="p">|</span><span class="w"> </span><span class="k">⍩</span><span class="p">(</span><span class="s">$"Take one down, pass it around,\n</span><span class="si">_</span><span class="s">"</span><span class="w"> </span><span class="n">墙</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="nb">⇌⇡</span><span class="m">100</span><span class="w">
+</span><span class="nb">&amp;p</span><span class="w"> </span><span class="k">/</span><span class="s">$"</span><span class="si">_</span><span class="s">\n\n</span><span class="si">_</span><span class="s">"</span><span class="w"> </span><span class="k">≡</span><span class="p">(</span><span class="nb">□</span><span class="s">$"</span><span class="si">_</span><span class="s">,\n</span><span class="si">_</span><span class="s">.\n</span><span class="si">_</span><span class="s">."</span><span class="w"> </span><span class="kd">⊃</span><span class="p">(</span><span class="n">墙</span><span class="p">|</span><span class="n">瓶</span><span class="p">|</span><span class="n">拿</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><a href="https://uiua.org/pad?src=0_15_0-dev_1__55O2IOKGkCAoCiAg4o2jKCJObyIgQHMgwrAwfDEgIiIgwrAxfDpAcykKICAkIl8gYm90dGxlXyBvZiBiZWVyIgopCuWimSDihpAgJCJfIG9uIHRoZSB3YWxsIiDnk7YK5ou_IOKGkCDijaMoCiAg4o2pKCQiR28gdG8gdGhlIHN0b3JlLCBidXkgc29tZSBtb3JlLFxuXyIg5aKZOTkpIMKwMAp8IOKNqSgkIlRha2Ugb25lIGRvd24sIHBhc3MgaXQgYXJvdW5kLFxuXyIg5aKZLTEpCikKCuKHjOKHoTEwMAomcCAvJCJfXG5cbl8iIOKJoSjilqEkIl8sXG5fLlxuXy4iIOKKgyjlopl855O2fOaLvykpCg==" target="_blank">在 Pad 中运行</a></p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/241229_uiua_99bottles" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2024-04-29</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="ruby一款好用的-esolang">“ruby，一款好用的 esolang”</h1>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vg">$&gt;</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="s2">""</span><span class="o">&lt;&lt;~-~-~-~-~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">(</span><span class="o">-~</span>
+<span class="o">-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">(</span>
+<span class="p">[]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~</span>
+<span class="o">-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+<span class="p">([[]]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~-~-~-~-~-~</span><span class="p">(</span><span class="o">-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">(</span>
+<span class="p">[]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([</span>
+<span class="p">]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span>
+<span class="p">)</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">(</span><span class="o">-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~</span><span class="p">(([[]]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([</span>
+<span class="p">]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~-~-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, World!
+</code></pre></div></div>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/240429_rbfxck" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2024-04-06</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="brainf-解释器但它是一个-python-表达式">brainf 解释器，但它是一个 Python 表达式</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">lambda</span> <span class="n">cod</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">inp</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="o">*</span><span class="p">,</span> <span class="n">_cp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_mp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_ip</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_mem</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">_inp</span> <span class="o">=</span> <span class="n">inp</span>
+<span class="p">.</span><span class="nf">encode</span><span class="p">(),</span> <span class="n">_out</span> <span class="o">=</span> <span class="sa">b</span><span class="sh">""</span><span class="p">:</span> <span class="nf">next</span><span class="p">(</span><span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="nb">buffer</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">_out</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">None</span>
+<span class="ow">or</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">itertools</span><span class="sh">"</span><span class="p">).</span><span class="nf">count</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_mem</span><span class="p">.</span><span class="nf">__setitem__</span><span class="p">(</span><span class="n">_mp</span><span class="p">,</span> <span class="p">(</span>
+<span class="p">(</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">]</span> <span class="k">if</span> <span class="n">_mp</span> <span class="ow">in</span> <span class="n">_mem</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">+</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span>
+<span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_mp</span> <span class="p">:</span><span class="o">=</span> <span class="n">_mp</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">&gt;</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span>
+<span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">&lt;</span><span class="sh">"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">((</span><span class="n">_cp</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">si</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">_d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="nf">next</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span>
+<span class="nf">range</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">cod</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">si</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">[</span><span class="sh">"</span> <span class="k">else</span> <span class="nf">range</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="sh">"</span><span class="s">[]</span><span class="sh">"</span>
+<span class="ow">and</span> <span class="p">((</span><span class="n">_d</span> <span class="p">:</span><span class="o">=</span> <span class="n">_d</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">[</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)))(</span><span class="n">_cp</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="ow">in</span> <span class="sh">"</span><span class="s">[]</span><span class="sh">"</span>
+<span class="ow">and</span> <span class="nf">bool</span><span class="p">(</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">]</span> <span class="k">if</span> <span class="n">_mp</span> <span class="ow">in</span> <span class="n">_mem</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="nf">bool</span><span class="p">(</span><span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">]</span><span class="sh">"</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span>
+<span class="ow">or</span> <span class="p">((</span><span class="n">_out</span> <span class="p">:</span><span class="o">=</span> <span class="n">_out</span> <span class="o">+</span> <span class="nf">bytes</span><span class="p">((</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">],)))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">.</span><span class="sh">"</span> <span class="k">else</span> <span class="n">_mem</span><span class="p">.</span><span class="n">__setitem__</span>
+<span class="p">(</span><span class="n">_mp</span><span class="p">,</span> <span class="n">_inp</span><span class="p">[</span><span class="n">_ip</span><span class="p">])</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_ip</span> <span class="p">:</span><span class="o">=</span> <span class="n">_ip</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">,</span><span class="sh">"</span> <span class="ow">and</span> <span class="n">_ip</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">_inp</span><span class="p">)</span>
+<span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_cp</span> <span class="p">:</span><span class="o">=</span> <span class="n">_cp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">cod</span><span class="p">))))())(</span><span class="o">*</span><span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdin</span><span class="p">.</span><span class="n">read</span>
+<span class="p">().</span><span class="nf">partition</span><span class="p">(</span><span class="sh">"</span><span class="s">!</span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/240406_wtf_brainf_interpreter" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2023-08-26</time>
+      <a href="/blog/tags/gaming" class="text-decoration-none">
+        <span class="badge bg-primary">游戏</span>
+      </a>
+      <a href="/blog/tags/genshin" class="text-decoration-none">
+        <span class="badge bg-secondary">原神</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="windows-10-或-11-电脑运行原神时卡死闪退问题通过更新显卡驱动解决后复发的解决办法">Windows 10 或 11 电脑运行原神时卡死闪退问题通过更新显卡驱动解决后复发的解决办法</h1>
+
+<p>近日原神 4.0 版本更新发布，水国枫丹实装，同时提高了运行游戏的电脑配置要求。我在使用装有 Windows 11 系统和英特尔锐炬® Xe 集成显卡（核显）的笔记本电脑运行新版本的游戏时，和很多玩家一样遇到了游戏卡死崩溃的问题。</p>
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2023-09-02 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/230826_gi_graphics_driver" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2023-04-26</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="javascript但是你可以用-new-intlen-来创建类型化数组">JavaScript，但是你可以用 <code class="language-javascript highlight language-javascript highlighter-rouge"><span class="k">new</span> <span class="nx">int</span><span class="p">[</span><span class="nx">len</span><span class="p">]</span></code> 来创建类型化数组</h1>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>🤔…</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">int</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="c1">// ==&gt; Int32Array(20)</span>
+</code></pre></div></div>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/230426_js_new_int_arr" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2022-10-08</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="javascript-版的原义字符串">Javascript 版的原义字符串？</h1>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">cts</span><span class="s2">`Hello, ``world``!`</span><span class="p">()</span> <span class="c1">// "Hello, `world`!"</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>几天前我发现在 Javascript <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals#带标签的模板字符串">带标签的模板字符串</a><sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">(英文)</a></sup>语法中，标签完全可以由任何表达式充当，包括模板字符串本身。事情是这样的。</p>
+
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2023-04-26 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/221008_js_verbatim_string" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2022-09-06</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="文言标准输入语法糖閱文秘術使用例">文言标准输入语法糖《閱文秘術》使用例</h1>
+
+<blockquote>
+  <p>前情提要：<a href="/blog/posts/220118_wenyan_stdin">“文言”编程语言能读取标准输入了 | LNN的博客！</a></p>
+</blockquote>
+
+<p>去年底（2021-12）我给<a href="https://wy-lang.org/">文言</a>写了个读取标准输入的库，名之曰“<a href="https://github.com/DGCK81LNN/wenyan-stdin">閱文秘術</a>”，发布在“<a href="https://wyg.wy-lang.org/">文淵閣</a>”。有了这个库就可以用文言愉快地 <code class="language-plaintext highlighter-rouge">scanf</code> 了，再也不需要 <code lang="lzh-Hant" class="language-wenyan highlight language-wenyan highlighter-rouge"><span class="kd">夫</span><span class="p">「</span><span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">).</span><span class="nf">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">/dev/stdin</span><span class="dl">"</span><span class="p">).</span><span class="nf">toString</span><span class="p">().</span><span class="nf">trim</span><span class="p">().</span><span class="nf">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/g</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">)」。</span><span class="kd">名之曰</span><span class="p">「</span><span class="nv">輸入</span><span class="p">」</span></code> 了。这里通过几道非常简单的题目演示一下“閱文秘術”的实际使用。我们使用文言的编译器将代码编译成 JavaScript 后在<a href="https://www.luogu.com.cn/">洛谷</a>按 Node.js 提交。</p>
+
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2024-02-27 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/220906_wenyan_stdin_examples" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2022-01-18</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="文言编程语言能读取标准输入了">“文言”编程语言能读取标准输入了</h1>
+
+<p>前不久我给<a href="https://wy-lang.org/">“文言”</a>写了个扩展库，让它能够通过 Node.js 读取标准输入。现已被收入“文言”的包管理系统<a href="https://wyg.wy-lang.org/">“文淵閣”</a>。</p>
+
+<p>研究过这门深奥编程语言的朋友可能知道，“文言”中没有原生的办法来读取标准输入。我猜测这大概也是<a href="https://www.luogu.com.cn/">洛谷网</a>不再支持这门语言的原因之一。</p>
+
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2023-05-31 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/220118_wenyan_stdin" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-12-31</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="给-jekyll-博客添加评论区">给 Jekyll 博客添加评论区</h1>
+
+<p>近日我给这个博客添加了评论区。因为是使用 <a href="https://pages.github.com/">Github Pages</a> 和 <a href="https://jekyllcn.com/">Jekyll</a> 构建的静态网页博客，不方便实时地把评论添加到网站上。</p>
+
+<p>给静态博客添加评论区的一个常见方法是使用 <a href="https://disqus.com/">Disqus</a>。这是一个博客评论平台，只需在自己的静态站上引用相应的脚本，就可以创建一个评论区。</p>
+
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/211231_blog_comments" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-08-18</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="用自动脚本整理-derpibooru-图集">用自动脚本整理 <a href="https://derpibooru.org">Derpibooru</a> 图集</h1>
+
+<p>我在 Derpibooru 做了一个图集“<a href="https://derpibooru.org/galleries/14196">M6就要整整齐齐</a>”，里面的图片都是每6张为一组。我今天写了一个自动脚本来给这个图集的图片整理排序。</p>
+
+<p>Derpibooru 官方没有提供修改图集内图片顺序的 API；我通过浏览器开发者工具找到了这个 API。它的工作原理很迷，我没有看懂……<del>废话，我不会 <a href="https://elixir-lang.org/">Elixir</a>。</del><a href="https://github.com/derpibooru/philomena/blob/355ce491accae4702f273334271813e93a261e0f/lib/philomena/galleries.ex#L277:L339">这是它的源代码</a>。</p>
+
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2022-04-15 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210818_rearranging_derpibooru_gallery" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-04-24</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="重写的brainf-99bottles">重写的brainf 99bottles</h1>
+
+<p>前两天想起之前写的brainfuck 99bottles还有很大优化空间，就改进了一下。</p>
+
+<p>比起<a href="/blog/posts/201225_eso_99btls_fzbz#99bottlesb">之前的版本</a>，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。</p>
+
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210424_brainf_99botls" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-04-10</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="blockly-games-池塘模式我的解法"><a href="https://blockly.games">Blockly Games</a> “<a href="https://blockly.games/pond-duck">池塘</a>”模式我的解法</h1>
+
+<blockquote>
+  <p><img src="https://blockly.games/index/pond-duck.png" alt="“池塘”模式的图标是一只正在游动的红色鸭子，它的嘴巴像个炮筒，头和身子都是圆形的。这是游戏中玩家需要对抗的对手之一。" /></p>
+
+  <p><a href="https://blockly.games/pond-duck">池塘</a>是一个开放式竞赛，目标是编写出最聪明的鸭子。</p>
+</blockquote>
+
+<p>我的这个解法基本可以完胜内建的三个敌人。它们的策略分别是：</p>
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2022-01-31 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210410_blockly_games_pond" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-04-09</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="再谈自产生程序">再谈自产生程序</h1>
+
+<p><a href="/blog/posts/210115_quines">之前那篇</a>关于自产生程序的博客表述不清，现决定重新讲解一下。</p>
+
+<p>这里的“自产生程序”是指输出自身源代码的程序。自产生程序有几种不同的思路，而我使用的这种思路可以类比为……“噬菌体”。</p>
+
+<p>我们知道，噬菌体是一种简单的病毒，它专门感染细菌，在结构上由蛋白质外壳和遗传物质（一般是DNA）组成。这些遗传物质记录了整个蛋白质外壳的内容，而在蛋白质外壳的帮助下，噬菌体才能去感染细菌，并生产出新的DNA和蛋白质外壳，从而繁殖出新的噬菌体。</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210409_phage_quine" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-03-06</time>
+    </header>
+    <div class="card-body">
+      <h1 id="rouge代码高亮测试">Rouge代码高亮测试</h1>
+
+<p>本站之前使用<a href="https://prismjs.com">prism.js</a>进行语法高亮，近期改为直接给GitHub Pages使用的<a href="https://jekyllrb.com">Jekyll</a>使用的<a href="https://kramdown.gettalong.org/">Kramdown</a>使用的<a href="http://rouge.jneen.net/">Rouge</a>提供样式表。</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210306_rouge_test" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-01-25</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+      <a href="/blog/tags/music" class="text-decoration-none">
+        <span class="badge bg-primary">音乐</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="用musicpy制作音符画">用<a href="https://github.com/Rainbow-Dreamer/musicpy">musicpy</a>制作音符画</h1>
+
+<p>musicpy是国人写的一个不错的库，操作音符挺方便的，运算符重载很到位，只是IDE太寒碜了（×）（建议开发VSCode插件（</p>
+
+<p>今天呢就用它解决了困扰了我一段时间的问题——按几何图形绘制音符画。之前尝试拿鼠标手动画每个音符，到最后就发现画得一点也不像。现在就可以用musicpy自动画出来。</p>
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2022-09-07 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210125_note_art_with_musicpy" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-01-23</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="richard写的文本加密算法">Richard写的文本加密算法</h1>
+
+<p>Richard在他的新作品中使用一种可逆的加密算法来把源代码中的文本加密成乱码。其实质很简单，类似于异或加密——把字符编码‌<em>“最高的一个有效位”</em>‌（即最高的一个1）以下的每一位都反转，如：</p>
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2023-11-18 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210123_richards_text_encryption" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-01-20</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="实-验-室-制-取-锟-斤-拷">实 验 室 制 取 锟 斤 拷</h1>
+
+<p>Ruby</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">encodeOpt</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:invalid</span> <span class="o">=&gt;</span> <span class="ss">:replace</span><span class="p">,</span> <span class="ss">:undef</span> <span class="o">=&gt;</span> <span class="ss">:replace</span> <span class="p">}</span>
+<span class="n">str</span> <span class="o">=</span> <span class="s2">"你好，世界！"</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">encode!</span><span class="p">(</span><span class="s1">'gbk'</span><span class="p">,</span> <span class="n">encodeOpt</span><span class="p">)</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">force_encoding</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">encode!</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">encodeOpt</span><span class="p">)</span>
+<span class="n">str</span><span class="p">.</span><span class="nf">force_encoding</span><span class="p">(</span><span class="s1">'gbk'</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">encodeOpt</span><span class="p">)</span>
+</code></pre></div></div>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210120_producing_kunjinkao" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2021-01-15</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="很久以前写的诸个quine">很久以前写的诸个quine</h1>
+
+<p>原文写于2020年3月22日；C++实现写于28日</p>
+
+<hr />
+
+<h1 id="纯真灵魂的自产生程序">纯真灵魂的自产生程序</h1>
+
+<p>用不同语言写自产生程序，作为个人练习。<del>太烧脑了</del></p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/210115_quines" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-12-25</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="brainf和befunge-99bottles-和-fizzbuzz">brainf和Befunge 99Bottles 和 FizzBuzz</h1>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/201225_eso_99btls_fzbz" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-12-17</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="12月17日brainfuck程序集锦">12月17日brainfuck程序集锦</h1>
+
+<p>这是12月17日写的几个brainf程序，只加了少量注释。参考<a href="/blog/posts/201204_brainf_bin2dec">上篇关于brainf的博客</a>。</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/201217_brainf_collection" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-12-09</time>
+      <a href="/blog/tags/" class="text-decoration-none">
+        <span class="badge bg-secondary">shit</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="a-s-c-i-i-简-谱">A S C I I 简 谱</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>XX          XX
+==          ==
+ \           \            |
+  X  X  0     X  X  0     |
+  ----        ----        |
+</code></pre></div></div>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/201209_ascii_jianpu" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-12-04</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="brainfuck二进制转十进制">brainfuck二进制转十进制</h1>
+
+<p><em>诶――朋友们好啊，我是普通的高中生DGCK81LNN。刚才有个朋友问我L老师发生甚么事了，我说怎么回事，给我发过来一……几张截图，我一看，嗷，原来是昨天，有一个同学，塔说，诶……我写了个程序，二进制转十进制：</em></p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/201204_brainf_bin2dec" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-10-16</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="ohhhhbrainfuck自产生程序">OHHHH，brainfuck自产生程序！</h1>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/201016_brainf_quine" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-10-07</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="jvavscript">JvavScript</h1>
+
+<p><strong>JvavScript</strong>是我提出的一个基于JavaScript的深奥编程语言，是JavaScript的一个子集，也是<a href="https://esolangs.org/wiki/JSFuck">JSFuck</a>的一个超集。JvavScript代码符合JavaScript表达式的语法，然而只能使用有限的几种字符：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>( ) [ ] &lt; &gt; + - ! , = ? : _ $
+</code></pre></div></div>
+
+      <p class="text-secondary text-opacity-75 mb-0"><i>……2022-12-04 更新……</i></p>
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/201007_jvavscript" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-09-22</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/frontend" class="text-decoration-none">
+        <span class="badge bg-secondary">前端</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="鉴别浏览器ecmascript版本">鉴别浏览器ECMAScript版本</h1>
+
+<p>所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。</p>
+
+<p>今天写了个粗略鉴别ES版本的代码。</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/200922_ecma_ver_test" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-09-01</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="禁止套深奥编程语言用befunge程序生成brainfuck代码">禁止套深奥编程语言！用Befunge程序生成brainfuck代码</h1>
+
+<p>关于Befunge和brainfuck是什么我就不说了，<a href="https://esolangs.org">Esolangs</a>上有详细说明</p>
+
+<p>今天随便写了这个Befunge程序，它可以生成一段会输出指定文字的brainfuck代码。</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/200901_bfbf" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-08-27</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="可以运行的乱码javascript">可以运行的乱码JavaScript？）</h1>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">((</span><span class="o">!</span><span class="p">[]</span><span class="o">+</span><span class="p">[])[</span><span class="o">+</span><span class="p">[]]</span><span class="o">+</span><span class="p">(</span><span class="o">!</span><span class="p">[]</span><span class="o">+</span><span class="p">[])[</span><span class="o">+!+</span><span class="p">[]]</span><span class="o">+</span><span class="p">([</span><span class="o">!</span><span class="p">[]]</span><span class="o">+</span><span class="p">[][[]])[</span><span class="o">+!+</span><span class="p">[]</span><span class="o">+</span><span class="p">[</span><span class="o">+</span><span class="p">[]]]</span><span class="o">+</span><span class="p">(</span><span class="o">!</span><span class="p">[]</span><span class="o">+</span><span class="p">[])[</span><span class="o">!+</span><span class="p">[]</span><span class="o">+!+</span><span class="p">[]]);</span> <span class="c1">// "fail"</span>
+</code></pre></div></div>
+
+<p style="font-size:3em">这就nm离谱</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/200827_shit_code_js" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+  <article class="col card excerptcard">
+    <header class="card-header">
+      <time>2020-08-27</time>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+    </header>
+    <div class="card-body">
+      <h1 id="奇怪的av号-bv号转换程序增加了">奇怪的AV号-BV号转换程序增加了！</h1>
+
+<p>众所周知，哔哩哔哩已经把旧版视频番号AV号隐藏，只显示新版番号BV号，而这两种番号可以通过一个算法相互转换。</p>
+
+<p>我用两种<strong>深奥编程语言</strong>，即<strong>娱乐性大于实用性</strong>的编程语言实现了番号转换，话不多说，直接上源码</p>
+
+    </div>
+    <div class="card-footer">
+      <a href="/blog/posts/200827_eso_av2bv" class="text-decoration-none read-all">
+        阅读全文
+        <i class=bi-arrow-right aria-hidden></i>
+      </a>
+    </div>
+  </article>
+</div>
+
+<script crossorigin=anonymous
+  src="https://cdn.polyfill.io/v3/polyfill.min.js?features=Intl.DateTimeFormat,Intl.DateTimeFormat.~locale.zh,Intl.DateTimeFormat.~timeZone.golden,String.prototype.padStart"
+></script>
+<script src="js/aqifeed.js"></script>
+<script src="index.js"></script>
+
+</div>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/index.html?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "index.html"
+    dir: "/"
+    name: "index.html"
+    url: "/"
+    collection: null
+    layout: "default"
+------------------------------------------------------------------------------->

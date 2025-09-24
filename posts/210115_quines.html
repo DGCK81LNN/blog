@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>很久以前写的诸个quine | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="很久以前写的诸个quine" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="很久以前写的诸个quine 原文写于2020年3月22日；C++实现写于28日 纯真灵魂的自产生程序 用不同语言写自产生程序，作为个人练习。太烧脑了" />
+<meta property="og:description" content="很久以前写的诸个quine 原文写于2020年3月22日；C++实现写于28日 纯真灵魂的自产生程序 用不同语言写自产生程序，作为个人练习。太烧脑了" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/210115_quines" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/210115_quines" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-15T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="很久以前写的诸个quine" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2021-01-15T00:00:00+08:00","datePublished":"2021-01-15T00:00:00+08:00","description":"很久以前写的诸个quine 原文写于2020年3月22日；C++实现写于28日 纯真灵魂的自产生程序 用不同语言写自产生程序，作为个人练习。太烧脑了","headline":"很久以前写的诸个quine","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/210115_quines"},"url":"https://dgck81lnn.github.io/blog/posts/210115_quines"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">很久以前写的诸个quine</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2021-01-15T00:00:00+0800">2021-01-15</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/everyday-coding" class="text-decoration-none">
+        <span class="badge bg-secondary">日常写代码</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="很久以前写的诸个quine">很久以前写的诸个quine</h1>
+
+<p>原文写于2020年3月22日；C++实现写于28日</p>
+
+<hr />
+
+<h1 id="纯真灵魂的自产生程序">纯真灵魂的自产生程序</h1>
+
+<p>用不同语言写自产生程序，作为个人练习。<del>太烧脑了</del></p>
+
+<h2 id="思路">思路</h2>
+
+<p>自产生程序（Quine）即输出自身源代码的程序。既然要输出，必须有一个 <strong>输出语句</strong> 。但因为 <strong>输出语句</strong> 需要输出自己，还不能无限<a href="https://zh.moegirl.org/禁止套娃">套娃</a>，所以还需要一个 <strong>赋值语句</strong> ，声明 <strong>输出语句</strong> 的源代码以便引用。</p>
+
+<p>现在，自产生程序将有两条主要语句，分别是：</p>
+<ol>
+  <li><strong>赋值语句</strong> ，定义一个字符串<em>变量s</em>，使其包含 <strong>输出语句</strong> 的源代码；</li>
+  <li><strong>输出语句</strong> ，输出程序本身的源代码。</li>
+</ol>
+
+<p>于是， <strong>输出语句</strong> 所输出的内容就是：</p>
+<ol>
+  <li><strong>赋值语句</strong> ，把定义好的<em>变量s</em>转义，用引号包围；</li>
+  <li><strong>输出语句</strong> 本身。</li>
+</ol>
+
+<p>很不好理解，所以请看具体实现。</p>
+
+<h2 id="具体实现">具体实现</h2>
+
+<h3 id="javascript">Javascript</h3>
+
+<p>Javascript的实现最为简单，因为确实只需要上述的两行主要代码，并且在转义字符串时偷了点懒。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">s</span><span class="o">=</span><span class="dl">"</span><span class="s2">console.log(</span><span class="se">\"</span><span class="s2">let s=</span><span class="se">\"</span><span class="s2">+JSON.stringify(s)+</span><span class="se">\"</span><span class="s2">;</span><span class="se">\\</span><span class="s2">n</span><span class="se">\"</span><span class="s2">+s);</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">let s=</span><span class="dl">"</span><span class="o">+</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">;</span><span class="se">\n</span><span class="dl">"</span><span class="o">+</span><span class="nx">s</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>第一行 <strong>赋值语句</strong> 声明了变量s，内容是 <strong>输出语句</strong> 的源代码。</li>
+  <li>第二行 <strong>输出语句</strong> 调用了输出方法<code class="language-plaintext highlighter-rouge">console.log</code>，输出的内容为：</li>
+  <li><code class="language-plaintext highlighter-rouge">"let s="</code>， <strong>赋值语句</strong> 的开头；</li>
+  <li><code class="language-plaintext highlighter-rouge">JSON.stringify(s)</code>，借用<code class="language-plaintext highlighter-rouge">JSON.stringify</code>方法将<em>变量s</em>转义；</li>
+  <li><code class="language-plaintext highlighter-rouge">";\n"</code>， <strong>赋值语句</strong> 结尾的分号，以及一个换行符；</li>
+  <li><code class="language-plaintext highlighter-rouge">s</code>， <strong>输出语句</strong> 本身。</li>
+</ul>
+
+<p>以上程序在node.js中可以完美地输出自身的源代码。</p>
+
+<h3 id="php">PHP</h3>
+
+<p>PHP的实现也差不多一样简单，只是PHP代码需要用<code class="language-plaintext highlighter-rouge">&lt;?php ?&gt;</code>包围。</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$s</span><span class="o">=</span><span class="s1">'echo "&lt;?php\\n\\$s=".var_export($s,true).";\\n".$s."\\n?&gt;";'</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;?php</span><span class="se">\n\$</span><span class="s2">s="</span><span class="mf">.</span><span class="nb">var_export</span><span class="p">(</span><span class="nv">$s</span><span class="p">,</span><span class="kc">true</span><span class="p">)</span><span class="mf">.</span><span class="s2">";</span><span class="se">\n</span><span class="s2">"</span><span class="mf">.</span><span class="nv">$s</span><span class="mf">.</span><span class="s2">"</span><span class="se">\n</span><span class="s2">?&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p><strong>输出语句</strong> 输出的内容：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"&lt;?php\n\$s="</code>，代码开头、一个换行符以及 <strong>赋值语句</strong> 的开头；</li>
+  <li><code class="language-plaintext highlighter-rouge">var_export($s,true)</code>，导出<em>变量s</em>的源代码；</li>
+  <li><code class="language-plaintext highlighter-rouge">";\n"</code>， <strong>赋值语句</strong> 结尾的分号，以及一个换行符；</li>
+  <li><code class="language-plaintext highlighter-rouge">$s</code>， <strong>输出语句</strong> 本身；</li>
+  <li><code class="language-plaintext highlighter-rouge">"\n?&gt;"</code>，一个换行符和代码结尾。</li>
+</ul>
+
+<h3 id="python-2">Python 2</h3>
+
+<p>现在我们要尝试不使用原生方法，自己转义字符串。
+为了降低转义的复杂程度， <strong>我们暂且把代码中需要的一个换行符也放在<em>变量s</em>里</strong> ，用三引号声明<em>变量s</em>。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span><span class="o">=</span><span class="sh">'''</span><span class="s">
+print </span><span class="sh">"</span><span class="s">s=</span><span class="sh">'</span><span class="se">\'</span><span class="sh">'"</span><span class="s">+s.replace(</span><span class="sh">"</span><span class="se">\\\\</span><span class="sh">"</span><span class="s">,</span><span class="sh">"</span><span class="se">\\\\\\\\</span><span class="sh">"</span><span class="s">).replace(</span><span class="sh">"'</span><span class="se">\'</span><span class="sh">'"</span><span class="s">,</span><span class="sh">"'</span><span class="se">\\\\</span><span class="sh">''"</span><span class="s">)+</span><span class="sh">"'</span><span class="se">\'</span><span class="sh">'"</span><span class="s">+s</span><span class="sh">'''</span>
+<span class="k">print</span> <span class="sh">"</span><span class="s">s=</span><span class="sh">'''"</span><span class="o">+</span><span class="n">s</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sh">"</span><span class="se">\\</span><span class="sh">"</span><span class="p">,</span><span class="sh">"</span><span class="se">\\\\</span><span class="sh">"</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sh">"'''"</span><span class="p">,</span><span class="sh">"'</span><span class="se">\\</span><span class="sh">''"</span><span class="p">)</span><span class="o">+</span><span class="sh">"'''"</span><span class="o">+</span><span class="n">s</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"s='''"</code>， <strong>赋值语句</strong> 的开头和字符串前的三引号；</li>
+  <li><code class="language-plaintext highlighter-rouge">s.replace("\\","\\\\").replace("'''","'\\''")</code>，转义<em>变量s</em>，</li>
+  <li>一个反斜杠<code class="language-plaintext highlighter-rouge">"\\"</code>（<code class="language-plaintext highlighter-rouge">\ </code>）转义成两个反斜杠<code class="language-plaintext highlighter-rouge">"\\\\"</code>（<code class="language-plaintext highlighter-rouge">\\</code>），</li>
+  <li>三引号<code class="language-plaintext highlighter-rouge">"'''"</code>（<code class="language-plaintext highlighter-rouge">'''</code>）转义成<code class="language-plaintext highlighter-rouge">"'\\''"</code>（<code class="language-plaintext highlighter-rouge">'\''</code>）；</li>
+  <li><code class="language-plaintext highlighter-rouge">"'''"</code>，字符串后的三引号；</li>
+  <li><code class="language-plaintext highlighter-rouge">s</code>，一个换行符和 <strong>输出语句</strong> 。</li>
+</ul>
+
+<h3 id="java">Java</h3>
+
+<p>Java就没有三引号这种偷懒语法了，并且代码前后有各有两行废话。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span><span class="n">args</span><span class="o">){</span>
+        <span class="nc">String</span> <span class="n">s</span><span class="o">=</span><span class="s">"System.out.println(\"public class Main{\\n    public static void main(String[]args){\\n        String s=\\\"\"+s.replace(\"\\\\\",\"\\\\\\\\\").replace(\"\\n\",\"\\\\n\")+\"\\\";\\n        \"+s+\"\\n    }\\n}\");"</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"public class Main{\n    public static void main(String[]args){\n        String s=\""</span><span class="o">+</span><span class="n">s</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"\\"</span><span class="o">,</span><span class="s">"\\\\"</span><span class="o">).</span><span class="na">replace</span><span class="o">(</span><span class="s">"\""</span><span class="o">,</span><span class="s">"\\\""</span><span class="o">).</span><span class="na">replace</span><span class="o">(</span><span class="s">"\n"</span><span class="o">,</span><span class="s">"\\n"</span><span class="o">)+</span><span class="s">"\";\n        "</span><span class="o">+</span><span class="n">s</span><span class="o">+</span><span class="s">"\n    }\n}"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"public class Main{\n    public static void main(String[]args){\n        String s=\""</code>，代码开头的废话、 <strong>赋值语句</strong> 的开头和一个双引号；</li>
+  <li><code class="language-plaintext highlighter-rouge">s.replace("\\","\\\\").replace("\"","\\\"").replace("\n","\\n")</code>，转义<em>变量s</em>，</li>
+  <li>一个反斜杠<code class="language-plaintext highlighter-rouge">"\\"</code>（<code class="language-plaintext highlighter-rouge">\ </code>）转义成两个反斜杠<code class="language-plaintext highlighter-rouge">"\\\\"</code>（<code class="language-plaintext highlighter-rouge">\\</code>），</li>
+  <li>一个双引号<code class="language-plaintext highlighter-rouge">"\""</code>（<code class="language-plaintext highlighter-rouge">"</code>）转义成反斜杠和双引号<code class="language-plaintext highlighter-rouge">"\\\""</code>（<code class="language-plaintext highlighter-rouge">\"</code>），</li>
+  <li>一个换行符<code class="language-plaintext highlighter-rouge">"\n"</code>转义成反斜杠n<code class="language-plaintext highlighter-rouge">"\\n"</code>（<code class="language-plaintext highlighter-rouge">\n</code>）；</li>
+  <li><code class="language-plaintext highlighter-rouge">"\";\n        "</code>， <strong>赋值语句</strong> 结尾的双引号、分号，一个换行符以及下一行的缩进；</li>
+  <li><code class="language-plaintext highlighter-rouge">s</code>， <strong>输出语句</strong> ；</li>
+  <li><code class="language-plaintext highlighter-rouge">"\n    }\n}"</code>，代码结尾的废话。</li>
+</ul>
+
+<h3 id="c">C#</h3>
+
+<p>代码好像长了不少，这只是因为“废话”比较多。</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nn">QuineApplication</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Quine</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">s</span><span class="p">=</span><span class="s">"Console.WriteLine(\"using System;\\nnamespace QuineApplication\\n{\\n    class Quine\\n    {\\n        static void Main(string[] args)\\n        {\\n            string s=\\\"\"+s.Replace(\"\\\\\",\"\\\\\\\\\").Replace(\"\\\"\",\"\\\\\\\"\").Replace(\"\\n\",\"\\\\n\")+\"\\\";\\n            \"+s+\"\\n            Console.ReadKey();\\n        }\\n    }\\n}\");"</span><span class="p">;</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"using System;\nnamespace QuineApplication\n{\n    class Quine\n    {\n        static void Main(string[] args)\n        {\n            string s=\""</span><span class="p">+</span><span class="n">s</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">"\\"</span><span class="p">,</span><span class="s">"\\\\"</span><span class="p">).</span><span class="nf">Replace</span><span class="p">(</span><span class="s">"\""</span><span class="p">,</span><span class="s">"\\\""</span><span class="p">).</span><span class="nf">Replace</span><span class="p">(</span><span class="s">"\n"</span><span class="p">,</span><span class="s">"\\n"</span><span class="p">)+</span><span class="s">"\";\n            "</span><span class="p">+</span><span class="n">s</span><span class="p">+</span><span class="s">"\n            Console.ReadKey();\n        }\n    }\n}"</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"using System;\nnamespace QuineApplication\n{\n    class Quine\n    {\n        static void Main(string[] args)\n        {\n            string s=\""</code>，代码开头的废话、 <strong>赋值语句</strong> 的开头和一个双引号；</li>
+  <li><code class="language-plaintext highlighter-rouge">s.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\n","\\n")</code>，转义<em>变量s</em>，三次字符串替换与Java的完全相同；</li>
+  <li><code class="language-plaintext highlighter-rouge">"\";\n            "</code>， <strong>赋值语句</strong> 结尾的双引号、分号，一个换行符以及下一行的缩进；</li>
+  <li><code class="language-plaintext highlighter-rouge">s</code>， <strong>输出语句</strong> ；</li>
+  <li><code class="language-plaintext highlighter-rouge">"\n            Console.ReadKey();\n        }\n    }\n}"</code>，代码结尾的废话。</li>
+</ul>
+
+<h3 id="c-1">C++</h3>
+<p>手动替换字符串。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">pos</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="n">string</span><span class="p">(</span><span class="s">"cout&lt;&lt;</span><span class="se">\"</span><span class="s">#include &lt;iostream&gt;</span><span class="se">\\</span><span class="s">nusing namespace std;</span><span class="se">\\</span><span class="s">nint main()</span><span class="se">\\</span><span class="s">n{</span><span class="se">\\</span><span class="s">n    int pos;</span><span class="se">\\</span><span class="s">n    string s=string(</span><span class="se">\\\"\"</span><span class="s">&lt;&lt;s2&lt;&lt;</span><span class="se">\"\\\"</span><span class="s">),s2=string(s);</span><span class="se">\\</span><span class="s">n    while(pos=s2.find(</span><span class="se">\\\"\\\\\\\\\\\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\\\"\\\\</span><span class="s">x1a</span><span class="se">\\\"</span><span class="s">);</span><span class="se">\\</span><span class="s">n    while(pos=s2.find(</span><span class="se">\\\"\\\\</span><span class="s">x1a</span><span class="se">\\\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\\\"\\\\\\\\\\\\\\\\\\\"</span><span class="s">);</span><span class="se">\\</span><span class="s">n    while(pos=s2.find(</span><span class="se">\\\"\\\\\\\"\\\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\\\"\\\\</span><span class="s">x1a</span><span class="se">\\\"</span><span class="s">);</span><span class="se">\\</span><span class="s">n    while(pos=s2.find(</span><span class="se">\\\"\\\\</span><span class="s">x1a</span><span class="se">\\\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\\\"\\\\\\\\\\\\\\\"\\\"</span><span class="s">);</span><span class="se">\\</span><span class="s">n    while(pos=s2.find(</span><span class="se">\\\"\\\\</span><span class="s">n</span><span class="se">\\\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\\\"\\\\\\\\</span><span class="s">n</span><span class="se">\\\"</span><span class="s">);</span><span class="se">\\</span><span class="s">n    </span><span class="se">\"</span><span class="s">&lt;&lt;s&lt;&lt;</span><span class="se">\"\\</span><span class="s">n    return 0;</span><span class="se">\\</span><span class="s">n}</span><span class="se">\"</span><span class="s">;"</span><span class="p">),</span><span class="n">s2</span><span class="o">=</span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">s2</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"</span><span class="se">\\</span><span class="s">"</span><span class="p">),</span><span class="n">pos</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span><span class="n">s2</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"</span><span class="se">\x1a</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">s2</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"</span><span class="se">\x1a</span><span class="s">"</span><span class="p">),</span><span class="n">pos</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span><span class="n">s2</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"</span><span class="se">\\\\</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">s2</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"</span><span class="se">\"</span><span class="s">"</span><span class="p">),</span><span class="n">pos</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span><span class="n">s2</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"</span><span class="se">\x1a</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">s2</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"</span><span class="se">\x1a</span><span class="s">"</span><span class="p">),</span><span class="n">pos</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span><span class="n">s2</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"</span><span class="se">\\\"</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">s2</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">),</span><span class="n">pos</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span><span class="n">s2</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">"</span><span class="se">\\</span><span class="s">n"</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"#include &lt;iostream&gt;</span><span class="se">\n</span><span class="s">using namespace std;</span><span class="se">\n</span><span class="s">int main()</span><span class="se">\n</span><span class="s">{</span><span class="se">\n</span><span class="s">    int pos;</span><span class="se">\n</span><span class="s">    string s=string(</span><span class="se">\"</span><span class="s">"</span><span class="o">&lt;&lt;</span><span class="n">s2</span><span class="o">&lt;&lt;</span><span class="s">"</span><span class="se">\"</span><span class="s">),s2=string(s);</span><span class="se">\n</span><span class="s">    while(pos=s2.find(</span><span class="se">\"\\\\\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\"\\</span><span class="s">x1a</span><span class="se">\"</span><span class="s">);</span><span class="se">\n</span><span class="s">    while(pos=s2.find(</span><span class="se">\"\\</span><span class="s">x1a</span><span class="se">\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\"\\\\\\\\\"</span><span class="s">);</span><span class="se">\n</span><span class="s">    while(pos=s2.find(</span><span class="se">\"\\\"\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\"\\</span><span class="s">x1a</span><span class="se">\"</span><span class="s">);</span><span class="se">\n</span><span class="s">    while(pos=s2.find(</span><span class="se">\"\\</span><span class="s">x1a</span><span class="se">\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\"\\\\\\\"\"</span><span class="s">);</span><span class="se">\n</span><span class="s">    while(pos=s2.find(</span><span class="se">\"\\</span><span class="s">n</span><span class="se">\"</span><span class="s">),pos&gt;=0)s2.replace(pos,1,</span><span class="se">\"\\\\</span><span class="s">n</span><span class="se">\"</span><span class="s">);</span><span class="se">\n</span><span class="s">    "</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="o">&lt;&lt;</span><span class="s">"</span><span class="se">\n</span><span class="s">    return 0;</span><span class="se">\n</span><span class="s">}"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>定义了两个相同的字符串对象<code class="language-plaintext highlighter-rouge">s</code>、<code class="language-plaintext highlighter-rouge">s2</code>，然后中间的那五行while循环把s2转义。</p>
+
+<ul>
+  <li>先把一个反斜杠<code class="language-plaintext highlighter-rouge">"\\"</code>（<code class="language-plaintext highlighter-rouge">\</code>）替换成替代符<code class="language-plaintext highlighter-rouge">"\x1a"</code>，</li>
+  <li>然后把替代符<code class="language-plaintext highlighter-rouge">"\x1a"</code>替换成两个反斜杠<code class="language-plaintext highlighter-rouge">"\\\\"</code>（<code class="language-plaintext highlighter-rouge">\\</code>），</li>
+  <li>然后把一个双引号<code class="language-plaintext highlighter-rouge">"\""</code>（<code class="language-plaintext highlighter-rouge">"</code>）替换成替代符<code class="language-plaintext highlighter-rouge">"\x1a"</code>，</li>
+  <li>然后把替代符<code class="language-plaintext highlighter-rouge">"\x1a"</code>替换成反斜杠和双引号<code class="language-plaintext highlighter-rouge">"\\\""</code>（<code class="language-plaintext highlighter-rouge">\"</code>），</li>
+  <li>最后把一个换行符<code class="language-plaintext highlighter-rouge">"\n"</code>替换成反斜杠n<code class="language-plaintext highlighter-rouge">"\\n"</code>（<code class="language-plaintext highlighter-rouge">\n</code>）。</li>
+</ul>
+
+<p>使用替代符垫一步是为了防止把已经转义好的反斜杠或双引号再转义一遍。我一开始没垫这一步，结果就死循环了，一直在反复转义第一个反斜杠（<code class="language-plaintext highlighter-rouge">\</code>→<code class="language-plaintext highlighter-rouge">\\</code>→<code class="language-plaintext highlighter-rouge">\\\</code>→<code class="language-plaintext highlighter-rouge">\\\\</code>…）。</p>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/210115_quines"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2021-01-15-quines.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2021-01-15-quines.md"
+    dir: null
+    name: "2021-01-15-quines.md"
+    url: "/posts/210115_quines"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

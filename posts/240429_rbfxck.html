@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>“ruby，一款好用的 esolang” | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="“ruby，一款好用的 esolang”" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="“ruby，一款好用的 esolang” $&gt;&lt;&lt;(&quot;&quot;&lt;&lt;~-~-~-~-~-~-~-~-(-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~(-~ -~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~( []&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-(-~-~-~-~-~-~ -~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;( ([[]]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~-~-~(-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~( []&lt;=&gt;[]))&lt;&lt;~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~(-~-~-~-~-~-~-~([ ]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]) )&lt;&lt;-~-~-~-~(-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~(([[]]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([ ]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~-~-~-~-~-~([]&lt;=&gt;[])) Hello, World!" />
+<meta property="og:description" content="“ruby，一款好用的 esolang” $&gt;&lt;&lt;(&quot;&quot;&lt;&lt;~-~-~-~-~-~-~-~-(-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~(-~ -~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~( []&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-(-~-~-~-~-~-~ -~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;( ([[]]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~-~-~(-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~( []&lt;=&gt;[]))&lt;&lt;~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~(-~-~-~-~-~-~-~([ ]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]) )&lt;&lt;-~-~-~-~(-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~(([[]]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([ ]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~-~-~-~-~-~([]&lt;=&gt;[])) Hello, World!" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/240429_rbfxck" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/240429_rbfxck" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-04-29T17:10:55+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="“ruby，一款好用的 esolang”" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2024-04-29T17:10:55+08:00","datePublished":"2024-04-29T17:10:55+08:00","description":"“ruby，一款好用的 esolang” $&gt;&lt;&lt;(&quot;&quot;&lt;&lt;~-~-~-~-~-~-~-~-(-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~(-~ -~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~( []&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-(-~-~-~-~-~-~ -~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;( ([[]]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~-~-~(-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~( []&lt;=&gt;[]))&lt;&lt;~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~-~(-~-~-~-~-~-~-~([ ]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;~-~-~-~-(-~-~-~-~-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~([]&lt;=&gt;[]) )&lt;&lt;-~-~-~-~(-~-~-~([]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([]&lt;=&gt;[]))&lt;&lt;-~(([[]]&lt;=&gt;[])&lt;&lt;-~-~-~-~-~([ ]&lt;=&gt;[]))&lt;&lt;-~-~-~-~-~-~-~-~-~-~([]&lt;=&gt;[])) Hello, World!","headline":"“ruby，一款好用的 esolang”","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/240429_rbfxck"},"url":"https://dgck81lnn.github.io/blog/posts/240429_rbfxck"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">“ruby，一款好用的 esolang”</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2024-04-29T17:10:55+0800">2024-04-29 17:10</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="ruby一款好用的-esolang">“ruby，一款好用的 esolang”</h1>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vg">$&gt;</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="s2">""</span><span class="o">&lt;&lt;~-~-~-~-~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">(</span><span class="o">-~</span>
+<span class="o">-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">(</span>
+<span class="p">[]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~</span>
+<span class="o">-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+<span class="p">([[]]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~-~-~-~-~-~</span><span class="p">(</span><span class="o">-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">(</span>
+<span class="p">[]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([</span>
+<span class="p">]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;~-~-~-~-</span><span class="p">(</span><span class="o">-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span>
+<span class="p">)</span><span class="o">&lt;&lt;-~-~-~-~</span><span class="p">(</span><span class="o">-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~</span><span class="p">(([[]]</span><span class="o">&lt;=&gt;</span><span class="p">[])</span><span class="o">&lt;&lt;-~-~-~-~-~</span><span class="p">([</span>
+<span class="p">]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span><span class="o">&lt;&lt;-~-~-~-~-~-~-~-~-~-~</span><span class="p">([]</span><span class="o">&lt;=&gt;</span><span class="p">[]))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, World!
+</code></pre></div></div>
+
+<p>Ruby 语言有很多有趣的特性：包含循环引用的数据之间可以比较是否相等，重载运算符就是定义以运算符为名称的方法，可以用 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="n">字符串</span> <span class="o">&lt;&lt;</span> <span class="n">字符串或字符编码</span></code> 向字符串追加内容，整数可以像比特组成的数组一样被索引和切片，“全局函数”实际上是 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">Kernel</span></code> 模块的私有方法，<code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">Object</span></code> 的 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="nb">display</span></code> 方法等价于 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="nb">print</span></code> 函数……</p>
+
+<h3 id="esoteric-ruby">Esoteric Ruby</h3>
+
+<p>前些天，<del>热爱 Esolang 的</del>群友“<em>预防</em>”尝试写出不包含字母的 Ruby 程序。首先他想到了 <code class="language-plaintext highlighter-rouge">String#&lt;&lt;</code>。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="s2">""</span> <span class="o">&lt;&lt;</span> <span class="mi">72</span> <span class="o">&lt;&lt;</span> <span class="mi">101</span> <span class="o">&lt;&lt;</span> <span class="mi">108</span> <span class="o">&lt;&lt;</span> <span class="mi">108</span> <span class="o">&lt;&lt;</span> <span class="mi">111</span> <span class="o">&lt;&lt;</span> <span class="mi">44</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span>
+    <span class="o">&lt;&lt;</span> <span class="mi">87</span> <span class="o">&lt;&lt;</span> <span class="mi">111</span> <span class="o">&lt;&lt;</span> <span class="mi">114</span> <span class="o">&lt;&lt;</span> <span class="mi">108</span> <span class="o">&lt;&lt;</span> <span class="mi">100</span> <span class="o">&lt;&lt;</span> <span class="mi">33</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span><span class="p">).</span><span class="nf">display</span>
+</code></pre></div></div>
+
+<p>（如果启用了 <code class="language-plaintext highlighter-rouge">frozen_string_literal</code>，需将 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="s2">""</span></code> 改为 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="o">+</span><span class="s2">""</span></code>：一元正号运算符可以复制冻结的字符串，得到一个未冻结的副本。）</p>
+
+<p>如何不使用字母调用 <code class="language-plaintext highlighter-rouge">Object#display</code> 呢？试试 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">Symbol</span></code>。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">""</span> <span class="o">&lt;&lt;</span> <span class="mi">100</span> <span class="o">&lt;&lt;</span> <span class="mi">105</span> <span class="o">&lt;&lt;</span> <span class="mi">115</span> <span class="o">&lt;&lt;</span> <span class="mi">112</span> <span class="o">&lt;&lt;</span> <span class="mi">108</span> <span class="o">&lt;&lt;</span> <span class="mi">97</span> <span class="o">&lt;&lt;</span> <span class="mi">121</span> <span class="c1"># =&gt; "display"</span>
+<span class="ss">:"</span><span class="si">#{</span><span class="s2">""</span> <span class="o">&lt;&lt;</span> <span class="mi">100</span> <span class="o">&lt;&lt;</span> <span class="mi">105</span> <span class="o">&lt;&lt;</span> <span class="mi">115</span> <span class="o">&lt;&lt;</span> <span class="mi">112</span> <span class="o">&lt;&lt;</span> <span class="mi">108</span> <span class="o">&lt;&lt;</span> <span class="mi">97</span> <span class="o">&lt;&lt;</span> <span class="mi">121</span><span class="si">}</span><span class="ss">"</span> <span class="c1"># =&gt; :display</span>
+</code></pre></div></div>
+
+<p>然而，如何通过方法名的 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">Symbol</span></code> 调用方法？正常情况下……</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="ss">:display</span><span class="p">)</span>
+<span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">.</span><span class="nf">method</span><span class="p">(</span><span class="ss">:display</span><span class="p">).</span><span class="nf">call</span>
+<span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">.</span><span class="nf">method</span><span class="p">(</span><span class="ss">:display</span><span class="p">)</span><span class="o">.</span><span class="p">()</span>
+<span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">.</span><span class="nf">method</span><span class="p">(</span><span class="ss">:display</span><span class="p">)[]</span>
+<span class="no">String</span><span class="p">.</span><span class="nf">instance_method</span><span class="p">(</span><span class="ss">:display</span><span class="p">).</span><span class="nf">bind</span><span class="p">(</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">).</span><span class="nf">call</span>
+<span class="no">String</span><span class="p">.</span><span class="nf">instance_method</span><span class="p">(</span><span class="ss">:display</span><span class="p">).</span><span class="nf">bind_call</span><span class="p">(</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">lambda</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:display</span><span class="p">).</span><span class="nf">call</span><span class="p">(</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">lambda</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:display</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">lambda</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:display</span><span class="p">)[</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>不管用怎样<em>刁钻</em>的方式调用方法，都会引入新的方法/函数调用。但后来我发现：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="o">&amp;</span><span class="nb">proc</span><span class="p">)</span>
+  <span class="nb">proc</span><span class="p">[</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span>
+<span class="k">end</span>
+<span class="n">greet</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:display</span><span class="p">)</span> <span class="c1"># 输出 Hello, World!</span>
+</code></pre></div></div>
+
+<p>通过定义一个<strong>接受块的函数</strong>，可以在不调用方法的情况下<strong>把 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">Symbol</span></code> 转换成 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">Proc</span></code></strong>（<code class="language-ruby highlight language-ruby highlighter-rouge"><span class="nb">lambda</span></code>）。而这个 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="n">greet</span></code> 函数可以写成<strong>箭头函数</strong>：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">greet</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="nb">proc</span><span class="p">)</span> <span class="p">{</span> <span class="nb">proc</span><span class="p">[</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span> <span class="p">}</span>
+<span class="n">greet</span><span class="o">.</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:display</span><span class="p">)</span> <span class="c1"># 输出 Hello, World!</span>
+</code></pre></div></div>
+
+<p>把箭头函数内联，改一下变量名，就得到：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="o">-&gt;</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">_</span><span class="p">)</span> <span class="p">{</span> <span class="n">_</span><span class="p">[</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span> <span class="p">})</span><span class="o">.</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:display</span><span class="p">)</span> <span class="c1"># 输出 Hello, World!</span>
+</code></pre></div></div>
+
+<p>再把字符串和 Symbol 替换掉：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="o">-&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">_</span><span class="p">){</span><span class="n">_</span><span class="p">[</span><span class="s2">""</span><span class="o">&lt;&lt;</span><span class="mi">72</span><span class="o">&lt;&lt;</span><span class="mi">101</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">111</span><span class="o">&lt;&lt;</span><span class="mi">44</span><span class="o">&lt;&lt;</span><span class="mi">32</span><span class="o">&lt;&lt;</span><span class="mi">87</span><span class="o">&lt;&lt;</span><span class="mi">111</span><span class="o">&lt;&lt;</span><span class="mi">114</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">100</span><span class="o">&lt;&lt;</span><span class="mi">33</span><span class="o">&lt;&lt;</span><span class="mi">10</span><span class="p">]})</span>
+  <span class="o">.</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:"</span><span class="si">#{</span><span class="s2">""</span><span class="o">&lt;&lt;</span><span class="mi">100</span><span class="o">&lt;&lt;</span><span class="mi">105</span><span class="o">&lt;&lt;</span><span class="mi">115</span><span class="o">&lt;&lt;</span><span class="mi">112</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">97</span><span class="o">&lt;&lt;</span><span class="mi">121</span><span class="si">}</span><span class="ss">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>我们就得到了<strong>没有字母的 Hello World 程序</strong>！</p>
+
+<p>然而我们随即发现全局变量 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="vg">$&gt;</span></code> 相当于常量 <code class="language-ruby highlight language-ruby highlighter-rouge"><span class="no">STDOUT</span></code>。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">STDOUT</span> <span class="o">&lt;&lt;</span> <span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span>
+<span class="vg">$&gt;</span> <span class="o">&lt;&lt;</span> <span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>于是……</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vg">$&gt;</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="s2">""</span><span class="o">&lt;&lt;</span><span class="mi">72</span><span class="o">&lt;&lt;</span><span class="mi">101</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">111</span><span class="o">&lt;&lt;</span><span class="mi">44</span><span class="o">&lt;&lt;</span><span class="mi">32</span><span class="o">&lt;&lt;</span><span class="mi">87</span><span class="o">&lt;&lt;</span><span class="mi">111</span><span class="o">&lt;&lt;</span><span class="mi">114</span><span class="o">&lt;&lt;</span><span class="mi">108</span><span class="o">&lt;&lt;</span><span class="mi">100</span><span class="o">&lt;&lt;</span><span class="mi">33</span><span class="o">&lt;&lt;</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>根本不需要什么箭头函数。</p>
+
+<h3 id="rbfxck">RBFxck</h3>
+
+<p>于是我们打算提高难度：不能用数字。</p>
+
+<p>如何用符号获得整数？可以用<strong>比较运算符</strong> <code class="language-plaintext highlighter-rouge">&lt;=&gt;</code>。数组 <code class="language-plaintext highlighter-rouge">[]</code> 等于 <code class="language-plaintext highlighter-rouge">[]</code>，<code class="language-plaintext highlighter-rouge">[[]]</code> 大于 <code class="language-plaintext highlighter-rouge">[]</code>。于是：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[]</span> <span class="o">&lt;=&gt;</span> <span class="p">[]</span> <span class="c1"># =&gt; 0</span>
+<span class="p">[[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[]</span> <span class="c1"># =&gt; 1</span>
+<span class="p">[]</span> <span class="o">&lt;=&gt;</span> <span class="p">[[]]</span> <span class="c1"># =&gt; -1</span>
+</code></pre></div></div>
+
+<p>用左移操作可以获得更多整数：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="o">&lt;&lt;</span> <span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span>                    <span class="c1"># 1 &lt;&lt; 1      =&gt; 2</span>
+<span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="o">&lt;&lt;</span> <span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="o">|</span> <span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span>    <span class="c1"># 1 &lt;&lt; 1 | 1  =&gt; 3</span>
+<span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="o">&lt;&lt;</span> <span class="p">(([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="o">&lt;&lt;</span> <span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[]))</span> <span class="c1"># 1 &lt;&lt; (1&lt;&lt;1) =&gt; 4</span>
+</code></pre></div></div>
+
+<p>不过后来我们发现利用<strong>一元负号</strong>和<strong>按位取反</strong>运算更方便：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="mi">1</span>    <span class="c1"># =&gt; -2</span>
+<span class="o">-~</span><span class="mi">1</span>   <span class="c1"># =&gt; 2</span>
+<span class="o">~-~</span><span class="mi">1</span>  <span class="c1"># =&gt; -3</span>
+<span class="o">-~-~</span><span class="mi">1</span> <span class="c1"># =&gt; 3</span>
+
+<span class="o">-~</span><span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="c1"># =&gt; 2</span>
+<span class="o">-~-~</span><span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="c1"># =&gt; 3</span>
+<span class="o">-~-~-~</span><span class="p">([[]]</span> <span class="o">&lt;=&gt;</span> <span class="p">[])</span> <span class="c1"># =&gt; 4</span>
+</code></pre></div></div>
+
+<p>有了<a href="/blog/posts/201007_jvavscript#2022-12-04-更新写于-2022-11-13">上次</a>的经验，经过反复调整，我完成了这样一个整数/字符串编码程序：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">shortest</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">min_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:length</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">rbfuck_int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="k">return</span> <span class="s2">"([[]]&lt;=&gt;[])"</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="s2">"([]&lt;=&gt;[[]])"</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="k">return</span> <span class="n">shortest</span><span class="p">(</span><span class="s2">"-</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^--/</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span> <span class="s2">"~</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">(</span><span class="o">~</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^~~/</span><span class="p">,</span> <span class="s2">""</span><span class="p">))</span> <span class="k">if</span> <span class="n">n</span><span class="p">.</span><span class="nf">negative?</span>
+  <span class="k">return</span> <span class="s2">"</span><span class="si">#{</span><span class="s2">"-~"</span> <span class="o">*</span> <span class="n">n</span><span class="si">}</span><span class="s2">([]&lt;=&gt;[])"</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">13</span>
+
+  <span class="n">threshold</span> <span class="o">=</span> <span class="mi">8</span>
+  <span class="n">bitl</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">.</span><span class="nf">bit_length</span>
+  <span class="k">if</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">bitl</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
+    <span class="n">bitl</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">while</span> <span class="n">n</span><span class="p">.</span><span class="nf">anybits?</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bitl</span><span class="p">)</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="s2">"~-"</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="o">~</span><span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="n">bitl</span><span class="p">])</span><span class="si">}</span><span class="s2">(</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">((</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">bitl</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;&lt;</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">(</span><span class="n">bitl</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">else</span>
+    <span class="n">bitl</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">until</span> <span class="n">n</span><span class="p">.</span><span class="nf">anybits?</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bitl</span><span class="p">)</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="s2">"-~"</span> <span class="o">*</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">bitl</span><span class="p">]</span><span class="si">}</span><span class="s2">(</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">bitl</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;&lt;</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">(</span><span class="n">bitl</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">rbfuck_str</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+  <span class="s1">'""'</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="nf">each_codepoint</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="s2">"&lt;&lt;</span><span class="si">#{</span><span class="n">rbfuck_int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span> <span class="p">}.</span><span class="nf">join</span>
+<span class="k">end</span>
+
+<span class="n">code</span> <span class="o">=</span> <span class="s2">"$&gt;&lt;&lt;(</span><span class="si">#{</span><span class="n">rbfuck_str</span><span class="p">(</span><span class="s2">"Hello, World!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
+<span class="nb">puts</span> <span class="n">code</span>
+<span class="nb">eval</span> <span class="n">code</span>
+</code></pre></div></div>
+
+<p>此程序便产生了本文开头的代码和输出。</p>
+
+<h3 id="why"><em>why</em></h3>
+
+<p><em>预防</em>也写了他自己的版本，记录如下。<del>我没太看懂</del></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vg">$_</span><span class="o">=</span><span class="p">{(:</span><span class="o">!</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{}}</span>
+<span class="vg">$__</span><span class="o">=</span><span class="p">[[]]</span><span class="o">&lt;=&gt;</span><span class="p">[]</span>
+<span class="vg">$_</span><span class="p">[:</span><span class="o">-</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="n">__</span><span class="p">,</span><span class="o">*</span><span class="n">___</span><span class="p">,</span><span class="o">**</span><span class="n">____</span><span class="p">){(</span><span class="o">-&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">__</span><span class="p">){</span><span class="n">__</span><span class="o">.</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="o">*</span><span class="n">___</span><span class="p">,</span><span class="o">**</span><span class="n">____</span><span class="p">)})</span><span class="o">.</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:"</span><span class="si">#{</span><span class="n">__</span><span class="si">}</span><span class="ss">"</span><span class="p">)})</span>
+<span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">]</span><span class="o">=-~</span><span class="p">((</span><span class="o">-~-~</span><span class="vg">$__</span><span class="p">)</span><span class="o">**-~</span><span class="vg">$__</span><span class="p">)</span>
+
+<span class="vg">$&gt;</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="s2">""</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">~-~-</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">-~-~-~-~-~-~-~</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">-~-~-~-~-~-~-~</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">-~-~-~-~-~-~-~</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">-~</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-~-~-~-~-~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">~-~-~-</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">~-~-~-~-</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">-~</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">-~</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-~-~-~-~-~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">-~</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-~-~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">-~-~-~-~-~-~-~</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">~-~-~-~-</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-</span><span class="vg">$__</span><span class="o">&lt;&lt;</span>
+  <span class="p">(</span><span class="o">~-~-~-~-</span><span class="vg">$_</span><span class="p">[</span><span class="ss">:%</span><span class="p">])</span><span class="o">**-~</span><span class="vg">$__</span> <span class="o">+</span> <span class="o">~-~-~-~-~-</span><span class="vg">$__</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>调试的过程中，我发现较旧版本的 Ruby 不支持对整数进行切片，遂写了如下 polyfill：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Integer</span>
+  <span class="vc">@@native_aref</span> <span class="o">=</span> <span class="no">Integer</span><span class="p">.</span><span class="nf">instance_method</span><span class="p">(</span><span class="ss">:[]</span><span class="p">)</span>
+  <span class="vc">@@omit</span> <span class="o">=</span> <span class="no">BasicObject</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">def</span> <span class="nf">[]</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="vc">@@omit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="vc">@@omit</span><span class="p">.</span><span class="nf">equal?</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">p1</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Range</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p1</span><span class="p">.</span><span class="nf">begin</span><span class="p">.</span><span class="nf">nil?</span>
+          <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="nb">self</span><span class="p">.</span><span class="nf">nobits?</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="n">p1</span><span class="p">.</span><span class="nf">end</span><span class="p">))</span>
+          <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"The beginless range for Integer#[] results in infinity"</span>
+        <span class="k">end</span>
+
+        <span class="k">return</span> <span class="nb">self</span> <span class="o">&gt;&gt;</span> <span class="n">p1</span><span class="p">.</span><span class="nf">begin</span> <span class="k">if</span> <span class="n">p1</span><span class="p">.</span><span class="nf">end</span><span class="p">.</span><span class="nf">nil?</span> <span class="ow">or</span> <span class="n">p1</span><span class="p">.</span><span class="nf">end</span> <span class="o">&lt;</span> <span class="n">p1</span><span class="p">.</span><span class="nf">begin</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">[</span><span class="n">p1</span><span class="p">.</span><span class="nf">begin</span><span class="p">,</span> <span class="n">p1</span><span class="p">.</span><span class="nf">size</span><span class="p">]</span>
+      <span class="k">end</span>
+
+      <span class="k">return</span> <span class="vc">@@native_aref</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="c1"># 为了在类型不对时报个错我容易吗（？</span>
+    <span class="vc">@@native_aref</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> <span class="k">unless</span> <span class="n">p1</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="ss">:to_int</span><span class="p">)</span>
+    <span class="vc">@@native_aref</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span> <span class="k">unless</span> <span class="n">p2</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="ss">:to_int</span><span class="p">)</span>
+
+    <span class="nb">self</span> <span class="o">&gt;&gt;</span> <span class="n">p1</span><span class="p">.</span><span class="nf">to_int</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">p2</span><span class="p">.</span><span class="nf">to_int</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>fin</em></p>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/240429_rbfxck"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2024-04-29-rbfxck.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2024-04-29-rbfxck.md"
+    dir: null
+    name: "2024-04-29-rbfxck.md"
+    url: "/posts/240429_rbfxck"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

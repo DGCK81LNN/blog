@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>重写的brainf 99bottles | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="重写的brainf 99bottles" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="重写的brainf 99bottles 前两天想起之前写的brainfuck 99bottles还有很大优化空间，就改进了一下。 比起之前的版本，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。" />
+<meta property="og:description" content="重写的brainf 99bottles 前两天想起之前写的brainfuck 99bottles还有很大优化空间，就改进了一下。 比起之前的版本，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/210424_brainf_99botls" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/210424_brainf_99botls" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-24T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="重写的brainf 99bottles" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2021-04-24T00:00:00+08:00","datePublished":"2021-04-24T00:00:00+08:00","description":"重写的brainf 99bottles 前两天想起之前写的brainfuck 99bottles还有很大优化空间，就改进了一下。 比起之前的版本，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。","headline":"重写的brainf 99bottles","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/210424_brainf_99botls"},"url":"https://dgck81lnn.github.io/blog/posts/210424_brainf_99botls"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">重写的brainf 99bottles</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2021-04-24T00:00:00+0800">2021-04-24</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="重写的brainf-99bottles">重写的brainf 99bottles</h1>
+
+<p>前两天想起之前写的brainfuck 99bottles还有很大优化空间，就改进了一下。</p>
+
+<p>比起<a href="/blog/posts/201225_eso_99btls_fzbz#99bottlesb">之前的版本</a>，这次的版本有效指令数更少，运行用时更短。这得利于在开始主循环开始前提前保存好一些字符串“常量”，而不是每次用到都重新计算一遍。</p>
+
+<p>这次也加了不少注释；注释中<code class="language-plaintext highlighter-rouge">{ }</code>表示内存纸带示意，其中<code class="language-plaintext highlighter-rouge">*</code>表示指针，<code class="language-plaintext highlighter-rouge">' '</code>表示字符ASCII码，<code class="language-plaintext highlighter-rouge">" "</code>表示连续ASCII码。分别包含<code class="language-plaintext highlighter-rouge">!=</code>和<code class="language-plaintext highlighter-rouge">==</code>的连续两行纸带示意是分情况讨论。</p>
+
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">-</span><span class="nb">&gt;&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++</span><span class="nb">&gt;</span><span class="nf">++</span><span class="nb">&gt;</span><span class="nf">++++</span><span class="nb">&gt;</span><span class="nf">++</span><span class="nb">&gt;</span><span class="nf">+++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="c1">
+</span><span class="nb">&gt;</span><span class="nf">++++</span><span class="nb">&gt;</span><span class="nf">+++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">++++</span><span class="nb">&gt;</span><span class="nf">++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++</span><span class="nb">&gt;</span><span class="nf">++</span><span class="c1">
+</span><span class="nb">&gt;&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="c1">
+{ 255 0 *a1=7 a2=2 a3=4 a4=2 a5=3 a6=6 a7=4 a8=3 a9=6 a10=4 a11=2 a12=8 a13=2 0 0 n=110 }
+
+“序列器”
+接收一组非零数a1 a2 a3…和一个数n
+得到规律如下的一组数：32 a1个n 32 a2个n 32 a3个n … 0 n
+</span><span class="p">[</span><span class="c1">
+  </span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> n右移1格
+  </span><span class="nf">++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 在n左手边第2格写32
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> 循环ai次
+    </span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> n复制2份，分别放入左手边和右手边
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;&gt;</span><span class="p">]</span><span class="c1"> 最左侧的255右移1格
+{ 13个0 255 0 *0 32 7个110 32 2个110 32 4个110 … 0 110 }
+
+在得到的序列基础上制作字符串
+</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> </span><span class="nf">--</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">--</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">----</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> " botles"
+</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">---</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> </span><span class="nf">--</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">----</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">----</span><span class="nb">&gt;</span><span class="nf">++++</span><span class="c1"> " of beer"
+</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">----</span><span class="c1"> " on the"
+</span><span class="nb">&gt;&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++++</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> </span><span class="nf">---</span><span class="nb">&gt;</span><span class="nf">--</span><span class="nb">&gt;</span><span class="nf">--</span><span class="c1"> " wall"
+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">+++++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+++++++++</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 逗号
+</span><span class="nb">&lt;</span><span class="nf">+++++++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> "\nT"
+</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> </span><span class="nf">---</span><span class="nb">&gt;</span><span class="nf">---</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">----</span><span class="c1"> "ake"
+</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">----</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++++</span><span class="nb">&gt;</span><span class="c1"> " one down"
+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nf">++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 逗号
+</span><span class="nb">&gt;&gt;</span><span class="nf">++</span><span class="nb">&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> </span><span class="nf">---</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> " pass"
+</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> </span><span class="nf">---</span><span class="nb">&gt;</span><span class="nf">++++</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++</span><span class="nb">&gt;&gt;</span><span class="nf">-----</span><span class="c1"> </span><span class="nf">-----</span><span class="c1"> " it around"
+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nf">++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> 逗号 换行
+</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">--</span><span class="nb">&gt;</span><span class="nf">+</span><span class="c1"> "No"
+</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+</span><span class="p">[</span><span class="c1">{ 13个0 255 0 0 " botles" 0 " of beer on the wall" 0 "</span><span class="nf">,</span><span class="c1">\nTake one down</span><span class="nf">,</span><span class="c1">" 0 " pass it around</span><span class="nf">,</span><span class="c1">\n" 0 "No" 0 *0 }</span><span class="p">]</span><span class="c1">
+
+</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="nb">&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++++</span><span class="c1">
+</span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1"> continue变量为0时，循环退出
+{ … 0 0 *continue=255 十位=9 个位=9 0 0 " botles" 0 … }
+
+初始化结束
+
+</span><span class="p">[</span><span class="c1"> 主循环 while(continue)
+  输出瓶数
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 复制十位
+  { … 十位 *0 255 十位 个位 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> 如果十位非零
+    </span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 加48（'0'）
+    </span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出并清理
+  </span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 复制个位
+  { … 255 十位 个位 *0 个位 … }
+  </span><span class="nf">++++++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 加48（'0'）
+  </span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1"> 输出并清理
+
+  { … 255 十位 个位 0 *0 32 'b' 'o' 't' 'l' 'e' 's' … }
+  </span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">..</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 输出" bottle"
+
+  判断瓶数是否不等于1
+  { … 255 十位 个位 0 *flag=0 … }
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 如果十位不等于0就设置flag
+  { … 255 十位!=0 个位 *0 flag=255 … }
+  { … 255 *十位==0 个位 0 flag=0 … }
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">-</span><span class="c1"> 统一指针位置，个位减1
+  { … 255 十位 *个位减1 0 flag … }
+  </span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">]</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 如果个位减1不等于0就设置flag
+  { … 255 十位 个位减1!=0 *0 flag=255 … }
+  { … 255 十位 *个位减1==0 0 flag … }
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+</span><span class="c1"> 统一指针位置，还原个位
+  { … 255 十位 *个位 0 flag … }
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="p">]</span><span class="c1"> flag左移1格
+  { … 255 十位 个位 flag *0 … }
+  
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> 如果有flag
+    { … 个位 *flag 0 32 'b' 'o' 't' 'l' 'e' 's' 0 … }
+    </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 输出's'，返回
+  </span><span class="p">]</span><span class="c1">
+  { … 个位 flag!=0 *0 " bottles" 0 " of beer on the wall" 0 44 10 … }
+  { … 个位 *flag==0 0 " bottles" 0 " of beer on the wall" 0 44 10 … }
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">.</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> 输出" of beer on the wall" 逗号 换行
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="c1"> 指针返回
+
+  重复“输出瓶数”
+  （由于flag占了临时单元格，有一些小改动）
+  { … 0 0 255 十位 个位 *flag … }
+  </span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  { … 十位 *0 255 十位 个位 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="c1">
+  { … *0 0 255 十位 个位 … }
+  </span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  { … 个位 *0 255 十位 个位 … }
+  </span><span class="nf">++++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+  { … *0 0 255 十位 个位 flag 0 " botles" 0 … }
+
+  </span><span class="nb">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">..</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 输出" bottle"
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">+</span><span class="p">]</span><span class="c1"> 如果有flag就输出's'，清空flag
+  { … *0 0 " botles" 0 " of beer on the wall" 0 44 10 … }
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> 输出" of beer"
+  </span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">++.</span><span class="c1"> 把逗号变成句点，输出
+  { … 0 0 " botles" 0 " of beer on the wall" 0 *46 10 "Take one down" 44 32 0 "pass it around" 44 10 0 … }
+  </span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">.</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">.</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 输出"\nTake one down" 等
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 指针返回
+  { … 十位 个位 0 *0 … }
+
+  瓶数减1
+  </span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1"> 设置else flag
+  { … 十位 个位 *else=255 0 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> 如果个位非0
+    </span><span class="nf">-</span><span class="c1"> 个位减1
+  </span><span class="nb">&gt;</span><span class="nf">+</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="c1"> else
+    </span><span class="nb">&lt;</span><span class="nf">+++++++++</span><span class="nb">&lt;</span><span class="nf">-</span><span class="c1"> 个位设为9，十位减1
+  </span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1">
+  { … 十位 个位 0 *0 … }
+
+  判断瓶数是否不等于0 更新continue变量
+  </span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">+</span><span class="c1"> 清空continue
+  </span><span class="nb">&lt;&lt;</span><span class="nf">-</span><span class="c1"> 255用于对齐
+  { … *255 0 continue=0 十位 个位 … }
+  </span><span class="nb">&gt;&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 如果十位==0就设置continue
+  { … 255 *0 continue=255 十位!=0 个位 … }
+  { … 255 0 continue=0 *十位==0 个位 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 统一指针位置
+  { … 255 *0 continue 十位 个位 … }
+  </span><span class="nb">&gt;&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nf">+</span><span class="p">]</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 如果个位==0就设置continue
+  { … 255 *0 continue=255 十位 个位!=0 … }
+  { … 255 0 continue=0 十位 *个位==0 … }
+  </span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="c1"> 统一指针位置
+  { … *255 0 continue 十位 个位 … }
+  </span><span class="nb">&gt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">+</span><span class="p">]</span><span class="c1"> 在continue左边设flag，如果continue已设置就清除flag
+  { … 255 *flag=0 continue!=0 … }
+  { … 255 flag=255 *continue==0 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">+</span><span class="c1"> 统一指针位置，清除对齐用的255
+  { … *0 flag=!continue continue … }
+
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="c1"> 如果有continue
+    输出瓶数
+    </span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">++++++++</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]]</span><span class="c1">
+    </span><span class="nb">&gt;&gt;&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    </span><span class="nf">++++++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">++++++++</span><span class="nb">&lt;</span><span class="nf">-</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+    { … continue 十位 个位 0 *0 … }
+    </span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="p">[</span><span class="nf">+</span><span class="p">]</span><span class="c1"> 暂时清除continue
+  </span><span class="p">]</span><span class="c1">
+  </span><span class="nf">-</span><span class="c1"> 暂时将continue的位置设为255
+  { … flag=!continue *255 十位 个位 0 0 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="c1"> 如果有flag
+    </span><span class="nb">&gt;</span><span class="nf">+</span><span class="c1"> 还原continue
+    { … flag=!continue *continue=0 十位 个位 0 0 … 0 … 0 … 0 "pass it around" 44 10 0 "No" }
+    </span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> 输出"No"
+    </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="c1"> 指针返回
+    </span><span class="nb">&lt;</span><span class="nf">+</span><span class="c1"> 清除flag
+    { … *0 continue=0 十位 … }
+  </span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">-</span><span class="c1"> continue暂时减1，稍后会还原
+  { … 0 *continue减1 十位 个位 0 0 " botles" … }
+
+  </span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">..</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1"> 输出" bottle"
+  判断瓶数是否不等于1
+  这里用到continue所在的单元格来对齐指针，所以要求不能为0
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">-</span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">+</span><span class="p">]</span><span class="nf">-</span><span class="nb">&lt;</span><span class="p">]</span><span class="c1">
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+</span><span class="c1">
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="nf">-</span><span class="nb">&gt;</span><span class="nf">+</span><span class="p">]</span><span class="c1">
+  { … 十位 个位 flag *0 " botles" 0 … }
+  </span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="nf">+</span><span class="p">]</span><span class="c1"> 如果是则输出's'，清除flag
+  { … *0 0 " botles" 0 " of beer on the wall" 0 46 10 }
+  </span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="p">[</span><span class="nf">.</span><span class="nb">&gt;</span><span class="p">]</span><span class="c1"> 输出" of beer on the wall"
+  </span><span class="nb">&gt;</span><span class="nf">.--</span><span class="c1"> 输出句点，然后把它改回逗号
+  { … 0 " botles" 0 " of beer on the wall" 0 *44 10 }
+  </span><span class="nb">&gt;</span><span class="nf">..</span><span class="c1"> 输出两个换行
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="c1"> 指针返回
+  { … continue减1 十位 个位 *0 … }
+
+  </span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+</span><span class="c1"> 还原刚才减1的continue变量
+  { … *continue 十位 个位 0 … }
+</span><span class="p">]</span><span class="c1"> 主循环结束
+{ … *continue=0 十位=0 个位=0 … }
+
+输出最后一段
+{ … *0 0 0 0 0 " botles" 0 " of beer on the wall" 0 44 10 … }
+</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="p">[</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++</span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="nb">&lt;&lt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+{ … 0 *0 80 110 0 " botles" }
+</span><span class="nb">&gt;</span><span class="nf">--.</span><span class="nb">&gt;</span><span class="nf">+.</span><span class="nb">&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">..</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">.</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> 输出"No bottles of beer on the wall" 逗号 换行
+{ … "No" 0 " botles" 0 " of beer on the wall" 0 44 *10 … }
+</span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">..</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="p">[</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">++.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> 输出"No bottles of beer" 句点 换行
+{ … "No" 0 " botles" 0 " of beer on the wall" 0 46 *10 … }
+</span><span class="nb">&lt;&lt;&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;</span><span class="p">[</span><span class="nb">&lt;</span><span class="p">]</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="p">[</span><span class="c1">
+  </span><span class="nb">&lt;&lt;&lt;&lt;&lt;</span><span class="c1"> </span><span class="nb">&lt;&lt;&lt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">+++</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">++++</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">++</span><span class="c1">
+  </span><span class="nb">&gt;</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+</span><span class="c1">
+</span><span class="nb">&gt;</span><span class="nf">-</span><span class="p">]</span><span class="c1">
+{ … 70 110 30 120 100 40 120 60 *0 "No" … }
+</span><span class="nb">&lt;</span><span class="nf">---</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="nf">++++</span><span class="nb">&lt;</span><span class="nf">++++</span><span class="nb">&lt;</span><span class="nf">----</span><span class="nb">&lt;</span><span class="nf">++</span><span class="nb">&lt;</span><span class="nf">+</span><span class="nb">&lt;</span><span class="nf">+</span><span class="c1">
+{ … *'G' 'o' 32 't' 'h' 44 'y' '9' 0 "No" … }
+</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.---.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">-.+.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="nf">--.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&lt;&lt;&lt;</span><span class="nf">.</span><span class="c1"> "Go to the store" 逗号 空格
+{ … 'G' 'o' *32 'r' 'e' 44 'y' '9' 0 "No" … }
+</span><span class="nb">&gt;&gt;</span><span class="nf">---.</span><span class="nb">&lt;</span><span class="nf">+++.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">.</span><span class="nb">&lt;&lt;&lt;&lt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">--.</span><span class="nb">&lt;&lt;</span><span class="nf">.--.</span><span class="nb">&gt;&gt;&gt;</span><span class="nf">+++.</span><span class="nb">&lt;&lt;</span><span class="nf">.</span><span class="nb">&lt;</span><span class="nf">.++.</span><span class="nb">&gt;&gt;</span><span class="nf">-.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> "buy some more" 逗号
+</span><span class="p">[</span><span class="nf">-</span><span class="p">]</span><span class="nf">+++++</span><span class="c1"> </span><span class="nf">+++++.</span><span class="nb">&gt;&gt;</span><span class="nf">..</span><span class="c1"> 换行 "99"
+{ … 'G' 'o' 32 'r' 'e' 10 'y' *'9' 0 "No" 0 " botles" 0 " of beer on the wall" 0 46 10 … }
+</span><span class="nb">&gt;&gt;&gt;&gt;&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">..</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;&gt;</span><span class="p">[</span><span class="nf">.</span><span class="nb">&gt;</span><span class="p">]</span><span class="nb">&gt;</span><span class="nf">.</span><span class="nb">&gt;</span><span class="nf">.</span><span class="c1"> " bottles of beer on the wall" 句点 换行
+</span></code></pre></div></div>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/210424_brainf_99botls"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2021-04-24-brainf_99botls.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2021-04-24-brainf_99botls.md"
+    dir: null
+    name: "2021-04-24-brainf_99botls.md"
+    url: "/posts/210424_brainf_99botls"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

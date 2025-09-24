@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>鉴别浏览器ECMAScript版本 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="鉴别浏览器ECMAScript版本" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="鉴别浏览器ECMAScript版本 所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。 今天写了个粗略鉴别ES版本的代码。" />
+<meta property="og:description" content="鉴别浏览器ECMAScript版本 所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。 今天写了个粗略鉴别ES版本的代码。" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/200922_ecma_ver_test" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/200922_ecma_ver_test" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-22T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="鉴别浏览器ECMAScript版本" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2020-09-22T00:00:00+08:00","datePublished":"2020-09-22T00:00:00+08:00","description":"鉴别浏览器ECMAScript版本 所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。 今天写了个粗略鉴别ES版本的代码。","headline":"鉴别浏览器ECMAScript版本","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/200922_ecma_ver_test"},"url":"https://dgck81lnn.github.io/blog/posts/200922_ecma_ver_test"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">鉴别浏览器ECMAScript版本</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2020-09-22T00:00:00+0800">2020-09-22</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/frontend" class="text-decoration-none">
+        <span class="badge bg-secondary">前端</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="鉴别浏览器ecmascript版本">鉴别浏览器ECMAScript版本</h1>
+
+<p>所谓ECMAScript（ES），就是JavaScript（JS）的核心部分：语法、基本原理、基本对象，负责核心的语言功能；而DOM（文档对象模型）提供了访问和操作网页内容的方法和接口，BOM（浏览器对象模型）提供了与浏览器交互的方法和接口，ES加上DOM和BOM就是JS。</p>
+
+<p>今天写了个粗略鉴别ES版本的代码。</p>
+
+<p>EDIT：此程序只是粗略鉴别，毕竟浏览器可能会提前实现新的语法。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 检测ECMAScript版本
+ * 
+ * @returns {Number}
+ * 3 - ES3 或更旧
+ * 5 - ES5
+ * 6 - ES6 (ES2015)
+ * 7 - ES7 (ES2016)
+ * 8 - ES8 (ES2017)
+ * 9 - ES9 (ES2018)
+ * 10 - ES10 (ES2019)
+ * 11 - ES11 (ES2020)
+ * 12 - ES2021 或更新
+ */</span>
+<span class="kd">function</span> <span class="nf">detectESVersion</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">version</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">/ /</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">_=&gt;0</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">0**1</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">(a,)=&gt;0</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">(...a)=&gt;[...a]</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">try { } catch { }</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">0n</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nc">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">class T { #p }</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">version</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">version</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>附：ES简要更新记录</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>版本</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ES3</td>
+      <td>添加正则表达式，添加<code class="language-plaintext highlighter-rouge">try</code>/<code class="language-plaintext highlighter-rouge">catch</code></td>
+    </tr>
+    <tr>
+      <td>ES5</td>
+      <td>添加严格模式，添加内置对象JSON，添加<code class="language-plaintext highlighter-rouge">String.prototype.trim</code>，添加<code class="language-plaintext highlighter-rouge">Array.prototype.isArray</code>，添加数组遍历方法</td>
+    </tr>
+    <tr>
+      <td>ES6 (ES2015)</td>
+      <td>添加<code class="language-plaintext highlighter-rouge">let</code>、<code class="language-plaintext highlighter-rouge">const</code>语句，支持函数参数默认值，添加<code class="language-plaintext highlighter-rouge">Array.prototype.find</code></td>
+    </tr>
+    <tr>
+      <td>ES7 (ES2016)</td>
+      <td>添加乘方运算符<code class="language-plaintext highlighter-rouge">**</code>，添加<code class="language-plaintext highlighter-rouge">Array.prototype.includes</code></td>
+    </tr>
+    <tr>
+      <td>ES8 (ES2017)</td>
+      <td>添加字符串填充到指定长度方法，引入<code class="language-plaintext highlighter-rouge">Promise</code>，引入共享内存</td>
+    </tr>
+    <tr>
+      <td>ES9 (ES2018)</td>
+      <td>添加剩余和展开元素，添加异步迭代器，添加<code class="language-plaintext highlighter-rouge">Promise.prototype.finally</code>，完善正则表达式的功能</td>
+    </tr>
+    <tr>
+      <td>ES10 (ES2019)</td>
+      <td>添加<code class="language-plaintext highlighter-rouge">Object.fromEntries</code>，添加字符串方法<code class="language-plaintext highlighter-rouge">trimStart</code>和<code class="language-plaintext highlighter-rouge">trimEnd</code>，添加数组扁平化方法，添加<code class="language-plaintext highlighter-rouge">Symbol.prototype.description</code>，<code class="language-plaintext highlighter-rouge">catch</code>后可以没有圆括号</td>
+    </tr>
+    <tr>
+      <td>ES11 (ES2020)</td>
+      <td>添加<code class="language-plaintext highlighter-rouge">import</code>和<code class="language-plaintext highlighter-rouge">export</code>语句，添加<code class="language-plaintext highlighter-rouge">bigint</code>数据类型，添加<code class="language-plaintext highlighter-rouge">RegExp.prototype.matchAll</code>，添加<code class="language-plaintext highlighter-rouge">globalThis</code>，添加<code class="language-plaintext highlighter-rouge">Promise.allSettled</code>，添加<code class="language-plaintext highlighter-rouge">??</code>运算符，添加<code class="language-plaintext highlighter-rouge">?.</code>操作符</td>
+    </tr>
+    <tr>
+      <td>ES2021</td>
+      <td>计划添加：<code class="language-plaintext highlighter-rouge">String.prototype.replaceAll</code>，类的私有成员，弱对象引用，<code class="language-plaintext highlighter-rouge">Promise.any</code></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/200922_ecma_ver_test"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2020-09-22-ecma_ver_test.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2020-09-22-ecma_ver_test.md"
+    dir: null
+    name: "2020-09-22-ecma_ver_test.md"
+    url: "/posts/200922_ecma_ver_test"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

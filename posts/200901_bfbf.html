@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>禁止套深奥编程语言！用Befunge程序生成brainfuck代码 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="禁止套深奥编程语言！用Befunge程序生成brainfuck代码" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="禁止套深奥编程语言！用Befunge程序生成brainfuck代码 关于Befunge和brainfuck是什么我就不说了，Esolangs上有详细说明 今天随便写了这个Befunge程序，它可以生成一段会输出指定文字的brainfuck代码。" />
+<meta property="og:description" content="禁止套深奥编程语言！用Befunge程序生成brainfuck代码 关于Befunge和brainfuck是什么我就不说了，Esolangs上有详细说明 今天随便写了这个Befunge程序，它可以生成一段会输出指定文字的brainfuck代码。" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/200901_bfbf" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/200901_bfbf" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-01T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="禁止套深奥编程语言！用Befunge程序生成brainfuck代码" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2020-09-01T00:00:00+08:00","datePublished":"2020-09-01T00:00:00+08:00","description":"禁止套深奥编程语言！用Befunge程序生成brainfuck代码 关于Befunge和brainfuck是什么我就不说了，Esolangs上有详细说明 今天随便写了这个Befunge程序，它可以生成一段会输出指定文字的brainfuck代码。","headline":"禁止套深奥编程语言！用Befunge程序生成brainfuck代码","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/200901_bfbf"},"url":"https://dgck81lnn.github.io/blog/posts/200901_bfbf"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">禁止套深奥编程语言！用Befunge程序生成brainfuck代码</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2020-09-01T00:00:00+0800">2020-09-01</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="禁止套深奥编程语言用befunge程序生成brainfuck代码">禁止套深奥编程语言！用Befunge程序生成brainfuck代码</h1>
+
+<p>关于Befunge和brainfuck是什么我就不说了，<a href="https://esolangs.org">Esolangs</a>上有详细说明</p>
+
+<p>今天随便写了这个Befunge程序，它可以生成一段会输出指定文字的brainfuck代码。</p>
+
+<pre><code class="language-befunge-93">v                 &gt; "-"&gt; #, #:\:#- #1_v
+&gt;~:1+!#@_:2:p-:0`#^_"+"&gt; #, #:\:#+ #1_v
+^" "                        ,+73,"."$$&lt;
+</code></pre>
+
+<p>注意Befunge作为一个二维编程语言，代码的空白和换行非常重要。
+<a href="http://quirkster.com/iano/js/befunge.html">这里</a>有一个用JS实现的Befunge在线IDE。</p>
+
+<p>向以上程序输入<code class="language-plaintext highlighter-rouge">Hello world!</code>后得到输出：</p>
+<div class="language-brainfuck highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.</span><span class="c1">
+</span><span class="nf">+++++++++++++++++++++++++++++.</span><span class="c1">
+</span><span class="nf">+++++++.</span><span class="c1">
+</span><span class="nf">.</span><span class="c1">
+</span><span class="nf">+++.</span><span class="c1">
+</span><span class="nf">-------------------------------------------------------------------------------.</span><span class="c1">
+</span><span class="nf">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.</span><span class="c1">
+</span><span class="nf">--------.</span><span class="c1">
+</span><span class="nf">+++.</span><span class="c1">
+</span><span class="nf">------.</span><span class="c1">
+</span><span class="nf">--------.</span><span class="c1">
+</span><span class="nf">-------------------------------------------------------------------.</span><span class="c1">
+</span></code></pre></div></div>
+
+<p>注意：如果输入中文，你的IDE可能会卡住</p>
+
+<p><a href="https://infinitedonuts.github.io/esolang-playground">这个</a>在线IDE可以运行brainfuck。
+输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello world!
+</code></pre></div></div>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/200901_bfbf"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2020-09-01-bfbf.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2020-09-01-bfbf.md"
+    dir: null
+    name: "2020-09-01-bfbf.md"
+    url: "/posts/200901_bfbf"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->

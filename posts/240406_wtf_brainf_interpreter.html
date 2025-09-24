@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang=cmn-Hans>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name=format-detection content="telephone=no">
+  <link rel=stylesheet href="/bootstrap-lnn/dist/bootstrap-lnn.min.css">
+  <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin=anonymous>
+  <link rel=stylesheet href="/blog/css/common.css">
+  <link rel=stylesheet href="/blog/css/rouge-syntax.css">
+  
+  <link rel=icon href="/site_icon.png">
+  <link rel="shortcut icon" href="/site_icon.png">
+  <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>brainf 解释器，但它是一个 Python 表达式 | LNN的博客！</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="brainf 解释器，但它是一个 Python 表达式" />
+<meta name="author" content="DGCK81LNN" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="description" content="brainf 解释器，但它是一个 Python 表达式 (lambda cod, _, inp: (lambda *, _cp = 0, _mp = 0, _ip = 0, _mem = {}, _inp = inp .encode(), _out = b&quot;&quot;: next(__import__(&quot;sys&quot;).stdout.buffer.write(_out) and None or None for _ in __import__(&quot;itertools&quot;).count() if not (_mem.__setitem__(_mp, ( (_mem[_mp] if _mp in _mem else 0) + (1 if cod[_cp] == &quot;+&quot; else -1 if cod[_cp] == &quot;-&quot; else 0)) &amp; 255) and 0 or (_mp := _mp + (1 if cod[_cp] == &quot;&gt;&quot; else -1 if cod[ _cp] == &quot;&lt;&quot; else 0)) and 0 or ((_cp := (lambda si, *, _d = 0: next(i for i in ( range(si, len(cod)) if cod[si] == &quot;[&quot; else range(si, -1, -1)) if cod[i] in &quot;[]&quot; and ((_d := _d + (1 if cod[i] == &quot;[&quot; else -1)) == 0)))(_cp)) if cod[_cp] in &quot;[]&quot; and bool(_mem[_mp] if _mp in _mem else 0) == bool(cod[_cp] == &quot;]&quot;) else 0) and 0 or ((_out := _out + bytes((_mem[_mp],))) if cod[_cp] == &quot;.&quot; else _mem.__setitem__ (_mp, _inp[_ip]) and 0 or (_ip := _ip + 1) if cod[_cp] == &quot;,&quot; and _ip &lt; len(_inp) else 0) and 0 or (_cp := _cp + 1) &lt; len(cod))))())(*__import__(&quot;sys&quot;).stdin.read ().partition(&quot;!&quot;))" />
+<meta property="og:description" content="brainf 解释器，但它是一个 Python 表达式 (lambda cod, _, inp: (lambda *, _cp = 0, _mp = 0, _ip = 0, _mem = {}, _inp = inp .encode(), _out = b&quot;&quot;: next(__import__(&quot;sys&quot;).stdout.buffer.write(_out) and None or None for _ in __import__(&quot;itertools&quot;).count() if not (_mem.__setitem__(_mp, ( (_mem[_mp] if _mp in _mem else 0) + (1 if cod[_cp] == &quot;+&quot; else -1 if cod[_cp] == &quot;-&quot; else 0)) &amp; 255) and 0 or (_mp := _mp + (1 if cod[_cp] == &quot;&gt;&quot; else -1 if cod[ _cp] == &quot;&lt;&quot; else 0)) and 0 or ((_cp := (lambda si, *, _d = 0: next(i for i in ( range(si, len(cod)) if cod[si] == &quot;[&quot; else range(si, -1, -1)) if cod[i] in &quot;[]&quot; and ((_d := _d + (1 if cod[i] == &quot;[&quot; else -1)) == 0)))(_cp)) if cod[_cp] in &quot;[]&quot; and bool(_mem[_mp] if _mp in _mem else 0) == bool(cod[_cp] == &quot;]&quot;) else 0) and 0 or ((_out := _out + bytes((_mem[_mp],))) if cod[_cp] == &quot;.&quot; else _mem.__setitem__ (_mp, _inp[_ip]) and 0 or (_ip := _ip + 1) if cod[_cp] == &quot;,&quot; and _ip &lt; len(_inp) else 0) and 0 or (_cp := _cp + 1) &lt; len(cod))))())(*__import__(&quot;sys&quot;).stdin.read ().partition(&quot;!&quot;))" />
+<link rel="canonical" href="https://dgck81lnn.github.io/blog/posts/240406_wtf_brainf_interpreter" />
+<meta property="og:url" content="https://dgck81lnn.github.io/blog/posts/240406_wtf_brainf_interpreter" />
+<meta property="og:site_name" content="LNN的博客！" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-04-06T01:33:41+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="brainf 解释器，但它是一个 Python 表达式" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"DGCK81LNN","url":"https://github.com/DGCK81LNN"},"dateModified":"2024-04-06T01:33:41+08:00","datePublished":"2024-04-06T01:33:41+08:00","description":"brainf 解释器，但它是一个 Python 表达式 (lambda cod, _, inp: (lambda *, _cp = 0, _mp = 0, _ip = 0, _mem = {}, _inp = inp .encode(), _out = b&quot;&quot;: next(__import__(&quot;sys&quot;).stdout.buffer.write(_out) and None or None for _ in __import__(&quot;itertools&quot;).count() if not (_mem.__setitem__(_mp, ( (_mem[_mp] if _mp in _mem else 0) + (1 if cod[_cp] == &quot;+&quot; else -1 if cod[_cp] == &quot;-&quot; else 0)) &amp; 255) and 0 or (_mp := _mp + (1 if cod[_cp] == &quot;&gt;&quot; else -1 if cod[ _cp] == &quot;&lt;&quot; else 0)) and 0 or ((_cp := (lambda si, *, _d = 0: next(i for i in ( range(si, len(cod)) if cod[si] == &quot;[&quot; else range(si, -1, -1)) if cod[i] in &quot;[]&quot; and ((_d := _d + (1 if cod[i] == &quot;[&quot; else -1)) == 0)))(_cp)) if cod[_cp] in &quot;[]&quot; and bool(_mem[_mp] if _mp in _mem else 0) == bool(cod[_cp] == &quot;]&quot;) else 0) and 0 or ((_out := _out + bytes((_mem[_mp],))) if cod[_cp] == &quot;.&quot; else _mem.__setitem__ (_mp, _inp[_ip]) and 0 or (_ip := _ip + 1) if cod[_cp] == &quot;,&quot; and _ip &lt; len(_inp) else 0) and 0 or (_cp := _cp + 1) &lt; len(cod))))())(*__import__(&quot;sys&quot;).stdin.read ().partition(&quot;!&quot;))","headline":"brainf 解释器，但它是一个 Python 表达式","mainEntityOfPage":{"@type":"WebPage","@id":"https://dgck81lnn.github.io/blog/posts/240406_wtf_brainf_interpreter"},"url":"https://dgck81lnn.github.io/blog/posts/240406_wtf_brainf_interpreter"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <script defer crossorigin=anonymous
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+  ></script>
+  <script defer src="/blog/js/common.js"></script>
+  
+</head>
+
+<body>
+  <div class="visually-hidden-focusable position-absolute top-0 start-0 p-1 bg-light">
+    <a href="#main">跳至正文</a>
+  </div>
+
+  <header class="d-flex justify-content-center py-3 mb-4 border-bottom shadow-sm bg-light">
+    <span>LNN的博客！</span>
+  </header>
+
+  <div id="mainwrap">
+    <nav id=nav>
+      <ol class="breadcrumb bg-light rounded p-3">
+        <li class="breadcrumb-item"><a href="/blog">LNN的博客！</a></li>
+        <li class="breadcrumb-item active" aria-current="page">brainf 解释器，但它是一个 Python 表达式</li>
+      </ol>
+    </nav>
+
+    <main id=main>
+<footer>
+  <p class="text-muted">
+    <a href="https://github.com/DGCK81LNN"
+      >DGCK81LNN</a>
+    &middot;
+    <time datetime="2024-04-06T01:33:41+0800">2024-04-06 01:33</time>
+      &middot;
+      <span><span class=visually-hidden>标签：</span>
+      <a href="/blog/tags/coding" class="text-decoration-none">
+        <span class="badge bg-primary">编程</span>
+      </a>
+      <a href="/blog/tags/esolang" class="text-decoration-none">
+        <span class="badge bg-secondary">esolang</span>
+      </a>
+      </span>
+  </p>
+</footer>
+
+<div class="soulblog-content">
+<h1 id="brainf-解释器但它是一个-python-表达式">brainf 解释器，但它是一个 Python 表达式</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">lambda</span> <span class="n">cod</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">inp</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="o">*</span><span class="p">,</span> <span class="n">_cp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_mp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_ip</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_mem</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">_inp</span> <span class="o">=</span> <span class="n">inp</span>
+<span class="p">.</span><span class="nf">encode</span><span class="p">(),</span> <span class="n">_out</span> <span class="o">=</span> <span class="sa">b</span><span class="sh">""</span><span class="p">:</span> <span class="nf">next</span><span class="p">(</span><span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="nb">buffer</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">_out</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">None</span>
+<span class="ow">or</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">itertools</span><span class="sh">"</span><span class="p">).</span><span class="nf">count</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_mem</span><span class="p">.</span><span class="nf">__setitem__</span><span class="p">(</span><span class="n">_mp</span><span class="p">,</span> <span class="p">(</span>
+<span class="p">(</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">]</span> <span class="k">if</span> <span class="n">_mp</span> <span class="ow">in</span> <span class="n">_mem</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">+</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span>
+<span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_mp</span> <span class="p">:</span><span class="o">=</span> <span class="n">_mp</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">&gt;</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span>
+<span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">&lt;</span><span class="sh">"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">((</span><span class="n">_cp</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">si</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">_d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="nf">next</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span>
+<span class="nf">range</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">cod</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">si</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">[</span><span class="sh">"</span> <span class="k">else</span> <span class="nf">range</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="sh">"</span><span class="s">[]</span><span class="sh">"</span>
+<span class="ow">and</span> <span class="p">((</span><span class="n">_d</span> <span class="p">:</span><span class="o">=</span> <span class="n">_d</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">[</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)))(</span><span class="n">_cp</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="ow">in</span> <span class="sh">"</span><span class="s">[]</span><span class="sh">"</span>
+<span class="ow">and</span> <span class="nf">bool</span><span class="p">(</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">]</span> <span class="k">if</span> <span class="n">_mp</span> <span class="ow">in</span> <span class="n">_mem</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="nf">bool</span><span class="p">(</span><span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">]</span><span class="sh">"</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span>
+<span class="ow">or</span> <span class="p">((</span><span class="n">_out</span> <span class="p">:</span><span class="o">=</span> <span class="n">_out</span> <span class="o">+</span> <span class="nf">bytes</span><span class="p">((</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">],)))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">.</span><span class="sh">"</span> <span class="k">else</span> <span class="n">_mem</span><span class="p">.</span><span class="n">__setitem__</span>
+<span class="p">(</span><span class="n">_mp</span><span class="p">,</span> <span class="n">_inp</span><span class="p">[</span><span class="n">_ip</span><span class="p">])</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_ip</span> <span class="p">:</span><span class="o">=</span> <span class="n">_ip</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">,</span><span class="sh">"</span> <span class="ow">and</span> <span class="n">_ip</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">_inp</span><span class="p">)</span>
+<span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_cp</span> <span class="p">:</span><span class="o">=</span> <span class="n">_cp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">cod</span><span class="p">))))())(</span><span class="o">*</span><span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdin</span><span class="p">.</span><span class="n">read</span>
+<span class="p">().</span><span class="nf">partition</span><span class="p">(</span><span class="sh">"</span><span class="s">!</span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><del>在群友的怂恿下</del>挑战用 Python 但不用 <code class="language-plaintext highlighter-rouge">def</code> 关键字和 <code class="language-python highlight language-python highlighter-rouge"><span class="nf">exec</span><span class="p">()</span></code>、<code class="language-python highlight language-python highlighter-rouge"><span class="nf">eval</span><span class="p">()</span></code> 函数实现 brainf 解释器，但我决定做得更绝一些。于是就有了这个单个表达式的 brainf 解释器。</p>
+
+<p>此解释器从标准输入读取 brainf 代码和程序输入（用半角叹号分隔），程序输出直接发送到标准输出（在 Python IDLE 中可能无效）；将“<code class="language-python highlight language-python highlighter-rouge"><span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="nb">buffer</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">_out</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">None</span></code>”改为“<code class="language-python highlight language-python highlighter-rouge"><span class="n">_out</span></code>”可变为以 <code class="language-python highlight language-python highlighter-rouge"><span class="nb">bytes</span></code> 类型返回输出内容。</p>
+
+<p>大量使用了“<code class="language-python highlight language-python highlighter-rouge"><span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span></code>”来分隔“语句”，这相当于一些其他编程语言中的<em>逗号运算符</em>。使用赋值运算 <code class="language-python highlight language-python highlighter-rouge"><span class="p">:</span><span class="o">=</span></code> 和字典的 <code class="language-python highlight language-python highlighter-rouge"><span class="nf">__setitem__</span><span class="p">()</span></code> 方法来进行赋值。循环结构全部用生成器表达式（Generator expressions）实现：使用了 <code class="language-python highlight language-python highlighter-rouge"><span class="p">...</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="nf">count</span><span class="p">()</span></code> 来实现无限循环，并使用 <code class="language-python highlight language-python highlighter-rouge"><span class="nf">next</span><span class="p">(...</span> <span class="k">for</span> <span class="p">...</span> <span class="k">if</span> <span class="p">...)</span></code> 的写法来在满足特定条件时跳出循环。</p>
+
+<p>带缩进版：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">lambda</span> <span class="n">cod</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">inp</span><span class="p">:</span>
+  <span class="p">(</span><span class="k">lambda</span> <span class="o">*</span><span class="p">,</span> <span class="n">_cp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_mp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_ip</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_mem</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">_inp</span> <span class="o">=</span> <span class="n">inp</span> <span class="p">.</span><span class="nf">encode</span><span class="p">(),</span> <span class="n">_out</span> <span class="o">=</span> <span class="sa">b</span><span class="sh">""</span><span class="p">:</span> <span class="nf">next</span><span class="p">(</span>
+    <span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="nb">buffer</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">_out</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">None</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">itertools</span><span class="sh">"</span><span class="p">).</span><span class="nf">count</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+      <span class="n">_mem</span><span class="p">.</span><span class="nf">__setitem__</span><span class="p">(</span>
+        <span class="n">_mp</span><span class="p">,</span>
+        <span class="p">((</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">]</span> <span class="k">if</span> <span class="n">_mp</span> <span class="ow">in</span> <span class="n">_mem</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">+</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">255</span>
+      <span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span>
+      <span class="p">(</span><span class="n">_mp</span> <span class="p">:</span><span class="o">=</span> <span class="n">_mp</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">&gt;</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span> <span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">&lt;</span><span class="sh">"</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span>
+      <span class="p">(</span>
+        <span class="p">(</span><span class="n">_cp</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">si</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">_d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="nf">next</span><span class="p">(</span><span class="n">i</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="nf">range</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">cod</span><span class="p">))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">si</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">[</span><span class="sh">"</span> <span class="k">else</span> <span class="nf">range</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="sh">"</span><span class="s">[]</span><span class="sh">"</span> <span class="ow">and</span> <span class="p">((</span><span class="n">_d</span> <span class="p">:</span><span class="o">=</span> <span class="n">_d</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">[</span><span class="sh">"</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="p">)</span>
+        <span class="p">)(</span><span class="n">_cp</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="ow">in</span> <span class="sh">"</span><span class="s">[]</span><span class="sh">"</span> <span class="ow">and</span> <span class="nf">bool</span><span class="p">(</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">]</span> <span class="k">if</span> <span class="n">_mp</span> <span class="ow">in</span> <span class="n">_mem</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="nf">bool</span><span class="p">(</span><span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">]</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">else</span> <span class="mi">0</span>
+      <span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span>
+      <span class="p">(</span>
+        <span class="p">(</span><span class="n">_out</span> <span class="p">:</span><span class="o">=</span> <span class="n">_out</span> <span class="o">+</span> <span class="nf">bytes</span><span class="p">((</span><span class="n">_mem</span><span class="p">[</span><span class="n">_mp</span><span class="p">],)))</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">.</span><span class="sh">"</span>
+        <span class="k">else</span> <span class="n">_mem</span><span class="p">.</span><span class="nf">__setitem__</span><span class="p">(</span><span class="n">_mp</span><span class="p">,</span> <span class="n">_inp</span><span class="p">[</span><span class="n">_ip</span><span class="p">])</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_ip</span> <span class="p">:</span><span class="o">=</span> <span class="n">_ip</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">cod</span><span class="p">[</span><span class="n">_cp</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">,</span><span class="sh">"</span> <span class="ow">and</span> <span class="n">_ip</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">_inp</span><span class="p">)</span>
+        <span class="k">else</span> <span class="mi">0</span>
+      <span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">or</span>
+      <span class="p">(</span><span class="n">_cp</span> <span class="p">:</span><span class="o">=</span> <span class="n">_cp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">cod</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">))()</span>
+<span class="p">)(</span><span class="o">*</span><span class="nf">__import__</span><span class="p">(</span><span class="sh">"</span><span class="s">sys</span><span class="sh">"</span><span class="p">).</span><span class="n">stdin</span><span class="p">.</span><span class="nf">read </span><span class="p">().</span><span class="nf">partition</span><span class="p">(</span><span class="sh">"</span><span class="s">!</span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+</div>
+
+<hr>
+
+<section>
+  <h2>评论区</h2>
+  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
+    data-theme=github-light
+    data-repo="DGCK81LNN/blog" data-label="utterances comments"
+    data-issue-term="/posts/240406_wtf_brainf_interpreter"
+  ></script>
+  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
+    <div class="spinner-border text-primary" role=status></div>
+    <p class="text-muted mt-3">
+      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
+    </p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <footer class="mt-4 px-2 py-4 bg-light border-top">
+    <div id=footer class="mx-auto">
+      <div class="mb-2 d-flex gap-2 justify-content-between align-items-center flex-wrap">
+        <div>
+          <a class="d-block"
+            href="https://github.com/DGCK81LNN/blog/blob/main/_posts/2024-04-06-wtf_brainf_interpreter.md?plain=1">
+            <img class="d-block" alt="在GitHub上查看源代码"
+              src="https://img.shields.io/badge/-在GitHub上查看源代码-222222?logo=github" />
+          </a>
+        </div>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <a class="d-block" href="https://notbyai.fyi" lang="en">
+            <img class="d-block" alt="written by human, not by AI"
+              src="/blog/assets/Written-By-Human-Not-By-AI-Badge-white.svg"/>
+          </a>
+          <a class="d-block" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+            <img class="d-block" alt="CC BY-SA"
+              src="/blog/assets/by-sa.svg"/>
+          </a>
+        </div>
+      </div>
+      <div class="text-secondary mb-2">
+        <p>本站图文内容除另有声明外，均在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans"
+          >知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）许可协议</a
+          >下发布。</p>
+      </div>
+      <div class="d-flex flex-wrap mb-0">
+        <a href="/">灵魂小站首页</a>
+        <span class="mx-2 vr"></span>
+        <a rel=nofollow href="https://github.com/DGCK81LNN/">我的 GitHub</a>
+        <span class="mx-2 vr"></span>
+        <span>QQ: 3470524928</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+<!------------------------------------------------------------------------------
+  page:
+    path: "_posts/2024-04-06-wtf_brainf_interpreter.md"
+    dir: null
+    name: "2024-04-06-wtf_brainf_interpreter.md"
+    url: "/posts/240406_wtf_brainf_interpreter"
+    collection: "posts"
+    layout: "posts"
+------------------------------------------------------------------------------->
