@@ -51,12 +51,21 @@
   display: none !important;
 }
 
-/** Uiua code font */
+/** Code fonts */
 @font-face {
   font-family: Uiua386;
   src: url(../assets/uiua386/Uiua386.woff2);
 }
 .language-uiua, .language-uiua code {
-  font-family: Uiua386, var(--bs-font-monospace);
+  font: 18px / 1.15 Uiua386, var(--bs-font-monospace) !important;
   font-synthesis: none;
+}
+
+@font-face {
+  font-family: Whatch;
+  src: url(https://lnnbot.xn--7wr.site/Whatch-Regular.woff2);
+}
+.language-whatlang, .language-whatlang code,
+.language-what, .language-what code {
+  font: 18px / 1.15 Whatch, var(--bs-font-monospace) !important;
 }

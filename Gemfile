@@ -14,3 +14,4 @@ end
 gem 'RedCloth'
 gem 'kramdown-math-katex'
 gem 'rouge-lexers-wenyan'
+gem 'bigdecimal'

@@ -1,6 +1,6 @@
 ---
 date: 2024-12-29T23:21:51+08:00
-tags: 编程 日常写代码
+tags: 编程 日常写代码 esolang
 ---
 
 # [![](https://www.uiua.org/assets/uiua-logo.png){: style="height:1em;vertical-align:bottom" .me-1}Uiua](https://uiua.org){: target="_blank"} 99bottles
@@ -22,8 +22,8 @@ Uiua 是一门还在迭代开发中的、基于堆栈（stack-based）的阵列�
 &p /$"_\n\n_" ≡(□$"_,\n_.\n_." ⊃(墙|瓶|拿))
 ~~~
 
-[在 Pad 中运行](https://uiua.org/pad?src=0_15_0-dev_1__55O2IOKGkCAoCiAg4o2jKCJObyIgQHMgwrAwfDEgIiIgwrAxfDpAcykKICAkIl8gYm90dGxlXyBvZiBiZWVyIgopCuWimSDihpAgJCJfIG9uIHRoZSB3YWxsIiDnk7YK5ou_IOKGkCDijaMoCiAg4o2pKCQiR28gdG8gdGhlIHN0b3JlLCBidXkgc29tZSBtb3JlLFxuXyIg5aKZOTkpIMKwMAp8IOKNqSgkIlRha2Ugb25lIGRvd24sIHBhc3MgaXQgYXJvdW5kLFxuXyIg5aKZLTEpCikKCuKHjOKHoTEwMAomcCAvJCJfXG5cbl8iIOKJoSjilqEkIl8sXG5fLlxuXy4iIOKKgyjlopl855O2fOaLvykpCg==){: target="_blank"}
 
+[在 Pad 中运行](https://uiua.org/pad?src=0_15_0-dev_1__55O2IOKGkCAoCiAg4o2jKCJObyIgQHMgwrAwfDEgIiIgwrAxfDpAcykKICAkIl8gYm90dGxlXyBvZiBiZWVyIgopCuWimSDihpAgJCJfIG9uIHRoZSB3YWxsIiDnk7YK5ou_IOKGkCDijaMoCiAg4o2pKCQiR28gdG8gdGhlIHN0b3JlLCBidXkgc29tZSBtb3JlLFxuXyIg5aKZOTkpIMKwMAp8IOKNqSgkIlRha2Ugb25lIGRvd24sIHBhc3MgaXQgYXJvdW5kLFxuXyIg5aKZLTEpCikKCuKHjOKHoTEwMAomcCAvJCJfXG5cbl8iIOKJoSjilqEkIl8sXG5fLlxuXy4iIOKKgyjlopl855O2fOaLvykpCg==){: target="_blank"}
 
 {:ua: .highlight.language-uiua}
 

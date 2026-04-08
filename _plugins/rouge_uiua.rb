@@ -27,8 +27,8 @@ module Rouge
         rule /\b(Os|Family|Arch|ExeExt|DllExt|Sep|ThisFile|ThisFileName|ThisFileDir|WorkingDir|NumProcs)\b/, Name::Constant
         rule /\b(HexDigits|Planets|Zodiac|Suits|Cards|Chess|Moon|Skin|People|Hair)\b/, Name::Constant
         rule /[¬±¯⌵√∿⌊⌈⁅⧻△⇡⊢⊣⇌♭¤⋯⍉⍆⍏⍖⊚⊛◴◰□⋕⚂]/, Name::Builtin
-        rule /[=≠<≤>≥+\-×÷◿∨ⁿₙ↧↥∠ℂ≍⊟⊂⊏⊡↯↙↘↻⤸▽⌕⦷∊⊗⍤]/, Operator
-        rule /[\/∧\\∵≡⍚⊞⧅⧈⍥⊕⊜◇⋅⊙𝄐⟜⊸⤙⤚◠◡𝄈∩⌅°⌝⍩∂∫]/, Keyword
+        rule /[=≠<≤>≥+\-×÷◿∨ⁿₙ↧↥∠ℂ≍⊟⊂⊏⊡↯↙↘↻⤸▽⌕⦷∊⊗⨂⊥⍤]/, Operator
+        rule /[\/∧\\∵≡⍚⊞⧅⧈⍥⊕⊜◇⋅˜⊙𝄐⟜⊸⤙⤚◠◡𝄈∩⌅°⌝⍩∂∫]/, Keyword
         rule /[⍜⊃⊓⍢⬚⨬⍣]/, Keyword::Declaration
         rule /#.*?(?=\n)/, Comment::Single
         rule /&[a-z]+/, Name::Builtin
