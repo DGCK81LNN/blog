@@ -91,7 +91,7 @@ function bigXor(a, b) {
   ("FcwAPNKTMug3GV5Lj7EJnHpWsx4tb8haYeviqBz6rkCy12mUSDQX9RdoZf"\,)#\_ ""join@\_ "BV1"\+
 )av2bv=_
 (
-  [(^BV1?)]""repl@ ("FcwAPNKTMug3GV5Lj7EJnHpWsx4tb8haYeviqBz6rkCy12mUSDQX9RdoZf"\in@)#\_
+  [(^BV1|^1)]""repl@ ("FcwAPNKTMug3GV5Lj7EJnHpWsx4tb8haYeviqBz6rkCy12mUSDQX9RdoZf"\in@)#\_
   reverse@\_ 2,\8,2\;\8\; 4,\7,4\;\7\;
   |58*+ 58*+ 58*+ 58*+ 58*+ 58*+ 58*+ 58*+]01-,\_
   2275242641476827bigxor@
