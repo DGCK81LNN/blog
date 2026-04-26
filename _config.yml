@@ -4,6 +4,7 @@ excerpt_separator: "\n\n\n"
 exclude:
   - LICENSE
   - README.md
+  - .ruby-lsp
 url: "https://dgck81lnn.github.io"
 baseurl: /blog
 
