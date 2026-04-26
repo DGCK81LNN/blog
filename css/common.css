@@ -63,7 +63,7 @@
 
 @font-face {
   font-family: Whatch;
-  src: url(https://lnnbot.xn--7wr.site/Whatch-Regular.woff2);
+  src: url(../assets/whatch/Whatch-Regular.woff2);
 }
 .language-whatlang, .language-whatlang code,
 .language-what, .language-what code {
