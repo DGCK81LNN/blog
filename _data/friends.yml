@@ -1,0 +1,31 @@
+groups:
+- id: people
+  label: 熟人
+  links:
+    - title: 物灵
+      tagline: From the dust, become the wind
+      url: https://matling.fit
+      icon: https://avatars.githubusercontent.com/u/42795424
+    - title: 晓怕的宁静一隅
+      tagline: 晓怕的个人网站
+      url: https://shiaupa.top/
+      icon: https://shiaupa.top/Avatar.png
+- id: sites
+  label: 站点
+  links:
+    - title: 希顶语
+      tagline: 此后如竟没有炬火，我便是唯一的光
+      url: https://xdi8.top/cmn-hans/
+      icon: https://drum.matling.fit/sd/universe/friends-avatar/xdi8-by-lenda-sarieh.jpg
+my_links:
+- title: LNN的博客！
+  tagline: 目前为止主要是 esolangs，也许会随机刷新些什么别的
+  url: https://dgck81lnn.github.io/blog/
+  icon: https://dgck81lnn.github.io/site_icon.png
+- title: 灵魂小站
+  tagline: 「用心搭建」
+  url: https://dgck81lnn.github.io/
+  icon: https://dgck81lnn.github.io/site_icon.png
+- title: 备选图标
+  tagline: 不透明背景
+  icon: https://dgck81lnn.github.io/apple-touch-icon.png

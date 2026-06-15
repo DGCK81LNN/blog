@@ -1,0 +1,57 @@
+---
+soulblog-comments: true
+soulblog-copyright: ""
+soulblog-header-tab: friends
+soulblog-no-not-by-ai: true
+---
+
+<h1 class="mb-4">友情链接</h1>
+
+<div class="row row-cols-1 row-cols-md-2 gy-4 mb-3">
+  {%- for group in site.data.friends.groups %}
+  <div class="col">
+    <h2 class="fs-4">{{ group.label }}</h2>
+    <ul class="list-unstyled mb-0">
+      {%- for link in group.links %}
+      <li class="card mb-2">
+        <div class="card-body d-flex gap-3 align-items-center">
+          <img src="{{ link.icon | escape }}" class="rounded object-fit-contain" style="width: 5em; height: 5em">
+          <div class="d-flex flex-column justify-content-center">
+            <a href="{{ link.url | escape }}" class="stretched-link link-body-emphasis text-decoration-none">{{ link.title }}</a>
+            <p class="mb-0 text-body-tertiary">{{ link.tagline }}</p>
+          </div>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endfor %}
+</div>
+
+<h2 class="fs-4 border-0">我的名片</h2>
+
+<ul class="list-unstyled mb-0 row row-cols-1 row-cols-md-2 g-3 mb-3">
+  {%- for link in site.data.friends.my_links %}
+  <li class="col">
+    <div class="mb-2">
+      <div class="card h-100">
+        <div class="card-body d-flex gap-3 align-items-center">
+          <img src="{{ link.icon | escape }}" class="rounded object-fit-contain" style="width: 5em; height: 5em">
+          <div class="d-flex flex-column justify-content-center">
+            <div class="text-body-emphasis">{{ link.title | escape }}</div>
+            <p class="mb-0 text-body-tertiary">{{ link.tagline | escape }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <pre class="mb-0">
+        {%- if link.url -%}
+        url: <span class="text-info">{{ link.url | escape }}</span>&#10;
+        {%- endif -%}
+        icon: <span class="text-info">{{ link.icon | escape }}</span
+      ></pre>
+    </div>
+  </li>
+  {%- endfor %}
+</ul>
