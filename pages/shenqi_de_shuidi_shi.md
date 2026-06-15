@@ -30,7 +30,7 @@ soulblog-style: |
     width: 400px;
     max-width: 100%;
     margin: auto;
-    background: #80808022;
+    background: rgba(64, 64, 64, 0.1);
   }
   #chat-screen .time {
     text-align: center;
@@ -59,7 +59,7 @@ soulblog-style: |
     top: 0.9rem;
     left: -0.4rem;
     border: 0.4rem solid transparent;
-    border-right-color: white;
+    border-right-color: #FFF;
   }
   #chat-screen .sent {
     text-align: right;
@@ -67,7 +67,7 @@ soulblog-style: |
     position: relative;
   }
   #chat-screen .sent .msgbody {
-    background: #8E4;
+    background: #9E6;
     padding: 4px 8px;
     border-radius: 4px;
     display: inline-block;
@@ -80,15 +80,14 @@ soulblog-style: |
     top: 0.9rem;
     right: -0.4rem;
     border: 0.4rem solid transparent;
-    border-left-color: #8E4;
+    border-left-color: #9E6;
   }
   #book-page {
-    background: #FED;
+    background: rgba(255, 128, 0, 0.14);
     width: 320px;
     max-width: 100%;
     margin: auto;
     padding: 4rem 2rem 2rem;
-    color: black;
   }
   #book-page h3 {
     font-size: 1.5em;
@@ -104,7 +103,22 @@ soulblog-style: |
     margin: 3rem 0 0 0;
     text-align: right;
   }
-soulblog-license: 本文作者保留所有权利。
+  @media (prefers-color-scheme: dark) {
+    #chat-screen .received .msgbody {
+      background: #333;
+    }
+    #chat-screen .received:before {
+      border-right-color: #333;
+    }
+    #chat-screen .sent .msgbody {
+      background: #3B6;
+      color: #212529;
+    }
+    #chat-screen .sent:before {
+      border-left-color: #3B6;
+    }
+  }
+soulblog-copyright: 本文作者保留所有权利。
 ---
 
 <h1><img src="/blog/assets/droplet_banner.png" class="w-100" alt="神奇的水滴石"></h1>

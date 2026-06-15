@@ -18,24 +18,32 @@ author:
 collections:
   diary_entries: { }
   tags: { }
-  pages_:
-    output: true
-    permalink: "pages/:path"
 
 defaults:
-- scope: { type: "posts" }
+- scope:
+    path: ""
+    type: posts
   values:
     layout: posts
-- scope: { type: "pages_" }
+    soulblog-comments: true
+- scope:
+    path: pages
   values:
     layout: default
     seo:
       type: WebPage
-- scope: { path: "diary" }
+    soulblog-header-tab: none
+- scope:
+    path: diary
   values:
     soulblog-breadcrumb:
     - text: '我的日记存档'
       href: '/blog/diary/'
+    soulblog-header-tab: none
+- scope:
+    path: diary/index.md
+  values:
+    soulblog-breadcrumb: []
 
 kramdown:
   math_engine: katex

@@ -1,9 +1,7 @@
 ---
 layout: default
-soulblog-no-breadcrumb: true
 soulblog-style: |
   .read-all { display: block; text-align: center; }
-  .excerptcard { min-width: 284px; }
 ---
 
 <p>欢迎来到<strong>DGCK81LNN的博客！</strong>！</p>
@@ -21,7 +19,7 @@ soulblog-style: |
         >目前的空气质量为<!--
       --><span id='linf-aqi-value' class="p-1 rounded"></span
         ></div>
-      <div class="text-muted" style="font-size: 0.75rem"
+      <div class="text-body-tertiary" style="font-size: 0.75rem"
         ><a id='linf-aqi-link' target='blank'>详情</a> | <!--
       -->空气质量数据来自 aqicn.org</div>
     </div>
@@ -32,42 +30,44 @@ soulblog-style: |
 
 <h2>文章目录</h2>
 
-<div class="d-flex flex-wrap gap-2">
+<div class="row g-2 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4">
   {%- for post in site.posts %}
   {%- assign excerptlang = post.soulblog-excerpt-lang %}
   {%- assign mdate = post.last_modified_at | date: "%Y-%m-%d" %}
   {%- assign cdate = post.date | date: "%Y-%m-%d" %}
-  <article class="col card excerptcard">
-    <header class="card-header">
-      <time>{{ cdate }}</time>
-      {%- for tag in post.tags %}
-      {%- assign tagdef = site.data.tags | find: 'name', tag %}
-      <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}" class="text-decoration-none">
-        <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
-      </a>
-      {%- endfor %}
-    </header>
-    <div class="card-body"
-      {%- if post.lang %} lang="{{ post.lang }}" {%- endif -%}
-    >
-      {%- if excerptlang == "textile" %}
-      {{ post.excerpt | textilize }}
-      {%- elsif excerptlang == "md" %}
-      {{ post.excerpt | markdownify }}
-      {%- else %}
-      {{ post.excerpt }}
-      {%- endif %}
-      {%- if mdate and mdate != cdate %}
-      <p class="text-secondary text-opacity-75 mb-0"><i>……{{ mdate }} 更新……</i></p>
-      {%- endif %}
-    </div>
-    <div class="card-footer">
-      <a href="{{ post.url | relative_url }}" class="text-decoration-none read-all">
-        阅读全文
-        <i class=bi-arrow-right aria-hidden></i>
-      </a>
-    </div>
-  </article>
+  <div class="col">
+    <article class="card h-100">
+      <header class="card-header">
+        <time>{{ cdate }}</time>
+        {%- for tag in post.tags %}
+        {%- assign tagdef = site.data.tags | find: 'name', tag %}
+        <a href="{{ site.baseurl }}/tags/{{ tagdef.slug }}" class="text-decoration-none">
+          <span class="badge bg-{{ tagdef.color | default: 'secondary' }}">{{ tag }}</span>
+        </a>
+        {%- endfor %}
+      </header>
+      <div class="card-body"
+        {%- if post.lang %} lang="{{ post.lang }}" {%- endif -%}
+      >
+        {%- if excerptlang == "textile" %}
+        {{ post.excerpt | textilize }}
+        {%- elsif excerptlang == "md" %}
+        {{ post.excerpt | markdownify }}
+        {%- else %}
+        {{ post.excerpt }}
+        {%- endif %}
+        {%- if mdate and mdate != cdate %}
+        <p class="text-body-tertiary mb-0"><i>……{{ mdate }} 更新……</i></p>
+        {%- endif %}
+      </div>
+      <div class="card-footer position-relative">
+        <a href="{{ post.url | relative_url }}" class="text-decoration-none link-info stretched-link read-all">
+          阅读全文
+          <i class=bi-arrow-right aria-hidden></i>
+        </a>
+      </div>
+    </article>
+  </div>
   {%- endfor %}
 </div>
 

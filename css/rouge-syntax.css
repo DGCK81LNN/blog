@@ -1,12 +1,27 @@
 /* List of tokens: https://github.com/rouge-ruby/rouge/wiki/List-of-tokens */
 
+:root, [data-bs-theme=light] {
+  --bs-lnn-highlight-base: #555555;
+  --bs-lnn-highlight-name: #333333;
+  --bs-lnn-highlight-dim: #b3b3b3;
+  --bs-lnn-highlight-deleted: #d40000;
+  --bs-lnn-highlight-inserted: #006e18;
+}
+[data-bs-theme=dark] {
+  --bs-lnn-highlight-base: #999999;
+  --bs-lnn-highlight-name: #bbbbbb;
+  --bs-lnn-highlight-dim: #676767;
+  --bs-lnn-highlight-deleted: #ff5342;
+  --bs-lnn-highlight-inserted: #5db661;
+}
+
 /* Base Style */
-.highlight pre {
-  color: #555555;
+.highlight, pre {
+  color: var(--bs-lnn-highlight-base);
 }
 /* Punctuation */
 .highlight .p {
-  color: #737373;
+  color: #888888;
 }
 /* Error */
 .highlight .err {
@@ -14,7 +29,7 @@
 }
 /* Base Style */
 .highlight .n {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Attribute */
 .highlight .na {
@@ -26,7 +41,7 @@
 }
 /* Name Class */
 .highlight .nc {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
   font-style: italic;
 }
 /* Name Constant */
@@ -35,7 +50,7 @@
 }
 /* Name Decorator */
 .highlight .nd {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
   font-style: italic;
 }
 /* Name Entity */
@@ -44,28 +59,28 @@
 }
 /* Name Exception */
 .highlight .ne {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Function */
 .highlight .nf {
-  color: #000000;
+  color: var(--bs-body-color);
 }
 /* Name Label */
 .highlight .nl {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Namespace */
 .highlight .nn {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
   text-decoration: underline;
 }
 /* Name Other */
 .highlight .nx {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Property */
 .highlight .py {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Tag */
 .highlight .nt {
@@ -73,19 +88,19 @@
 }
 /* Name Variable */
 .highlight .nv {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Variable Class */
 .highlight .vc {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Variable Global */
 .highlight .vg {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Variable Instance */
 .highlight .vi {
-  color: #303030;
+  color: var(--bs-lnn-highlight-name);
 }
 /* Name Builtin Pseudo */
 .highlight .bp {
@@ -93,7 +108,7 @@
 }
 /* Base Style */
 .highlight .g {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Generic Deleted */
 .highlight .gd {
@@ -114,20 +129,20 @@
 }
 /* Base Style */
 .highlight .c {
-  color: #b3b3b3;
+  color: var(--bs-lnn-highlight-dim);
 }
 /* Comment Multiline */
 .highlight .cm {
-  color: #b3b3b3;
+  color: var(--bs-lnn-highlight-dim);
 }
 /* Comment Preproc */
 .highlight .cp {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
   font-weight: bold;
 }
 /* Comment Single */
 .highlight .c1 {
-  color: #b3b3b3;
+  color: var(--bs-lnn-highlight-dim);
 }
 /* Comment Special */
 .highlight .cs {
@@ -231,7 +246,7 @@
 }
 /* Literal String Interpol */
 .highlight .si {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Literal String Other */
 .highlight .sx {
@@ -255,15 +270,15 @@
 }
 /* Base Style */
 .highlight .g {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Generic Deleted */
 .highlight .gd {
-  color: #a13f3f;
+  color: var(--bs-lnn-highlight-deleted);
 }
 /* Generic Emph */
 .highlight .ge {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
   font-style: italic;
 }
 /* Generic Error */
@@ -272,38 +287,38 @@
 }
 /* Generic Heading */
 .highlight .gh {
-  color: #1a1a1a;
+  color: var(--bs-body-color);
   font-weight: bold;
 }
 /* Generic Inserted */
 .highlight .gi {
-  color: #006e18;
+  color: var(--bs-lnn-highlight-inserted);
 }
 /* Generic Output */
 .highlight .go {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Generic Prompt */
 .highlight .gp {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Generic Strong */
 .highlight .gs {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
   font-weight: bold;
 }
 /* Generic Subheading */
 .highlight .gu {
-  color: #1a1a1a;
+  color: var(--bs-body-color);
   font-weight: bold;
 }
 /* Generic Traceback */
 .highlight .gt {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Other */
 .highlight .x {
-  color: #555555;
+  color: var(--bs-lnn-highlight-base);
 }
 /* Text Whitespace */
 .highlight .w {

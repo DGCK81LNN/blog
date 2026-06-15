@@ -2,7 +2,7 @@
 layout: base
 ---
 <footer>
-  <p class="text-muted">
+  <p class="text-body-seondary">
     <a href="{{ page.author.url | default: site.author.url | escape }}"
       >{{ page.author.name | default: site.author.name }}</a>
     &middot;
@@ -20,7 +20,7 @@ layout: base
     >{{ page.last_modified_at | date: "%F %H:%M" }}</time
     ></span>
     {%- endif %}
-    {%- if page.tags != empty %}
+    {%- if page.tags and page.tags != empty %}
       &middot;
       <span><span class=visually-hidden>标签：</span>
       {%- for tag in page.tags %}
@@ -35,24 +35,7 @@ layout: base
 </footer>
 
 <div class="soulblog-content"
-{%- if page.lang %} lang="{{ page.lang }}" {%- endif -%}
+  {%- if page.lang %} lang="{{ page.lang }}" {%- endif -%}
 >
 {{ content }}
 </div>
-
-<hr>
-
-<section>
-  <h2>评论区</h2>
-  <script defer src="https://utteranc.es/client.js" crossorigin=anonymous
-    data-theme=github-light
-    data-repo="DGCK81LNN/blog" data-label="utterances comments"
-    data-issue-term="{{ page.url | escape }}"
-  ></script>
-  <div class="soulblog-utterances-placeholder d-flex flex-column justify-content-center align-items-center">
-    <div class="spinner-border text-primary" role=status></div>
-    <p class="text-muted mt-3">
-      加载基于 GitHub issues 的 <a href="https://utteranc.es/" crossorigin=anonymous>utteranc.es</a> 评论区组件……
-    </p>
-  </div>
-</section>

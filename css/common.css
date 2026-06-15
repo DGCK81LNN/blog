@@ -1,36 +1,35 @@
-#mainwrap { margin: 0 auto; max-width: 992px; padding: 0.5rem; }
-#footer { max-width: 992px; }
-
 .soulblog-content { overflow-wrap: break-word; }
 .soulblog-content img { max-width: 100%; }
 .soulblog-content pre {
   padding: 1rem;
   font-size: inherit;
   border-radius: 0.25rem;
-  background-color: #fcfcfc;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) inset;
+  background-color: var(--bs-tertiary-bg);
+  border: 1px solid var(--bs-border-color);
   white-space: pre;
   overflow: auto;
   max-height: 65vh;
+  scrollbar-width: thin;
 }
 .soulblog-content code:not(pre>code) {
   font-size: inherit;
   border-radius: 0.25rem;
-  background-color: #f4f4f4;
+  background-color: var(--bs-tertiary-bg);
   padding: 2px;
 }
 .soulblog-content blockquote {
-  border-left: 0.25em solid silver;
+  border-left: 0.25em solid var(--bs-border-color);
   padding-left: 1.75em;
 }
 .soulblog-content hr {
   height: 0.25em;
   border: none;
-  background-color: silver;
+  background-color: var(--bs-border-color);
+  opacity: 1;
 }
 .soulblog-content>h1,
 .soulblog-content>h2 {
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
 /** Programming ligatures look terrible in brainfuck code, disable them */
@@ -44,11 +43,6 @@
 .soulblog-content kbd:lang(lzh-Hant),
 .soulblog-content samp:lang(lzh-Hant) {
   font-family: "Sarasa Mono CL", var(--bs-font-monospace);
-}
-
-/** Hide comment section placeholder once loaded */
-.utterances[style~="height:"] ~ .soulblog-utterances-placeholder {
-  display: none !important;
 }
 
 /** Code fonts */

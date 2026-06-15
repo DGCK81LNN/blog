@@ -7,16 +7,16 @@ soulblog-head: |
     ></script>
 ---
 
-<p lang=en-Qaac class=text-muted>              ．<!--
+<p lang=en-Qaac class=text-body-tertiary>              ．<!--
 -->    ．   ，       <!--
 -->，​“”！！（</p>
 
 <hr>
 
 <h1><span lang=en-Qaac>＇ </span><span style="font-size:0.7em">(?)</span><br />
-<span lang="en" style="opacity: 0.5;"><span class="caps">LNN</span>&#8217;s Diary</span></h1>
+<span lang="en" class="text-body-tertiary"><span class="caps">LNN</span>&#8217;s Diary</span></h1>
 
-<h2 style="opacity: 0.5;">（凡例）</h2>
+<h2 class="text-body-tertiary">（凡例）</h2>
 
 <p lang=en-Qaac>        ，＇     ：</p>
 
@@ -112,13 +112,13 @@ soulblog-head: |
 
 <p lang=en-Qaac> ​“ㄝ”，“”​​“”．</p>
 
-<h2 style="opacity: 0.5;">（正文）</h2>
+<h2 class="text-body-tertiary">（正文）</h2>
 
 {% assign categories = "lnnsdiary" | split: " " -%}
 {% assign entries = site.diary_entries | where: "category", categories -%}
 {% for entry in entries -%}
 <article class="mb-5">
-  <footer class="text-muted text-end">{{ entry.date | date: "%Y-%m-%d" }}</footer>
+  <footer class="text-body-tertiary text-end">{{ entry.date | date: "%Y-%m-%d" }}</footer>
 
   <div
     {%- if entry.lang %} lang="{{ entry.lang }}" {%- endif -%}
