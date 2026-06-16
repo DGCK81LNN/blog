@@ -83,7 +83,7 @@ function bigXor(a, b) {
 
 ~~~whatlang
 (2>|:&&:&\/flr@:&*-]<)divmod=_
-(2>:< bxor@ \(4294967296/)#\_<bxor@ 4294967296*+)bigxor=_
+(2>:< bxor@ :0\?1?~{4294967296+!} \(4294967296/)#\_<bxor@ 4294967296*+)bigxor=_
 (
   2275242641476827bigxor@
   58divmod@\ 58divmod@\ 58divmod@\ 58divmod@\ 58divmod@\ 58divmod@\ 58divmod@\ 58divmod@\ 9>
