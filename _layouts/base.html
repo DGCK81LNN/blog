@@ -30,8 +30,9 @@
   {%- endif %}
   <script defer crossorigin=anonymous src="/bootstrap-lnn/dist/bootstrap.bundle.min.js"></script>
   <script defer src="/blog/js/common.js"></script>
-  <link rel=canonical href="https://dgck81lnn.github.io/blog{{ page.url | escape }}">
-  <meta name=giscus:backlink content="https://dgck81lnn.github.io/blog{{ page.url | escape }}">
+  {% if page.soulblog-comments -%}
+    <meta name=giscus:backlink content="https://dgck81lnn.github.io/blog{{ page.url | escape }}">
+  {%- endif %}
   {{ page.soulblog-head }}
   <script src="/js/auto-dark-theme.js"></script>
 </head>
