@@ -18,7 +18,7 @@
   {% if page.soulblog-no-seo -%}
     <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
   {%- else -%}
-    {% seo %}
+    {%- seo -%}
   {%- endif %}
   {% if page.soulblog-style -%}
   {{- page.soulblog-style

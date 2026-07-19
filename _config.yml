@@ -9,6 +9,8 @@ url: "https://dgck81lnn.github.io"
 baseurl: /blog
 
 title: LNN的博客！
+tagline: 灵魂小站
+description: 目前为止主要是 esolangs，也许会随机刷新些什么别的
 permalink: "posts/:short_year:month:day_:title"
 lang: zh_CN
 author:
