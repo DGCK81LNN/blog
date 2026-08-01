@@ -21,6 +21,7 @@ soulblog-style: |
 6. [读取 `sletscript` 虚拟文件系统](#6-读取-sletscript-虚拟文件系统)
 7. [查询 bot 登录状态](#7-查询-bot-登录状态)
 8. [获取全局名言列表](#8-获取全局名言列表)
+9. [查询使用量统计数据](#9-查询使用量统计数据)
 
 ## 1. WhatServer
 
@@ -141,6 +142,10 @@ Hello, world!
 
 GET https://lnnbot.哼.site/whatnoter/0d
 
+~~~
+[[mapgeti (\len@range@ (\_,\_0,\_same@)filter@0,\_\_ 3>0$<)] [mapget ...
+~~~
+
 #### 获取 WhatCommands 指令列表
 
 `GET /whatcommands`
@@ -150,6 +155,20 @@ GET https://lnnbot.哼.site/whatnoter/0d
 **示例：**
 
 GET https://lnnbot.哼.site/whatcommands
+
+```jsonc
+[
+  "",
+  "\b",
+  "$【W/C",
+  "(k.)",
+  ",.",
+  "136code",
+  "20dice",
+  "3ps",
+  // ...
+]
+```
 
 #### 获取 WhatCommands 指令定义
 
@@ -199,27 +218,49 @@ FooBar
 
 ### 获取微指令列表
 
-`GET /microcommands`
+`GET /api/microcommands`
 
 返回由指令名字符串组成的 JSON 数组。
 
 **示例：**
 
-GET https://lnnbot.哼.site/microcommands
+GET https://lnnbot.哼.site/api/microcommands
 
-#### 获取 WhatCommands 指令定义
+~~~jsonc
+[
+  "-jz-xiaoliuren",
+  "-lnn-imgdesc",
+  "-lnn-kanji-to-simplified-hanzi",
+  "-lnn-pjsk-chibi-circle-test",
+  // ...
+  "5k",
+  "6dice",
+  "aconv",
+  "ai声聊",
+  // ...
+]
+~~~
 
-`GET /microcommands/{name}`
+### 获取 WhatCommands 指令定义
+
+`GET /api/microcommands/{name}`
 
 返回指令的 JavaScript 源代码。
 
 **示例：**
 
-GET https://lnnbot.哼.site/microcommands/greet
+GET https://lnnbot.哼.site/api/microcommands/greet
+
+~~~js
+signature("[name]")
+action((_, name) => name ? h.i18n(".greeting-specific", [name]) : h.i18n(".greeting"))
+ctx.i18n.define("zh-CN", "commands." + name, { description: "你好世界", messages: { "greeting-specific": "你好，{0}！", greeting: "你好，世界！" } })
+ctx.i18n.define("en-US", "commands." + name, { description: "Hello World", messages: { "greeting-specific": "Hello, {0}!", greeting: "Hello, World!" } })
+~~~
 
 ## 3. 获取赞助者列表
 
-`GET /patrons`
+`GET /api/patrons`
 
 返回所有已登记的 LNNBot 赞助者用户序号、名称和首次登记赞助时间。响应体是一个 JSON 对象，其中以用户序号为键：
 
@@ -227,6 +268,20 @@ GET https://lnnbot.哼.site/microcommands/greet
   * `{id}` *object* 赞助者信息（键为用户序号）
     * `name` *string* 名称
     * `ctime` *string* 首次登记赞助时间（ISO 格式，UTC 时间）
+
+~~~jsonc
+{
+  "17": {
+    "name": "氢氧化钠",
+    "ctime": "2025-12-12T13:31:10.680Z"
+  },
+  "23": {
+    "name": "江大橋BridgeRiver",
+    "ctime": "2025-05-03T09:41:38.252Z"
+  },
+  // ...
+}
+~~~
 
 ## 4. 获取旁加载字体声明
 
@@ -242,25 +297,30 @@ GET https://lnnbot.哼.site/microcommands/greet
 
 （此 API 只在 LNNBot 上使用才有意义，因此建议使用环回 IP 127.0.0.1）
 
-GET http://127.0.0.1/lnnbot-sideload-fonts?family=Minecraft%20Seven%20v2&family=Unifont&family=Unifont%20CSUR
+GET http://127.0.0.1/lnnbot-sideload-fonts?family=Minecraft%20Seven%20v2&family=Unifont
 
 ~~~css
-@font-face{font-family:'Minecraft Seven v2';src:url('file:///root/koishi-app/assets/fonts/Minecraft%20Seven%20v2.ttf')}
-@font-face{font-family:'Unifont CSUR';src:url('file:///root/koishi-app/assets/fonts/Unifont%20CSUR.otf')}
-@font-face{font-family:'Unifont';src:url('file:///root/koishi-app/assets/fonts/Unifont.otf')}
+@font-face {
+  font-family: 'Minecraft Seven v2';
+  src: url('file:///root/koishi-app/assets/fonts/Minecraft%20Seven%20v2.ttf')
+}
+@font-face {
+  font-family: 'Unifont';
+  src: url('file:///root/koishi-app/assets/fonts/Unifont.otf')
+}
 ~~~
 
 ## 5. 读取 `eval` 数据存储
 
-`GET /eval-storage/{path*}`
+`GET /api/evalstorage/{path*}`
 
 以 JSON 格式获取 `eval` 指令中 `storage` 对象上的数据。`path` 指定要获取的值路径，未指定 `path` 时获取整个 `storage` 对象。
 
 **示例：**
 
-GET https://lnnbot.哼.site/evalstorage/musicjsX/aj
+GET https://lnnbot.哼.site/api/evalstorage/lnn/uiua
 
-这将获取 `storage.musicjsX.aj`{: js} 的值，并以 JSON 返回。
+这将获取 `storage.lnn.uiua`{: js} 的值，并以 JSON 返回。
 
 ## 6. 读取 `sletscript` 虚拟文件系统
 
@@ -268,7 +328,7 @@ GET https://lnnbot.哼.site/evalstorage/musicjsX/aj
 
 ### 列举文件夹内容
 
-`GET /sletstorage/{path*}/`
+`GET /api/sletstorage/{path*}/`
 
 返回一个 JSON 数组，包含指定文件夹下的所有文件和子文件夹信息：
 
@@ -282,7 +342,7 @@ GET https://lnnbot.哼.site/evalstorage/musicjsX/aj
 
 **示例：**
 
-GET https://lnnbot.哼.site/sletstorage/home/
+GET https://lnnbot.哼.site/api/sletstorage/home/
 
 ~~~json
 [
@@ -298,7 +358,7 @@ GET https://lnnbot.哼.site/sletstorage/home/
 
 ### 读取文件
 
-`GET /sletstorage/{path*}`
+`GET /api/sletstorage/{path*}`
 
 读取虚拟文件系统中指定的文件，直接返回文本内容。如果给定的路径是文件夹，请求会被重定向到末尾有斜杠的路径。
 
@@ -320,6 +380,22 @@ GET https://lnnbot.哼.site/sletstorage/home/
       * `id` *string* 账号 ID
       * `name` *string* 用户名
       * `avatar` *string* 头像 URL
+
+~~~jsonc
+[
+  {
+    "adapter": "qq",
+    "platform": "qq",
+    "status": 1,
+    "user": {
+      "id": "11371375051710912874",
+      "name": "真魂bot",
+      "avatar": "..."
+    }
+  },
+  // ...
+]
+~~~
 
 ## 8. 获取全局名言列表
 
@@ -368,3 +444,38 @@ GET https://lnnbot.哼.site/api/says?order=desc&limit=2&next=12383
   "next": "12381"
 }
 ~~~
+
+## 9. 查询使用量统计数据
+
+此 API 可获取 LNNBot 近期的一些使用量统计信息。
+
+### 指令日均调用次数
+
+`GET /api/analytics/command`
+
+获取近 7 天（不含当天）各指令平均每天被调用的次数。
+
+**示例：**
+
+GET https://lnnbot.哼.site/api/analytics/command
+
+~~~jsonc
+{
+  "cat": 1.83333333333333,
+  "checkin": 51,
+  "chicken": 7.66666666666667,
+  "dpsk.ask": 27.5,
+  "evaluate": 49.8333333333333,
+  // ...
+}
+~~~
+
+### WhatCommands 指令日均调用次数
+
+`GET /api/analytics/whatcmd`
+
+获取近 7 天（不含当天）各 WhatCommands 指令平均每天被调用的次数。
+
+**示例：**
+
+GET https://lnnbot.哼.site/api/analytics/whatcmd
