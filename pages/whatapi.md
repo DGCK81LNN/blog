@@ -93,9 +93,8 @@ WhatCommands 指令的输出将作为 HTTP 响应的正文返回。
 
 * 索引 0（消息内容）：请求方法和 URL，包括查询字符串（例如 `GET /whatfoo/some/data?query=1`）。URL 中除 `;/?:@&=+$,#%` 以外的百分号编码字符会被解码。
 * 索引 1（消息 ID）：16 位随机的小写十六进制数字
-* 索引 2（用户名称）和索引 3（用户 ID）：都是请求的客户端 IP 地址
+* 索引 2（用户名称）、3（用户 ID）、5（频道 ID）：都是请求的客户端 IP 地址
 * 索引 4（用户序号）：如果请求已成功登录（见下文“用户登录”），则为当前登录的用户序号，否则为 `undef@`{: what}
-* 索引 5（频道 ID）：总是 `"__WHATSERVER__"`{: what}
 * 索引 6（引用的消息 ID）：总是 `undef@`{: what}
 
 变量 `reqh^`{: what} 是一个数组，包含请求的所有头部信息，其中的每项都是一个数组，第一项为头部名称（保留原始大小写，可能重复），第二项为值。
@@ -126,7 +125,7 @@ WhatServer 支持通过请求头 `X-Lnnbot-Whatserver-Login-Token` 来作为 bot
 
 **示例：**
 
-GET https://lnnbot.哼.site/what/¿%60Hello,%20world!%60
+GET <https://lnnbot.哼.site/what/¿%60Hello,%20world!%60>
 
 ~~~
 Hello, world!
@@ -140,7 +139,7 @@ Hello, world!
 
 **示例：**
 
-GET https://lnnbot.哼.site/whatnoter/0d
+GET <https://lnnbot.哼.site/whatnoter/0d>
 
 ~~~
 [[mapgeti (\len@range@ (\_,\_0,\_same@)filter@0,\_\_ 3>0$<)] [mapget ...
@@ -154,7 +153,7 @@ GET https://lnnbot.哼.site/whatnoter/0d
 
 **示例：**
 
-GET https://lnnbot.哼.site/whatcommands
+GET <https://lnnbot.哼.site/whatcommands>
 
 ```jsonc
 [
@@ -184,7 +183,7 @@ GET https://lnnbot.哼.site/whatcommands
 
 **示例：**
 
-GET https://lnnbot.哼.site/whatcommands/echo
+GET <https://lnnbot.哼.site/whatcommands/echo>
 
 ~~~json
 {
@@ -204,7 +203,7 @@ GET https://lnnbot.哼.site/whatcommands/echo
 
 **示例：**
 
-GET https://lnnbot.哼.site/whatwc/echo/FooBar
+GET <https://lnnbot.哼.site/whatwc/echo/FooBar>
 
 ~~~
 FooBar
@@ -224,7 +223,7 @@ FooBar
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/microcommands
+GET <https://lnnbot.哼.site/api/microcommands>
 
 ~~~jsonc
 [
@@ -249,7 +248,7 @@ GET https://lnnbot.哼.site/api/microcommands
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/microcommands/greet
+GET <https://lnnbot.哼.site/api/microcommands/greet>
 
 ~~~js
 signature("[name]")
@@ -297,7 +296,7 @@ ctx.i18n.define("en-US", "commands." + name, { description: "Hello World", messa
 
 （此 API 只在 LNNBot 上使用才有意义，因此建议使用环回 IP 127.0.0.1）
 
-GET http://127.0.0.1/lnnbot-sideload-fonts?family=Minecraft%20Seven%20v2&family=Unifont
+GET <http://127.0.0.1/lnnbot-sideload-fonts?family=Minecraft%20Seven%20v2&family=Unifont>
 
 ~~~css
 @font-face {
@@ -318,7 +317,7 @@ GET http://127.0.0.1/lnnbot-sideload-fonts?family=Minecraft%20Seven%20v2&family=
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/evalstorage/lnn/uiua
+GET <https://lnnbot.哼.site/api/evalstorage/lnn/uiua>
 
 这将获取 `storage.lnn.uiua`{: js} 的值，并以 JSON 返回。
 
@@ -342,7 +341,7 @@ GET https://lnnbot.哼.site/api/evalstorage/lnn/uiua
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/sletstorage/home/
+GET <https://lnnbot.哼.site/api/sletstorage/home/>
 
 ~~~json
 [
@@ -421,7 +420,7 @@ GET https://lnnbot.哼.site/api/sletstorage/home/
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/says?order=desc&limit=2&next=12383
+GET <https://lnnbot.哼.site/api/says?order=desc&limit=2&next=12383>
 
 ~~~json
 {
@@ -457,7 +456,7 @@ GET https://lnnbot.哼.site/api/says?order=desc&limit=2&next=12383
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/analytics/command
+GET <https://lnnbot.哼.site/api/analytics/command>
 
 ~~~jsonc
 {
@@ -478,4 +477,4 @@ GET https://lnnbot.哼.site/api/analytics/command
 
 **示例：**
 
-GET https://lnnbot.哼.site/api/analytics/whatcmd
+GET <https://lnnbot.哼.site/api/analytics/whatcmd>
