@@ -21,6 +21,10 @@ collections:
   diary_entries: { }
   tags: { }
 
+kramdown:
+  toc_levels: 2..4
+  math_engine: katex
+
 defaults:
 - scope:
     path: ""
@@ -46,6 +50,3 @@ defaults:
     path: diary/index.md
   values:
     soulblog-breadcrumb: []
-
-kramdown:
-  math_engine: katex

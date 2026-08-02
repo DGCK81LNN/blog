@@ -2,9 +2,17 @@
 soulblog-no-not-by-ai: true
 soulblog-style: |
   mark { padding: 0 }
+  .json-type-icon { display: inline-block; width: 1em; height: 1em; vertical-align: -.125em }
 ---
 
+{%- capture json_array %}<span><svg class="json-type-icon" title="数组" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M24,4H14A6,6,0,008,10V54A6,6,0,0014,60H24M40,60H50A6,6,0,0056,54V10A6,6,0,0050,4H40"/></svg></span>{%- endcapture %}
+{%- capture json_object %}<span><svg class="json-type-icon" title="对象" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M24,4A10,10,0,0014,14v8A10,10,0,014,32A10,10,0,0114,42v 8A10,10,0,0024,60M40,60A10,10,0,0050,50v-8A10,10,0,0160,32A10,10,0,0150,22v-8A10,10,0,0040,4"/></svg></span>{%- endcapture %}
+{%- capture json_number %}<span><svg class="json-type-icon" title="数字" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M4,14L8,8V56M18,18A8,9.5,0,1133,21L18,56H34M43,8H60L47,29A10,14,0,1143,53"/></svg></span>{%- endcapture %}
+{%- capture json_string %}<span><svg class="json-type-icon" title="字符串" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M10,6V22M22,6V22M42,6V22M54,6V22"/></svg></span>{%- endcapture %}
+{%- capture json_boolean %}<span><svg class="json-type-icon" title="布尔值" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M58,6L6,58M6,8H24M15,8V30M60,36H42V58M42,47H57"/></svg></span>{%- endcapture %}
+
 # WhatAPI 文档
+{: .no_toc}
 
 [WhatAPI] 是 [LNNBot] 特有的一个 Koishi 插件，它在 LNNBot 的服务器（lnnbot.哼.site）上提供了一系列 HTTP API，可以用来访问 LNNBot 中的一些数据。从 LNNBot 本机访问（如使用 WhatLang 请求）WhatAPI 时可以直接使用 `127.0.0.1` 作为主机地址。
 
@@ -12,28 +20,24 @@ soulblog-style: |
 [LNNBot]: https://wiki.xdi8.top/wiki/LNNBot
 
 ## 目录
+{: .no_toc}
 
-1. [WhatServer](#1-whatserver)
-2. [微指令](#2-微指令)
-3. [获取赞助者列表](#3-获取赞助者列表)
-4. [获取旁加载字体声明](#4-获取旁加载字体声明)
-5. [读取 `eval` 数据存储](#5-读取-eval-数据存储)
-6. [读取 `sletscript` 虚拟文件系统](#6-读取-sletscript-虚拟文件系统)
-7. [查询 bot 登录状态](#7-查询-bot-登录状态)
-8. [获取全局名言列表](#8-获取全局名言列表)
-9. [查询使用量统计数据](#9-查询使用量统计数据)
+{:toc .treeview}
+* TOC
 
-## 1. WhatServer
+## 1. WhatLang 相关
 
-WhatServer 是一个 [WhatLang] 运行环境，它允许您通过为 LNNBot 定义特殊的 [WhatCommands 指令] 来在服务器收到特定的 HTTP 请求时执行 WhatLang 代码。这些特殊的 WhatCommands 指令由于名称包含空格，无法直接在聊天中使用 `¿¿` 语法调用。
-
-关于 WhatLang 的具体用法请参考 [WhatLang 文档]。
+以下接口为 [WhatLang] 提供了强大的功能扩展。
 
 [WhatLang]: https://wiki.xdi8.top/wiki/WhatLang
-[WhatCommands 指令]: https://wiki.xdi8.top/wiki/LNNBot/WhatCommands指令
-[WhatLang 文档]: https://esolangs.org/wiki/WhatLang
 
-### 1.1. 路由
+### 1.1. WhatServer
+
+WhatServer 是一个 WhatLang 运行环境，它允许您通过为 LNNBot 定义特殊的 [WhatCommands 指令] 来在服务器收到特定的 HTTP 请求时执行 WhatLang 代码。这些特殊的 WhatCommands 指令由于名称包含空格，无法直接在聊天中使用 `¿¿` 语法调用。
+
+[WhatCommands 指令]: https://wiki.xdi8.top/wiki/LNNBot/WhatCommands指令
+
+#### 1.1. 路由
 
 WhatServer 接管 LNNBot 服务器上的所有以 `/what` 开头的 HTTP 请求，并根据请求路径调用相应的 WhatCommands 指令。`/what` 之后到下一个斜杠之间（没有斜杠则到路径末尾）的部分称为**路由名称**。
 
@@ -63,13 +67,13 @@ WhatServer 接管 LNNBot 服务器上的所有以 `/what` 开头的 HTTP 请求�
 * 请求 `POST /whatbar` 会调用指令 `serverpost bar`。
 * 请求 `GET /whatbaz` 会返回 `404 Not Found`。
 
-### 1.2. 输入参数
+#### 1.2. 输入参数
 
 如果路径中**路由名称之后没有其他内容**，指令的输入参数为 `undef@`{: what}。如果路由名称后**有斜杠**，斜杠之后的内容将以作为一个字符串输入给指令。查询字符串（`?` 及之后的部分）不会被视为输入的一部分，需要通过 `me@`{: what} 函数读取。
 
 例如，请求 `GET /whatfoo/some/data?query=1` 会将 `"some/data"`{: what} 作为输入传递给 `server foo` 指令；请求 `GET /whatfoo` 时，输入是 `undef@`{: what}；请求 `GET /whatfoo/` 时，输入则是空字符串。
 
-### 1.3. 响应
+#### 1.3. 响应
 
 WhatCommands 指令的输出将作为 HTTP 响应的正文返回。
 
@@ -87,7 +91,7 @@ WhatCommands 指令的输出将作为 HTTP 响应的正文返回。
 
 则会被视为 HTTP 响应的状态码（和状态文本）返回。否则，响应状态默认为 `200 OK`。流式输出时响应状态总是 `200 OK`。
 
-### 1.4. 内置函数和特殊变量
+#### 1.4. 内置函数和特殊变量
 
 内置函数 `me@`{: what} 可用于获取当前请求的相关信息。仿照聊天环境下 `me@`{: what} 返回值的结构，它返回一个包含下列信息的数组：
 
@@ -105,19 +109,19 @@ WhatCommands 指令的输出将作为 HTTP 响应的正文返回。
 
 内置函数 `hset@`{: what} 接受两个字符串，设置名称为底值的头部内容为顶值。名称不区分大小写，若已存在同名头部，会覆盖原来的值。
 
-此外，WhatServer 环境还支持下列扩展内置函数：`you@ pr@ cat@ ca@ fetch@ fech@ reesc@ sleep@ nout@ nouts@ send@ sends@ ou@`{: what}。
+此外，WhatServer 环境还支持下列扩展内置函数：`you@ pr@ cat@ ca@ fetch@ fech@ reesc@ sleep@ nout@ nouts@ send@ sends@ ou@`{: what}。注意，与 Koishi 运行时不同，`send@`{: what}、`sends@`{: what} 在 WhatServer 环境下无返回值，如果要同时兼容两个环境，建议像这样使用：`[send@]_`{: what}、`[0sends@]_`{: what}。
 
 WhatNoter 和 WhatCommands 相关的函数也可以在 WhatServer 环境中使用，但 `notewc@ notewd@ notewe@ notere@ cmdset@ cmdsethelp@ cmdseth@ cmddel@`{: what} 只有请求成功登录时才能使用，否则会报错；`noterc@ noterd@ cmdall@ cmdget@ cmdgethelp@ cmdgeth@ cmd@`{: what} 不需要登录。
 
-### 1.5. 用户登录
+#### 1.5. 用户登录
 
-WhatServer 支持通过请求头 `X-Lnnbot-Whatserver-Login-Token` 来作为 bot 用户登录。使用浏览器在 bot 控制台登录后，使用 JavaScript 代码 `JSON.parse(localStorage.getItem("koishi.console.auth")).token`{: js} 可以获取到登录令牌，将其作为该请求头的值发送即可。令牌有一定的有效期，过期后需要重新获取。
+WhatServer 支持通过请求头 `X-Lnnbot-Whatserver-Login-Token` 来作为 bot 用户登录。使用浏览器在 bot 控制台登录后，使用 JavaScript 代码 `JSON.parse(localStorage.getItem("koishi.console.auth"))?.token`{: js} 可以获取到登录令牌，将其作为该请求头的值发送即可。令牌有一定的有效期，过期后需要重新获取。
 
-### 1.6. 通用路由
+### 1.2. WhatServer 上的通用路由
 
 这些已定义的 WhatServer 路由提供稳定的 API 接口，适合用来访问 LNNBot 的一些常用数据。
 
-#### 执行 WhatLang 代码
+#### 1.2.1. 执行 WhatLang 代码
 
 （任意请求方法） `/what/¿{code}`
 
@@ -131,7 +135,7 @@ GET <https://lnnbot.哼.site/what/¿%60Hello,%20world!%60>
 Hello, world!
 ~~~
 
-#### 读取 WhatNoter public 或 protected note
+#### 1.2.2. 读取 WhatNoter public 或 protected note
 
 `GET /whatnoter/{spec}`
 
@@ -145,7 +149,7 @@ GET <https://lnnbot.哼.site/whatnoter/0d>
 [[mapgeti (\len@range@ (\_,\_0,\_same@)filter@0,\_\_ 3>0$<)] [mapget ...
 ~~~
 
-#### 获取 WhatCommands 指令列表
+#### 1.2.3. 获取 WhatCommands 指令列表
 
 `GET /whatcommands`
 
@@ -169,17 +173,18 @@ GET <https://lnnbot.哼.site/whatcommands>
 ]
 ```
 
-#### 获取 WhatCommands 指令定义
+#### 1.2.4. 获取 WhatCommands 指令定义
 
 `GET /whatcommands/{name}`
 
 返回包含指令各属性的 JSON 对象：
 
-* *object* 根对象
-  * `name` *string* 名称
-  * `code` *string* 代码
-  * `h` *string* 短描述
-  * `help` *string* 长帮助信息
+{: .treeview}
+* {{ json_object }} 根对象
+  * {{ json_string }} `name`: 名称
+  * {{ json_string }} `code`: 代码
+  * {{ json_string }} `h`: 短描述
+  * {{ json_string }} `help`: 长帮助信息
 
 **示例：**
 
@@ -194,7 +199,7 @@ GET <https://lnnbot.哼.site/whatcommands/echo>
 }
 ~~~
 
-#### 调用 WhatCommands 指令
+#### 1.2.5. 调用 WhatCommands 指令
 
 `GET /whatwc/{name}`  
 `GET /whatwc/{name}/{arg}`
@@ -209,80 +214,7 @@ GET <https://lnnbot.哼.site/whatwc/echo/FooBar>
 FooBar
 ~~~
 
-## 2. 微指令
-
-此 API 可实时获取 LNNBot 上已定义的[微指令]源代码。
-
-[微指令]: https://www.npmjs.com/package/koishi-plugin-microcommands
-
-### 获取微指令列表
-
-`GET /api/microcommands`
-
-返回由指令名字符串组成的 JSON 数组。
-
-**示例：**
-
-GET <https://lnnbot.哼.site/api/microcommands>
-
-~~~jsonc
-[
-  "-jz-xiaoliuren",
-  "-lnn-imgdesc",
-  "-lnn-kanji-to-simplified-hanzi",
-  "-lnn-pjsk-chibi-circle-test",
-  // ...
-  "5k",
-  "6dice",
-  "aconv",
-  "ai声聊",
-  // ...
-]
-~~~
-
-### 获取 WhatCommands 指令定义
-
-`GET /api/microcommands/{name}`
-
-返回指令的 JavaScript 源代码。
-
-**示例：**
-
-GET <https://lnnbot.哼.site/api/microcommands/greet>
-
-~~~js
-signature("[name]")
-action((_, name) => name ? h.i18n(".greeting-specific", [name]) : h.i18n(".greeting"))
-ctx.i18n.define("zh-CN", "commands." + name, { description: "你好世界", messages: { "greeting-specific": "你好，{0}！", greeting: "你好，世界！" } })
-ctx.i18n.define("en-US", "commands." + name, { description: "Hello World", messages: { "greeting-specific": "Hello, {0}!", greeting: "Hello, World!" } })
-~~~
-
-## 3. 获取赞助者列表
-
-`GET /api/patrons`
-
-返回所有已登记的 LNNBot 赞助者用户序号、名称和首次登记赞助时间。响应体是一个 JSON 对象，其中以用户序号为键：
-
-* *object* 根对象
-  * `{id}` *object* 赞助者信息（键为用户序号）
-    * `name` *string* 名称
-    * `ctime` *string* 首次登记赞助时间（ISO 格式，UTC 时间）
-
-~~~jsonc
-{
-  "17": {
-    "name": "氢氧化钠",
-    "ctime": "2025-12-12T13:31:10.680Z"
-  },
-  "23": {
-    "name": "江大橋BridgeRiver",
-    "ctime": "2025-05-03T09:41:38.252Z"
-  },
-  // ...
-}
-~~~
-
-## 4. 获取旁加载字体声明
+### 1.3. 旁加载字体声明
 
 `GET /lnnbot-sideload-fonts`
 
@@ -309,7 +241,164 @@ GET <http://127.0.0.1/lnnbot-sideload-fonts?family=Minecraft%20Seven%20v2&family
 }
 ~~~
 
-## 5. 读取 `eval` 数据存储
+## 2. 机器人状态与统计
+
+### 2.1. 机器人运行状态
+
+`GET /api/status`
+
+返回一个 JSON 对象：
+
+{: .treeview}
+* {{ json_object }} 根对象
+  * {{ json_array }} `memory`: 内存占用情况
+    * {{ json_number }} `0`: Koishi 占用内存比例
+    * {{ json_number }} `1`: 系统总占用内存比例
+  * {{ json_array }} `cpu`:  CPU 占用情况
+    * {{ json_number }} `0`: Koishi 占用 CPU 时间比例
+    * {{ json_number }} `1`: 系统总占用 CPU 时间比例
+  * {{ json_array }} `bots`: 当前 bot 在各平台的登录情况
+    * {{ json_object }} 登录信息
+      * {{ json_string }} `adapter`: 适配器名称
+      * {{ json_string }} `platform`: 平台名称
+      * {{ json_number }} `status`: 登录状态（0=离线，1=在线，2=连接中，3=断开中，4=重连中）
+      * {{ json_object }} `user`: 机器人账号信息
+        * {{ json_string }} `id`: 账号 ID
+        * {{ json_string }} `name`: 用户名
+        * {{ json_string }} `avatar`: 头像 URL
+
+~~~jsonc
+{
+  "memory": [0.280391, 0.718084],
+  "cpu": [0.02698, 0.058163],
+  "bots": [
+    {
+      "adapter": "qq",
+      "platform": "qq",
+      "status": 1,
+      "user": {
+        "id": "11371375051710912874",
+        "name": "真魂bot",
+        "avatar": "..."
+      }
+    },
+    // ...
+  ]
+}
+~~~
+
+### 2.2. 使用量统计数据
+
+这些 API 可获取 LNNBot 近期的一些使用量统计信息。
+
+#### 2.2.1. 指令日均调用次数
+
+`GET /api/analytics/command`
+
+获取近 7 天（不含当天）各指令平均每天被调用的次数。
+
+**示例：**
+
+GET <https://lnnbot.哼.site/api/analytics/command>
+
+~~~jsonc
+{
+  "cat": 1.83333333333333,
+  "checkin": 51,
+  "chicken": 7.66666666666667,
+  "dpsk.ask": 27.5,
+  "evaluate": 49.8333333333333,
+  // ...
+}
+~~~
+
+#### 2.2.2. WhatCommands 指令日均调用次数
+
+`GET /api/analytics/whatcmd`
+
+获取近 7 天（不含当天）各 WhatCommands 指令平均每天被调用的次数。
+
+**示例：**
+
+GET <https://lnnbot.哼.site/api/analytics/whatcmd>
+
+### 2.3. 赞助者信息
+
+`GET /api/patrons`
+
+返回所有已登记的 LNNBot 赞助者用户序号、名称和首次登记赞助时间。响应体是一个 JSON 对象，其中以用户序号为键：
+
+{: .treeview}
+* {{ json_object }} 根对象
+  * {{ json_object }} `{id}`: 赞助者信息（键为用户序号）
+    * {{ json_string }} `name`: 名称
+    * {{ json_string }} `ctime`: 首次登记赞助时间（ISO 格式，UTC 时间）
+
+~~~jsonc
+{
+  "17": {
+    "name": "氢氧化钠",
+    "ctime": "2025-12-12T13:31:10.680Z"
+  },
+  "23": {
+    "name": "江大橋BridgeRiver",
+    "ctime": "2025-05-03T09:41:38.252Z"
+  },
+  // ...
+}
+~~~
+
+## 3. 其他用户生成内容与动态加载代码
+
+### 3.1. 微指令
+
+此 API 可实时获取 LNNBot 上已定义的[微指令]源代码。
+
+[微指令]: https://www.npmjs.com/package/koishi-plugin-microcommands
+
+#### 3.1.1. 获取微指令列表
+
+`GET /api/microcommands`
+
+返回由指令名字符串组成的 JSON 数组。
+
+**示例：**
+
+GET <https://lnnbot.哼.site/api/microcommands>
+
+~~~jsonc
+[
+  "-jz-xiaoliuren",
+  "-lnn-imgdesc",
+  "-lnn-kanji-to-simplified-hanzi",
+  "-lnn-pjsk-chibi-circle-test",
+  // ...
+  "5k",
+  "6dice",
+  "aconv",
+  "ai声聊",
+  // ...
+]
+~~~
+
+#### 3.1.2. 获取 WhatCommands 指令定义
+
+`GET /api/microcommands/{name}`
+
+返回指令的 JavaScript 源代码。
+
+**示例：**
+
+GET <https://lnnbot.哼.site/api/microcommands/greet>
+
+~~~js
+signature("[name]")
+action((_, name) => name ? h.i18n(".greeting-specific", [name]) : h.i18n(".greeting"))
+ctx.i18n.define("zh-CN", "commands." + name, { description: "你好世界", messages: { "greeting-specific": "你好，{0}！", greeting: "你好，世界！" } })
+ctx.i18n.define("en-US", "commands." + name, { description: "Hello World", messages: { "greeting-specific": "Hello, {0}!", greeting: "Hello, World!" } })
+~~~
+
+### 3.2. `eval` 数据存储
 
 `GET /api/evalstorage/{path*}`
 
@@ -321,23 +410,24 @@ GET <https://lnnbot.哼.site/api/evalstorage/lnn/uiua>
 
 这将获取 `storage.lnn.uiua`{: js} 的值，并以 JSON 返回。
 
-## 6. 读取 `sletscript` 虚拟文件系统
+### 3.3. `sletscript` 虚拟文件系统
 
 此 API 可读取 `sletscript` 指令的虚拟文件系统。
 
-### 列举文件夹内容
+#### 3.3.1. 列举文件夹内容
 
 `GET /api/sletstorage/{path*}/`
 
 返回一个 JSON 数组，包含指定文件夹下的所有文件和子文件夹信息：
 
-* *array* 根数组
-  * *object* 文件或子文件夹信息
-    * `name` *string* 文件名
-    * `type` *string* `file` 或 `directory`
-    * `ctime` *string* 创建日期（ISO 格式，UTC 时间）
-    * `mtime` *string* 修改日期（ISO 格式，UTC 时间）
-    * `url` *string* 读取该文件或文件夹内容的 API 路径
+{: .treeview}
+* {{ json_array }} 根数组
+  * {{ json_object }} 文件或子文件夹信息
+    * {{ json_string }} `name`: 文件名
+    * {{ json_string }} `type`: `file` 或 `directory`
+    * {{ json_string }} `ctime`: 创建日期（ISO 格式，UTC 时间）
+    * {{ json_string }} `mtime`: 修改日期（ISO 格式，UTC 时间）
+    * {{ json_string }} `url`: 读取该文件或文件夹内容的 API 路径
 
 **示例：**
 
@@ -355,7 +445,7 @@ GET <https://lnnbot.哼.site/api/sletstorage/home/>
 ]
 ~~~
 
-### 读取文件
+#### 3.3.2. 读取文件
 
 `GET /api/sletstorage/{path*}`
 
@@ -364,53 +454,22 @@ GET <https://lnnbot.哼.site/api/sletstorage/home/>
 {:js: .highlight.language-javascript}
 {:what: .highlight.language-whatlang}
 
-## 7. 查询 bot 登录状态
-
-`GET /api/bots`
-
-返回一个 JSON 数组，包含当前 bot 在各平台的登录情况：
-
-* *array* 根数组
-  * *object* 登录信息
-    * `adapter` *string* 适配器名称
-    * `platform` *string* 平台名称
-    * `status` *number* 登录状态（0=离线，1=在线，2=连接中，3=断开中，4=重连中）
-    * `user` *object* 机器人账号信息
-      * `id` *string* 账号 ID
-      * `name` *string* 用户名
-      * `avatar` *string* 头像 URL
-
-~~~jsonc
-[
-  {
-    "adapter": "qq",
-    "platform": "qq",
-    "status": 1,
-    "user": {
-      "id": "11371375051710912874",
-      "name": "真魂bot",
-      "avatar": "..."
-    }
-  },
-  // ...
-]
-~~~
-
-## 8. 获取全局名言列表
+### 3.4. 全局名人名言
 
 `GET /api/says`
 
 获取 says 功能的全局名言列表。返回一个 JSON 对象：
 
-* *object* 根对象
-  * `data` *array* 名言列表
-    * *object* 名言信息
-      * `id` *string* 名言 ID
-      * `author` *string* 作者昵称（对于匿名名言为 `null`{: js}）
-      * `gid` *string* 来源平台及群组 ID（对于早期未记录来源群组的名言，为空字符串）
-      * `ctime` *string* 创建时间（ISO 格式，UTC 时间；对于早期未记录创建时间的名言，为 `null`{: js}）
-      * `content` *string* 名言内容
-  * `next` *string* 获取下一页结果的 `next` 参数值，如果没有下一页则无此属性
+{: .treeview}
+* {{ json_object }} 根对象
+  * {{ json_array }} `data`: 名言列表
+    * {{ json_object }} 名言信息
+      * {{ json_string }} `id`: 名言 ID
+      * {{ json_string }} `author`: 作者昵称（对于匿名名言为 `null`{: js}）
+      * {{ json_string }} `gid`: 来源平台及群组 ID（对于早期未记录来源群组的名言，为空字符串）
+      * {{ json_string }} `ctime`: 创建时间（ISO 格式，UTC 时间；对于早期未记录创建时间的名言，为 `null`{: js}）
+      * {{ json_string }} `content`: 名言内容
+  * {{ json_string }} `next`: 获取下一页结果的 `next` 参数值，如果没有下一页则无此属性
 
 **Query 参数：**
 
@@ -443,38 +502,3 @@ GET <https://lnnbot.哼.site/api/says?order=desc&limit=2&next=12383>
   "next": "12381"
 }
 ~~~
-
-## 9. 查询使用量统计数据
-
-此 API 可获取 LNNBot 近期的一些使用量统计信息。
-
-### 指令日均调用次数
-
-`GET /api/analytics/command`
-
-获取近 7 天（不含当天）各指令平均每天被调用的次数。
-
-**示例：**
-
-GET <https://lnnbot.哼.site/api/analytics/command>
-
-~~~jsonc
-{
-  "cat": 1.83333333333333,
-  "checkin": 51,
-  "chicken": 7.66666666666667,
-  "dpsk.ask": 27.5,
-  "evaluate": 49.8333333333333,
-  // ...
-}
-~~~
-
-### WhatCommands 指令日均调用次数
-
-`GET /api/analytics/whatcmd`
-
-获取近 7 天（不含当天）各 WhatCommands 指令平均每天被调用的次数。
-
-**示例：**
-
-GET <https://lnnbot.哼.site/api/analytics/whatcmd>
