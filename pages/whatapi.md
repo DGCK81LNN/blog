@@ -222,7 +222,7 @@ FooBar
 
 **Query 参数：**
 
-* `family` 字体族名，该参数可以指定多次。未指定时返回所有旁加载字体。
+* `family`: 字体族名，该参数可以指定多次。未指定时返回所有旁加载字体。
 
 **示例：**
 
@@ -303,11 +303,11 @@ GET <https://lnnbot.哼.site/api/analytics/command>
 
 ~~~jsonc
 {
-  "cat": 1.83333333333333,
-  "checkin": 51,
-  "chicken": 7.66666666666667,
-  "dpsk.ask": 27.5,
-  "evaluate": 49.8333333333333,
+  "says": 520.571428571429,
+  "checkin": 46.4285714285714,
+  "whatcmd": 43.5714285714286,
+  "xdi8": 40.5714285714286,
+  "evaluate": 32.7142857142857,
   // ...
 }
 ~~~
@@ -318,9 +318,24 @@ GET <https://lnnbot.哼.site/api/analytics/command>
 
 获取近 7 天（不含当天）各 WhatCommands 指令平均每天被调用的次数。
 
+**Query 参数：**
+
+* `whatserver`: 只统计（`only`）或不统计（`no`）通过 WhatServer 调用的次数
+
 **示例：**
 
-GET <https://lnnbot.哼.site/api/analytics/whatcmd>
+GET <https://lnnbot.哼.site/api/analytics/whatcmd?whatserver=no>
+
+~~~jsonc
+{
+  "translate": 9.285714285714286,
+  "lrcsrc": 9.285714285714286,
+  "wsatn": 5.571428571428571,
+  "图片描述": 4.857142857142857,
+  "rubyt": 4,
+  // ...
+}
+~~~
 
 ### 2.3. 赞助者信息
 
@@ -473,9 +488,9 @@ GET <https://lnnbot.哼.site/api/sletstorage/home/>
 
 **Query 参数：**
 
-* `order` 排序方式，`asc`（从旧到新）或 `desc`（从新到旧），默认为 `asc`
-* `limit` 每页结果数量，默认为 20，最大为 500
-* `next` 起始 ID，配合 `order` 参数使用以进行翻页
+* `order`: 排序方式，`asc`（从旧到新）或 `desc`（从新到旧），默认为 `asc`
+* `limit`: 每页结果数量，默认为 20，最大为 500
+* `next`: 起始 ID，配合 `order` 参数使用以进行翻页
 
 **示例：**
 
