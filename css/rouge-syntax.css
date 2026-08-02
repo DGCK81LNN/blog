@@ -4,13 +4,19 @@
   --bs-lnn-highlight-base: #555555;
   --bs-lnn-highlight-name: #333333;
   --bs-lnn-highlight-dim: #b3b3b3;
+  --bs-lnn-highlight-builtin: #82b727;
+  --bs-lnn-highlight-attribute: #af248e;
+  --bs-lnn-highlight-operator: #a5b800;
   --bs-lnn-highlight-deleted: #d40000;
   --bs-lnn-highlight-inserted: #006e18;
 }
 [data-bs-theme=dark] {
-  --bs-lnn-highlight-base: #999999;
-  --bs-lnn-highlight-name: #bbbbbb;
-  --bs-lnn-highlight-dim: #676767;
+  --bs-lnn-highlight-base: #cccccc;
+  --bs-lnn-highlight-name: #eeeeee;
+  --bs-lnn-highlight-dim: #808080;
+  --bs-lnn-highlight-builtin: #ace260;
+  --bs-lnn-highlight-attribute: #eb63c5;
+  --bs-lnn-highlight-operator: #c7db46;
   --bs-lnn-highlight-deleted: #ff5342;
   --bs-lnn-highlight-inserted: #5db661;
 }
@@ -21,7 +27,7 @@
 }
 /* Punctuation */
 .highlight .p {
-  color: #888888;
+  color: #999999;
 }
 /* Error */
 .highlight .err {
@@ -33,11 +39,11 @@
 }
 /* Name Attribute */
 .highlight .na {
-  color: #af248e;
+  color: var(--bs-lnn-highlight-attribute);
 }
 /* Name Builtin */
 .highlight .nb {
-  color: #82b727;
+  color: var(--bs-lnn-highlight-builtin);
 }
 /* Name Class */
 .highlight .nc {
@@ -84,7 +90,7 @@
 }
 /* Name Tag */
 .highlight .nt {
-  color: #82b727;
+  color: var(--bs-lnn-highlight-builtin);
 }
 /* Name Variable */
 .highlight .nv {
@@ -107,25 +113,13 @@
   color: #1ca0ff;
 }
 /* Base Style */
-.highlight .g {
-  color: var(--bs-lnn-highlight-base);
-}
-/* Generic Deleted */
-.highlight .gd {
-  color: #be261e;
-}
-/* Generic Inserted */
-.hihlight .gi {
-  color: #8cb326;
-}
-/* Base Style */
 .highlight .o {
-  color: #a5b800;
+  color: var(--bs-lnn-highlight-operator);
   font-weight: bold;
 }
 /* Operator Word */
 .highlight .ow {
-  color: #a5b800;
+  color: var(--bs-lnn-highlight-operator);
 }
 /* Base Style */
 .highlight .c {
@@ -262,9 +256,9 @@
 }
 /* Literal String Symbol */
 .highlight .ss {
-  color: #af248e;
+  color: var(--bs-lnn-highlight-attribute);
 }
-/* ? */
+/* Literal String Delimiter */
 .highlight .dl {
   color: #ff8826;
 }
@@ -319,7 +313,4 @@
 /* Other */
 .highlight .x {
   color: var(--bs-lnn-highlight-base);
-}
-/* Text Whitespace */
-.highlight .w {
 }
