@@ -15,6 +15,8 @@
   <link rel=icon href="/site_icon.png">
   <link rel="shortcut icon" href="/site_icon.png">
   <link rel=apple-touch-icon href="/site_icon.png" sizes="160x160">
+  <meta name="color-scheme" content="light dark" />
+  <script src="/js/auto-dark-theme.js"></script>
   {% if page.soulblog-no-seo -%}
     <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
   {%- else -%}
@@ -34,7 +36,6 @@
     <meta name=giscus:backlink content="https://dgck81lnn.github.io/blog{{ page.url | escape }}">
   {%- endif %}
   {{ page.soulblog-head }}
-  <script src="/js/auto-dark-theme.js"></script>
 </head>
 
 <body>
