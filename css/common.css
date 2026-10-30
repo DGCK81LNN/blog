@@ -37,16 +37,27 @@
 }
 
 /** Programming ligatures look terrible in brainfuck code, disable them */
-.soulblog-content .highlighter-rouge.language-brainfuck {
+.soulblog-content .language-brainfuck {
   font-variant-ligatures: none;
 }
 
-/** Programming ligatures look terrible in brainfuck code, disable them */
-.soulblog-content pre:lang(lzh-Hant),
-.soulblog-content code:lang(lzh-Hant),
-.soulblog-content kbd:lang(lzh-Hant),
-.soulblog-content samp:lang(lzh-Hant) {
-  font-family: "Sarasa Mono CL", var(--bs-font-monospace);
+/** Code fonts */
+@font-face {
+  font-family: Uiua386;
+  src: url(../assets/uiua386/Uiua386.woff2);
+}
+.language-uiua, .language-uiua code {
+  font: 18px Uiua386, var(--bs-font-monospace) !important;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: Whatch;
+  src: url(../assets/whatch/Whatch-Regular.woff2);
+}
+.language-whatlang, .language-whatlang code,
+.language-what, .language-what code {
+  font: 18px Whatch, var(--bs-font-monospace) !important;
 }
 
 /** Markdown TOC */
@@ -58,7 +69,7 @@
   color: rgba(var(--bs-emphasis-color-rgb), 0.75);
 }
 
-/** Simplified version of "Treeview" from https://minecraft.wiki/w/?oldid=1719575#L-233 */
+/** Simplified version of "Treeview" from <https://minecraft.wiki/w/?oldid=1719575#L-233>, licensed under CC BY-NC-SA 3.0 */
 ul.treeview {
   padding: 0;
 }
@@ -92,22 +103,3 @@ ul.treeview {
   width: 10px;
 }
 /** End of "Treeview" */
-
-/** Code fonts */
-@font-face {
-  font-family: Uiua386;
-  src: url(../assets/uiua386/Uiua386.woff2);
-}
-.language-uiua, .language-uiua code {
-  font: 18px / 1.15 Uiua386, var(--bs-font-monospace) !important;
-  font-synthesis: none;
-}
-
-@font-face {
-  font-family: Whatch;
-  src: url(../assets/whatch/Whatch-Regular.woff2);
-}
-.language-whatlang, .language-whatlang code,
-.language-what, .language-what code {
-  font: 18px / 1.15 Whatch, var(--bs-font-monospace) !important;
-}
