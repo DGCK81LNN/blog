@@ -1,6 +1,6 @@
 ---
 date: 2024-12-29T23:21:51+08:00
-tags: 编程 日常写代码 esolang
+tags: 编程 Uiua
 ---
 
 # [![](https://www.uiua.org/assets/uiua-logo.png){: style="height:1em;vertical-align:bottom" .me-1}Uiua](https://uiua.org){: target="_blank"} 99bottles

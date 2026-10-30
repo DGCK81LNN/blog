@@ -1,6 +1,6 @@
 ---
 date: 2026-04-08T21:24:10+08:00
-tags: 编程 日常写代码 esolang
+tags: 编程 esolang Uiua
 ---
 
 # 奇怪的AV号-BV号转换程序增加了！REMASTERED
