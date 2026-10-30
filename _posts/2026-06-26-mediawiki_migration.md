@@ -1,6 +1,7 @@
 ---
 date: 2026-06-26T01:29:46+08:00
 tags: 信息技术杂项
+redirect_from: [ "/posts/260625_mediawiki_migration" ]
 ---
 
 # MediaWiki迁移到宝塔Linux面板小踩坑

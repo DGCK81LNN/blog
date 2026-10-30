@@ -1,6 +1,7 @@
 ---
 date: 2024-04-06T01:33:41+08:00
 tags: 编程 esolang
+redirect_from: [ "/posts/240405_wtf_brainf_interpreter" ]
 ---
 
 # brainf 解释器，但它是一个 Python 表达式
