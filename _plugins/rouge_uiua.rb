@@ -28,7 +28,7 @@ module Rouge
         rule /\b(HexDigits|Planets|Zodiac|Suits|Cards|Chess|Moon|Skin|People|Hair)\b/, Name::Constant
         rule /[¬±¯⌵√∿⌊⌈⁅⧻△⇡⊢⊣⇌♭¤⋯⍉⍆⍏⍖⊚⊛◴◰□⋕⚂]/, Name::Builtin
         rule /[=≠<≤>≥+\-×÷◿∨ⁿₙ↧↥∠ℂ≍⊟⊂⊏⊡↯↙↘↻⤸▽⌕⦷∊⊗⨂⊥⍤]/, Operator
-        rule /[\/∧\\∵≡⍚⊞⧅⧈⍥⊕⊜◇⋅˜⊙𝄐⟜⊸⤙⤚◠◡𝄈∩⌅°⌝⍩∂∫]/, Keyword
+        rule /[\/∧\\∵≡⍚⊞⧅⧈⍥⊕⊜◇⋅˜⊙𝄐⟜⊸⤙⤚◠◡𝄈∩⌅°⌝⍩∂∫⧋]/, Keyword
         rule /[⍜⊃⊓⍢⬚⨬⍣]/, Keyword::Declaration
         rule /#.*?(?=\n)/, Comment::Single
         rule /&[a-z]+/, Name::Builtin
