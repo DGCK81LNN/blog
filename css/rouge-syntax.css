@@ -310,6 +310,10 @@
 .highlight .gt {
   color: var(--bs-lnn-highlight-base);
 }
+/* Line numbers */
+.highlight .gl {
+  color: var(--bs-lnn-highlight-dim);
+}
 /* Other */
 .highlight .x {
   color: var(--bs-lnn-highlight-base);

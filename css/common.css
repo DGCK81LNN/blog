@@ -21,6 +21,15 @@
   background-color: var(--bs-tertiary-bg);
   padding: 2px;
 }
+.soulblog-content .rouge-table {
+  border-collapse: separate;
+}
+.soulblog-content .rouge-table pre {
+  all: inherit;
+}
+.soulblog-content .rouge-table .gutter {
+  user-select: none;
+}
 .soulblog-content blockquote {
   border-left: 0.25em solid var(--bs-border-color);
   padding-left: 1.75em;
