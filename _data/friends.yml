@@ -4,12 +4,16 @@ groups:
   links:
     - title: 物灵
       tagline: From the dust, to the wind
-      url: https://matling.fit
-      icon: https://avatars.githubusercontent.com/u/42795424
+      url: https://matling.fit/
+      icon: https://test.vudrux.site/lnn/friends-avatars/matling.png
+    - title: 网络一隅
+      tagline: 诗乃和怹的网络一隅
+      url: https://cloud.sd.cn/
+      icon: https://test.vudrux.site/lnn/friends-avatars/sino.png
     - title: 晓怕的宁静一隅
-      tagline: 晓怕的个人网站
+      tagline: Love looks not with the eyes, but with the mind; And therefore is wing'd Cupid painted blind.
       url: https://shiaupa.top/
-      icon: https://shiaupa.top/Avatar.png
+      icon: https://test.vudrux.site/lnn/friends-avatars/shiaupa.png
 # - id: sites
 #   label: 站点
 #   links:
